@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 
 export const NavContainer = styled.nav`
+    
     /* background: red; */
     /* height: 150px; */
     /* height: 80px; */
     height: ${props => props.scroll ? '80px' : '150px'};
     background: ${props => props.scroll ? '#000' : 'transparent'};
     position: ${props => props.scroll && 'sticky'};
+    z-index: 10;
     top: 0;
 
     width: 100%;

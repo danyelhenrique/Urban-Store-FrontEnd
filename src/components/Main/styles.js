@@ -6,5 +6,5 @@ export const MainContainer = styled.main`
     flex-wrap: wrap;
     height: 100vh;
     width: 100%;
-    /* background: red; */
+    background: #cecece;
 `;
