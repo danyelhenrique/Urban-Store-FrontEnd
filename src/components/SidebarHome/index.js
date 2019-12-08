@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Container, Links, LinksContainer, FullHeightContainer, Span } from './styles';
 
-const full = false
+const full = true
 
 function fullSidebar() {
     if (!full) {

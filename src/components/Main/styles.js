@@ -4,7 +4,9 @@ export const MainContainer = styled.main`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    height: 100vh;
+    position: relative;
+    top: 85px;
     width: 100%;
-    background: #cecece;
+    background: transparent;
+   
 `;

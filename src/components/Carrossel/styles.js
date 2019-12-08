@@ -3,22 +3,13 @@ import { ButtonBack, ButtonNext } from 'pure-react-carousel';
 
 export const Container = styled.div`
     position: relative;
+    width: 100%;
     background: #fff;
-    height: 100%;
-    width: 100%;
-
-`;
-
-export const Wrap = styled.div`
-
-    height: 100%;
-    width: 100%;
-    padding:  90px 10px 0px 10px;
-    background: rgba(0,0,0,0.8);
+    margin-left: 15%; 
     
     img{
-        padding: 10px;
-        
+        /* padding: 10px; */
+        object-fit: cover;
     }
 
 
@@ -27,9 +18,7 @@ export const Wrap = styled.div`
 export const Arrow = styled.div`
     height: 100%;
     width: 100%;
-    color: #333;
-    background: red;
-
+ 
     button:disabled{
         opacity: 0;
         pointer-events: none;

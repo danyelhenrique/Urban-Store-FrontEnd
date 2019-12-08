@@ -1,11 +1,16 @@
 import React from 'react';
 import Head from 'next/head'
 
-import styled from 'styled-components';
+
 
 import Main from '../src/components/Main';
 import Nav from '../src/components/Nav';
 import Carrossel from '../src/components/Carrossel';
+import MainStore from '../src/components/MainStore';
+import Image from '../src/components/Image';
+import SidebarStore from '../src/components/SidebarStore';
+
+
 
 export default function store() {
     return (
@@ -16,7 +21,9 @@ export default function store() {
             </Head>
             <Main>
                 <Nav />
-                <Carrossel />
+                <SidebarStore />
+                <Image />
+                <MainStore />
             </Main>
         </div>
     );
