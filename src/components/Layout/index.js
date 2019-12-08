@@ -1,14 +1,13 @@
 import React from 'react';
-import GlobalStyle from '../../../global/styles'
-
+import GlobalStyle from '../../../global/styles';
 
 function Layout(props) {
-    return (
-        <div className="page-layout">
-            <GlobalStyle />
-            {props.children}
-        </div>
-    )
+  return (
+    <div className="page-layout">
+      <GlobalStyle />
+      {props.children}
+    </div>
+  );
 }
 
-export default Layout
+export default Layout;

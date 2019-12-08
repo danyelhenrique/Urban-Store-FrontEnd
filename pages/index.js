@@ -1,5 +1,5 @@
-import React from 'react'
-import Head from 'next/head'
+import React from 'react';
+import Head from 'next/head';
 import styled from 'styled-components';
 
 import Main from '../src/components/Main';
@@ -15,21 +15,17 @@ const Home = () => (
       <Backgorund>
         <SidebarHome />
       </Backgorund>
-
     </Main>
-
   </div>
-)
-
+);
 
 const Backgorund = styled.div`
-background: url('/background.jpg') no-repeat fixed;
-background-size: cover;
-/* background-size: 100% 100vh; */
-object-fit: cover;
-height: 100%;
-width: 100%;
+  background: url('/background.jpg') no-repeat fixed;
+  background-size: cover;
+  /* background-size: 100% 100vh; */
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+`;
 
-`
-
-export default Home
+export default Home;
