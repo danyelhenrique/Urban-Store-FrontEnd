@@ -11,17 +11,33 @@ export const Container = styled.section`
   flex-wrap: wrap;
 
   padding: 30px 0px;
+
+  @media (max-width: 610px) {
+    padding: 10px;
+  }
 `;
 
 export const Image = styled.div`
   display: flex;
   width: 55%;
+  align-items: center;
   flex-wrap: nowrap;
+
+  @media (max-width: 610px) {
+    width: 100%;
+    justify-content:  center;
+  }
+  
+  margin-top: ${props => props.secondImage && "40px"};
 
   img {
     width: 50%;
-    height: 80vh;
+    height:${props => props.secondImage ? "70vh" : "80vh"} ;
     margin: 0 1px;
+
+    @media (max-width: 610px) {
+      width: ${props => props.secondImage ? "80%" : "40%"};
+    }
   }
 `;
 
@@ -31,15 +47,20 @@ export const ItemDetail = styled.div`
   height: 80vh;
   width: 40%;
   background: #fff;
-  border-radius: 5%;
+  border-radius: 1%;
   margin-left: 30px;
   padding: 30px 15px;
+
+  position: sticky;
+  top: 105px;
 
   justify-content: space-between;
 
   @media (max-width: 610px) {
-    width: 70%;
-    margin: 10px auto;
+    position: static;
+    width: 80%;
+    margin-left: 0px;
+    margin: 20px 0;
   }
 `;
 
@@ -172,4 +193,50 @@ export const Button = styled.button`
     }
 
 `;
+export const Details = styled.div`
+  width: 100%;
+  margin-right: 42%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
 
+  @media (max-width: 610px) {
+    }
+
+  div {
+      display: flex;
+      align-items: center;
+    img {
+      height: 25px;
+      width: 25px;
+      margin: 0 1px;
+    }
+  }
+
+`;
+
+export const ButtonDetails = styled.button`
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 10px;
+  margin: 0 10px;
+  /* flex: 1; */
+
+  display: flex;
+  align-items: center;
+  
+  img {
+    height: 10%;
+    width: 10%;
+    margin: 0 1px;
+  }
+
+  span {
+    color: #000;
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+`;

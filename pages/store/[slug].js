@@ -5,22 +5,22 @@ import { useRouter } from 'next/router';
 
 // import { Container } from './styles';
 import Main from '../../src/components/Main';
-import ItemDetails from '../../src/components/ItemDetails';
+import ItemMore from '../../src/components/ItemMore';
 import Nav from '../../src/components/Nav';
 
 export default function store() {
-  const router = useRouter();
+    const router = useRouter();
 
-  return (
-    <div>
-      <Head>
-        <title>Urban </title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Main>
-        <Nav />
-        <ItemDetails />
-      </Main>
-    </div>
-  );
+    return (
+        <div>
+            <Head>
+                <title>Urban </title>
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <Main>
+                <Nav />
+                <ItemMore />
+            </Main>
+        </div>
+    );
 }

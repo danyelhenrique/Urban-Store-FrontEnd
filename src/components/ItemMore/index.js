@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 import {
     Container,
     Image,
@@ -9,9 +10,11 @@ import {
     Select,
     Button,
     Favorite,
+    Details,
+    ButtonDetails
 } from './styles';
 
-export default function ItemDetails() {
+export default function ItemMore() {
     return (
         <Container>
             <Image>
@@ -51,6 +54,28 @@ export default function ItemDetails() {
                     </div>
                 </Button>
             </ItemDetail>
+            <Image secondImage>
+                <img src="/item-detail3.jpg" alt="item" />
+            </Image>
+            <Details>
+                <ButtonDetails >
+                    <span>DETAILS</span>
+                </ButtonDetails>
+
+                <ButtonDetails >
+                    <span>SIMILAR ITEMS</span>
+                </ButtonDetails>
+
+                <ButtonDetails >
+                    <span>REVIEWS(324)</span>
+                </ButtonDetails>
+                <div>
+                    <img src="/icons/start-black.png" alt="start" />
+                    <img src="/icons/start-black.png" alt="start" />
+                    <img src="/icons/start-black.png" alt="start" />
+                    <img src="/icons/star-withe-and-black.png" alt="start" />
+                </div>
+            </Details>
         </Container>
     );
 }
