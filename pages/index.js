@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import styled from 'styled-components';
 
-import Main from '../src/components/Main';
+import HomeContainer from '../src/components/Home';
 import SidebarHome from '../src/components/SidebarHome';
 
 const Home = () => (
@@ -11,11 +11,11 @@ const Home = () => (
       <title>Home</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <Main>
+    <HomeContainer>
       <Backgorund>
         <SidebarHome />
       </Backgorund>
-    </Main>
+    </HomeContainer>
   </div>
 );
 

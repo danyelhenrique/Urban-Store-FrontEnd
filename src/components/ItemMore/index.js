@@ -1,6 +1,5 @@
 import React from 'react';
 
-
 import {
     Container,
     Image,
@@ -11,7 +10,7 @@ import {
     Button,
     Favorite,
     Details,
-    ButtonDetails
+    ButtonDetails,
 } from './styles';
 
 export default function ItemMore() {
@@ -58,6 +57,7 @@ export default function ItemMore() {
                 <img src="/item-detail3.jpg" alt="item" />
             </Image>
             <Details>
+
                 <ButtonDetails >
                     <span>DETAILS</span>
                 </ButtonDetails>

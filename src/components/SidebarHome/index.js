@@ -1,28 +1,27 @@
-import React from "react";
+import React from 'react';
 
-import {
- Container, Links, LinksContainer, FullHeightContainer, Span 
-} from './styles';
+import { Container, Links, FullHeightContainer, Span } from './styles';
 
 const full = true;
 
 function fullSidebar() {
   if (!full) {
     return (
-          <Span>
-              <span>Clothes  for all types of styles</span>
-      </Span>)
+      <Span>
+        <span>Clothes for all types of styles</span>
+      </Span>
+    );
   }
   return (
     <FullHeightContainer>
-          <span>Clothes  for all types of styles</span>
+      <span>Clothes for all types of styles</span>
       <nav>
         <li>
-          <a href="">Wommen's</a>
-          <a href="">Men's</a>
-          <a href="">Baby</a>
-          <a href="">Girls</a>
-                  <a href="">Boys</a>
+          <a href="#/">Wommen's</a>
+          <a href="#/">Men's</a>
+          <a href="#/">Baby</a>
+          <a href="#/">Girls</a>
+          <a href="#/">Boys</a>
         </li>
       </nav>
       <img src="/boy.jpg" alt="boy" />
@@ -38,12 +37,6 @@ export default function SidebarHome() {
         <div>
           <img src="/logo.png" alt="logo" />
         </div>
-        <LinksContainer>
-          <a href="#/">Shopping</a>
-        </LinksContainer>
-        <LinksContainer>
-          <a href="#/">Contact</a>
-        </LinksContainer>
       </Links>
       {fullSidebar()}
     </Container>

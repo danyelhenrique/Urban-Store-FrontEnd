@@ -222,7 +222,6 @@ export const ButtonDetails = styled.button`
   border: none;
   padding: 10px;
   margin: 0 10px;
-  /* flex: 1; */
 
   display: flex;
   align-items: center;

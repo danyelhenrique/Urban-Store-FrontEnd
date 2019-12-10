@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.aside`
   height: 200px;
-  height: ${(props) => (props.active ? '100%' : '200px')};
+  height: ${props => (props.active ? '100%' : '200px')};
   background: #fff;
   width: 400px;
   border-radius: 0 0 5px 0;
@@ -14,30 +14,6 @@ export const Container = styled.aside`
 export const Links = styled.div`
   display: flex;
   justify-content: space-between;
-`;
-
-export const LinksContainer = styled.div`
-  display: flex;
-  flex: 1;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-
-  a {
-    flex: 1;
-    padding: 11px;
-    padding-top: 15px;
-    height: 50px;
-    color: #795f4d;
-    color: #000;
-    font-weight: 400;
-    text-decoration: none;
-
-    :hover {
-      background: #cecece;
-      background: rgba(76, 70, 55, 0.69);
-    }
-  }
 `;
 
 export const FullHeightContainer = styled.div`

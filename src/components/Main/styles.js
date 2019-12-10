@@ -5,7 +5,7 @@ export const MainContainer = styled.main`
   flex-direction: row;
   flex-wrap: wrap;
   position: relative;
-  top: 85px;
+  top: 80px;
   width: 100%;
   background: transparent;
 `;
