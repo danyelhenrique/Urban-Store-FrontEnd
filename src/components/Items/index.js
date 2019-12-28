@@ -1,38 +1,99 @@
-import React from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
+
+import { useQuery, useMutation } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
 import Button from '../ColorSelect';
 
-import {
-  Container,
-  Item,
-  Image,
-  Favorite,
-  Icon,
-  NameAndPrice,
-  ColorSelect,
-} from './styles';
+import { Container, Item, Image, Favorite, Icon, NameAndPrice, ColorSelect } from './styles';
+
+const Data = gql`
+	query {
+		indexProduct(page: 1, limit: 3) {
+			id
+			data_price
+			data_product_display_name
+			data_brand_name
+			data_base_colour
+			data_colour1
+			data_colour2
+			data_colour3
+			data_colour4
+			data_front_imageURL
+		}
+	}
+`;
+
+const Dataa = gql`
+	{
+		indexProduct(page: 1, limit: 3) {
+			id
+			data_price
+			data_product_display_name
+			data_brand_name
+			data_base_colour
+			data_colour1
+			data_colour2
+			data_colour3
+			data_colour4
+			data_front_imageURL
+		}
+	}
+`;
 
 export default function Items() {
-  return (
-    <Container>
-      <Item>
-        <Image src="/_models/girl9.jpg" alt="item" />
-        <Favorite type="button">
-          <Icon src="/favorites-with-border.png" alt="favorite" />
-        </Favorite>
-      </Item>
-      <NameAndPrice>
-        <div>
-          <span>Jacket Dress </span>
-        </div>
-        <span>$ 49.99</span>
-      </NameAndPrice>
-      <ColorSelect>
-        <Button />
-        <Button />
-        <Button />
-        <Button />
-      </ColorSelect>
-    </Container>
-  );
+	const [ xx, setXX ] = useState([]);
+	const { loading, error, data } = useQuery(Dataa);
+	console.log(loading);
+
+	if (loading) return <h1>Loading</h1>;
+
+	if (error) return <h1>Erro</h1>;
+
+	console.log(data);
+	// useMemo(
+	// 	() => {
+	// 		setXX(data.indexProduct);
+	// 	},
+	// 	[ data ]
+	// );
+
+	const renderColor = (colors) => {
+		return colors.map((ItemColor) => {
+			if (ItemColor) {
+				let color = ItemColor.includes(' ') ? ItemColor.split(' ')[0].toLowerCase() : ItemColor;
+				color.includes('White') ? (color = '#d0d0d0') : (color = color);
+				return <Button color={color} />;
+			}
+		});
+	};
+	// if (data) {
+	return data.indexProduct.map((item, index) => {
+		return (
+			<Container key={String(Date.now())}>
+				<Item>
+					<Image src={item.data_front_imageURL} alt="item" />
+					<Favorite type="button">
+						<Icon src="/favorites-with-border.png" alt="favorite" />
+					</Favorite>
+				</Item>
+				<NameAndPrice>
+					<div>
+						<span>{item.data_product_display_name} </span>
+					</div>
+					<span>$ {item.data_price}</span>
+				</NameAndPrice>
+				<ColorSelect>
+					{renderColor([
+						item.data_base_colour,
+						item.data_colour1,
+						item.data_colour2,
+						item.data_colour3,
+						item.data_colour4
+					])}
+				</ColorSelect>
+			</Container>
+		);
+	});
+	// }
 }
