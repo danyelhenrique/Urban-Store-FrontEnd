@@ -12,7 +12,6 @@ const scroll = gql`
 
 export default function Main({ children }) {
 	const { data } = useQuery(scroll);
-	console.log(data);
 
 	return <MainContainer isScroll={data.isScroll}>{children}</MainContainer>;
 }

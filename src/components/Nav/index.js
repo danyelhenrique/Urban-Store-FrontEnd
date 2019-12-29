@@ -1,7 +1,16 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useApolloClient } from '@apollo/react-hooks';
 
-import { NavContainer, FirstRow, UserArea, SecondRow, SecondRowNav } from './styles';
+import {
+	NavContainer,
+	FirstNav,
+	UserArea,
+	ListAndLogo,
+	ListFirstNav,
+	ScrollNav,
+	ListItems,
+	LogoAndBag
+} from './styles';
 
 export default function Nav() {
 	const [ onscroll, setOnscroll ] = useState(false);
@@ -34,50 +43,66 @@ export default function Nav() {
 
 	return (
 		<NavContainer scroll={onscroll}>
-			<FirstRow>
-				<div>
+			{!onscroll ? (
+				<FirstNav>
 					<div>
-						<img src="/logo.png" alt="logo" />
+						<div>
+							<img src="/logo.png" alt="logo" />
+						</div>
+						<UserArea>
+							<a href="/#">
+								<img src="/nav/profile.png" alt="" />
+								<span>Signin</span>
+							</a>
+							<a href="/#">
+								<img src="/nav/favorites.png" alt="" />
+								<img src="/nav/bag-scroll-nav.png" alt="" />
+								<span>Favorites</span>
+							</a>
+							<a href="/#">
+								<img src="/nav/bag.png" alt="" />
+								<span>Shopping Bag</span>
+							</a>
+						</UserArea>
 					</div>
-					<UserArea>
+					<ListAndLogo>
+						<span>Clothes for all types of styles</span>
+						<ListFirstNav>
+							<li>
+								<a href="#">Men's</a>
+								<a href="#">Women's</a>
+								<a href="#">Baby</a>
+								<a href="#">Girls</a>
+								<a href="#">Boys</a>
+								<a href="#">H&M</a>
+								<a href="#">News</a>
+							</li>
+						</ListFirstNav>
+					</ListAndLogo>
+				</FirstNav>
+			) : (
+				<ScrollNav scroll={onscroll}>
+					<a href="/#">
+						<img src="/nav/logo.png" alt="" />
+					</a>
+					<ListItems>
+						<li>
+							<a href="#">Men's</a>
+							<a href="#">Women's</a>
+							<a href="#">Baby</a>
+							<a href="#">Girls</a>
+							<a href="#">Boys</a>
+							<a href="#">H&M</a>
+							<a href="#">News</a>
+						</li>
+					</ListItems>
+					<LogoAndBag>
 						<a href="/#">
-							<img src="/nav/profile.png" alt="" />
-							<span>Signin</span>
+							<img src="/nav/bag-scroll-nav.png" alt="" />
 						</a>
-						<a href="/#">
-							<img src="/nav/favorites.png" alt="" />
-							<span>Favorites</span>
-						</a>
-						<a href="/#">
-							<img src="/nav/bag.png" alt="" />
-							<span>Shopping Bag</span>
-						</a>
-					</UserArea>
-				</div>
-			</FirstRow>
-
-			<SecondRow>
-				{!onscroll && <span>Clothes for all types of styles</span>}
-				<SecondRowNav>
-					<li>
-						<a href="#">Men's</a>
-						<a href="#">Women's</a>
-						<a href="#">Baby</a>
-						<a href="#">Girls</a>
-						<a href="#">Boys</a>
-						<a href="#">H&M</a>
-						<a href="#">News</a>
-					</li>
-				</SecondRowNav>
-
-				{onscroll && (
-					<Fragment>
-						<a href="/#">
-							<img src="/nav/bag-light.png" alt="bag" />
-						</a>
-					</Fragment>
-				)}
-			</SecondRow>
+					</LogoAndBag>
+				</ScrollNav>
+			)}
 		</NavContainer>
 	);
 }
