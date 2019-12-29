@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React from 'react';
 
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
@@ -8,23 +8,6 @@ import Button from '../ColorSelect';
 import { Container, Item, Image, Favorite, Icon, NameAndPrice, ColorSelect } from './styles';
 
 const Data = gql`
-	query {
-		indexProduct(page: 1, limit: 3) {
-			id
-			data_price
-			data_product_display_name
-			data_brand_name
-			data_base_colour
-			data_colour1
-			data_colour2
-			data_colour3
-			data_colour4
-			data_front_imageURL
-		}
-	}
-`;
-
-const Dataa = gql`
 	{
 		indexProduct(page: 1, limit: 3) {
 			id
@@ -42,21 +25,11 @@ const Dataa = gql`
 `;
 
 export default function Items() {
-	const [ xx, setXX ] = useState([]);
-	const { loading, error, data } = useQuery(Dataa);
-	console.log(loading);
+	const { loading, error, data } = useQuery(Data);
 
 	if (loading) return <h1>Loading</h1>;
 
 	if (error) return <h1>Erro</h1>;
-
-	console.log(data);
-	// useMemo(
-	// 	() => {
-	// 		setXX(data.indexProduct);
-	// 	},
-	// 	[ data ]
-	// );
 
 	const renderColor = (colors) => {
 		return colors.map((ItemColor) => {
@@ -67,7 +40,7 @@ export default function Items() {
 			}
 		});
 	};
-	// if (data) {
+
 	return data.indexProduct.map((item, index) => {
 		return (
 			<Container key={String(Date.now())}>
@@ -95,5 +68,4 @@ export default function Items() {
 			</Container>
 		);
 	});
-	// }
 }
