@@ -9,7 +9,7 @@ import { Container, Item, Image, Favorite, Icon, NameAndPrice, ColorSelect } fro
 
 const Data = gql`
 	{
-		indexProduct(page: 1, limit: 3) {
+		indexProduct(page: 1, limit: 10) {
 			id
 			data_price
 			data_product_display_name

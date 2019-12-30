@@ -8,27 +8,6 @@ export default function MainStore() {
 	return (
 		<Container>
 			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
-			<Items />
 		</Container>
 	);
 }
