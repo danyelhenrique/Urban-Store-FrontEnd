@@ -5,8 +5,6 @@ export const Nav = styled.div`
 	align-items: center;
 	justify-content: space-evenly;
 
-	/* position: relative; */
-
 	width: 100%;
 	height: 100%;
 

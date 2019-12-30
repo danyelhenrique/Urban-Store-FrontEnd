@@ -20,7 +20,7 @@ export const Modal = styled.div`
 	border-radius: 2%;
 	position: absolute;
 	right: 0;
-	top: 60px;
+	top: 75px;
 	padding: 20px;
 
 	overflow-y: scroll;
