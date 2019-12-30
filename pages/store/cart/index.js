@@ -1,9 +1,9 @@
 import React from 'react';
 import Head from 'next/head';
 
-import Main from '../../src/components/Main';
-import Nav from '../../src/components/Nav';
-import MainCart from '../../src/components/MainCart';
+import Main from '../../../src/components/Main';
+import Nav from '../../../src/components/Nav';
+import MainCart from '../../../src/components/MainCart';
 
 export default function cart() {
 	return (

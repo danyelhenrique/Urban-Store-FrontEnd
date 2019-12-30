@@ -18,151 +18,155 @@ export const NavContainer = styled.nav`
 	padding: 15px;
 `;
 
-export const FirstNav = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
+// export const FirstNav = styled.div`
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: space-between;
 
-	width: 100%;
+// 	width: 100%;
 
-	font-weight: 400;
+// 	font-weight: 400;
 
-	color: #000;
+// 	color: #000;
 
-	div {
-		display: flex;
-		justify-content: space-between;
-	}
-`;
+// 	div {
+// 		display: flex;
+// 		justify-content: space-between;
+// 	}
+// `;
 
-export const UserArea = styled.div`
-	display: flex;
-	font-weight: 300;
+// export const UserArea = styled.div`
+// 	display: flex;
+// 	font-weight: 300;
 
-	a {
-		display: flex;
-		align-items: center;
+// 	a {
+// 		display: flex;
+// 		align-items: center;
 
-		margin: 0 30px;
+// 		margin: 0 30px;
 
-		text-decoration: none;
+// 		text-decoration: none;
 
-		color: rgba(0, 0, 0, 0.9);
+// 		color: rgba(0, 0, 0, 0.9);
 
-		img {
-			height: 45px;
-			width: 45px;
-		}
+// 		img {
+// 			height: 45px;
+// 			width: 45px;
+// 		}
 
-		span {
-			margin: 0 10px;
-		}
-	}
-`;
+// 		span {
+// 			margin: 0 10px;
+// 		}
+// 	}
+// `;
 
-export const ListAndLogo = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-`;
+// export const ListAndLogo = styled.div`
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: space-between;
+// `;
 
-export const ListFirstNav = styled.ul`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+// export const ListFirstNav = styled.ul`
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
 
-	width: 100%;
-	height: 100%;
+// 	width: 100%;
+// 	height: 100%;
 
-	list-style: none;
+// 	list-style: none;
 
-	li {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		flex: 1;
+// 	li {
+// 		display: flex;
+// 		justify-content: center;
+// 		align-items: center;
+// 		flex: 1;
 
-		width: 100%;
-		height: 100%;
+// 		width: 100%;
+// 		height: 100%;
 
-		a {
-			display: flex;
-			justify-content: center;
-			align-items: center;
+// 		a {
+// 			display: flex;
+// 			justify-content: center;
+// 			align-items: center;
 
-			width: 100%;
-			height: 100%;
+// 			width: 100%;
+// 			height: 100%;
 
-			text-decoration: none;
-			color: #000;
+// 			text-decoration: none;
+// 			color: #000;
 
-			:hover {
-				background: rgba(76, 70, 55, 0.39);
-			}
-		}
-	}
-`;
+// 			:hover {
+// 				background: rgba(76, 70, 55, 0.39);
+// 			}
+// 		}
+// 	}
+// `;
 
-export const ScrollNav = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: space-evenly;
+// export const ScrollNav = styled.div`
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: space-evenly;
 
-	width: 100%;
-	height: 100%;
+// 	position: relative;
 
-	img {
-		height: 45px;
-		width: 45px;
-	}
-`;
+// 	width: 100%;
+// 	height: 100%;
 
-export const ListItems = styled.ul`
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex: 1;
+// 	img {
+// 		height: 45px;
+// 		width: 45px;
+// 	}
+// `;
 
-	height: 100%;
+// export const ListItems = styled.ul`
+// 	display: flex;
+// 	justify-content: space-between;
+// 	align-items: center;
+// 	flex: 1;
 
-	margin-left: 15px;
+// 	height: 100%;
 
-	list-style: none;
+// 	margin-left: 15px;
 
-	li {
-		display: flex;
-		align-items: center;
+// 	list-style: none;
 
-		width: 100%;
-		height: 100%;
+// 	li {
+// 		display: flex;
+// 		align-items: center;
 
-		a {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+// 		width: 100%;
+// 		height: 100%;
 
-			height: 100%;
-			width: 100%;
+// 		a {
+// 			display: flex;
+// 			align-items: center;
+// 			justify-content: center;
 
-			color: #ffff;
-			text-decoration: none;
+// 			height: 100%;
+// 			width: 100%;
 
-			:hover {
-				background: rgba(76, 70, 55, 0.39);
-			}
-		}
-	}
-`;
+// 			color: #ffff;
+// 			text-decoration: none;
 
-export const LogoAndBag = styled.div`
-	display: flex;
-	align-items: center;
-	justify-content: center;
+// 			:hover {
+// 				background: rgba(76, 70, 55, 0.39);
+// 			}
+// 		}
+// 	}
+// `;
 
-	width: 20%;
-	height: 100%;
+// export const Bag = styled.div`
+// 	display: flex;
+// 	align-items: center;
+// 	justify-content: center;
 
-	a {
-		text-decoration: none;
-	}
-`;
+// 	width: 20%;
+// 	height: 100%;
+
+// 	button {
+// 		border: none;
+// 		background: transparent;
+// 		cursor: pointer;
+// 	}
+// `;

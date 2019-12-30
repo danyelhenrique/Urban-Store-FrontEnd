@@ -1,25 +1,27 @@
-import React, { useEffect, useState } from 'react';
-import { useApolloClient } from '@apollo/react-hooks';
+import React, { useEffect, useState, useContext } from 'react';
+import { NavBarContext } from '../../context/Navbar';
 
-import {
-	NavContainer,
-	FirstNav,
-	UserArea,
-	ListAndLogo,
-	ListFirstNav,
-	ScrollNav,
-	ListItems,
-	LogoAndBag
-} from './styles';
+import { useApolloClient } from '@apollo/react-hooks';
+import LightNav from '../LightNav';
+import DarkNav from '../DarkNav';
+
+import { NavContainer } from './styles';
 
 export default function Nav() {
-	const [ onscroll, setOnscroll ] = useState(false);
+	const [ state, dispatch ] = useContext(NavBarContext);
+
 	const client = useApolloClient();
 
 	useEffect(() => {
-		const items = localStorage.getItem('@-apollo-client-get-products@');
-		client.writeData({ data: { items } });
+		LocalHistory();
 	}, []);
+
+	function LocalHistory() {
+		const items = localStorage.getItem('@-apollo-client-get-products@');
+		if (items) {
+			client.writeData({ data: { items } });
+		}
+	}
 
 	useEffect(
 		() => {
@@ -28,81 +30,19 @@ export default function Nav() {
 			};
 			// return window.onscroll  = null
 		},
-		[ onscroll ]
+		[ state.isScroll ]
 	);
 
 	function scrollFunction() {
 		if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
-			setOnscroll(true);
+			dispatch({ type: '@IS_ISCROLL', payload: true });
 			client.writeData({ data: { isScroll: true } });
 		} else {
-			setOnscroll(false);
+			dispatch({ type: '@IS_ISCROLL', payload: false });
+
 			client.writeData({ data: { isScroll: false } });
 		}
 	}
 
-	return (
-		<NavContainer scroll={onscroll}>
-			{!onscroll ? (
-				<FirstNav>
-					<div>
-						<div>
-							<img src="/logo.png" alt="logo" />
-						</div>
-						<UserArea>
-							<a href="/#">
-								<img src="/nav/profile.png" alt="" />
-								<span>Signin</span>
-							</a>
-							<a href="/#">
-								<img src="/nav/favorites.png" alt="" />
-								<img src="/nav/bag-scroll-nav.png" alt="" />
-								<span>Favorites</span>
-							</a>
-							<a href="/#">
-								<img src="/nav/bag.png" alt="" />
-								<span>Shopping Bag</span>
-							</a>
-						</UserArea>
-					</div>
-					<ListAndLogo>
-						<span>Clothes for all types of styles</span>
-						<ListFirstNav>
-							<li>
-								<a href="#">Men's</a>
-								<a href="#">Women's</a>
-								<a href="#">Baby</a>
-								<a href="#">Girls</a>
-								<a href="#">Boys</a>
-								<a href="#">H&M</a>
-								<a href="#">News</a>
-							</li>
-						</ListFirstNav>
-					</ListAndLogo>
-				</FirstNav>
-			) : (
-				<ScrollNav scroll={onscroll}>
-					<a href="/#">
-						<img src="/nav/logo.png" alt="" />
-					</a>
-					<ListItems>
-						<li>
-							<a href="#">Men's</a>
-							<a href="#">Women's</a>
-							<a href="#">Baby</a>
-							<a href="#">Girls</a>
-							<a href="#">Boys</a>
-							<a href="#">H&M</a>
-							<a href="#">News</a>
-						</li>
-					</ListItems>
-					<LogoAndBag>
-						<a href="/#">
-							<img src="/nav/bag-scroll-nav.png" alt="" />
-						</a>
-					</LogoAndBag>
-				</ScrollNav>
-			)}
-		</NavContainer>
-	);
+	return <NavContainer scroll={state.isScroll}>{!state.isScroll ? <LightNav /> : <DarkNav />}</NavContainer>;
 }
