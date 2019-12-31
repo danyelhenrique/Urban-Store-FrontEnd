@@ -1,4 +1,7 @@
 import React, { useContext } from 'react';
+
+import Link from 'next/link';
+
 import { NavBarContext } from '../../context/Navbar';
 
 import BagModal from '../BagModal';
@@ -28,7 +31,9 @@ export default function LightNav() {
 						<Button onClick={() => dispatch({ type: '@IS_BAG_OPEN' })}>
 							<img src="/nav/bag.png" alt="" />
 						</Button>
-						<a href="#">Shopping Bag</a>
+						<Link href="/store/cart" as="/store/cart">
+							<a>Shopping Cart</a>
+						</Link>
 						{state.isModalOpen && <BagModal />}
 					</Bag>
 				</UserArea>
@@ -37,13 +42,27 @@ export default function LightNav() {
 				<span>Clothes for all types of styles</span>
 				<Ul>
 					<li>
-						<a href="#">Men's</a>
-						<a href="#">Women's</a>
-						<a href="#">Baby</a>
-						<a href="#">Girls</a>
-						<a href="#">Boys</a>
-						<a href="#">H&M</a>
-						<a href="#">News</a>
+						<Link href="/store">
+							<a>Men's</a>
+						</Link>
+						<Link href="/store">
+							<a>Women's</a>
+						</Link>
+						<Link href="/store">
+							<a>Baby</a>
+						</Link>
+						<Link href="/store">
+							<a>Girls</a>
+						</Link>
+						<Link href="/store">
+							<a>Boys</a>
+						</Link>
+						<Link href="/store">
+							<a>H&M</a>
+						</Link>
+						<Link href="/store">
+							<a>News</a>
+						</Link>
 					</li>
 				</Ul>
 			</List>

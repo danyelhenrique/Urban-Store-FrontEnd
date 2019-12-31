@@ -9,6 +9,7 @@ import { NavContainer } from './styles';
 
 export default function Nav() {
 	const [ state, dispatch ] = useContext(NavBarContext);
+	const x = state && state.isScroll ? state.isScroll : state;
 
 	const client = useApolloClient();
 
@@ -30,7 +31,7 @@ export default function Nav() {
 			};
 			// return window.onscroll  = null
 		},
-		[ state.isScroll ]
+		[ x ]
 	);
 
 	function scrollFunction() {

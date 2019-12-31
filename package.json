@@ -35,6 +35,7 @@
     "eslint-plugin-react": "^7.17.0",
     "eslint-plugin-react-hooks": "^1.7.0",
     "prettier": "^1.19.1",
-    "prettier-eslint-plugin": "^1.1.4"
+    "prettier-eslint-plugin": "^1.1.4",
+    "reactotron-react-js": "^3.3.7"
   }
 }
