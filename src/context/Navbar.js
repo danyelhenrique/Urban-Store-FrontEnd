@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect } from 'react';
+import localForage from '../../config/localForage';
 
 const isBrowser = typeof window !== 'undefined';
 
@@ -9,16 +10,18 @@ const INITIAL_STATE = {
 	cart: []
 };
 
+function store(state, payload) {
+	localForage.setItem('@URBARN-STORAGE-BAG', [ ...state.userBag, payload ], (err, value) => {
+		if (err) console.warn('localForage ERRO');
+	});
+}
+
 function clearBagDuplicateItems(state, payload) {
 	const isItemtemExists = state.userBag.find((item) => item.id === payload.id);
 
 	if (isItemtemExists) return state;
 
-	const data = { ...state.userBag, payload };
-
-	const userBag = JSON.stringify(payload);
-
-	localStorage.setItem('@URBARN-STORAGE-BAG', userBag);
+	store(state, payload);
 
 	return { ...state, userBag: [ ...state.userBag, payload ] };
 }
@@ -28,11 +31,9 @@ function clearCartDuplicateItems(state, payload) {
 
 	if (isItemtemExists) return state;
 
-	const data = { ...state.cart, payload };
+	// const cart = JSON.stringify(payload);
 
-	const cart = JSON.stringify(payload);
-
-	localStorage.setItem('@URBARN-STORAGE-CART', cart);
+	// localStorage.setItem('@URBARN-STORAGE-CART', cart);
 
 	return { ...state, cart: [ ...state.cart, payload ] };
 }
@@ -51,6 +52,22 @@ function reducer(state, action) {
 			return state;
 	}
 }
+function formatLocalForagetoState(localForageArr, dispatch) {
+	const dispatchItem = (item) => dispatch({ type: '@ADD_BAG_ITEM', payload: item });
+
+	const itemsArray = (objectOrArray) => {
+		if (typeof objectOrArray === 'object') {
+			dispatchItem(objectOrArray);
+		}
+		if (Array.isArray(objectOrArray)) {
+			objectOrArray.map((obj) => {
+				dispatchItem(obj);
+			});
+		}
+	};
+
+	localForageArr.map((item) => itemsArray(item));
+}
 
 export const NavBarContext = React.createContext({});
 
@@ -58,17 +75,40 @@ export default function context({ children }) {
 	const [ state, dispatch ] = useReducer(reducer, INITIAL_STATE);
 
 	useEffect(() => {
-		function getItemsFromLocalHistorage() {
-			if (localStorage.hasOwnProperty('@URBARN-STORAGE-BAG')) {
-				const bagItem = localStorage.getItem('@URBARN-STORAGE-BAG');
-				dispatch({ type: '@ADD_BAG_ITEM', payload: bagItem });
-			}
+		async function getItemsFromLocalHistorage() {
+			const dbName = '@URBARN-STORAGE-BAG';
 
-			if (localStorage.hasOwnProperty('@URBARN-STORAGE-CART')) {
-				const cartItem = localStorage.getItem('@URBARN-STORAGE-CART');
-				dispatch({ type: '@ADD_CART_ITEM', payload: cartItem });
+			const localKeys = await localForage.keys();
+
+			const isExists = localKeys.includes(dbName);
+
+			if (isExists) {
+				const items = await localForage.getItem(dbName);
+				formatLocalForagetoState(items, dispatch);
+				// console.log(items)
+				// formatLocalForagetoState(items, dispatch);
 			}
-			console.log(state);
+			// dispatch({ type: '@ADD_BAG_ITEM', payload: item });
+
+			// localForage
+			// 	.keys()
+			// 	.then(function(keys) {
+			// 		// An array of all the key names.
+			// 	})
+			// 	.catch(function(err) {
+			// 		// This code runs if there were any errors
+			// 		console.log(err);
+			// 	});
+			// if (localStorage.hasOwnProperty('@URBARN-STORAGE-BAG')) {
+			// 	const bagItem = localStorage.getItem('@URBARN-STORAGE-BAG');
+			// 	console.log(bagItem);
+			// 	const [ Ob ] = JSON.parse(bagItem);
+			// 	dispatch({ type: '@ADD_BAG_ITEM', payload: Ob });
+			// }
+			// if (localStorage.hasOwnProperty('@URBARN-STORAGE-CART')) {
+			// 	const cartItem = localStorage.getItem('@URBARN-STORAGE-CART');
+			// 	dispatch({ type: '@ADD_CART_ITEM', payload: cartItem });
+			// }
 			//
 		}
 		getItemsFromLocalHistorage();
