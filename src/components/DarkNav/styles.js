@@ -54,7 +54,7 @@ export const ListItems = styled.ul`
 export const Bag = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: space-evenly;
 
 	width: 20%;
 	height: 100%;
@@ -63,5 +63,16 @@ export const Bag = styled.div`
 		border: none;
 		background: transparent;
 		cursor: pointer;
+	}
+
+	a {
+		color: #fff;
+		text-decoration: none;
+		filter: brightness(50%);
+		font-weight: 400;
+
+		:hover {
+			filter: brightness(100%);
+		}
 	}
 `;
