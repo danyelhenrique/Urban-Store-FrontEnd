@@ -8,7 +8,7 @@ localforage.config({
 });
 
 const store = localforage.createInstance({
-	name: '@URBAN-STORE-ALGO'
+	name: '@URBAN-STORE-STORAGE'
 });
 
 export default store;

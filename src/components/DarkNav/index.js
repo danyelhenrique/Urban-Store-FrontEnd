@@ -1,12 +1,12 @@
 import React, { useContext } from 'react';
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import BagModal from '../BagModal';
 
 import { Nav, Bag, ListItems } from './styles';
 
 export default function DarkNav() {
-	const [ state, dispatch ] = useContext(NavBarContext);
+	const [ state, dispatch ] = useContext(Context);
 
 	return (
 		<Nav>

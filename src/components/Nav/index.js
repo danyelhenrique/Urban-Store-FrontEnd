@@ -1,5 +1,5 @@
 import React, { useEffect, useContext } from 'react';
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import { useApolloClient } from '@apollo/react-hooks';
 import LightNav from '../LightNav';
@@ -8,7 +8,7 @@ import DarkNav from '../DarkNav';
 import { NavContainer } from './styles';
 
 export default function Nav() {
-	const [ state, dispatch ] = useContext(NavBarContext);
+	const [ state, dispatch ] = useContext(Context);
 	const x = state && state.isScroll ? state.isScroll : state;
 
 	const client = useApolloClient();

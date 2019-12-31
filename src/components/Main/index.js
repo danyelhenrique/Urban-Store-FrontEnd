@@ -1,19 +1,10 @@
-import React from 'react';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
+import React, { useContext } from 'react';
+import { Context } from '../../context';
 
 import { MainContainer } from './styles';
 
-const scroll = gql`
-	{
-		isScroll @client
-	}
-`;
-
 export default function Main({ children }) {
-	const { data, loading } = useQuery(scroll);
+	const [ state ] = useContext(Context);
 
-	if (loading) return <h1>Main Loading</h1>;
-
-	return <MainContainer isScroll={data.isScroll}>{children}</MainContainer>;
+	return <MainContainer isScroll={state.isScroll}>{children}</MainContainer>;
 }

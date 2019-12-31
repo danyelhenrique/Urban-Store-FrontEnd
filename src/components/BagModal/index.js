@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import { Modal, ModalItem, ModalItemDetail, Image } from './styles';
 
 export default function BagModal() {
-	const [ state, dispatch ] = useContext(NavBarContext);
+	const [ state, dispatch ] = useContext(Context);
 
 	return (
 		<Modal light={state.isScroll}>

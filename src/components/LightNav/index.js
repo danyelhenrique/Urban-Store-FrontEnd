@@ -2,14 +2,14 @@ import React, { useContext } from 'react';
 
 import Link from 'next/link';
 
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import BagModal from '../BagModal';
 
 import { Nav, UserArea, Button, Bag, List, Ul } from './styles';
 
 export default function LightNav() {
-	const [ state, dispatch ] = useContext(NavBarContext);
+	const [ state, dispatch ] = useContext(Context);
 
 	return (
 		<Nav>

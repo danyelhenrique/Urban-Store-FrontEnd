@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import { Container, Item, Bag, Detail, Items, Remove, Form, OrderAndTotal, BtnCheckout } from './styles';
 
 export default function MainCart() {
-	const [ state, dispatch ] = useContext(NavBarContext);
-
+	const [ state, dispatch ] = useContext(Context);
 	return (
 		<Container>
 			{state.cart.map((item) => (

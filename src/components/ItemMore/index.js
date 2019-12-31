@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import { Container, Image, ItemDetail, Header, Body, Select, Button, Favorite, Details, ButtonDetails } from './styles';
 
 export default function ItemMore() {
-	const [ state, dispatch ] = useContext(NavBarContext);
+	const [ state, dispatch ] = useContext(Context);
 
 	function addToCart(item) {
 		dispatch({ type: '@ADD_CART_ITEM', payload: item });

@@ -6,7 +6,7 @@ import { gql } from 'apollo-boost';
 
 import Button from '../ColorSelect';
 
-import { NavBarContext } from '../../context/Navbar';
+import { Context } from '../../context';
 
 import { Container, Item, Image, Favorite, Icon, NameAndPrice, ColorSelect } from './styles';
 
@@ -29,7 +29,7 @@ const Data = gql`
 
 export default function Items() {
 	const router = useRouter();
-	const [ state, dispatch ] = useContext(NavBarContext);
+	const [ state, dispatch ] = useContext(Context);
 
 	const { loading, error, data } = useQuery(Data);
 

@@ -1,19 +1,21 @@
-import { store } from './localForage';
+import { localForageBag, localForageCart } from './localForage';
 
-export function clearDuplicateItems(state, typeState, payload) {
-	const isItemtemExists = state[`${typeState}`].find((item) => item.id === payload.id);
+export function clearBagDuplicateItems(state, payload) {
+	const isItemtemExists = state.userBag.find((item) => item.id === payload.id);
 
 	if (isItemtemExists) return state;
 
-	store(state, typeState, payload);
+	localForageBag(state, payload);
 
-	return { ...state, [`${typeState}`]: [ ...state[`${typeState}`], payload ] };
+	return { ...state, userBag: [ ...state.userBag, payload ] };
 }
 
 export function clearCartDuplicateItems(state, payload) {
 	const isItemtemExists = state.cart.find((item) => item.id === payload.id);
 
 	if (isItemtemExists) return state;
+
+	localForageCart(state, payload);
 
 	return { ...state, cart: [ ...state.cart, payload ] };
 }

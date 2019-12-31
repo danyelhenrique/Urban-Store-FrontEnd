@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import localForage from '../../config/localForage';
 
-import { clearDuplicateItems } from '../../utils/reducers';
+import { clearBagDuplicateItems, clearCartDuplicateItems } from '../../utils/reducers';
 
 import { formatLocalForagetoState } from '../../utils/localForage';
 
@@ -17,34 +17,41 @@ function reducer(state, action) {
 		case '@IS_BAG_OPEN':
 			return { ...state, isModalOpen: !state.isModalOpen };
 		case '@ADD_BAG_ITEM':
-			return clearDuplicateItems(state, 'userBag', action.payload);
+			return clearBagDuplicateItems(state, action.payload);
 		case '@ADD_CART_ITEM':
-			return clearDuplicateItems(state, 'cart', action.payload);
+			return clearCartDuplicateItems(state, action.payload);
 		default:
 			return state;
 	}
 }
 
-export const NavBarContext = React.createContext({});
+export const Context = React.createContext({});
 
 export default function context({ children }) {
 	const [ state, dispatch ] = useReducer(reducer, INITIAL_STATE);
 
 	useEffect(() => {
 		async function getItemsFromLocalHistorage() {
-			const dbName = '@URBARN-STORAGE-BAG';
+			const dbNameBag = '@URBARN-STORAGE-BAG';
+			const dbNameCart = '@URBARN-STORAGE-CART';
 
 			const localKeys = await localForage.keys();
 
-			const isExists = localKeys.includes(dbName);
+			const bagExists = localKeys.includes(dbNameBag);
+			const CartExists = localKeys.includes(dbNameCart);
 
-			if (isExists) {
-				const items = await localForage.getItem(dbName);
+			if (bagExists) {
+				const items = await localForage.getItem(dbNameBag);
 				formatLocalForagetoState(items, Types.ADD_BAG, dispatch);
+			}
+
+			if (CartExists) {
+				const items = await localForage.getItem(dbNameCart);
+				formatLocalForagetoState(items, Types.ADD_CART, dispatch);
 			}
 		}
 		getItemsFromLocalHistorage();
 	}, []);
 
-	return <NavBarContext.Provider value={[ state, dispatch ]}>{children}</NavBarContext.Provider>;
+	return <Context.Provider value={[ state, dispatch ]}>{children}</Context.Provider>;
 }

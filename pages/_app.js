@@ -4,10 +4,9 @@ import App, { Container } from 'next/app';
 import Layout from '../src/components/Layout';
 import withApolloClient from '../lib/with-apollo-client';
 
-import NavContext from '../src/context/Navbar';
+import Context from '../src/context';
 
 const isServer = typeof window === 'undefined';
-!isServer ? require('../lib/reactotron') : null;
 // import { client } from '../services';
 
 class MyApp extends App {
@@ -17,11 +16,11 @@ class MyApp extends App {
 		return (
 			<Container>
 				<Layout>
-					<NavContext>
+					<Context>
 						<ApolloProvider client={apolloClient}>
 							<Component {...pageProps} />
 						</ApolloProvider>
-					</NavContext>
+					</Context>
 				</Layout>
 			</Container>
 		);
