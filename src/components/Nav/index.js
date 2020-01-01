@@ -15,6 +15,7 @@ export default function Nav() {
 			window.onscroll = function() {
 				scrollFunction();
 			};
+
 			return window.removeEventListener('scroll', scrollFunction);
 		},
 		[ isScrollState ]

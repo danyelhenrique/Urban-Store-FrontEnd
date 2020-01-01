@@ -8,7 +8,7 @@ import Button from '../ColorSelect';
 
 import { Context } from '../../context';
 
-import { Container, Item, Image, Favorite, Icon, NameAndPrice, ColorSelect } from './styles';
+import { Container, Item, Image, Favorite, Hover, Icon, NameAndPrice, ColorSelect } from './styles';
 
 const Data = gql`
 	{
@@ -23,6 +23,7 @@ const Data = gql`
 			data_colour3
 			data_colour4
 			data_front_imageURL
+			data_back_image_url
 		}
 	}
 `;
@@ -55,14 +56,20 @@ export default function Items() {
 		router.push('/store/[slug]', `/store/${item.data_product_display_name}`);
 	};
 
+	function addToCart(item) {
+		dispatch({ type: '@ADD_CART_ITEM', payload: item });
+	}
 	return data.indexProduct.map((item, index) => {
 		return (
 			<Container key={item.id}>
-				<Item onClick={(e) => handleClick(e, item)}>
+				<Item onClick={(e) => handleClick(e, item)} image={item.data_back_image_url}>
 					<Image src={item.data_front_imageURL} alt="item" />
 					<Favorite type="button" onClick={AddToFavorite}>
 						<Icon src="/favorites-with-border.png" alt="favorite" />
 					</Favorite>
+					<Hover>
+						<button onClick={() => addToCart(item)}>ADD TO CART</button>
+					</Hover>
 				</Item>
 				<NameAndPrice>
 					<div>
