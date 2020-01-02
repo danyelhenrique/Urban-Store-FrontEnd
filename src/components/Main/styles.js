@@ -9,4 +9,6 @@ export const MainContainer = styled.main`
 	top: ${(props) => props.isScroll && '80px'};
 	width: 100%;
 	background: transparent;
+
+	height: 100%;
 `;
