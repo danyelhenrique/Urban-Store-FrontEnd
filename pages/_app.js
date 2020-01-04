@@ -1,30 +1,27 @@
-import React from 'react';
-import { ApolloProvider } from '@apollo/react-hooks';
-import App, { Container } from 'next/app';
-import Layout from '../src/components/Layout';
-import withApolloClient from '../lib/with-apollo-client';
+import React, { Fragment } from "react";
+import { ApolloProvider } from "@apollo/react-hooks";
+import App from "next/app";
+import Layout from "../src/components/Layout";
+import withApolloClient from "../lib/with-apollo-client";
 
-import Context from '../src/context';
-
-const isServer = typeof window === 'undefined';
-// import { client } from '../services';
+import Context from "../src/context";
 
 class MyApp extends App {
-	render() {
-		const { Component, pageProps, apolloClient } = this.props;
+  render() {
+    const { Component, pageProps, apolloClient } = this.props;
 
-		return (
-			<Container>
-				<Layout>
-					<Context>
-						<ApolloProvider client={apolloClient}>
-							<Component {...pageProps} />
-						</ApolloProvider>
-					</Context>
-				</Layout>
-			</Container>
-		);
-	}
+    return (
+      <Fragment>
+        <Layout>
+          <Context>
+            <ApolloProvider client={apolloClient}>
+              <Component {...pageProps} />
+            </ApolloProvider>
+          </Context>
+        </Layout>
+      </Fragment>
+    );
+  }
 }
 
 export default withApolloClient(MyApp);

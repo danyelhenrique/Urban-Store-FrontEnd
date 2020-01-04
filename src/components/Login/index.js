@@ -1,6 +1,5 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { Context } from "../../context";
-import { useMutation } from "@apollo/react-hooks";
 import FormLogin from "../FormLogin";
 
 import {
@@ -12,16 +11,6 @@ import {
   Button
 } from "./styles";
 
-import { gql } from "apollo-boost";
-
-const ADD_TODO = gql`
-  mutation AddTodo($type: String!) {
-    addTodo(type: $type) {
-      id
-      type
-    }
-  }
-`;
 
 export default function Login() {
   const [state, dispatch] = useContext(Context);
