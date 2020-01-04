@@ -1,7 +1,7 @@
 import React, { useReducer, useEffect } from 'react';
 import localForage from '../../config/localForage';
 
-import { clearBagDuplicateItems, clearCartDuplicateItems } from '../../utils/reducers';
+import { clearBagDuplicateItems, clearCartDuplicateItems, SliderLoginPage} from '../../utils/reducers';
 
 import { formatLocalForagetoState } from '../../utils/localForage';
 
@@ -15,11 +15,17 @@ function reducer(state, action) {
 		case '@IS_ISCROLL':
 			return { ...state, isScroll: action.payload };
 		case '@IS_BAG_OPEN':
+			
 			return { ...state, isModalOpen: !state.isModalOpen };
+			// 
 		case '@ADD_BAG_ITEM':
 			return clearBagDuplicateItems(state, action.payload);
 		case '@ADD_CART_ITEM':
 			return clearCartDuplicateItems(state, action.payload);
+		// 
+		case '@SliderLoginPage':
+			return SliderLoginPage(state);
+		// 
 		default:
 			return state;
 	}
