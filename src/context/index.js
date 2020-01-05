@@ -1,10 +1,12 @@
 import React, { useReducer, useEffect } from "react";
 import localForage from "../../config/localForage";
 
+
 import {
   clearBagDuplicateItems,
   clearCartDuplicateItems,
-  SliderLoginPage
+  SliderLoginPage,
+  checkout
 } from "../../utils/reducers";
 
 import { formatLocalForagetoState } from "../../utils/localForage";
@@ -29,6 +31,13 @@ function reducer(state, action) {
     case "@SliderLoginPage":
       return SliderLoginPage(state);
     //
+    case "@USER_SIGN_IN":
+      return { ...state,isLogin: true }
+    case "@USER_SIGN_UP":
+        return { ...state,isLogin: false }
+    //
+    case "@CHECKOUT":
+        return checkout(state , action.payload)
     default:
       return state;
   }

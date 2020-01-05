@@ -9,6 +9,16 @@ export const Modal = styled.div`
 	background: #000;
 	background: ${(props) => (props.light ? '#000' : '#fff')};
 
+	${props => props.isEmpty && !props.light && css`
+		background: #fff;
+		color: #000;
+	`}
+
+	${props => props.isEmpty && props.light && css`
+		background: #000;
+		color: #fff;
+	`}
+
 	${(props) =>
 		!props.light &&
 		css`
@@ -56,3 +66,40 @@ export const ModalItemDetail = styled.div`
 	font-weight: 300;
 	font-size: 1rem;
 `;
+
+
+export const EmptyCart = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+	line-height: 2rem;
+	letter-spacing: 2px;
+	text-align: center;
+
+	/* color: #000; */
+
+	div {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+
+		height: 100%;
+		width: 100%;
+	}
+
+
+	h1 {
+		font-weight: 400;
+	}
+
+	span{
+		font-weight: 300;
+
+	}
+
+
+`

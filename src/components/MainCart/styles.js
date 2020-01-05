@@ -37,7 +37,6 @@ export const Item = styled.div`
 `;
 
 export const Detail = styled.div`
-	/* background: red; */
 	letter-spacing: 1px;
 	line-height: 20px;
 	margin: 0 5px;
@@ -191,3 +190,59 @@ export const BtnCheckout = styled.button`
 	text-transform: uppercase;
 	border-radius: 2%;
 `;
+
+export const Modal = styled.div`
+	display: flex;
+
+	align-items: center;
+	justify-content: center;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.4);
+
+	position: fixed;
+	top:0;
+	z-index: 99;
+
+
+div {
+	display: flex;
+	flex-direction: column;
+	background: #fff;
+	width: 50%;
+	text-align: center;
+	line-height:2.5rem;
+
+	span{
+		font-weight: 300;
+	}
+
+	h1 {
+		font-weight: 400;
+
+	}
+
+	div {
+		display: flex;
+		align-items: flex-end;
+		justify-content: center;
+
+		width: 100%;
+		height: 20%;
+		border-bottom: 1px solid #cecece;
+
+		button {
+			background: transparent;
+			border: none;
+			cursor: pointer;
+
+			img{
+				height: 30px;
+				width: 30px;
+				margin: 5px;
+			}
+		}
+	}
+	
+}
+`

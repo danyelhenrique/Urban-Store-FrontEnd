@@ -64,18 +64,16 @@ export default function Login() {
 
   const [signIn, { data: signInData }] = useMutation(SIGN_IN, {
     onCompleted: async ({ loginUser }) => {
-      console.log("suct", loginUser);
-
       try {
         await localForageToken.setItem("@STORE-TOKEN", loginUser.token);
+        dispatch({type: '@USER_SIGN_IN'})
         
       } catch (error) {
         console.log('data err')
       }
 
-
     },
-    onError: error => console.log(error),
+    onError: error => console.log('error'),
    
   });
 

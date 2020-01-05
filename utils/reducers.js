@@ -40,3 +40,13 @@ export function SliderLoginPage(state) {
     loginPageBackground
   };
 }
+
+
+export function checkout(state , payload) {
+
+  if(!state.isLogin){
+    console.log('fail to checkout')
+    return 
+  }
+  
+}

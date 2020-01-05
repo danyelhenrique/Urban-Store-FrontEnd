@@ -1,10 +1,17 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../../context';
 
-import { Container, Item, Bag, Detail, Items, Remove, Form, OrderAndTotal, BtnCheckout } from './styles';
+import { Container, Item, Bag, Detail, Items, Remove, Form, OrderAndTotal, BtnCheckout, Modal } from './styles';
 
 export default function MainCart() {
 	const [ state, dispatch ] = useContext(Context);
+	const [modalOpen , setModalOpen ] = useState(false);
+
+
+	function checkout(item){
+		setModalOpen(true)
+		dispatch({type: '@CHECKOUT', payload: item});
+	}
 	return (
 		<Container>
 			{state.cart.map((item) => (
@@ -62,8 +69,20 @@ export default function MainCart() {
 						<span>$149.98*</span>
 					</div>
 				</OrderAndTotal>
-				<BtnCheckout>CONTINUE TO CHECKOUT</BtnCheckout>
+				<BtnCheckout 
+				onClick={()=> checkout(item)}>CONTINUE TO CHECKOUT</BtnCheckout>
 			</Bag>
+			<Modal>
+				<div>
+					<div>
+					<button onClick={() => setModalOpen(false)}>
+						<img src='/icons/remove.png'/>
+					</button>
+					</div>
+					<h1>REMEMBER THIS PROJECT IS ONLY TO TEST.</h1>
+					<span>no real money will be spent</span>
+				</div>
+			</Modal>
 		</Container>
 	);
 }
