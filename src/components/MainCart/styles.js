@@ -208,6 +208,8 @@ export const Modal = styled.div`
 div {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 	background: #fff;
 	width: 50%;
 	text-align: center;
@@ -221,13 +223,15 @@ div {
 		font-weight: 400;
 
 	}
+}
+`
 
-	div {
+export const OpenModal =styled.div`
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
 
-		width: 100%;
+		width: 100% !important;
 		height: 20%;
 		border-bottom: 1px solid #cecece;
 
@@ -242,7 +246,14 @@ div {
 				margin: 5px;
 			}
 		}
-	}
-	
-}
+
+`;
+
+export const PaypalContainer =styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 50px;
+	width: 100%  !important;;
 `

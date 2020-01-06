@@ -4,7 +4,7 @@ import localForage from "../../config/localForage";
 
 import {
   clearBagDuplicateItems,
-  clearCartDuplicateItems,
+  CalcCartItems,
   SliderLoginPage,
   checkout
 } from "../../utils/reducers";
@@ -26,7 +26,7 @@ function reducer(state, action) {
     case "@ADD_BAG_ITEM":
       return clearBagDuplicateItems(state, action.payload);
     case "@ADD_CART_ITEM":
-      return clearCartDuplicateItems(state, action.payload);
+      return CalcCartItems(state, action.payload);
     //
     case "@SliderLoginPage":
       return SliderLoginPage(state);
@@ -37,7 +37,7 @@ function reducer(state, action) {
         return { ...state,isLogin: false }
     //
     case "@CHECKOUT":
-        return checkout(state , action.payload)
+        return checkout(state)
     default:
       return state;
   }

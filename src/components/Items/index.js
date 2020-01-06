@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useRouter } from "next/router";
+import Link from 'next/link'
 
 import { useQuery } from "@apollo/react-hooks";
 import { gql } from "apollo-boost";
@@ -61,12 +62,6 @@ export default function Items() {
 
   function AddToFavorite() {}
 
-  const handleClick = (e, item) => {
-    e.preventDefault();
-    dispatch({ type: "@ADD_BAG_ITEM", payload: item });
-    router.push("/store/[slug]", `/store/${item.data_product_display_name}`);
-  };
-
   function addToCart(item) {
     dispatch({ type: "@ADD_CART_ITEM", payload: item });
   }
@@ -75,7 +70,6 @@ export default function Items() {
     return (
       <Container key={item.id}>
         <Item
-          onClick={e => handleClick(e, item)}
           image={item.data_back_image_url}
         >
           <Image src={item.data_front_imageURL} alt="item" />
@@ -88,7 +82,9 @@ export default function Items() {
         </Item>
         <NameAndPrice>
           <div>
-            <span>{item.data_product_display_name} </span>
+          <Link href="/store/[slug]" as={`/store/${item.data_product_display_name}`}>
+            <a>{item.data_product_display_name} </a>
+            </Link>
           </div>
           <span>$ {item.data_price}</span>
         </NameAndPrice>

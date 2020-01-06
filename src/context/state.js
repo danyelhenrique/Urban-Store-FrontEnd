@@ -7,7 +7,13 @@ const STATE = {
   formBackground: '/login/oito.jpg',
   loginPageBackground: '/login/cinco.jpg',
   userBag: [],
-  cart: []
+  cart: [],
+  cartValues: {
+    order: 0,
+    total: 0,
+    discont: 0,
+    shipping: 'Free'
+  }
 };
 
 export default STATE;

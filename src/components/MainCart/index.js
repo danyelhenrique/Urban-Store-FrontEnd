@@ -1,16 +1,22 @@
 import React, { useContext, useState } from 'react';
 import { Context } from '../../context';
 
-import { Container, Item, Bag, Detail, Items, Remove, Form, OrderAndTotal, BtnCheckout, Modal } from './styles';
+import ButtonPaypal from '../ButtonPaypal'
+
+import { Container, Item, Bag, Detail, Items, Remove, Form,
+	 OrderAndTotal, BtnCheckout, Modal,
+	 OpenModal,
+	 PaypalContainer
+} from './styles';
 
 export default function MainCart() {
 	const [ state, dispatch ] = useContext(Context);
 	const [modalOpen , setModalOpen ] = useState(false);
 
 
-	function checkout(item){
+	function checkout(){
 		setModalOpen(true)
-		dispatch({type: '@CHECKOUT', payload: item});
+		dispatch({type: '@CHECKOUT'});
 	}
 	return (
 		<Container>
@@ -70,19 +76,25 @@ export default function MainCart() {
 					</div>
 				</OrderAndTotal>
 				<BtnCheckout 
-				onClick={()=> checkout(item)}>CONTINUE TO CHECKOUT</BtnCheckout>
+				onClick={checkout}>CONTINUE TO CHECKOUT</BtnCheckout>
 			</Bag>
+			{modalOpen && (
 			<Modal>
 				<div>
-					<div>
+					<OpenModal>
 					<button onClick={() => setModalOpen(false)}>
 						<img src='/icons/remove.png'/>
 					</button>
-					</div>
-					<h1>REMEMBER THIS PROJECT IS ONLY TO TEST.</h1>
-					<span>no real money will be spent</span>
+					</OpenModal>
+						<h1>REMEMBER THIS PROJECT IS ONLY TO TEST.</h1>
+						<span>no real money will be spent</span>
+					<PaypalContainer>
+						<ButtonPaypal/>
+					</PaypalContainer>
 				</div>
 			</Modal>
+			)}
+			
 		</Container>
 	);
 }

@@ -15,7 +15,6 @@ export const Item = styled.a`
 	width: 220px;
 	height: 350px;
 	position: relative;
-	cursor: pointer;
 	transform: scale(0.8, 0.8);
 
 	display: flex;
@@ -31,13 +30,6 @@ export const Item = styled.a`
 		transform: scale(1, 1);
 		box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
 
-		::before {
-			content: '';
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			background: rgba(#fefefe, #000, #fefefe, 0.1);
-		}
 
 		> div {
 			display: block;
@@ -57,6 +49,8 @@ export const Item = styled.a`
 				color: #fefefe;
 				border-radius: 2%;
 				background: #000;
+				cursor: pointer;
+
 			}
 		}
 		> img {
@@ -66,7 +60,13 @@ export const Item = styled.a`
 	}
 `;
 
-export const Hover = styled.div`display: none;`;
+export const Hover = styled.div`
+	display: none;
+
+	button  {
+		cursor: pointer;
+	}
+`;
 
 export const Image = styled.img`
 	height: 100%;
@@ -96,12 +96,22 @@ export const NameAndPrice = styled.div`
 	display: flex;
 	flex-direction: column;
 
-	span {
+	a , span{
 		font-weight: 300;
 		display: block;
 		letter-spacing: 0.1rem;
+		text-decoration: none;
+		color: #000;
+		
 	}
 
+	a {
+		:hover{
+			text-decoration: underline;
+			text-decoration-color: rgba(76, 70, 55, 0.69);
+		}
+	}
+	
 	div {
 		display: flex;
 		flex-wrap: wrap;

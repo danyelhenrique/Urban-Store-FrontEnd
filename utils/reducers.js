@@ -10,15 +10,32 @@ export function clearBagDuplicateItems(state, payload) {
   return { ...state, userBag: [...state.userBag, payload] };
 }
 
-export function clearCartDuplicateItems(state, payload) {
+
+export function CalcCartItems(state, payload) {
   const isItemtemExists = state.cart.find(item => item.id === payload.id);
 
   if (isItemtemExists) return state;
 
   localForageCart(state, payload);
 
-  return { ...state, cart: [...state.cart, payload] };
+
+  const cartSum = state.cart.reduce((accumulator, currentValue) =>{
+      const sum = accumulator + Number(currentValue.data_price)
+
+      return sum
+  }, 0)
+
+  const total = Number( payload.data_price) + cartSum
+
+  return { ...state, cart: [...state.cart, payload] , cartValues: {
+    order: state.cartValues.order,
+    total,
+    discont:  state.cartValues.discont,
+    shipping: state.cartValues.shipping
+  } };
 }
+
+
 
 const reverteImage = (value1, value2) => {
   const value1Reverse = value2;
@@ -42,11 +59,11 @@ export function SliderLoginPage(state) {
 }
 
 
-export function checkout(state , payload) {
+export function checkout(state ) {
 
   if(!state.isLogin){
     console.log('fail to checkout')
-    return 
+    return  {...state}
   }
-  
+  return {...state}
 }
