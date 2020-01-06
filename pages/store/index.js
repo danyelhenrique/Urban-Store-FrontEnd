@@ -9,18 +9,18 @@ import Image from '../../src/components/Image';
 import SiidebarStore from '../../src/components/SidebarStore';
 
 export default function store() {
-	return (
-		<div>
-			<Head>
-				<title>Urban Store</title>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
-			<Main>
-				<Nav />
-				<SiidebarStore />
-				<Image />
-				<MainStore />
-			</Main>
-		</div>
-	);
+  return (
+    <div>
+      <Head>
+        <title>Urban Store</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Main>
+        <Nav />
+        <SiidebarStore />
+        <Image />
+        <MainStore />
+      </Main>
+    </div>
+  );
 }

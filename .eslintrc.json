@@ -4,14 +4,13 @@
         "es6": true
     },
     "extends": [
-        "prettier",
         "plugin:react/recommended",
+        "prettier",
         "airbnb"
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly",
-        "React": "writable"
+        "SharedArrayBuffer": "readonly"
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -21,15 +20,12 @@
         "sourceType": "module"
     },
     "plugins": [
-        "prettier",
-        "react"
+        "react",
+        "prettier"
     ],
     "rules": {
-        "indent": [2, "tab", { "SwitchCase": 1, "VariableDeclarator": 1 }],
-        "no-tabs": 1,
-        "tab_size": 4,
-        "react/jsx-indent": [3, "tab"],
-        "react/jsx-indent-props": [2, "tab"],
+        "no-tabs": 0,
+        "prettier/prettier": ["error"],
         "react/jsx-filename-extension": [
             1,
             {
@@ -39,6 +35,5 @@
                 ]
             }
         ]
-        
     }
 }

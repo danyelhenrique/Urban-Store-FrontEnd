@@ -1,4 +1,4 @@
-import { gql } from "apollo-boost";
+import { gql } from 'apollo-boost';
 
 const typeDefs = gql`
 	input UserInput {
@@ -6,6 +6,6 @@ const typeDefs = gql`
 		email: String
 		password: String
 	}
-`
+`;
 
-export default typeDefs
+export default typeDefs;

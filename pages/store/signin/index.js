@@ -5,9 +5,9 @@ import Main from '../../../src/components/Main';
 import Login from '../../../src/components/Login';
 
 export default function signin() {
-	return (
-		<Main>
-			<Login />
-		</Main>
-	);
+  return (
+    <Main>
+      <Login />
+    </Main>
+  );
 }

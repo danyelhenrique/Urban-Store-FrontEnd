@@ -5,9 +5,9 @@ import Items from '../Items';
 import { Container } from './styles';
 
 export default function MainStore() {
-	return (
-		<Container>
-			<Items />
-		</Container>
-	);
+  return (
+    <Container>
+      <Items />
+    </Container>
+  );
 }

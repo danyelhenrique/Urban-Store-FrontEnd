@@ -224,9 +224,9 @@ div {
 
 	}
 }
-`
+`;
 
-export const OpenModal =styled.div`
+export const OpenModal = styled.div`
 		display: flex;
 		align-items: flex-end;
 		justify-content: center;
@@ -249,11 +249,11 @@ export const OpenModal =styled.div`
 
 `;
 
-export const PaypalContainer =styled.div`
+export const PaypalContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
 
 	height: 50px;
 	width: 100%  !important;;
-`
+`;

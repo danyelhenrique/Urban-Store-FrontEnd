@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.aside`
   height: 200px;
-  height: ${props => (props.active ? '100%' : '200px')};
+  height: ${(props) => (props.active ? '100%' : '200px')};
   background: #fff;
   width: 400px;
   border-radius: 0 0 5px 0;

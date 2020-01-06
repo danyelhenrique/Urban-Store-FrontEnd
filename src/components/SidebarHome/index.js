@@ -1,6 +1,8 @@
 import React from 'react';
 
-import { Container, Links, FullHeightContainer, Span } from './styles';
+import {
+  Container, Links, FullHeightContainer, Span,
+} from './styles';
 
 const full = true;
 

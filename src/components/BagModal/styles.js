@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 
+
 export const Modal = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -9,21 +10,20 @@ export const Modal = styled.div`
 	background: #000;
 	background: ${(props) => (props.light ? '#000' : '#fff')};
 
-	${props => props.isEmpty && !props.light && css`
+	${(props) => props.isEmpty && !props.light && css`
 		background: #fff;
 		color: #000;
 	`}
 
-	${props => props.isEmpty && props.light && css`
+	${(props) => props.isEmpty && props.light && css`
 		background: #000;
 		color: #fff;
 	`}
 
-	${(props) =>
-		!props.light &&
-		css`
+	${(props) => !props.light
+		&& css`
 			span,
-			p {
+			p , a{
 				color: #000;
 			}
 		`};
@@ -76,14 +76,29 @@ export const ModalItemDetail = styled.div`
 	font-weight: 300;
 	font-size: 1rem;
 
-
+	
 	a{
 		text-decoration: none;
-		color: #fff;
-	}
 
+		:hover{
+			text-decoration: underline;
+			text-decoration-color: rgba(76, 70, 55, 0.69);
+		}
+	}
 `;
 
+export const Button = styled.button`
+	position: fixed;
+	top: calc((75px * 4) + 60px);
+
+	border: none;
+	width: 280px;
+
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	height: 50px;
+	cursor: pointer;
+`;
 
 export const EmptyCart = styled.div`
 	display: flex;
@@ -119,4 +134,4 @@ export const EmptyCart = styled.div`
 	}
 
 
-`
+`;

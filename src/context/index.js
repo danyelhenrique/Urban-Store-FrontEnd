@@ -1,18 +1,19 @@
-import React, { useReducer, useEffect } from "react";
-import localForage from "../../config/localForage";
+import React, { useReducer, useEffect } from 'react';
+import localForage from '../../config/localForage';
 
 
 import {
   clearBagDuplicateItems,
   CalcCartItems,
+  removeItemFromCart,
   SliderLoginPage,
-  checkout
-} from "../../utils/reducers";
+  checkout,
+} from '../../utils/reducers';
 
-import { formatLocalForagetoState } from "../../utils/localForage";
+import { formatLocalForagetoState } from '../../utils/localForage';
 
-import Types from "./types";
-import TypeOfState from "./state";
+import Types from './types';
+import TypeOfState from './state';
 
 const INITIAL_STATE = { ...TypeOfState };
 
@@ -27,17 +28,19 @@ function reducer(state, action) {
       return clearBagDuplicateItems(state, action.payload);
     case "@ADD_CART_ITEM":
       return CalcCartItems(state, action.payload);
+    case "@REMOVE_ITEM_CART":
+      return removeItemFromCart(state, action.payload);
     //
     case "@SliderLoginPage":
       return SliderLoginPage(state);
     //
     case "@USER_SIGN_IN":
-      return { ...state,isLogin: true }
+      return { ...state, isLogin: true };
     case "@USER_SIGN_UP":
-        return { ...state,isLogin: false }
+      return { ...state, isLogin: false };
     //
     case "@CHECKOUT":
-        return checkout(state)
+      return checkout(state);
     default:
       return state;
   }
@@ -50,8 +53,8 @@ export default function context({ children }) {
 
   useEffect(() => {
     async function getItemsFromLocalHistorage() {
-      const dbNameBag = "@URBARN-STORAGE-BAG";
-      const dbNameCart = "@URBARN-STORAGE-CART";
+      const dbNameBag = '@URBARN-STORAGE-BAG';
+      const dbNameCart = '@URBARN-STORAGE-CART';
 
       const localKeys = await localForage.keys();
 

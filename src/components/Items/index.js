@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
-import { useRouter } from "next/router";
-import Link from 'next/link'
+import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
-import { useQuery } from "@apollo/react-hooks";
-import { gql } from "apollo-boost";
+import { useQuery } from '@apollo/react-hooks';
+import { gql } from 'apollo-boost';
 
-import Button from "../ColorSelect";
+import Button from '../ColorSelect';
 
-import { Context } from "../../context";
+import { Context } from '../../context';
 
 import {
   Container,
@@ -17,8 +17,8 @@ import {
   Hover,
   Icon,
   NameAndPrice,
-  ColorSelect
-} from "./styles";
+  ColorSelect,
+} from './styles';
 
 const Data = gql`
   {
@@ -48,56 +48,57 @@ export default function Items() {
 
   if (error) return <h1>Erro</h1>;
 
-  const renderColor = colors => {
-    return colors.map((ItemColor, index) => {
-      if (ItemColor) {
-        let color = ItemColor.includes(" ")
-          ? ItemColor.split(" ")[0].toLowerCase()
-          : ItemColor;
-        color.includes("White") ? (color = "#d0d0d0") : (color = color);
-        return <Button color={color} key={index} />;
-      }
-    });
-  };
+  const renderColor = (colors) => colors.map((ItemColor, index) => {
+    if (ItemColor) {
+      let color = ItemColor.includes(' ')
+        ? ItemColor.split(' ')[0].toLowerCase()
+        : ItemColor;
+      color.includes('White') ? (color = '#d0d0d0') : (color = color);
+      return <Button color={color} key={index} />;
+    }
+  });
 
   function AddToFavorite() {}
 
   function addToCart(item) {
-    dispatch({ type: "@ADD_CART_ITEM", payload: item });
+    dispatch({ type: '@ADD_CART_ITEM', payload: item });
   }
 
-  return data.indexProduct.map((item, index) => {
-    return (
-      <Container key={item.id}>
-        <Item
-          image={item.data_back_image_url}
-        >
-          <Image src={item.data_front_imageURL} alt="item" />
-          <Favorite type="button" onClick={AddToFavorite}>
-            <Icon src="/favorites-with-border.png" alt="favorite" />
-          </Favorite>
-          <Hover>
-            <button onClick={() => addToCart(item)}>ADD TO CART</button>
-          </Hover>
-        </Item>
-        <NameAndPrice>
-          <div>
+  return data.indexProduct.map((item, index) => (
+    <Container key={item.id}>
+      <Item
+        image={item.data_back_image_url}
+      >
+        <Image src={item.data_front_imageURL} alt="item" />
+        <Favorite type="button" onClick={AddToFavorite}>
+          <Icon src="/favorites-with-border.png" alt="favorite" />
+        </Favorite>
+        <Hover>
+          <button onClick={() => addToCart(item)}>ADD TO CART</button>
+        </Hover>
+      </Item>
+      <NameAndPrice>
+        <div>
           <Link href="/store/[slug]" as={`/store/${item.data_product_display_name}`}>
-            <a>{item.data_product_display_name} </a>
-            </Link>
-          </div>
-          <span>$ {item.data_price}</span>
-        </NameAndPrice>
-        <ColorSelect>
-          {renderColor([
-            item.data_base_colour,
-            item.data_colour1,
-            item.data_colour2,
-            item.data_colour3,
-            item.data_colour4
-          ])}
-        </ColorSelect>
-      </Container>
-    );
-  });
+            <a>
+              {item.data_product_display_name}
+            </a>
+          </Link>
+        </div>
+        <span>
+$
+          {item.data_price}
+        </span>
+      </NameAndPrice>
+      <ColorSelect>
+        {renderColor([
+          item.data_base_colour,
+          item.data_colour1,
+          item.data_colour2,
+          item.data_colour3,
+          item.data_colour4,
+        ])}
+      </ColorSelect>
+    </Container>
+  ));
 }

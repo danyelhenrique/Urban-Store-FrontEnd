@@ -131,9 +131,8 @@ export const Button = styled.button`
 		outline: none;
 	}
 
-	${(props) =>
-        props.ghost &&
-        css`
+	${(props) => props.ghost
+        && css`
 			background-color: transparent;
 			border-color: #ffffff;
 		`};

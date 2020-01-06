@@ -12,8 +12,8 @@ const STATE = {
     order: 0,
     total: 0,
     discont: 0,
-    shipping: 'Free'
-  }
+    shipping: 'Free',
+  },
 };
 
 export default STATE;

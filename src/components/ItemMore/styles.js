@@ -28,15 +28,15 @@ export const Image = styled.div`
     justify-content:  center;
   }
   
-  margin-top: ${props => props.secondImage && "40px"};
+  margin-top: ${(props) => props.secondImage && '40px'};
 
   img {
     width: 50%;
-    height:${props => props.secondImage ? "70vh" : "80vh"} ;
+    height:${(props) => (props.secondImage ? '70vh' : '80vh')} ;
     margin: 0 1px;
 
     @media (max-width: 610px) {
-      width: ${props => props.secondImage ? "80%" : "40%"};
+      width: ${(props) => (props.secondImage ? '80%' : '40%')};
     }
   }
 `;

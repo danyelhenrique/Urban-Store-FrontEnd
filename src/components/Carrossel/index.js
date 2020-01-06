@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
 import {
-  CarouselProvider, Slider, Slide, Image
-} from "pure-react-carousel";
+  CarouselProvider, Slider, Slide, Image,
+} from 'pure-react-carousel';
 
 import {
-  Container, Arrow, BtnPrev, BtnNext
-} from "./styles";
+  Container, Arrow, BtnPrev, BtnNext,
+} from './styles';
 
 export default function Carrossel() {
   return (

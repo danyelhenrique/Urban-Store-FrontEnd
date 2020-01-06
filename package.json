@@ -15,7 +15,6 @@
     "apollo-boost": "^0.4.7",
     "apollo-link-context": "^1.0.19",
     "babel-plugin-inline-react-svg": "^1.1.0",
-    "eslint-plugin-prettier": "^3.1.1",
     "graphql": "^14.5.8",
     "graphql-tools": "^4.0.6",
     "localforage": "^1.7.3",
@@ -27,20 +26,17 @@
     "react-paypal-express-checkout": "^1.0.5",
     "react-responsive-carousel": "^3.1.51",
     "react-spring": "^8.0.27",
-    "styled-components": "^4.4.1",
-    "yarn": "^1.21.1"
+    "styled-components": "^4.4.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.6",
-    "eslint": "^6.7.2",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-config-prettier": "^6.7.0",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
     "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-react-hooks": "^1.7.0",
-    "prettier": "^1.19.1",
-    "prettier-eslint-plugin": "^1.1.4",
-    "reactotron-react-js": "^3.3.7"
+    "eslint-plugin-react-hooks": "^1.7.0"
   }
 }

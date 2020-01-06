@@ -65,18 +65,16 @@ export const Image = styled.div`
 
 	}
 
-	${(props) =>
-		props.signIn &&
-		css`
+	${(props) => props.signIn
+		&& css`
 			transform: translateX(50%);
 			div:last-child {
 				display: none;
 			}
 		`};
 
-	${(props) =>
-		props.signUp &&
-		css`
+	${(props) => props.signUp
+		&& css`
 			transform: translateX(-50%);
 			div:first-child {
 				display: none;
@@ -127,9 +125,8 @@ export const SignUpContainer = styled.div`
 
 	${(props) => props.signUp && css`opacity: 1;`};
 
-		${(props) =>
-	props.signUp &&
-		css`
+		${(props) => props.signUp
+		&& css`
 			form {
 				input:-webkit-autofill,
 	input:focus:-webkit-autofill {
@@ -163,9 +160,8 @@ export const SignInContainer = styled.div`
 	transition: all 2s ease;
 
 	${(props) => props.signIn && css`opacity: 1;`};
-	${(props) =>
-		props.signIn &&
-		css`
+	${(props) => props.signIn
+		&& css`
 			form {
 				input:-webkit-autofill,
 	input:focus:-webkit-autofill {
@@ -208,9 +204,8 @@ export const Button = styled.button`
 		outline: none;
 	}
 
-	${(props) =>
-		props.ghost &&
-		css`
+	${(props) => props.ghost
+		&& css`
 			background-color: transparent;
 			border-color: #ffffff;
 		`};

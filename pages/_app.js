@@ -1,17 +1,17 @@
-import React, { Fragment } from "react";
-import { ApolloProvider } from "@apollo/react-hooks";
-import App from "next/app";
-import Layout from "../src/components/Layout";
-import withApolloClient from "../lib/with-apollo-client";
+import React, { Fragment } from 'react';
+import { ApolloProvider } from '@apollo/react-hooks';
+import App from 'next/app';
+import Layout from '../src/components/Layout';
+import withApolloClient from '../lib/with-apollo-client';
 
-import Context from "../src/context";
+import Context from '../src/context';
 
 class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient } = this.props;
 
     return (
-      <Fragment>
+      <>
         <Layout>
           <Context>
             <ApolloProvider client={apolloClient}>
@@ -19,7 +19,7 @@ class MyApp extends App {
             </ApolloProvider>
           </Context>
         </Layout>
-      </Fragment>
+      </>
     );
   }
 }
