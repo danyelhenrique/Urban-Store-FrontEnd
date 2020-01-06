@@ -24,11 +24,16 @@ export default function MainCart() {
 
   function checkout() {
     setModalOpen(true);
+    const isLoggin = state.isLogin;
+    if (isLoggin) {
+      console.log("user not loggin");
+      return;
+    }
     dispatch({ type: "@CHECKOUT" });
   }
 
-  function removeItem(id) {
-    dispatch({ type: "@REMOVE_ITEM_CART", payload: id });
+  function removeItem(item) {
+    dispatch({ type: "@REMOVE_ITEM_CART", payload: item });
   }
 
   return (
@@ -60,7 +65,7 @@ export default function MainCart() {
               </div>
             </Detail>
             <Remove>
-              <button onClick={() => removeItem(item.id)}>
+              <button onClick={() => removeItem(item)}>
                 <img src="/icons/remove.png" alt="remove" />
               </button>
             </Remove>
@@ -80,15 +85,19 @@ export default function MainCart() {
         <OrderAndTotal>
           <div>
             <span>ORDER VALUE: </span>
-            <span>$149.98</span>
+            <span>${state.cartValues.order}</span>
           </div>
           <div>
             <span>Shipping & Handling: </span>
-            <span>FREE</span>
+            <span>{state.cartValues.shipping}</span>
           </div>
           <div>
             <span>TOTAL: </span>
-            <span>$149.98*</span>
+            <span>${state.cartValues.total}*</span>
+          </div>
+          <div>
+            <span>DISCOUNT: </span>
+            <span>${state.cartValues.discont}*</span>
           </div>
         </OrderAndTotal>
         <BtnCheckout onClick={checkout}>CONTINUE TO CHECKOUT</BtnCheckout>

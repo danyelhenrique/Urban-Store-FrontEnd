@@ -26,15 +26,13 @@ export default function LightNav() {
               <span>Signin</span>
             </a>
           </Link>
-          <Link href="/store/favorite">
-            <a>
-              <img src="/nav/favorites.png" alt="" />
-              <img src="/nav/bag-scroll-nav.png" alt="" />
-              <span>Favorites</span>
-            </a>
-          </Link>
+          <button>
+            <img src="/nav/favorites.png" alt="" />
+            <img src="/nav/bag-scroll-nav.png" alt="" />
+            <span>Favorites</span>
+          </button>
           <Bag>
-            <Button onClick={() => dispatch({ type: '@IS_BAG_OPEN' })}>
+            <Button onClick={() => dispatch({ type: "@IS_BAG_OPEN" })}>
               <img src="/nav/bag.png" alt="" />
             </Button>
             <Link href="/store/cart" as="/store/cart">

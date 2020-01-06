@@ -13,7 +13,7 @@ import {
 
 export default function BagModal() {
   const router = useRouter();
-  const [state] = useContext(Context);
+  const [state, dispath] = useContext(Context);
   if (state.cart.length <= 0) {
     return (
       <Modal light={state.isScroll} isEmpty>
@@ -29,6 +29,7 @@ export default function BagModal() {
 
   const handleClick = e => {
     e.preventDefault();
+    dispath({ type: "@IS_BAG_OPEN" });
     router.push("/store/cart", "/store/cart");
   };
   return (

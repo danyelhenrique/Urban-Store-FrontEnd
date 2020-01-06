@@ -10,13 +10,7 @@ export function clearBagDuplicateItems(state, payload) {
   return { ...state, userBag: [...state.userBag, payload] };
 }
 
-export function CalcCartItems(state, payload) {
-  const isItemtemExists = state.cart.find(item => item.id === payload.id);
-
-  if (isItemtemExists) return state;
-
-  localForageCart(state, payload);
-
+function SumCartItems(state, payload) {
   const cartSum = state.cart.reduce((accumulator, currentValue) => {
     const sum = accumulator + Number(currentValue.data_price);
 
@@ -25,15 +19,49 @@ export function CalcCartItems(state, payload) {
 
   const total = Number(payload.data_price) + cartSum;
 
+  const cartValues = {
+    order: state.cartValues.order,
+    total,
+    discont: state.cartValues.discont,
+    shipping: state.cartValues.shipping
+  };
+
+  return cartValues;
+}
+
+
+function SubCartItems(state) {
+  const cartSum = state.cart.reduce((accumulator, currentValue) => {
+    const sum = accumulator - Number(currentValue.data_price);
+
+    return sum;
+  }, 0);
+
+  const total = Math.abs(cartSum);
+
+  const cartValues = {
+    order: state.cartValues.order,
+    total,
+    discont: state.cartValues.discont,
+    shipping: state.cartValues.shipping
+  };
+
+  return cartValues;
+}
+
+export function clearCartDuplicateItems(state, payload) {
+  const isItemtemExists = state.cart.find(item => item.id === payload.id);
+
+  if (isItemtemExists) return state;
+
+  localForageCart(state, payload);
+
+  const cartValues = SumCartItems(state, payload);
+
   return {
     ...state,
     cart: [...state.cart, payload],
-    cartValues: {
-      order: state.cartValues.order,
-      total,
-      discont: state.cartValues.discont,
-      shipping: state.cartValues.shipping
-    }
+    cartValues
   };
 }
 
@@ -66,12 +94,20 @@ export function checkout(state) {
   return { ...state };
 }
 
-export function removeItemFromCart(state, id) {
-  const items = state.cart.filter(cartItem => cartItem.id !== id);
+export function removeItemFromCart(state, payload) {
+  const items = state.cart.filter(cartItem => cartItem.id !== payload.id);
 
-  removeItem(id);
-  return {
+  const newState = {
     ...state,
     cart: [...items]
   };
+
+  const cartValues = SubCartItems(newState);
+
+  return {
+    ...newState,
+    cartValues: { ...cartValues }
+  };
 }
+
+
