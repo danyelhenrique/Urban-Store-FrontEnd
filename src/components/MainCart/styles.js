@@ -108,7 +108,9 @@ export const Bag = styled.div`
 	color: #000;
 
 	position: fixed;
-	top: 90px;
+	/* top: 160px; */
+	top: ${props => props.isScroll ? '90px' : '160px'};
+
 	right: 0;
 	border-radius: 1%;
 	padding: 10px 20px;

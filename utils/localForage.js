@@ -20,12 +20,11 @@ export async function localForageCart(state, payload) {
 }
 
 export function removeItem(id) {
-   const removeItems = async (value, key, iterationNumber) => {
-     const rm = value.filter(itemStorage => itemStorage.id !== id);
-     await localForage.setItem("@URBARN-STORAGE-CART", [...rm]);
-   };
-  const items = localForage.iterate(removeItems)
-   
+  const removeItems = async value => {
+    const rm = value.filter(itemStorage => itemStorage.id !== id);
+    await localForage.setItem("@URBARN-STORAGE-CART", [...rm]);
+  };
+  const items = localForage.iterate(removeItems);
 }
 
 export function formatLocalForagetoState(localForageArr, type, dispatch) {

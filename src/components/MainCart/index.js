@@ -28,8 +28,9 @@ export default function MainCart() {
   }
 
   function removeItem(id) {
-    dispatch({ type: "@REMOVE_ITEM_CART" , payload: id});
+    dispatch({ type: "@REMOVE_ITEM_CART", payload: id });
   }
+
   return (
     <Container>
       {state.cart.map(item => (
@@ -59,7 +60,7 @@ export default function MainCart() {
               </div>
             </Detail>
             <Remove>
-              <button onClick={()=> removeItem(item.id)}>
+              <button onClick={() => removeItem(item.id)}>
                 <img src="/icons/remove.png" alt="remove" />
               </button>
             </Remove>
@@ -67,7 +68,7 @@ export default function MainCart() {
         </Items>
       ))}
 
-      <Bag>
+      <Bag isScroll={state.isScroll}>
         <h3>SHOPPING BAG TOTAL</h3>
         <Form>
           <label htmlFor="discont">
