@@ -9,8 +9,6 @@ import { setContext } from 'apollo-link-context';
 
 import fetch from 'node-fetch';
 import { localForageToken } from '../config/localForage';
-
-
 let apolloClient = null;
 
 function create(initialState) {
@@ -32,15 +30,12 @@ function create(initialState) {
   const isBrowser = typeof window !== 'undefined';
 
   const authLink = setContext(async (_, { headers }) => {
-    const accessToken = await localForageToken.getItem('@STORE-TOKEN');
-
-
-    console.log('accessToken', accessToken);
+    const accessToken = isBrowser ? await localForageToken.getItem('@STORE-TOKEN') : ""
 
     return {
       headers: {
         ...headers,
-        Authorization: accessToken ? `Bearer ${accessToken}` : '',
+        Authorization: `Bearer ${accessToken}`,
       },
     };
   });

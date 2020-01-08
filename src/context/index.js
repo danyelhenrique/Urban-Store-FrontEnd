@@ -1,6 +1,6 @@
-import React, { useReducer, useEffect } from 'react';
+import React, { useReducer, useEffect,useRef } from 'react';
 import localForage from '../../config/localForage';
-
+import {throttle} from 'lodash'
 
 import {
   clearBagDuplicateItems,
@@ -50,7 +50,17 @@ export const Context = React.createContext({});
 
 export default function context({ children }) {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
+  const isScrollState = state && state.isScroll ? state.isScroll : state;
 
+
+  const onScrollThrottled = throttle (()=>{
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+      dispatch({ type: '@IS_ISCROLL', payload: true });
+    } else {
+      dispatch({ type: '@IS_ISCROLL', payload: false });
+    }
+  },1000)
+  
   useEffect(() => {
     async function getItemsFromLocalHistorage() {
       const dbNameBag = '@URBARN-STORAGE-BAG';
@@ -74,7 +84,15 @@ export default function context({ children }) {
     getItemsFromLocalHistorage();
   }, []);
 
+  useEffect(()=>{
+   window.addEventListener('scroll', onScrollThrottled);
+    return () =>window.removeEventListener('scroll', onScrollThrottled)
+  },[isScrollState])
+
+
+ 
   return (
-    <Context.Provider value={[state, dispatch]}>{children}</Context.Provider>
+      <Context.Provider value={[state, dispatch]} >{children}</Context.Provider>
   );
 }
+
