@@ -1,4 +1,4 @@
-import { localForageBag, localForageCart, removeItem } from "./localForage";
+import { localForageBag, localForageCart, removeItem, removeToken , storeToken} from "./localForage";
 
 export function clearBagDuplicateItems(state, payload) {
   const isItemtemExists = state.userBag.find(item => item.id === payload.id);
@@ -97,6 +97,8 @@ export function checkout(state) {
 export function removeItemFromCart(state, payload) {
   const items = state.cart.filter(cartItem => cartItem.id !== payload.id);
 
+  removeItem(payload.id)
+
   const newState = {
     ...state,
     cart: [...items]
@@ -111,3 +113,23 @@ export function removeItemFromCart(state, payload) {
 }
 
 
+export function intialCartItems(state , data) {
+  return {
+    ...state,
+    cart: data
+  }
+}
+
+
+export function signUp(state){
+  removeToken()
+  return { ...state, isLogin: false };
+}
+
+export  function signIn(state , payload){
+  if(!payload || !payload.token) return { ...state, isLogin: false }
+
+   storeToken(payload)
+
+  return { ...state, isLogin: true };
+}

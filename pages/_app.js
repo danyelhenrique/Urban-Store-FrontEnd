@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
 import { ApolloProvider } from '@apollo/react-hooks';
 import App from 'next/app';
 import Layout from '../src/components/Layout';
@@ -15,6 +16,17 @@ class MyApp extends App {
         <Layout>
           <Context>
             <ApolloProvider client={apolloClient}>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnVisibilityChange
+                draggable
+                pauseOnHover
+                />
               <Component {...pageProps} />
             </ApolloProvider>
           </Context>

@@ -73,7 +73,7 @@ export default function MainCart() {
         </Items>
       ))}
 
-      <Bag isScroll={state.isScroll}>
+      <Bag >
         <h3>SHOPPING BAG TOTAL</h3>
         <Form>
           <label htmlFor="discont">

@@ -16,8 +16,8 @@ export default function BagModal() {
   const [state, dispath] = useContext(Context);
   if (state.cart.length <= 0) {
     return (
-      <Modal light={state.isScroll} isEmpty>
-        <EmptyCart light={state.isScroll}>
+      <Modal  isEmpty>
+        <EmptyCart >
           <div>
             <h1> You cart is empty </h1>
             <span>enjoy our promotions in all store !</span>
@@ -34,7 +34,7 @@ export default function BagModal() {
   };
   return (
     <>
-      <Modal light={state.isScroll}>
+      <Modal >
         {state.cart.map(item => (
           <ModalItem>
             <Image>

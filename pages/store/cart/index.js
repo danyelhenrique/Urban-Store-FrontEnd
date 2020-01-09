@@ -1,11 +1,22 @@
-import React from 'react';
+import React, {useContext, useMemo} from 'react';
 import Head from 'next/head';
+import localForage from '../../../config/localForage'
+import { Context } from '../../../src/context';
 
 import Main from '../../../src/components/Main';
 import Nav from '../../../src/components/Nav';
 import MainCart from '../../../src/components/MainCart';
+import useLocalForage from '../../../src/hooks/useLocalForage'
 
-export default function cart() {
+const dbNameCart = '@URBARN-STORAGE-CART';
+
+export default function Cart() {
+  const [_, dispatch] = useContext(Context)
+  const [data]= useLocalForage(dbNameCart, localForage)
+  useMemo(()=>{
+    dispatch({type: '@@INITIAL_CART' , payload: data})
+  },[data])
+
   return (
     <div>
       <Head>

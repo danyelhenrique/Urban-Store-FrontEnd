@@ -1,17 +1,11 @@
-// import * as localforage from 'localforage';
-const isBrowser = typeof window !== 'undefined';
-let localforage;
+import * as localforage from 'localforage';
+
 /*
-  *Import localforage dynamic because
-  *on SSR localforage is not running on methods call
-  *and throw Erro
+  *import localforage on SSR throw Erro  because *storage* method
+  *try to acess browser on server. 
 */
 
-if(isBrowser){
-   localforage = require('localforage')
-}
-
-localforage && localforage.config({
+localforage.config({
   driver:[
     localforage.INDEXEDDB,
     localforage.WEBSQL,
@@ -20,11 +14,11 @@ localforage && localforage.config({
   name: '@URBAN-STORE',
 });
 
-const store = localforage && localforage.createInstance({
+const store = localforage.createInstance({
   name: '@URBAN-STORE-STORAGE'
 });
 
-export const localForageToken = localforage && localforage.createInstance({
+export const localForageToken = localforage.createInstance({
   name: '@USER_TOKEN'
 });
 

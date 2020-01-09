@@ -27,7 +27,9 @@
     "react-intersection-observer": "^8.25.2",
     "react-paypal-express-checkout": "^1.0.5",
     "react-responsive-carousel": "^3.1.51",
+    "react-scroll": "^1.7.15",
     "react-spring": "^8.0.27",
+    "react-toastify": "^5.5.0",
     "styled-components": "^4.4.1"
   },
   "devDependencies": {

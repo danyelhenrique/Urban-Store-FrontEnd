@@ -7,6 +7,7 @@ const STATE = {
   formBackground: '/login/oito.jpg',
   loginPageBackground: '/login/cinco.jpg',
   userBag: [],
+  lastUrl: '/store',
   cart: [],
   cartValues: {
     order: 0,

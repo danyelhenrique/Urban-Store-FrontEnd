@@ -7,39 +7,30 @@ export const Modal = styled.div`
 
 	width: 320px;
 	height: 340px;
-	background: #000;
-	background: ${(props) => (props.light ? '#000' : '#fff')};
+	background:#fff;
+	color: #000;
 
-	${(props) => props.isEmpty && !props.light && css`
-		background: #fff;
+	span,
+	p,
+	a {
 		color: #000;
-	`}
+	}
 
-	${(props) => props.isEmpty && props.light && css`
-		background: #000;
-		color: #fff;
-	`}
-
-	${(props) => !props.light
-		&& css`
-			span,
-			p , a{
-				color: #000;
-			}
-		`};
 	border-radius: 2%;
 	position: absolute;
 	right: 0;
 	top: 75px;
-	padding: 20px;
 
 	overflow-y: scroll;
+	box-shadow: 0px 0px 2px 0px rgba(0,0,0,1);
 `;
 
 export const ModalItem = styled.div`
 	display: flex;
 	height: 100%;
 	width: 100%;
+	padding: 20px;
+
 
 	justify-content: space-evenly;
 	padding: 10px;
@@ -93,11 +84,18 @@ export const Button = styled.button`
 
 	border: none;
 	width: 280px;
-
-	background: rgba(0,0,0,0.8);
+	width: 320px;
+	transform: translateX(-30px);
+	background: rgba(0,0,0,0.5) !important;
+	z-index: 10;
 	color: #fff;
 	height: 50px;
 	cursor: pointer;
+
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
 
 export const EmptyCart = styled.div`

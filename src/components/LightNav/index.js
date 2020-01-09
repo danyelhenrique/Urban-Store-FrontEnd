@@ -1,4 +1,6 @@
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router'
+
 
 import Link from 'next/link';
 
@@ -12,6 +14,21 @@ import {
 
 export default function LightNav() {
   const [state, dispatch] = useContext(Context);
+  const router = useRouter()
+
+  const handleSignUp = e => {
+    e.preventDefault();
+    dispatch({ type: "@USER_SIGN_UP" });
+    router.push("/store", "/store");
+  };
+
+
+  const handleSignIn = e => {
+    const href= router.pathname
+    e.preventDefault();
+    dispatch({ type: "@LAST_URL", payload: href });
+    router.push("/store/signin", "/store/signin");
+  };
 
   return (
     <Nav>
@@ -20,12 +37,22 @@ export default function LightNav() {
           <img src="/logo.png" alt="logo" />
         </div>
         <UserArea>
-          <Link href="/store/signin">
-            <a>
-              <img src="/nav/profile.png" alt="" />
-              <span>Signin</span>
-            </a>
-          </Link>
+          {!state.isLogin ?(
+          <button type="button" onClick={e => handleSignIn(e)}>
+          <a>
+            <img src="/nav/profile.png" alt="" />
+            <span>Signin</span>
+          </a>
+          </button>
+          ): (
+            <button type="button" onClick={e => handleSignUp(e)}>
+              <a>
+                <img src="/nav/profile.png" alt="" />
+                <span>Sign Up</span>
+              </a>
+            </button>
+          )}
+         
           <button>
             <img src="/nav/favorites.png" alt="" />
             <img src="/nav/bag-scroll-nav.png" alt="" />

@@ -1,4 +1,4 @@
-import localForage from "../config/localForage";
+import localForage,{localForageToken} from "../config/localForage";
 
 export async function localForageBag(state, payload) {
   try {
@@ -21,25 +21,18 @@ export async function localForageCart(state, payload) {
 
 export function removeItem(id) {
   const removeItems = async value => {
+    console.log('remove item', value)
     const rm = value.filter(itemStorage => itemStorage.id !== id);
     await localForage.setItem("@URBARN-STORAGE-CART", [...rm]);
   };
   const items = localForage.iterate(removeItems);
 }
 
-export function formatLocalForagetoState(localForageArr, type, dispatch) {
-  const dispatchItem = item => dispatch({ type, payload: item });
-
-  const itemsArray = objectOrArray => {
-    if (typeof objectOrArray === "object") {
-      dispatchItem(objectOrArray);
-    }
-    if (Array.isArray(objectOrArray)) {
-      objectOrArray.map(obj => {
-        dispatchItem(obj);
-      });
-    }
-  };
-
-  localForageArr.map(item => itemsArray(item));
+export async function removeToken() {
+   await localForageToken.clear()
 }
+
+export async function storeToken(payload){
+  await localForageToken.setItem('@STORE-TOKEN', payload.token);
+}
+
