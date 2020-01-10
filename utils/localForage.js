@@ -19,9 +19,9 @@ export async function localForageCart(state, payload) {
   }
 }
 
+
 export function removeItem(id) {
   const removeItems = async value => {
-    console.log('remove item', value)
     const rm = value.filter(itemStorage => itemStorage.id !== id);
     await localForage.setItem("@URBARN-STORAGE-CART", [...rm]);
   };

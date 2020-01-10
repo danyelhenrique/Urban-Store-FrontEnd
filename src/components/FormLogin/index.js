@@ -1,10 +1,14 @@
-import React, { useReducer, useContext } from 'react';
-import { gql } from 'apollo-boost';
-import { useMutation } from '@apollo/react-hooks';
-import { Context } from '../../context';
-import { localForageToken } from '../../../config/localForage';
-import {sucess , error} from '../../toasty/singInSingUp';
+import React, { useReducer, useContext, useCallback } from 'react';
 import { useRouter } from 'next/router'
+
+import { useMutation } from '@apollo/react-hooks';
+import {SIGN_IN , SIGN_UP} from '../../graphql/gql/auth';
+
+import { Context } from '../../context';
+
+import {sucess , error} from '../../toasty';
+
+import {debounce} from 'lodash'
 
 import {
   Form,
@@ -37,80 +41,70 @@ function reducer(state, action) {
   }
 }
 
-const ADD_TODO = gql`
-  mutation signUp($name: String!, $email: String!, $password: String!) {
-    storeUser(data: { name: $name, email: $email, password: $password }) {
-      id
-      name
-    }
-  }
-`;
-
-const SIGN_IN = gql`
-  mutation signUp($email: String!, $password: String!) {
-    loginUser(data: { email: $email, password: $password }) {
-      token
-    }
-  }
-`;
-
 export default function Login() {
   const router = useRouter()
 
   const [state, dispatch] = useContext(Context);
   const [stateForm, dispatchForm] = useReducer(reducer, INITIAL_STATE);
-  const [signUp, { data }] = useMutation(ADD_TODO, {
-    onCompleted: ( _ ) => dispatch({ type: '@SliderLoginPage' }),
-    onError:( _ )=> console.error('error'),
+
+  const [signUp] = useMutation(SIGN_UP, {
+    onCompleted: ( _ ) => {
+      SignIn()
+    },
+    onError:( _ )=> error('fail to create accout.'),
   });
 
-  const [signIn, { data: signInData }] = useMutation(SIGN_IN, {
+  const [signIn] = useMutation(SIGN_IN, {
     onCompleted: async ({ loginUser }) => {
       const singinSignUpUrl = router.pathname
       const lastUrl = state.lastUrl !== singinSignUpUrl ? state.lastUrl : '/store'
+        dispatch({ type: '@USER_SIGN_IN' , payload: loginUser });
+        sucess('sucess to sing-in wait to redirect.')
 
-      try {
-        dispatch({ type: '@USER_SIGN_IN' , payload:loginUser });
-        sucess()
         router.push(lastUrl, lastUrl);
-      } catch (error) {
-        error()
-        console.error('fail to authenticate user.')
-      }
-
     },
-    onError: ( _ ) => error()
+    onError: ( _ ) => error('fail to authenticate user.')
   });
 
-  function handleForm(e) {
-    e.preventDefault();
-    const { name , email , password} = stateForm;
-    // const { email } = stateForm;
-    // const { password } = stateForm;
-    if (state && state.isSignUpSlider) {
-      signUp({ variables: { name, email, password } });
-    }
 
-    if (state && state.isSignInSlider) {
-      signIn({ variables: { email, password } });
+  const SignIn = useCallback(()=>{
+    const { email , password} = stateForm;
+    signIn({ variables: { email, password } });
+  },[stateForm])
+
+  const SignUp = useCallback(()=>{
+    const { name , email , password} = stateForm;
+    signUp({ variables: { name, email, password } });
+  },[stateForm])
+  
+
+  const handleForm = useCallback((e)=>{
+    e.preventDefault();
+    if (state && state.isSignUpSlider) {
+      return SignUp()
     }
-  }
+    if (state && state.isSignInSlider) {
+      return SignIn()
+    }
+  },[SignIn, SignUp])
+   
+
+  const debounceDispatch = debounce(({type , payload})=> dispatchForm({type, payload} ), 500)
 
   return (
     <Form background={state.formBackground} onSubmit={(e) => handleForm(e)}>
       <h1>
-        {' '}
         {state && state.isSignUpSlider ? 'Create Account' : 'Sign in'}
       </h1>
 
       <SocialContainer>
-        <Social href="#" class="social">
+        <Social href="#" className="social">
           <Icon icon="/social/google.svg" />
         </Social>
-        <Social href="#" class="social">
+        <Social href="#" className="social">
           <Icon icon="/social/facebook.svg" />
         </Social>
-        <Social href="#" class="social">
+        <Social href="#" className="social">
           <Icon icon="/social/twiter.svg" />
         </Social>
       </SocialContainer>
@@ -125,7 +119,7 @@ export default function Login() {
           type="text"
           name="name"
           placeholder="Name"
-          onChange={(e) => dispatchForm({ type: '@NAME_CHANGE', payload: e.target.value })}
+          onChange={(e) => debounceDispatch({ type: '@NAME_CHANGE', payload: e.target.value })}
         />
         )}
         <input
@@ -133,7 +127,7 @@ export default function Login() {
           type="email"
           name="email"
           placeholder="Email"
-          onChange={(e) => dispatchForm({ type: '@EMAIL_CHANGE', payload: e.target.value })}
+          onChange={(e) => debounceDispatch({ type: '@EMAIL_CHANGE', payload: e.target.value })}
         />
       </InputContainer>
       <InputContainer>
@@ -142,7 +136,7 @@ export default function Login() {
           type="password"
           name="password"
           placeholder="Password"
-          onChange={(e) => dispatchForm({ type: '@PASSWORD_CHANGE', payload: e.target.value })}
+          onChange={(e) => debounceDispatch({ type: '@PASSWORD_CHANGE', payload: e.target.value })}
         />
       </InputContainer>
       {state && state.isSignUpSlider && (
@@ -152,7 +146,7 @@ export default function Login() {
           type="password"
           name="confirm-passwod"
           placeholder="Confirm you Password"
-          onChange={(e) => dispatchForm({
+          onChange={(e) => debounceDispatch({
 						  type: '@CONFIRM_PASSWORD_CHANGE',
 						  payload: e.target.value,
           })}
@@ -160,7 +154,6 @@ export default function Login() {
       </InputContainer>
       )}
       <Button>
-        {' '}
         {state && state.isSignUpSlider ? 'Sign Up' : 'Sign In'}
       </Button>
     </Form>

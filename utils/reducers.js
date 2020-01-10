@@ -49,6 +49,7 @@ function SubCartItems(state) {
   return cartValues;
 }
 
+
 export function clearCartDuplicateItems(state, payload) {
   const isItemtemExists = state.cart.find(item => item.id === payload.id);
 
@@ -114,9 +115,24 @@ export function removeItemFromCart(state, payload) {
 
 
 export function intialCartItems(state , data) {
+  const total = data.reduce((accumulator, currentValue) => {
+    const sum = accumulator + Number(currentValue.data_price);
+
+    return sum;
+  }, 0);
+  
+  const cartValues = {
+    order: state.cartValues.order,
+    total,
+    discont: state.cartValues.discont,
+    shipping: state.cartValues.shipping
+  };
+
+
   return {
     ...state,
-    cart: data
+    cart: data,
+    cartValues
   }
 }
 

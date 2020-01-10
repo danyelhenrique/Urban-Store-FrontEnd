@@ -22,6 +22,11 @@ export default function MainCart() {
   const [state, dispatch] = useContext(Context);
   const [modalOpen, setModalOpen] = useState(false);
 
+
+  if(state.cart.length <= 0){
+    return (<div></div>)
+  }
+
   function checkout() {
     setModalOpen(true);
     const isLoggin = state.isLogin;
@@ -36,10 +41,12 @@ export default function MainCart() {
     dispatch({ type: "@REMOVE_ITEM_CART", payload: item });
   }
 
+ 
+
   return (
     <Container>
       {state.cart.map(item => (
-        <Items>
+        <Items key={item.id}>
           <Item>
             <img src={item.data_front_imageURL} alt="model" />
             <Detail>

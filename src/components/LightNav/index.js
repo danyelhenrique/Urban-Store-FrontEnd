@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useRouter } from 'next/router'
-
+import {warn} from '../../toasty'
 
 import Link from 'next/link';
 
@@ -29,6 +29,10 @@ export default function LightNav() {
     dispatch({ type: "@LAST_URL", payload: href });
     router.push("/store/signin", "/store/signin");
   };
+  const Favorites =() =>{
+    // Favorites is not avalible
+    warn("Service Unavailable.")
+  }
 
   return (
     <Nav>
@@ -53,7 +57,7 @@ export default function LightNav() {
             </button>
           )}
          
-          <button>
+          <button onClick={Favorites}>
             <img src="/nav/favorites.png" alt="" />
             <img src="/nav/bag-scroll-nav.png" alt="" />
             <span>Favorites</span>
