@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useRouter } from 'next/router'
 import {warn} from '../../toasty'
 
@@ -7,13 +7,16 @@ import Link from 'next/link';
 import { Context } from '../../context';
 
 import BagModal from '../BagModal';
+import UserModal from '../UserModal'
 
 import {
-  Nav, UserArea, Button, Bag, List, Ul,
+  Header ,Internalization, UserArea,IconsContainer,Links,LinkGroup ,Input,Logo ,Icon
 } from './styles';
 
 export default function LightNav() {
   const [state, dispatch] = useContext(Context);
+  const[modalOpen , setModalOpen]= useState(true);
+
   const router = useRouter()
 
   const handleSignUp = e => {
@@ -35,72 +38,36 @@ export default function LightNav() {
   }
 
   return (
-    <Nav>
-      <div>
-        <div>
-          <img src="/logo.png" alt="logo" />
-        </div>
-        <UserArea>
-          {!state.isLogin ?(
-          <button type="button" onClick={e => handleSignIn(e)}>
-          <a>
-            <img src="/nav/profile.png" alt="" />
-            <span>Signin</span>
-          </a>
-          </button>
-          ): (
-            <button type="button" onClick={e => handleSignUp(e)}>
-              <a>
-                <img src="/nav/profile.png" alt="" />
-                <span>Sign Up</span>
-              </a>
-            </button>
-          )}
-         
-          <button onClick={Favorites}>
-            <img src="/nav/favorites.png" alt="" />
-            <img src="/nav/bag-scroll-nav.png" alt="" />
-            <span>Favorites</span>
-          </button>
-          <Bag>
-            <Button onClick={() => dispatch({ type: "@IS_BAG_OPEN" })}>
-              <img src="/nav/bag.png" alt="" />
-            </Button>
-            <Link href="/store/cart" as="/store/cart">
-              <a>Shopping Cart</a>
-            </Link>
-            {state.isModalOpen && <BagModal />}
-          </Bag>
-        </UserArea>
-      </div>
-      <List>
-        <span>Clothes for all types of styles</span>
-        <Ul>
-          <li>
-            <Link href="/store">
-              <a>Men's</a>
-            </Link>
-            <Link href="/store">
-              <a>Women's</a>
-            </Link>
-            <Link href="/store">
-              <a>Baby</a>
-            </Link>
-            <Link href="/store">
-              <a>Girls</a>
-            </Link>
-            <Link href="/store">
-              <a>Boys</a>
-            </Link>
-            <Link href="/store">
-              <a>H&M</a>
-            </Link>
-            <Link href="/store">
-              <a>News</a>
-            </Link>
-          </li>
-        </Ul>
-      </List>
-    </Nav>
+    <Header>
+      <Internalization>
+
+      </Internalization>
+      <UserArea>
+        <Logo>
+          <span>NEW LOGO HERE</span>
+        </Logo>
+        <IconsContainer>
+          <Icon background="/nav/user.png"/>
+          <Icon background="/nav/favorite.png"/>
+          <Icon background="/nav/bag.png"/>
+          </IconsContainer>
+      </UserArea>
+      <Links>
+        <LinkGroup>
+          <a>WOMEN + ACC</a>
+          <a>PLUS + CURVER</a>
+          <a>WOMEN + ACC</a>
+          <a>MEN</a>
+          <a>GIRLS</a>
+          <a>BEAUTY BY ...</a>
+          <a>SALE</a>
+        </LinkGroup>
+        <Input>
+          <input type="text" placeholder="Search Products"/>
+          <Icon background="/nav/search.png"/>
+        </Input>
+      </Links>
+      
+    </Header>
   );
 }
