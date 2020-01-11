@@ -2,14 +2,13 @@ import styled from 'styled-components';
 
 
 export const Container = styled.div`
-    height: 100vh;
+    /* height: 100vh; */
     
     width: 100vw;
-
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
-
 
 `;
 export const Fixed = styled.div`
@@ -19,6 +18,11 @@ export const Fixed = styled.div`
     left: 0px;
 
     height: 100vh;
+
+    .page-layout {
+        overflow: hidden;
+
+    }
 
     width: 70%;
 
@@ -45,7 +49,7 @@ export const Modal = styled.div`
 
     z-index: 200;
 
-    position: absolute;
+    position: fixed;
     top: 0;
    
 `

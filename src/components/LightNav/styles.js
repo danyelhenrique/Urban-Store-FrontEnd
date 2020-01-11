@@ -37,6 +37,8 @@ export const IconsContainer = styled.div`
   background: transparent;
   margin-right:  13px;
 
+  position: relative;
+ 
   > div > button {
     cursor: pointer;
     height: 100%;
@@ -46,6 +48,24 @@ export const IconsContainer = styled.div`
   }
 `;
 
+export const Count =  styled.span`
+  position: absolute;
+  top: 7px;
+  margin-left: 5px;
+ 
+
+  height: 25px;
+  width: 20px;
+
+  background:transparent;
+  font-size: 0.7rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  
+`;
 
 export const Links = styled.div`
   display: flex;

@@ -18,9 +18,9 @@ export default function UserModal() {
   const pushTo =  _ =>router.push("/store/signin", "/store/signin");
 
   const handleModal = () => {
-    dispatch({ type: "@IS_BAG_OPEN" })
-    
-  }
+    dispatch({ type: "@IS_USER_MODAL_OPEN" })
+  };
+
   const handleClick = isSigIn => {
     if(isSigIn) {
       dispatch({ type: "@LAST_URL", payload: href });

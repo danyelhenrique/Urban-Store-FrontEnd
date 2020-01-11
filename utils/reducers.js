@@ -149,3 +149,12 @@ export  function signIn(state , payload){
 
   return { ...state, isLogin: true };
 }
+
+export function checkModalOpen (state) {
+  const isModalOpen = !state.isModalOpen;
+  
+  document.body.style.overflow = isModalOpen ? "hidden" : "";
+
+  return { ...state, isModalOpen};
+
+}

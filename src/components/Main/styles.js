@@ -9,4 +9,6 @@ export const MainContainer = styled.main`
 	background: transparent;
 
 	height: 100%;
+
+	overflow: hidden;
 `;

@@ -35,7 +35,7 @@ html,body, #__next, .page-layout {
     h1,h2,h3,h4,h5,h6,p{
         margin: 0;
         padding: 0
-    }
+    };
 
      .carousel .control-arrow,.carousel.carousel-slider .control-arrow{
       -webkit-transition:all .25s ease-in;

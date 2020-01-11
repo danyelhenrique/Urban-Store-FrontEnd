@@ -1,11 +1,11 @@
 import React from 'react';
 import GlobalStyle from '../../../global/styles';
 
-function Layout(props) {
+function Layout({children}) {
   return (
     <div className="page-layout">
       <GlobalStyle />
-      {props.children}
+      {children}
     </div>
   );
 }
