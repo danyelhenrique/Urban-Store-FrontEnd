@@ -36,19 +36,17 @@ export const Logo = styled.div`
 export const IconsContainer = styled.div`
   background: transparent;
   margin-right:  13px;
+
+  > div > button {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+  }
 `;
 
-export const Icon = styled.button`
-  height: 25px;
-  width: 25px;
-  background: url("${props => props.background}");
-  background-position: center;
-  background-size: 100% 100%;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin: 0 5px;
-`;
+
 export const Links = styled.div`
   display: flex;
   align-items: center;
