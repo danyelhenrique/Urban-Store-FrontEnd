@@ -4,9 +4,10 @@ import { useRouter } from 'next/router'
 import { Context } from '../../context';
 
 
-import { Container, Fixed ,Modal, MyAccount, StoreData ,UserData , Button , Avatar} from './styles';
+import { MyAccount, StoreData ,UserData , Button , Avatar} from './styles';
 
 import Icon from '../Icon'
+import Modal from '../Modal'
 
 
 export default function UserModal() {
@@ -40,29 +41,26 @@ export default function UserModal() {
   };
     
   return (
-    <Container >
-      <Fixed onClick={handleModal}/>
-      <Modal>
+    <Modal onclick={handleModal}>
         <MyAccount>
           <h6>MY ACCOUNT</h6>
           <Icon background="/nav/close.png" >
             <button onClick={handleModal}></button>
           </Icon>
         </MyAccount>
-        {!state.isLogin &&(
+        {/* {!state.isLogin &&(
           <StoreData>
             <Button onClick={_ =>handleClick(true)}>Sign In</Button>
             <Button onClick={handleClick}>Create Account</Button>
             <Button>Gift Cart</Button>
         </StoreData>
-        )}
+        )} */}
         <UserData>
           <Avatar background="/nav/default_avatar.png"/>
           <Button>Account Settings</Button>
           <Button onClick={handleSignUp}>Sign Out</Button>
           <Button>Sign With Another Account </Button>
         </UserData>
-      </Modal>
-    </Container>
+    </Modal>
   );
 }

@@ -1,41 +1,6 @@
 import styled from 'styled-components';
 
 
-export const Container = styled.div`
-    /* height: 100vh; */
-    
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-`;
-export const Fixed = styled.div`
-    position : fixed;
-
-    top: 0px;
-    left: 0px;
-
-    height: 100vh;
-
-    .page-layout {
-        overflow: hidden;
-
-    }
-
-    width: 70%;
-
-    background:  rgba(255,255,255, 0.4);
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
-    cursor: pointer;
-
-`;
-
 export const Modal = styled.div`
     width: 30%;
     height: 100vh;
@@ -72,11 +37,6 @@ export const MyAccount =  styled.div`
         background: transparent;
         border:none;
     }
-`;
-
-export const StoreData =styled.div`
-    display: flex;
-    flex-direction:column;
 `;
 
 export const Button =styled.button`

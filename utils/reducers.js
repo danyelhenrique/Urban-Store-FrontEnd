@@ -21,6 +21,7 @@ function SumCartItems(state, payload) {
 
   const cartValues = {
     order: state.cartValues.order,
+    qnt: state.cartValues.qnt,
     total,
     discont: state.cartValues.discont,
     shipping: state.cartValues.shipping
@@ -41,6 +42,7 @@ function SubCartItems(state) {
 
   const cartValues = {
     order: state.cartValues.order,
+    qnt: state.cartValues.qnt,
     total,
     discont: state.cartValues.discont,
     shipping: state.cartValues.shipping
@@ -123,6 +125,7 @@ export function intialCartItems(state , data) {
   
   const cartValues = {
     order: state.cartValues.order,
+    qnt: state.cartValues.qnt,
     total,
     discont: state.cartValues.discont,
     shipping: state.cartValues.shipping
@@ -150,11 +153,19 @@ export  function signIn(state , payload){
   return { ...state, isLogin: true };
 }
 
-export function checkModalOpen (state) {
-  const isModalOpen = !state.isModalOpen;
+export function userkModalOpen (state) {
+  const isUserModalOpen = !state.isUserModalOpen;
   
-  document.body.style.overflow = isModalOpen ? "hidden" : "";
+  document.body.style.overflow = isUserModalOpen ? "hidden" : "";
 
-  return { ...state, isModalOpen};
+  return { ...state, isUserModalOpen};
+
+}
+
+export function bagModalOpen (state) {
+  const isBagModalOpen = !state.isBagModalOpen;
+  document.body.style.overflow = isBagModalOpen ? "hidden" : "";
+
+  return { ...state, isBagModalOpen};
 
 }

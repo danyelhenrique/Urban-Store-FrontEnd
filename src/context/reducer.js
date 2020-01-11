@@ -3,7 +3,8 @@ import {
     clearBagDuplicateItems,
     clearCartDuplicateItems,
     removeItemFromCart,
-    checkModalOpen,
+    userkModalOpen,
+    bagModalOpen,
     SliderLoginPage,
     checkout,
     signUp,
@@ -20,7 +21,9 @@ function reducer(state, action) {
       case Types.IS_SCROLL:
         return { ...state, isScroll: action.payload };
       case Types.IS_USER_MODAL_OPEN:
-        return checkModalOpen(state);
+        return userkModalOpen(state);
+      case Types.IS_BAG_OPEN:
+        return bagModalOpen(state);
       //
       case Types.ADD_BAG:
         return clearBagDuplicateItems(state, action.payload);

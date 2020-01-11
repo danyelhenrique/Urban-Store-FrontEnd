@@ -1,6 +1,7 @@
 const STATE = {
   isScroll: false,
-  isModalOpen: false,
+  isUserModalOpen: false,
+  isBagModalOpen: false,
   isLogin: false,
   isSignUpSlider: true,
   isSignInSlider: false,
@@ -13,6 +14,7 @@ const STATE = {
     order: 0,
     total: 0,
     discont: 0,
+    qnt: 1,
     shipping: 'Free',
   },
 };

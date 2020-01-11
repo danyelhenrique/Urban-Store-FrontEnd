@@ -24,11 +24,7 @@ export default function LightNav() {
     warn("Service Unavailable.")
   }
 
-  const userBag = () =>{
-    router.push("/store/cart", "/store/cart");
-  }
-
-  // const countBagItems = useMemo(()=>{state.userBag.length },[state.userBag]);
+ 
 
   return (
     <Header>
@@ -47,8 +43,7 @@ export default function LightNav() {
             <button onClick={Favorites}></button>
           </Icon>
           <Icon background="/nav/bag.png">
-            <Count>10356</Count>
-            <button onClick={userBag}></button>
+            <button onClick={()=> dispatch({type: "@IS_BAG_OPEN"})}></button>
           </Icon>
           </IconsContainer>
       </UserArea>
@@ -67,9 +62,12 @@ export default function LightNav() {
           <Icon background="/nav/search.png"/>
         </Input>
       </Links>
-      {state.isModalOpen &&(
+      {state.isUserModalOpen &&(
         <UserModal
         />
+      )}
+      {state.isBagModalOpen && (
+        <BagModal />
       )}
     </Header>
   );
