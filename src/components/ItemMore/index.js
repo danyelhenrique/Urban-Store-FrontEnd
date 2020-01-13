@@ -7,12 +7,19 @@ import {
 
 export default function ItemMore() {
   const [state, dispatch] = useContext(Context);
+  if(!state.itemDetails.isAvailable) return <h1>Erro</h1>
+
+  const {id , 
+    data_product_display_name,
+    data_price
+  } = state.itemDetails;
 
   function addToCart(item) {
     dispatch({ type: '@ADD_CART_ITEM', payload: item });
   }
-  return state.userBag.map((item) => (
-    <Container key={item.id}>
+  
+  return (
+    <Container key={id}>
       <Image>
         <img src="/item-detail1.jpg" alt="item" />
         <img src="/item-detail2.jpg" alt="item" />
@@ -20,10 +27,10 @@ export default function ItemMore() {
       <ItemDetail>
         <Header>
           <div>
-            <span>{item.data_product_display_name}</span>
+            <span>{data_product_display_name}</span>
             <span>
-$
-              {item.data_price}
+                $
+              {data_price}
             </span>
           </div>
           <Favorite>

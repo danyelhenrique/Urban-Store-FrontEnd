@@ -7,7 +7,9 @@ const STATE = {
   isSignInSlider: false,
   formBackground: '/login/oito.jpg',
   loginPageBackground: '/login/cinco.jpg',
-  userBag: [],
+  itemDetails: {
+    isAvailable: false
+  },
   lastUrl: '/store',
   cart: [],
   cartValues: {

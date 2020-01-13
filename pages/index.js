@@ -22,7 +22,6 @@ const Home = () => (
 const Backgorund = styled.div`
   background: url('/background.jpg') no-repeat fixed;
   background-size: cover;
-  /* background-size: 100% 100vh; */
   object-fit: cover;
   height: 100%;
   width: 100%;
