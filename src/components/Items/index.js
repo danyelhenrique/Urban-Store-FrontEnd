@@ -1,7 +1,6 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-
 import { useQuery } from '@apollo/react-hooks';
 import { gql } from 'apollo-boost';
 
@@ -40,9 +39,18 @@ const Data = gql`
 
 export default function Items() {
   const router = useRouter();
+  const[page,setPage] = useState(1)
+  const[limit,setLimit] = useState(10)
+
   const [state, dispatch] = useContext(Context);
 
-  const { loading, error, data } = useQuery(Data);
+  const { loading, error, data, refetch  } = useQuery(Data, {
+    onCompleted: (item) =>{
+      dispatch({type: "@PRODUCT_STATE" ,payload: item.indexProduct})
+    },
+  })
+
+  console.log(state)
 
   if (loading) return <h1>Loading</h1>;
 
@@ -64,7 +72,10 @@ export default function Items() {
     dispatch({ type: '@ADD_CART_ITEM', payload: item });
   }
 
-  return data.indexProduct.map((item, index) => (
+
+  return data.indexProduct.map((item, index) => {
+    const urlAs = item.data_product_display_name.split(" ").join("_")
+    return(
     <Container key={item.id}>
       <Item
         image={item.data_back_image_url}
@@ -79,7 +90,7 @@ export default function Items() {
       </Item>
       <NameAndPrice>
         <div>
-          <Link href="/store/[slug]" as={`/store/${item.data_product_display_name}`}>
+          <Link href="/store/[slug]" as={`/store/${urlAs}`}>
             <a>
               {item.data_product_display_name}
             </a>
@@ -100,5 +111,5 @@ $
         ])}
       </ColorSelect>
     </Container>
-  ));
+  )});
 }

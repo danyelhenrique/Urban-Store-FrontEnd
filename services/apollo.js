@@ -35,13 +35,14 @@ function create(initialState) {
     return {
       headers: {
         ...headers,
+        // 'content-type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
       },
     };
   });
 
   const http = new HttpLink({
-    uri: 'http://localhost:3333/graphql',
+    uri: 'http://localhost:4594/graphql',
     //   credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
     fetch: !isBrowser && fetch,
     resolvers: {},

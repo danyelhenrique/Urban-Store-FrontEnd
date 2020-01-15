@@ -32,6 +32,8 @@ function reducer(state, action) {
       case Types.ROOVE_ITEM_FROM_CART:
         return removeItemFromCart(state, action.payload);
       //
+      case Types.PRODUCT_STATE:
+        return {...state, products:[...action.payload]}
       case Types.SliderLoginPage:
         return SliderLoginPage(state);
       //

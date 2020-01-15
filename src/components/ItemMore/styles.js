@@ -195,11 +195,10 @@ export const Button = styled.button`
 `;
 export const Details = styled.div`
   width: 100%;
-  margin-right: 42%;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  margin: 20px 0;
 
   @media (max-width: 610px) {
     }
@@ -207,6 +206,7 @@ export const Details = styled.div`
   div {
       display: flex;
       align-items: center;
+      
     img {
       height: 25px;
       width: 25px;
