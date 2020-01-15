@@ -1,17 +1,28 @@
 const Types = {
-  ADD_BAG: '@ADD_BAG_ITEM',
   PRODUCT_STATE: '@PRODUCT_STATE',
+
   IS_USER_MODAL_OPEN: '@IS_USER_MODAL_OPEN',
   IS_BAG_OPEN: '@IS_BAG_OPEN',
-  ADD_CART: '@ADD_CART_ITEM',
-  ROOVE_ITEM_FROM_CART: '@REMOVE_ITEM_CART',
+
   IS_SCROLL: '@IS_ISCROLL',
   SliderLoginPage: '@SliderLoginPage',
+
   USER_SIGN_IN: '@USER_SIGN_IN',
   USER_SIGN_UP: '@USER_SIGN_UP',
-  CHECKOUT: '@CHECKOUT',
+
   INITIAL_CART: '@@INITIAL_CART',
-  LAST_URL:"@LAST_URL"
+
+  ADD_CART: '@ADD_CART_ITEM',
+  ROOVE_ITEM_FROM_CART: '@REMOVE_ITEM_CART',
+
+  IncreaseItemQuantityMoreOne:"@IncreaseItemQuantityMoreOne",
+  DecreaseItemQuantityMoreOne:"@DecreaseItemQuantityMoreOne",
+  InputQuantityItem:"@InputQuantityItem", 
+
+  LAST_URL:"@LAST_URL",
+
+  CHECKOUT: '@CHECKOUT',
+
 };
 
 export default Types;

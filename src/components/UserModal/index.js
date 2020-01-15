@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Context } from '../../context';
 
 
-import { MyAccount, StoreData ,UserData , Button , Avatar} from './styles';
+import { MyAccount, UserData , Button , Avatar} from './styles';
 
 import Icon from '../Icon'
 import Modal from '../Modal'
@@ -22,22 +22,11 @@ export default function UserModal() {
     dispatch({ type: "@IS_USER_MODAL_OPEN" })
   };
 
-  const handleClick = isSigIn => {
-    if(isSigIn) {
-      dispatch({ type: "@LAST_URL", payload: href });
-      dispatch({ type: "  @SliderLoginPage" });
-      pushTo()
-      return 
-    }
-
-    dispatch({ type: "@LAST_URL", payload: href });
-    pushTo()
-  };
 
   const handleSignUp = e => {
     e.preventDefault();
     dispatch({ type: "@USER_SIGN_UP" });
-    router.push("/store", "/store");
+    router.push(href, href);
   };
     
   return (
@@ -48,18 +37,12 @@ export default function UserModal() {
             <button onClick={handleModal}></button>
           </Icon>
         </MyAccount>
-        {/* {!state.isLogin &&(
-          <StoreData>
-            <Button onClick={_ =>handleClick(true)}>Sign In</Button>
-            <Button onClick={handleClick}>Create Account</Button>
-            <Button>Gift Cart</Button>
-        </StoreData>
-        )} */}
+      
         <UserData>
           <Avatar background="/nav/default_avatar.png"/>
           <Button>Account Settings</Button>
           <Button onClick={handleSignUp}>Sign Out</Button>
-          <Button>Sign With Another Account </Button>
+          <Button onClick={() =>router.push("/store/signin", "/store/signin")}>Sign With Another Account </Button>
         </UserData>
     </Modal>
   );

@@ -31,6 +31,12 @@ function reducer(state, action) {
         return clearCartDuplicateItems(state, action.payload);
       case Types.ROOVE_ITEM_FROM_CART:
         return removeItemFromCart(state, action.payload);
+      case Types.IncreaseItemQuantityMoreOne:
+        return  {...state ,cartValues:{...state.cartValues ,qnt:state.cartValues.qnt + 1}}
+      case Types.DecreaseItemQuantityMoreOne:
+          return  {...state ,cartValues:{...state.cartValues ,qnt:state.cartValues.qnt - 1}}
+      case Types.InputQuantityItem:
+          return  {...state ,cartValues:{...state.cartValues ,qnt:action.payload}}
       //
       case Types.PRODUCT_STATE:
         return {...state, products:[...action.payload]}

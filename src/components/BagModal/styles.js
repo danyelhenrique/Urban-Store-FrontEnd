@@ -55,7 +55,7 @@ export const Button =styled.button`
 
 export const Item = styled.div`
 	display: flex;
-	height: 160px;
+	height: 170px;
 	max-height: 200px;
 
 	width: 100%;
@@ -112,7 +112,7 @@ export const ItemName =  styled.div`
 		background: transparent;
 	}
 	> div {
-		width: 15px;
+		width: 30px;
     	height: 15px;
 		align-self: flex-start;
 	}
