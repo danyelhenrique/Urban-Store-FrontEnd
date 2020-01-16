@@ -5,6 +5,7 @@ import {
     removeItemFromCart,
     userkModalOpen,
     bagModalOpen,
+    MoreQntItem,
     SliderLoginPage,
     checkout,
     signUp,
@@ -32,7 +33,7 @@ function reducer(state, action) {
       case Types.ROOVE_ITEM_FROM_CART:
         return removeItemFromCart(state, action.payload);
       case Types.IncreaseItemQuantityMoreOne:
-        return  {...state ,cartValues:{...state.cartValues ,qnt:state.cartValues.qnt + 1}}
+        return  MoreQntItem(state , action.payload)
       case Types.DecreaseItemQuantityMoreOne:
           return  {...state ,cartValues:{...state.cartValues ,qnt:state.cartValues.qnt - 1}}
       case Types.InputQuantityItem:

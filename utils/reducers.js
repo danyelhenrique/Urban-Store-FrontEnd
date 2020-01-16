@@ -61,6 +61,8 @@ export function clearCartDuplicateItems(state, payload) {
 
   const cartValues = SumCartItems(state, payload);
 
+  payload.qntRequest = 1;
+
   return {
     ...state,
     cart: [...state.cart, payload],
@@ -167,5 +169,19 @@ export function bagModalOpen (state) {
   document.body.style.overflow = isBagModalOpen ? "hidden" : "";
 
   return { ...state, isBagModalOpen};
+}
+
+export function MoreQntItem(state , payload){
+  const newState= {...state}
+
+  const index = newState.cart.findIndex(item => item.id === payload.id);
+
+  if (newState.cart[index].qntRequest >= newState.cart[index].qnt ) return state;
+
+  newState.cart[index].qntRequest += 1
+
+  return {
+    ...newState,
+  };
 
 }

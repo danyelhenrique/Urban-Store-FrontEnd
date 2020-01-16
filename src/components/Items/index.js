@@ -45,11 +45,14 @@ export default function Items() {
   const [state, dispatch] = useContext(Context);
 
   const { loading, error, data, refetch  } = useQuery(Data, {
-    onCompleted: (item) =>{
-      dispatch({type: "@PRODUCT_STATE" ,payload: item.indexProduct})
-    },
+    onCompleted: (items) =>{
+      const ITEM_WITH_MOCK_QNT = items.indexProduct.map(item => {
+        item.qnt = Math.floor(Math.random() * 10)
+        return item
+      })
+      dispatch({type: "@PRODUCT_STATE" ,payload:ITEM_WITH_MOCK_QNT})
+    }
   })
-
   console.log(state)
 
   if (loading) return <h1>Loading</h1>;
@@ -97,8 +100,7 @@ export default function Items() {
           </Link>
         </div>
         <span>
-$
-          {item.data_price}
+            $ {item.data_price}
         </span>
       </NameAndPrice>
       <ColorSelect>

@@ -46,7 +46,10 @@ export default function MainCart() {
 
   return (
     <Container>
-      {state.cart.map(item => (
+      {state.cart.map((item, index) => {
+        const qnt = new Array(item.qnt).fill()
+        
+        return(
         <Items key={item.id}>
           <Item>
             <img src={item.data_front_imageURL} alt="model" />
@@ -65,10 +68,10 @@ export default function MainCart() {
                   <img src="/favorite-cart.png" alt="favorite" />
                 </button>
                 <select name="quantity">
-                  <option value="choice">quantity</option>
-                  <option value="one">1</option>
-                  <option value="two">4</option>
-                  <option value="thrith">3</option>
+                <option value="choice">quantity</option>
+                  {qnt.map((_, index) => (
+                    <option value="one">{index + 1}</option>
+                  ))}
                 </select>
               </div>
             </Detail>
@@ -79,7 +82,7 @@ export default function MainCart() {
             </Remove>
           </Item>
         </Items>
-      ))}
+      )})}
 
       <Bag >
         <h3>SHOPPING BAG TOTAL</h3>

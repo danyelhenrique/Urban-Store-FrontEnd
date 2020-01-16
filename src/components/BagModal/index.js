@@ -4,7 +4,6 @@ import { Context } from "../../context";
 
 import {
   StoreData,
-  Button,
   Close,
   Item,
   Details,
@@ -42,7 +41,6 @@ export default function BagModal() {
     dispatch({ type: "@REMOVE_ITEM_CART", payload: item });
   }
 
-  
 
   return (
     <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
@@ -69,9 +67,9 @@ export default function BagModal() {
                 <Select>
                 <small> qnt: </small>
                   <Icon background="/user_modal_bag/more.png" >
-                      <button onClick={() => dispatch({type:"@IncreaseItemQuantityMoreOne"})}></button>
+                      <button onClick={() => dispatch({type:"@IncreaseItemQuantityMoreOne" , payload: item})}></button>
                   </Icon>
-                  <input  type="text" value={state.cartValues.qnt} onChange={() => handleChange(item)}/>
+                  <input  type="text" value={item.qntRequest} onChange={() => handleChange(item)}/>
                   <Icon background="/user_modal_bag/less.png" >
                       <button onClick={() => dispatch({type:"@DecreaseItemQuantityMoreOne"})}></button>
                   </Icon>
@@ -79,8 +77,6 @@ export default function BagModal() {
               </Details>
           </Item>
          ))}
-         
-       
         </StoreData>
     </Modal>
   );
