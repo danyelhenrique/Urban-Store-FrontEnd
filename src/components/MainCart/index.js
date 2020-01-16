@@ -41,8 +41,6 @@ export default function MainCart() {
     dispatch({ type: "@REMOVE_ITEM_CART", payload: item });
   }
 
- 
-  
 
   return (
     <Container>
@@ -64,9 +62,6 @@ export default function MainCart() {
               <p>Size: 2</p>
               <p>Total: ${item.data_price}</p>
               <div>
-                <button>
-                  <img src="/favorite-cart.png" alt="favorite" />
-                </button>
                 <select name="quantity">
                 <option value="choice">quantity</option>
                   {qnt.map((_, index) => (

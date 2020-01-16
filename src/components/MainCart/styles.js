@@ -5,8 +5,9 @@ export const Container = styled.section`
 	flex-wrap: wrap;
 	width: 100%;
 	height: 100%;
-	background-color: #b2ac9e;
+	background-color: rgba(0,0,0,0.05);
 `;
+
 
 export const Items = styled.div`
 	width: 100%;
@@ -20,10 +21,8 @@ export const Item = styled.div`
 	width: 65%;
 	height: 100%;
 	background: transparent;
-	margin: 2px 0;
-	border-bottom: 4px solid rgba(0, 0, 0, 0.3);
-
-	border-radius: 1%;
+	margin: 4px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
 	display: flex;
 	@media (max-width: 610px) {
@@ -37,48 +36,44 @@ export const Item = styled.div`
 `;
 
 export const Detail = styled.div`
+	width: 45%;
+
 	letter-spacing: 1px;
 	line-height: 20px;
-	margin: 0 5px;
 	font-weight: 300;
+
+	padding: 0 10px;
+
 	color: #000;
 
 	display: flex;
 	flex-direction: column;
 
-	select {
-		background: none;
-		height: 30px;
-		width: 90px;
-		border: 1px solid #000;
 
-		font-size: 1rem;
-		font-weight: 300;
-	}
 
 	div {
 		display: flex;
 		justify-self: center;
 		height: 35px;
 		width: 100%;
-		justify-content: space-between;
-		button {
-			display: flex;
-			align-items: center;
-			justify-content: center;
+
+		select {
+			background: none;
+
 			height: 30px;
-			width: 50px;
-			cursor: pointer;
+			width: 90px;
 
-			padding: 6px;
+			border: 1px solid rgb(234, 165, 138);
+			border-radius: 2px;
 
-			background: transparent;
-			border: 1px solid #000;
-			img {
-				height: 100%;
-				width: 100%;
-				object-fit: contain;
-			}
+
+			font-size: 1rem;
+			font-weight: 300;
+
+
+			color: rgb(76, 59, 52);
+			font-weight: 300;
+			font-family: "Roboto";
 		}
 	}
 `;
@@ -104,8 +99,8 @@ export const Remove = styled.div`
 export const Bag = styled.div`
 	width: 30%;
 	height: 400px;
-	background: #fff;
 	color: #000;
+	background: rgba(226, 88, 34, 0.5);
 
 	position: fixed;
 	top: 160px;
@@ -134,12 +129,18 @@ export const Form = styled.div`
 	font-size: 0.9rem;
 
 	button {
-		border: 1px solid #cecece;
+		border: 1px solid rgba(0,0,0,.9);
+		
 		background: transparent;
+
 		padding: 20px;
+
 		margin: 15px 0 0 3px;
+
 		cursor: pointer;
+
 		font-weight: 300;
+		font-family: "Roboto";
 	}
 
 	label {

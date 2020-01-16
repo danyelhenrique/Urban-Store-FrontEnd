@@ -5,6 +5,7 @@ export const MainContainer = styled.main`
 	flex-direction: row;
 	flex-wrap: wrap;
 	position: relative;
+	top: 150px;
 	width: 100%;
 	background: transparent;
 
@@ -12,3 +13,4 @@ export const MainContainer = styled.main`
 
 	overflow: hidden;
 `;
+
