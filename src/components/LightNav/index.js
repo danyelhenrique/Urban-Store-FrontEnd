@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext } from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 
@@ -62,13 +62,8 @@ export default function LightNav() {
           <Icon background="/nav/search.png"/>
         </Input>
       </Links>
-      {state.isUserModalOpen &&(
-        <UserModal
-        />
-      )}
-      {state.isBagModalOpen && (
-        <BagModal />
-      )}
+        <UserModal/>
+        <BagModal/>
     </Header>
   );
 }

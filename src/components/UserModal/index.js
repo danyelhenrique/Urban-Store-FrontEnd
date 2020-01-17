@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import { Context } from '../../context';
 
 
-import { MyAccount, UserData , Button , Avatar} from './styles';
+import { ContainerModal,MyAccount, UserData , Button , Avatar} from './styles';
 
 import Icon from '../Icon'
 import Modal from '../Modal'
@@ -13,6 +13,8 @@ import Modal from '../Modal'
 export default function UserModal() {
   const [state, dispatch] = useContext(Context);
   const router = useRouter()
+  const isActive = state.isUserModalOpen
+
 
 
   const href= router.pathname
@@ -30,6 +32,7 @@ export default function UserModal() {
   };
     
   return (
+    <ContainerModal isActive={isActive}>
     <Modal onclick={handleModal}>
         <MyAccount>
           <h6>MY ACCOUNT</h6>
@@ -45,5 +48,6 @@ export default function UserModal() {
           <Button onClick={() =>router.push("/store/signin", "/store/signin")}>Sign With Another Account </Button>
         </UserData>
     </Modal>
+    </ContainerModal>
   );
 }

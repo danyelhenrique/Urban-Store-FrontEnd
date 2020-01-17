@@ -1,5 +1,21 @@
 import styled from 'styled-components';
 
+export const ContainerModal = styled.div`
+    height: 100%;
+	opacity: ${props => !props.isActive ? 0 : 1};
+	position: absolute;
+	top: 0;
+	
+	pointer-events: ${props => !props.isActive ? "none" : "all"};
+
+	
+	.modal{
+		transform: translateX(${props => props.isActive ? "0%" : "100%"});
+		opacity: ${props => !props.isActive ? 0 : 1};
+
+		transition: all 2s ease;
+	}
+`;
 
 export const StoreData =styled.div`
     display: flex;
@@ -41,7 +57,6 @@ export const Button =styled.button`
     align-items: center;
     justify-content: flex-start;
 
-    /* padding-top: 10px; */
     padding: 10px;
     margin: 5px 0;
 

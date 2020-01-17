@@ -1,5 +1,22 @@
 import styled from 'styled-components';
 
+export const ContainerModal = styled.div`
+    height: 100%;
+	opacity: ${props => !props.isActive ? 0 : 1};
+	position: absolute;
+	top: 0;
+	
+	pointer-events: ${props => !props.isActive ? "none" : "all"};
+
+	
+	.modal{
+		transform: translateX(${props => props.isActive ? "0%" : "100%"});
+		opacity: ${props => !props.isActive ? 0 : 1};
+
+		transition: all 2s ease;
+
+	}
+`;
 
 export const Modal = styled.div`
     width: 30%;

@@ -16,13 +16,7 @@ export const Fixed = styled.div`
     left: 0px;
 
     height: 100vh;
-
-    .page-layout {
-        overflow: hidden;
-
-    }
-
-    width: 70%;
+    width: 100%;
 
     background:  rgba(255,255,255, 0.4);
 
@@ -34,7 +28,9 @@ export const Fixed = styled.div`
 
 `;
 
-export const Modal = styled.div`
+export const Modal = styled.div.attrs({
+    className: "modal"
+})`
     width: 30%;
     height: 100vh;
     background: rgb(255,255,255);
@@ -45,7 +41,6 @@ export const Modal = styled.div`
 
     padding: 15px;
 
-    z-index: 200;
 
     position: fixed;
     top: 0;

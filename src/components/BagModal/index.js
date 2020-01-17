@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Context } from "../../context";
 
 import {
+  ContainerModal,
   StoreData,
   Close,
   Item,
@@ -18,12 +19,15 @@ import Modal from '../Modal'
 export default function BagModal() {
   const router = useRouter();
   const [state, dispatch] = useContext(Context);
+  const isActive = state.isBagModalOpen
 
   if(state.cart.length <= 0){
     return (
-      <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
-        <h1>OI</h1>
-      </Modal>
+      <ContainerModal isActive={isActive}>
+        <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
+          <h1>OI</h1>
+        </Modal>
+      </ContainerModal>
     )
   }
 
@@ -43,6 +47,7 @@ export default function BagModal() {
 
 
   return (
+    <ContainerModal isActive={isActive}>
     <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
       <Close>
         <h6>BAG</h6>
@@ -79,5 +84,6 @@ export default function BagModal() {
          ))}
         </StoreData>
     </Modal>
+    </ContainerModal>
   );
 }
