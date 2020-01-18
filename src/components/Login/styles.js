@@ -163,15 +163,15 @@ export const SignInContainer = styled.div`
 	${(props) => props.signIn
 		&& css`
 			form {
-				input:-webkit-autofill,
-	input:focus:-webkit-autofill {
-		-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.8) inset;
-	}
-				h1,
-				span,
-				p {
-					color: #fff;
+					input:-webkit-autofill,
+					input:focus:-webkit-autofill {
+						-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.8) inset;
 				}
+			h1,
+			span,
+			p {
+				color: #fff;
+			}
 			}
 			form input {
 				border: 1px solid #fff;
@@ -182,8 +182,8 @@ export const SignInContainer = styled.div`
 
 export const Button = styled.button`
 	border-radius: 20px;
-	border: 1px solid #ff4b2b;
-	background-color: #ff4b2b;
+	border: 1px solid rgba(240, 94, 35, 1);
+	background-color: rgba(240, 94, 35, 1);
 	color: #ffffff;
 	font-size: 12px;
 	font-weight: bold;
@@ -194,7 +194,10 @@ export const Button = styled.button`
 	cursor: pointer;
 	z-index: 90;
 
-	${(props) => props.ghost && css`background: transparent;`};
+	${(props) => props.ghost && css`
+		background: transparent;
+		border: 1px solid rgba(240, 94, 35, 1);
+	`};
 
 	:active {
 		transform: scale(0.95);
@@ -207,6 +210,5 @@ export const Button = styled.button`
 	${(props) => props.ghost
 		&& css`
 			background-color: transparent;
-			border-color: #ffffff;
 		`};
 `;

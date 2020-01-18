@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 
@@ -13,7 +13,7 @@ import UserModal from '../UserModal'
 import Icon from '../Icon'
 
 import {
-  Header ,Internalization, UserArea,IconsContainer, Count, Links,LinkGroup ,Input,Logo ,
+  Header ,Internalization, UserArea,IconsContainer, QntCart, Links,LinkGroup ,Input,Logo ,
 } from './styles';
 
 export default function LightNav() {
@@ -24,7 +24,7 @@ export default function LightNav() {
     warn("Service Unavailable.")
   }
 
- 
+  const Qnt = useMemo(()=> state.cart.length,[state.cart])
 
   return (
     <Header>
@@ -45,6 +45,7 @@ export default function LightNav() {
           <Icon background="/nav/bag.png">
             <button onClick={()=> dispatch({type: "@IS_BAG_OPEN"})}></button>
           </Icon>
+          <QntCart>{Qnt}</QntCart>
           </IconsContainer>
       </UserArea>
       <Links>

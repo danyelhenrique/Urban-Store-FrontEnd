@@ -26,6 +26,7 @@ export const  UserArea = styled.div`
   
 `;
 
+
 export const Logo = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
@@ -38,6 +39,8 @@ export const IconsContainer = styled.div`
   margin-right:  13px;
 
   position: relative;
+
+  display: flex;
  
   > div > button {
     cursor: pointer;
@@ -48,21 +51,26 @@ export const IconsContainer = styled.div`
   }
 `;
 
-export const Count =  styled.span`
-  position: absolute;
-  top: 7px;
-  margin-left: 5px;
- 
-
-  height: 25px;
-  width: 20px;
-
-  background:transparent;
-  font-size: 0.7rem;
-
-  white-space: nowrap;
-  overflow: hidden;
+export const QntCart =  styled.div`
   text-overflow: ellipsis;
+
+  display: flex;
+  align-items: center;
+  
+  height: 25px;
+  width: 25px;
+
+  border-left:  2px solid rgba(240, 94, 35, 1);
+
+  font-weight: 400;
+  font-size: 0.9rem;
+  font-family:"Roboto";
+
+  color: rgba(0,0,0,0.8);
+
+  padding: 0 8px;
+
+  margin: 2px;
 
   
 `;
@@ -78,26 +86,29 @@ export const Links = styled.div`
 `;
 
 export const LinkGroup = styled.div`
-  width: 100%;
+  width: 60%;
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 
-  font-weight: 300;
-  font-size: 0.9rem;
+  font-weight: 400;
+  font-size: 0.8rem;
   letter-spacing: 2px;
+  color: #000;
 
+  margin: 0 auto;
 
   a{
       margin: 0 5px;
       display: block;
-      padding: 15px;
+      padding-right: 10px;
       text-decoration: none;
       cursor: pointer;
 
       :hover{
-        border-bottom: 1px solid rgba(240, 94, 35, 1);
+        border-bottom: 2px solid rgba(240, 94, 35, 1);
+
       }
     }
 `;

@@ -6,6 +6,7 @@ export const MainContainer = styled.main`
 	flex-wrap: wrap;
 	position: relative;
 	top: 150px;
+	top: ${props => props.isFull ? "0px" : "150px"};
 	width: 100%;
 	background: transparent;
 

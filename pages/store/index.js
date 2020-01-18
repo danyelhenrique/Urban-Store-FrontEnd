@@ -6,7 +6,6 @@ import Nav from '../../src/components/Nav';
 
 import MainStore from '../../src/components/MainStore';
 import Hero from '../../src/components/Hero';
-import SiidebarStore from '../../src/components/SidebarStore';
 
 export default function store() {
   return (
@@ -17,7 +16,6 @@ export default function store() {
       </Head>
       <Main>
         <Nav />
-        {/* <SiidebarStore /> */}
         <Hero />
         <MainStore />
       </Main>

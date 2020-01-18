@@ -2,7 +2,8 @@ import React from "react";
 
 import { MainContainer } from './styles';
  
-export default function Main({ children }) {
+export default function Main({ children ,isFullPage}) {
  
-  return <MainContainer >{children}</MainContainer>;
+  return <MainContainer isFull={isFullPage}>{children}</MainContainer>;
 }
+
