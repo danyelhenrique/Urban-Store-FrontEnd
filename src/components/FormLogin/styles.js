@@ -20,7 +20,9 @@ export const Form = styled.form`
 
 	background-size: 100% 100%;
 
-
+	input {
+		color: ${props => props.isSignUp ? "#fff": "#000"};
+	}
 
 
 	h1 {
@@ -57,30 +59,33 @@ export const InputContainer = styled.div`
 
 	input:-webkit-autofill,
 	input:focus:-webkit-autofill {
-		-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.4) inset;
+		-webkit-box-shadow: 0 0 0 100px rgba(0,0,0,0.01) inset;
+		box-shadow: 0 0 0 100px rgba(0,0,0,0.01) inset;
 	}
 
 	input {
 		padding: 12px 15px;
-		border-radius: 20px;
+
 		margin: 8px 0;
+
 		width: 100%;
+
 		outline: none;
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		border: 1px solid rgba(0, 0, 0, 0.4);
-		translate: all 1s ease;
+
+		border: none;
+		border-bottom: 2px solid rgba(240, 94, 35, 1);
+
 		background: transparent;
 
+		font-family:"Roboto";
+		
 
 		::placeholder {
 			color: #fff;
 		}
 
 		:focus {
-			padding: 11px 15px;
 			background: transparent;
-			background: rgba(0, 0, 0, 0.4);
-			border: 2px solid #ff4b2b;
 		}
 	}
 `;
@@ -97,6 +102,7 @@ export const Social = styled.a`
 	height: 40px;
 	width: 40px;
 `;
+
 export const Icon = styled.i`
 	background: url('${(props) => props.icon}');
 	background-position: center;

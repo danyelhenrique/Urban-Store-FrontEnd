@@ -41,7 +41,8 @@ function reducer(state, action) {
   }
 }
 
-export default function Login() {
+
+export default function Login({isSignUp}) {
   const router = useRouter()
 
   const [state, dispatch] = useContext(Context);
@@ -92,7 +93,7 @@ export default function Login() {
   const debounceDispatch = debounce(({type , payload})=> dispatchForm({type, payload} ), 500)
 
   return (
-    <Form background={state.formBackground} onSubmit={(e) => handleForm(e)}>
+    <Form background={state.formBackground} onSubmit={(e) => handleForm(e)} isSignUp={state.isSignUpSlider}>
       <h1>
         {state && state.isSignUpSlider ? 'Create Account' : 'Sign in'}
       </h1>
@@ -116,7 +117,7 @@ export default function Login() {
         {state && state.isSignUpSlider && (
         <input
           autoComplete="off"
-          type="text"
+          type="email"
           name="name"
           placeholder="Name"
           onChange={(e) => debounceDispatch({ type: '@NAME_CHANGE', payload: e.target.value })}

@@ -124,26 +124,6 @@ export const SignUpContainer = styled.div`
 	transition: all 2s ease;
 
 	${(props) => props.signUp && css`opacity: 1;`};
-
-		${(props) => props.signUp
-		&& css`
-			form {
-				input:-webkit-autofill,
-	input:focus:-webkit-autofill {
-		-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.8) inset;
-	}
-				h1,
-				span,
-				p ,
-				input{
-					color: #fff;
-				}
-			}
-			form input {
-				border: 1px solid #fff;
-				
-			}
-		`};
 `;
 
 export const SignInContainer = styled.div`
@@ -160,23 +140,7 @@ export const SignInContainer = styled.div`
 	transition: all 2s ease;
 
 	${(props) => props.signIn && css`opacity: 1;`};
-	${(props) => props.signIn
-		&& css`
-			form {
-					input:-webkit-autofill,
-					input:focus:-webkit-autofill {
-						-webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.8) inset;
-				}
-			h1,
-			span,
-			p {
-				color: #fff;
-			}
-			}
-			form input {
-				border: 1px solid #fff;
-			}
-		`};
+	
 `;
 
 
