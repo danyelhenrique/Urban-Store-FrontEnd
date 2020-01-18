@@ -1,57 +1,55 @@
 import React from 'react';
+import Link from 'next/link';
+
 
 import {
-  Container, Logo, FullHeightContainer, Span,
+  Container, Logo, FullHeightContainer, Nav, Image
 } from './styles';
-
-const full = false;
-
-
-function fullSidebar({load}) {
-  if (!load) {
-    return (
-      <Span>
-        <span>Clothes for all types of styles</span>
-      </Span>
-    );
-  }
-  return (
-    <FullHeightContainer active={load}>
-      <span>Clothes for all types of styles</span>
-      <nav>
-        <li>
-          <a href="#/">Wommen's</a>
-          <a href="#/">Men's</a>
-          <a href="#/">Baby</a>
-          <a href="#/">Girls</a>
-          <a href="#/">Boys</a>
-        </li>
-      </nav>
-      <img src="/boy.jpg" alt="boy" />
-      <img src="/girl.jpg" alt="girl" />
-    </FullHeightContainer>
-  );
-}
 
 export default function SidebarHome({load}) {
   return (
     <Container active={load}>
       <Logo>
           <img src="/logo.png" alt="logo" />
+          {!load &&(
+          <span>Clothes for all types of styles.</span>
+          )}
       </Logo>
       <FullHeightContainer>
-      <span>Clothes for all types of styles</span>
+        <Nav>
+      <span>Clothes for all types of styles.</span>
       <nav>
         <li>
-          <a href="#/">Wommen's</a>
-          <a href="#/">Men's</a>
-          <a href="#/">Baby</a>
-          <a href="#/">Girls</a>
-          <a href="#/">Boys</a>
+          <Link href="/store" as="/store">
+            <a>Wommen's</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/store" as="/store">
+            <a>Men's</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/store" as="/store">
+            <a>Baby</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/store" as="/store">
+            <a>Girls</a>
+          </Link>
+        </li>
+        <li>
+          <Link href="/store" as="/store">
+            <a>Boys</a>
+          </Link>
         </li>
       </nav>
-      <img src="/boy.jpg" alt="boy" />
-      <img src="/girl.jpg" alt="girl" />
+      </Nav>
+      <Image>
+        <img src="/_models/boy4.jpg" alt="boy" />
+        <img src="/_models/girl10.jpg" alt="girl" />
+      </Image>
     </FullHeightContainer>
 
     </Container>

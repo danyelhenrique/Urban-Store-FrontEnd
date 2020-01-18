@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.aside`
-  /* height: 200px; */
-  /* height: ${(props) => (props.active ? '100%' : '200px')}; */
-  /* translate: all 10s ease; */
-
-
   width: 400px;
 
   border-radius: 0 0 5px 0;
@@ -13,13 +8,15 @@ export const Container = styled.aside`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  background:rgba(0,0,0,.9);
+
 
   z-index: 20;
 
 
   .full-height{
     opacity: ${(props) => (props.active ? 1 : 0)};
-    height: 100%;
+   
     transform: translateY(${(props) => (props.active ? "0%" : "-100%")});
     transition: transform 5s ease-in;
   }
@@ -28,12 +25,24 @@ export const Container = styled.aside`
 export const Logo = styled.div`
   display: flex;
 
-  justify-content: flex-start;
+  background:rgba(0,0,0,.9);
 
-  background: #fff;
-  height: 200px;
+  height: 100px;
   border-radius: 0 5px 0 0;
   z-index: 30;
+  padding: 10px;
+
+  span{
+    display: flex;
+    align-items: center;
+    height: 70px;
+    margin: 0 auto;
+
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 400;
+    color: rgb(253, 129, 78);
+  }
 
   img {
     height: 70px;
@@ -47,66 +56,84 @@ export const FullHeightContainer = styled.div.attrs({
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
 
+  height: 100%;
+  width: 100%;
 
   padding: 10px;
 
-  background: #fff;
+  background:rgba(0,0,0,.9);
   
+`;
+export const Nav = styled.div`
+  display: flex;
+  height: 40%;
+  width: 100%;
 
   span {
-    width: 50%;
-    align-self: center;
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
-  }
+        width: 50%;
+        align-self: center;
+        font-size: 1.2rem;
+        font-style: italic;
+        font-weight: 300;
 
-  img {
-    width: 50%;
-    height: 40%;
-  }
+        color: rgb(253, 129, 78);
+        padding: 0 5px;
+        text-align: center;
+        opacity: 0.7;
+    }
+
+
   nav {
-    width: 50%;
-    /* height: 50%; */
-    li {
-      display: flex;
-      flex-direction: column;
-      /* height: 100%; */
-      width: 100%;
-      background: #fefefe;
-      justify-content: space-between;
+      width: 50%;
+      background:rgba(0,0,0,.9);
 
-      a {
-        padding: 10px;
-        text-decoration: none;
-        flex: 1;
-        color: #ffff;
-        color: #795f4d;
-        font-weight: 600;
-
+      
+      li {
         display: flex;
-        align-items: center;
+        width: 100%;
 
-        transition: background 0.2s ease-out;
+        :nth-child(1) {
+            background: rgb(220, 87, 33);
+            a{
+              color: #ffff;
+            }
+       }
 
-        &:hover {
-          background: rgba(76, 70, 55, 0.69);
-          color: #ffff;
+
+        a {
+          padding: 10px;
+          text-decoration: none;
+          flex: 1;
+          color: #fff;
+          font-weight: 300;
+
+          display: flex;
+          align-items: center;
+
+          :hover {
+            background: rgb(220, 87, 33);
+            color: #ffff;
+          }
         }
       }
     }
-  }
 `;
-export const Span = styled.div`
-  align-self: center;
-  justify-self: center;
-  height: 100px;
-  span {
-    font-size: 1.5rem;
-    font-style: italic;
-    font-weight: 400;
-    color: rgba(0, 0, 0, 0.5);
-  }
+
+
+export const Image = styled.div`
+    width: 100%;
+    height: 50%;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+     img {
+      width: 49%;
+      height: 100%;
+    }
+
 `;
+

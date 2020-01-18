@@ -26,12 +26,12 @@ const Home = () => {
 )}
 
 const Backgorund = styled.div`
-  background: url('/background.jpg') no-repeat;
+  /* background: url('/background.jpg') no-repeat; */
+  background: ${props => props.load ? "url('/background.jpg') no-repeat" : "#fefefe"};
 
   background-position: center;
   background-size: 100% 100%;
 
-  /* background-size: cover; */
   object-fit: cover;
   width: calc(100% - 400px);
 
