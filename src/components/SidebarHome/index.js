@@ -1,13 +1,14 @@
 import React from 'react';
 
 import {
-  Container, Links, FullHeightContainer, Span,
+  Container, Logo, FullHeightContainer, Span,
 } from './styles';
 
-const full = true;
+const full = false;
 
-function fullSidebar() {
-  if (!full) {
+
+function fullSidebar({load}) {
+  if (!load) {
     return (
       <Span>
         <span>Clothes for all types of styles</span>
@@ -15,7 +16,7 @@ function fullSidebar() {
     );
   }
   return (
-    <FullHeightContainer>
+    <FullHeightContainer active={load}>
       <span>Clothes for all types of styles</span>
       <nav>
         <li>
@@ -32,15 +33,27 @@ function fullSidebar() {
   );
 }
 
-export default function SidebarHome() {
+export default function SidebarHome({load}) {
   return (
-    <Container active={full}>
-      <Links>
-        <div>
+    <Container active={load}>
+      <Logo>
           <img src="/logo.png" alt="logo" />
-        </div>
-      </Links>
-      {fullSidebar()}
+      </Logo>
+      <FullHeightContainer>
+      <span>Clothes for all types of styles</span>
+      <nav>
+        <li>
+          <a href="#/">Wommen's</a>
+          <a href="#/">Men's</a>
+          <a href="#/">Baby</a>
+          <a href="#/">Girls</a>
+          <a href="#/">Boys</a>
+        </li>
+      </nav>
+      <img src="/boy.jpg" alt="boy" />
+      <img src="/girl.jpg" alt="girl" />
+    </FullHeightContainer>
+
     </Container>
   );
 }

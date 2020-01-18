@@ -1,27 +1,58 @@
 import styled from 'styled-components';
 
 export const Container = styled.aside`
-  height: 200px;
-  height: ${(props) => (props.active ? '100%' : '200px')};
-  background: #fff;
+  /* height: 200px; */
+  /* height: ${(props) => (props.active ? '100%' : '200px')}; */
+  /* translate: all 10s ease; */
+
+
   width: 400px;
+
   border-radius: 0 0 5px 0;
+
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+
+  z-index: 20;
+
+
+  .full-height{
+    opacity: ${(props) => (props.active ? 1 : 0)};
+    height: 100%;
+    transform: translateY(${(props) => (props.active ? "0%" : "-100%")});
+    transition: transform 5s ease-in;
+  }
 `;
 
-export const Links = styled.div`
+export const Logo = styled.div`
   display: flex;
-  justify-content: space-between;
+
+  justify-content: flex-start;
+
+  background: #fff;
+  height: 200px;
+  border-radius: 0 5px 0 0;
+  z-index: 30;
+
+  img {
+    height: 70px;
+    width: 80px;
+  }
 `;
 
-export const FullHeightContainer = styled.div`
+export const FullHeightContainer = styled.div.attrs({
+  className: "full-height"
+})`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  height: 100%;
+
+
   padding: 10px;
+
+  background: #fff;
+  
 
   span {
     width: 50%;
@@ -38,11 +69,11 @@ export const FullHeightContainer = styled.div`
   }
   nav {
     width: 50%;
-    height: 50%;
+    /* height: 50%; */
     li {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      /* height: 100%; */
       width: 100%;
       background: #fefefe;
       justify-content: space-between;
