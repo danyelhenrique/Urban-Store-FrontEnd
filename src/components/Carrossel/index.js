@@ -14,8 +14,8 @@ export default function Carrossel() {
       <CarouselProvider
         naturalSlideWidth={90}
         naturalSlideHeight={90}
-        totalSlides={8}
-        visibleSlides={2}
+        totalSlides={4}
+        visibleSlides={1}
         step={1}
         hasMasterSpinner
         infinite
@@ -25,11 +25,6 @@ export default function Carrossel() {
           <Slide index={1}><Image src="/girl.jpg" /></Slide>
           <Slide index={2}><Image src="/boy.jpg" /></Slide>
           <Slide index={3}><Image src="/girl.jpg" /></Slide>
-
-          <Slide index={4}><Image src="/boy.jpg" /></Slide>
-          <Slide index={5}><Image src="/girl.jpg" /></Slide>
-          <Slide index={6}><Image src="/boy.jpg" /></Slide>
-          <Slide index={7}><Image src="/girl.jpg" /></Slide>
         </Slider>
         <Arrow>
           <BtnPrev><img src="/arrow.png" alt="Prev" /></BtnPrev>

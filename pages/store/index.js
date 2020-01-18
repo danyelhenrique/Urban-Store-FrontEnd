@@ -5,22 +5,22 @@ import Main from '../../src/components/Main';
 import Nav from '../../src/components/Nav';
 
 import MainStore from '../../src/components/MainStore';
-import Image from '../../src/components/Image';
+import Hero from '../../src/components/Hero';
 import SiidebarStore from '../../src/components/SidebarStore';
 
 export default function store() {
   return (
-    <div>
+    <>
       <Head>
         <title>Urban Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Main>
         <Nav />
-        <SiidebarStore />
-        <Image />
+        {/* <SiidebarStore /> */}
+        <Hero />
         <MainStore />
       </Main>
-    </div>
+    </>
   );
 }

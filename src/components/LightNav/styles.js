@@ -74,6 +74,7 @@ export const Links = styled.div`
   width: 100%;
   padding-bottom: 15px;
 
+
 `;
 
 export const LinkGroup = styled.div`
@@ -92,6 +93,8 @@ export const LinkGroup = styled.div`
       margin: 0 5px;
       display: block;
       padding: 15px;
+      text-decoration: none;
+      cursor: pointer;
 
       :hover{
         border-bottom: 1px solid rgba(240, 94, 35, 1);
@@ -105,8 +108,8 @@ export const Input = styled.div`
 
     input{
       border: none;
-      border-bottom: 1px solid #dedede;
-      outline-color: rgba(240, 94, 35, 1);
+      border-bottom: 1px solid rgba(240, 94, 35, 0.5);
+      outline: none;
 
     }
 
