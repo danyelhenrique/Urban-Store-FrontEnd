@@ -18,7 +18,7 @@ export const Fixed = styled.div`
     height: 100vh;
     width: 100%;
 
-    background:  rgba(255,255,255, 0.4);
+    background: rgba(23, 20, 20, 0.52);
 
     display: flex;
     flex-direction: column;

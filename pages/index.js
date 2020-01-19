@@ -26,8 +26,7 @@ const Home = () => {
 )}
 
 const Backgorund = styled.div`
-  /* background: url('/background.jpg') no-repeat; */
-  background: ${props => props.load ? "url('/background.jpg') no-repeat" : "#fefefe"};
+  background: url('/background.jpg') no-repeat;
 
   background-position: center;
   background-size: 100% 100%;
@@ -41,7 +40,6 @@ const Backgorund = styled.div`
   top: 0;
   transform:translateX(${props => props.load ? "400px" : "0%"});
   transition: transform 5s ease;
-
 
 `;
 

@@ -10,6 +10,7 @@ import {
   Details,
   ItemName,
   Select,
+  MoreLess,
   Image
 } from "./styles";
 
@@ -46,6 +47,7 @@ export default function BagModal() {
   }
 
 
+
   return (
     <ContainerModal isActive={isActive}>
     <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
@@ -71,13 +73,17 @@ export default function BagModal() {
 
                 <Select>
                 <small> qnt: </small>
-                  <Icon background="/user_modal_bag/more.png" >
-                      <button onClick={() => dispatch({type:"@IncreaseItemQuantityMoreOne" , payload: item})}></button>
-                  </Icon>
+                  <MoreLess>
+                      <button onClick={() => dispatch({type:"@IncreaseItemQuantityMoreOne" , payload: item})}>
+                        <span>+</span>
+                      </button>
+                  </MoreLess>
                   <input  type="text" value={item.qntRequest} onChange={() => handleChange(item)}/>
-                  <Icon background="/user_modal_bag/less.png" >
-                      <button onClick={() => dispatch({type:"@DecreaseItemQuantityMoreOne"})}></button>
-                  </Icon>
+                  <MoreLess>
+                      <button onClick={() => dispatch({type:"@DecreaseItemQuantityMoreOne"})}>
+                      <span>-</span>
+                      </button>
+                  </MoreLess>
                 </Select>
               </Details>
           </Item>

@@ -14,6 +14,12 @@ export const ContainerModal = styled.div`
 		opacity: ${props => !props.isActive ? 0 : 1};
 
 		transition: all 2s ease;
+
+		background: #000;
+
+		h6{
+			color: #fefefe;
+		}
 	}
 `;
 
@@ -57,7 +63,7 @@ export const Button =styled.button`
     align-items: center;
     justify-content: flex-start;
 
-    padding: 10px;
+	margin-left: 15px;
     margin: 5px 0;
 
     font-size: 0.8rem;
@@ -99,12 +105,14 @@ export const Details = styled.div`
 	display: flex;
 	flex-direction:column;
 
-	padding:  20px;
-
+	margin-left: 15px;
 	> small{
-		font-weight: bold;
+		font-weight: 400;
 		font-size: 0.7rem;
-		color: #000;
+		color: rgb(220,87,33);
+		line-height: calc(0.7rem * 1.5);
+		margin-top: 5px;
+		min-height: calc(0.7rem * 2);
 	}
 
 
@@ -116,9 +124,11 @@ export const ItemName =  styled.div`
 	justify-content: space-between;
 	
 	font-weight: 400;
-	color: #000;
+    color: #a2a2a2;
 	font-size: 0.9rem;
+	line-height: calc(0.9rem * 1.5);
 	text-transform: capitalize;
+
 
 	> div > button {
 		width: 100%;
@@ -132,6 +142,10 @@ export const ItemName =  styled.div`
 		align-self: flex-start;
 	}
 
+	span{
+		text-overflow: ellipsis;
+	}
+
 `;
 
 
@@ -140,8 +154,9 @@ export const Select = styled.div`
 	align-items: center;
 	justify-content: space-between;
 
-	width: 80%;
-	color: rgba(0,0,0,0.8);
+	width: 60%;
+	height:25px;
+	color: #a2a2a2;
 
 	>div > button {
 		width: 100%;
@@ -149,12 +164,38 @@ export const Select = styled.div`
 		background: transparent;
 		border: none;
 	}
-	> div{
-		width: 15px;
-    	height: 15px;
-	}
 
 	input {
 		width: 20%;
+		border: none;
+		background: transparent;
+		color: #fff;
+		text-align: center;
 	}
+`
+
+export const MoreLess = styled.div`
+	height: 100%;
+  	width: 25px;
+
+	  button {
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		border: none;
+
+		display: flex;
+		align-items: center;
+	    justify-content: center;
+
+		text-align: center;
+
+
+		span{
+			display: inline-block;
+			font-size:  18px;
+			color: rgb(254, 254, 254);
+		}
+	}
+
 `
