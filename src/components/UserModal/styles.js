@@ -15,6 +15,12 @@ export const ContainerModal = styled.div`
 
 		transition: all 2s ease;
 
+        background: #000;
+
+		h6{
+			color: #fefefe;
+		}
+
 	}
 `;
 
@@ -58,7 +64,7 @@ export const MyAccount =  styled.div`
 
 export const Button =styled.button`
     border: none;
-    border-bottom: 1px solid #dedede;
+    border-bottom: 1px solid #ff4b2b;;
     background: transparent;
 
     display: flex;
@@ -71,7 +77,7 @@ export const Button =styled.button`
     font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 2px;
-    color: #000;
+    color: #fff;
 
     cursor: pointer;
 `;
@@ -82,6 +88,7 @@ export const UserData =styled.div`
 flex-direction:column;
 
 `;
+
 
 
 export const Avatar =styled.div`
