@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 import {warn} from '../../toasty'
 
+import NavWomen from '../NavItemsContainer/Women'
 
 import { Context } from '../../context';
 
@@ -48,6 +49,7 @@ export default function LightNav() {
           <QntCart>{Qnt}</QntCart>
           </IconsContainer>
       </UserArea>
+
       <Links>
         <LinkGroup>
           <a>WOMEN + ACC</a>
@@ -65,6 +67,9 @@ export default function LightNav() {
       </Links>
         <UserModal/>
         <BagModal/>
+        
+        <NavWomen/>
+
     </Header>
   );
 }

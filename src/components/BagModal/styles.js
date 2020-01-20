@@ -23,6 +23,7 @@ export const ContainerModal = styled.div`
 	}
 `;
 
+
 export const StoreData =styled.div`
     display: flex;
     flex-direction:column;

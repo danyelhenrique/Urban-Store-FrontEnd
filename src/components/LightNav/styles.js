@@ -2,14 +2,21 @@ import styled from "styled-components";
 
 export const Header =styled.div`
   width: 100%;
-  background:rgb(255,255,255);
   height: 100%;
+
+  background:rgb(255,255,255);
 
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
   overflow: hidden;
+
+  position: relative;
+
+
+
 `;
 export const Internalization = styled.div`
   height: 15%;
@@ -99,6 +106,7 @@ export const LinkGroup = styled.div`
 
   margin: 0 auto;
 
+  
   a{
       margin: 0 5px;
       display: block;
