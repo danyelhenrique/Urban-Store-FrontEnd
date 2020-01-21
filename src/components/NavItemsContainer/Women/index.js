@@ -1,24 +1,25 @@
-import React from 'react';
+import React,{useState} from 'react';
 import NavContainer from '../index'
 
 import styled from 'styled-components';
 
-
-const Carossel = styled.div`
-  height: 90px;
-  background: red;
-
+const Image = styled.div`
+  height: 70%;
+  width: 100%;
+  background: url("${props => props.background && `${props.background}`}");
+  background-size: cover;
+  background-repeat: no-repeat;
 `
-
 
 import { Ul } from './styles';
 import NavItems from '../../NavItems';
 
 
+export default function Women({active , setActive}) {
 
-export default function Women() {
+
   return (
-    <NavContainer>
+    <NavContainer active={active} setActive={setActive}> 
         <Ul default>
             <NavItems />
         </Ul>
@@ -30,7 +31,7 @@ export default function Women() {
 
         <Ul double>
             <NavItems title="Clothing"/>
-          <Carossel></Carossel>
+            <Image background="/nav/navgation/girl.jpeg"/>
         </Ul>
 
     </NavContainer>

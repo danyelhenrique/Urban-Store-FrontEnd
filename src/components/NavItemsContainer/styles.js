@@ -6,10 +6,14 @@ export const Container= styled.nav`
     width: 100%;
     position: fixed;
     top: 140px;
-    background: #fff;
+    background: red;
 
     display: flex;
     z-index: 99;
     
     padding: 0 50px;
+
+    overflow: scroll;
+
+    display: ${props => props.active ? "flex" : "none"}
 `;

@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { useRouter } from 'next/router'
 import Link from 'next/link';
 
@@ -19,6 +19,9 @@ import {
 
 export default function LightNav() {
   const [state, dispatch] = useContext(Context);
+  const [active , setActive] = useState(false)
+  const [modalOpen , setModalOpen] = useState(false)
+
   const router = useRouter()
 
   const Favorites =() =>{
@@ -26,7 +29,17 @@ export default function LightNav() {
   }
 
   const Qnt = useMemo(()=> state.cart.length,[state.cart])
+  
+  const handleModal =  _ => {
+    setModalOpen(!modalOpen)
+  }
 
+   const handleModalLinks =  _ => {
+    //  if(modalOpen) return
+     setActive(!active)
+    
+  }
+  
   return (
     <Header>
       <Internalization>
@@ -51,8 +64,14 @@ export default function LightNav() {
       </UserArea>
 
       <Links>
-        <LinkGroup>
-          <a>WOMEN + ACC</a>
+        <LinkGroup
+        //  onMouseOver={handleModal}
+        //  onMouseOut={handleModal}
+         >
+          <a
+          onMouseOver={_ => setActive(true)}
+          // onMouseOut={handleModalLinks}
+          >WOMEN + ACC</a>
           <a>PLUS + CURVER</a>
           <a>WOMEN + ACC</a>
           <a>MEN</a>
@@ -67,8 +86,9 @@ export default function LightNav() {
       </Links>
         <UserModal/>
         <BagModal/>
-        
-        <NavWomen/>
+        {/* {active && ( */}
+        <NavWomen active={active} setActive={setActive}/>
+        {/* )} */}
 
     </Header>
   );
