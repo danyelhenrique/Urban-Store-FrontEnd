@@ -1,48 +1,43 @@
 import styled from 'styled-components';
 
-
 export const Container = styled.div`
-    width: 100vw;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 `;
 export const Fixed = styled.div`
-    position : fixed;
+  position: fixed;
 
-    top: 0px;
-    left: 0px;
+  top: 0px;
+  left: 0px;
 
-    height: 100vh;
-    width: 100%;
+  height: 100vh;
+  width: 100%;
 
-    background: rgba(23, 20, 20, 0.52);
+  background: rgba(23, 20, 20, 0.52);
 
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
-    cursor: pointer;
-
+  cursor: pointer;
 `;
 
 export const Modal = styled.div.attrs({
-    className: "modal"
+  className: 'modal'
 })`
-    width: 30%;
-    height: 100vh;
-    background: rgb(255,255,255);
-    box-shadow: -9px 0px 14px 0px rgba(0,0,0,0.16);
+  width: 30%;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  box-shadow: -9px 0px 14px 0px rgba(0, 0, 0, 0.16);
 
-    display: flex;
-    flex-direction:column;
+  display: flex;
+  flex-direction: column;
 
-    padding: 15px;
+  padding: 15px;
 
-
-    position: fixed;
-    top: 0;
-   
-`
+  position: fixed;
+  top: 0;
+`;

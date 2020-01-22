@@ -1,4 +1,4 @@
-import styled,{css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -6,27 +6,24 @@ export const Container = styled.div`
 
   display: flex;
   flex-wrap: wrap;
- 
 
   height: 100%;
 
-	background: #000;
+  background: #000;
 
+  background: #fff;
 
-	background: #fff;
+  #top,
+  #bottom {
+    transform: translateY(${props => (props.mount ? '0%' : '100%')});
+    opacity: ${props => (!props.mount ? 0 : 1)};
 
-
-  #top, #bottom{
-      transform: translateY(${props => props.mount ? "0%" : "100%"});
-      opacity: ${props => !props.mount ? 0 : 1};
-
-      transition: all 5s ease;
+    transition: all 5s ease;
   }
 
-  #bottom{
-    transform: translateY(${props => props.mount ? "0%" : "-100%"});
+  #bottom {
+    transform: translateY(${props => (props.mount ? '0%' : '-100%')});
   }
-
 
   @media (min-width: 500px) {
     /* width: 100%; */
@@ -53,6 +50,5 @@ export const Image = styled.div`
   background-size: 100% 100%;
 
 `;
-
 
 export const Description = styled.div``;

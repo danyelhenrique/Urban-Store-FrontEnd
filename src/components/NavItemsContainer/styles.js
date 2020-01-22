@@ -1,19 +1,25 @@
+/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
+export const Container = styled.ul.attrs({
+  className: 'nav-links',
+})`
+  background: #fff;
 
-export const Container= styled.nav`
-    height:calc(100vh - 152px);
-    width: 100%;
-    position: fixed;
-    top: 140px;
-    background: red;
+  display: flex;
 
-    display: flex;
-    z-index: 99;
-    
-    padding: 0 50px;
+  width: 100%;
+  height: 80vh;
 
-    overflow: scroll;
+  position: absolute;
+  left: 0;
 
-    display: ${props => props.active ? "flex" : "none"}
+  opacity: 0;
+
+  pointer-events: none;
+
+  padding-top: 20px;
+  margin-top: 2px;
+
+  transition: all 0.3s ease;
 `;

@@ -8,9 +8,8 @@ import {
   SignUpContainer,
   SignInContainer,
   Ghost,
-  Button,
+  Button
 } from './styles';
-
 
 export default function Login() {
   const [state, dispatch] = useContext(Context);

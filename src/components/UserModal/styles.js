@@ -1,97 +1,90 @@
 import styled from 'styled-components';
 
 export const ContainerModal = styled.div`
-    height: 100%;
-	opacity: ${props => !props.isActive ? 0 : 1};
-	position: absolute;
-	top: 0;
-	
-	pointer-events: ${props => !props.isActive ? "none" : "all"};
+  height: 100%;
+  opacity: ${props => (!props.isActive ? 0 : 1)};
+  position: absolute;
+  top: 0;
 
-	
-	.modal{
-		transform: translateX(${props => props.isActive ? "0%" : "100%"});
-		opacity: ${props => !props.isActive ? 0 : 1};
+  pointer-events: ${props => (!props.isActive ? 'none' : 'all')};
 
-		transition: all 2s ease;
+  .modal {
+    transform: translateX(${props => (props.isActive ? '0%' : '100%')});
+    opacity: ${props => (!props.isActive ? 0 : 1)};
 
-        background: #000;
+    transition: all 2s ease;
 
-		h6{
-			color: #fefefe;
-		}
+    background: #000;
 
-	}
+    h6 {
+      color: #fefefe;
+    }
+  }
 `;
 
 export const Modal = styled.div`
-    width: 30%;
-    height: 100vh;
-    background: rgb(255,255,255);
-    box-shadow: -9px 0px 14px 0px rgba(0,0,0,0.16);
+  width: 30%;
+  height: 100vh;
+  background: rgb(255, 255, 255);
+  box-shadow: -9px 0px 14px 0px rgba(0, 0, 0, 0.16);
 
-    display: flex;
-    flex-direction:column;
+  display: flex;
+  flex-direction: column;
 
-    padding: 15px;
+  padding: 15px;
 
-    z-index: 200;
+  z-index: 200;
 
-    position: fixed;
-    top: 0;
-   
-`
-
-export const MyAccount =  styled.div`
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    text-transform: uppercase;
-
-    font-size: 1.5rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: rgba(0,0,0,0.7);
-
-   > div > button {
-        cursor: pointer;
-        height: 100%;
-        width: 100%;
-        background: transparent;
-        border:none;
-    }
+  position: fixed;
+  top: 0;
 `;
 
-export const Button =styled.button`
-    border: none;
-    border-bottom: 1px solid #ff4b2b;;
-    background: transparent;
+export const MyAccount = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
 
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: rgba(0, 0, 0, 0.7);
 
-    padding-top: 10px;
-    margin: 5px 0;
-
-    font-size: 0.8rem;
-    font-weight: 400;
-    letter-spacing: 2px;
-    color: #fff;
-
+  > div > button {
     cursor: pointer;
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: none;
+  }
 `;
 
+export const Button = styled.button`
+  border: none;
+  border-bottom: 1px solid #ff4b2b;
+  background: transparent;
 
-export const UserData =styled.div`
- display: flex;
-flex-direction:column;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 
+  padding-top: 10px;
+  margin: 5px 0;
+
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: #fff;
+
+  cursor: pointer;
 `;
 
+export const UserData = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
 
-
-export const Avatar =styled.div`
+export const Avatar = styled.div`
   background: url("${props => props.background}");
   background-position: center;
   background-size: 100% 100%;
@@ -106,5 +99,3 @@ export const Avatar =styled.div`
   border-radius: 50%;
   box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.10);
 `;
-
-

@@ -5,9 +5,7 @@ import Main from '../../src/components/Main';
 import ItemMore from '../../src/components/ItemMore';
 import Nav from '../../src/components/Nav';
 
-
 export default function store() {
-
   return (
     <div>
       <Head>

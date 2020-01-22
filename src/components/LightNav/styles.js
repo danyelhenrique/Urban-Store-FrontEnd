@@ -1,10 +1,9 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Header =styled.div`
+export const Header = styled.div`
   width: 100%;
-  height: 100%;
 
-  background:rgb(255,255,255);
+  background: rgb(255, 255, 255);
 
   display: flex;
   flex-direction: column;
@@ -14,41 +13,35 @@ export const Header =styled.div`
   overflow: hidden;
 
   position: relative;
-
-
-
 `;
 export const Internalization = styled.div`
   height: 15%;
   width: 100%;
   background: #dedede;
-
 `;
-export const  UserArea = styled.div`
+export const UserArea = styled.div`
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
-  
 `;
-
 
 export const Logo = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
   margin: 0 auto;
 `;
 
 export const IconsContainer = styled.div`
   background: transparent;
-  margin-right:  13px;
+  margin-right: 13px;
 
   position: relative;
 
   display: flex;
- 
+
   > div > button {
     cursor: pointer;
     height: 100%;
@@ -58,78 +51,86 @@ export const IconsContainer = styled.div`
   }
 `;
 
-export const QntCart =  styled.div`
+export const QntCart = styled.div`
   text-overflow: ellipsis;
 
   display: flex;
   align-items: center;
-  
+
   height: 25px;
   width: 25px;
 
-  border-left:  2px solid rgba(240, 94, 35, 1);
+  border-left: 2px solid rgba(240, 94, 35, 1);
 
   font-weight: 400;
   font-size: 0.9rem;
-  font-family:"Roboto";
+  font-family: 'Roboto';
 
-  color: rgba(0,0,0,0.8);
+  color: rgba(0, 0, 0, 0.8);
 
   padding: 0 8px;
 
   margin: 2px;
-
-  
 `;
 
-export const Links = styled.div`
+export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: center;
+
   width: 100%;
-  padding-bottom: 15px;
 
+  background: #fff;
 
+  position: relative;
 `;
 
-export const LinkGroup = styled.div`
-  width: 60%;
-
+export const LinkGroup = styled.ul`
   display: flex;
   align-items: center;
-  justify-content: flex-end;
-
-  font-weight: 400;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  color: #000;
-
   margin: 0 auto;
+  list-style: none;
+  width: 100%;
+  justify-content: center;
+`;
 
-  
-  a{
-      margin: 0 5px;
-      display: block;
-      padding-right: 10px;
-      text-decoration: none;
-      cursor: pointer;
+export const Link = styled.li`
+  display: flex;
+  align-items: center;
 
-      :hover{
-        border-bottom: 2px solid rgba(240, 94, 35, 1);
+  > a {
+    margin: 0 5px;
+    display: block;
+    padding-right: 10px;
+    text-decoration: none;
+    cursor: pointer;
 
+    font-weight: 400;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    color: #000;
+
+    border-bottom: 2px solid #fff;
+
+    :hover {
+      border-bottom: 2px solid rgba(240, 94, 35, 1);
+      z-index: 999;
+
+      ul {
+        opacity: 1;
+        pointer-events: all;
       }
     }
+  }
 `;
+
 export const Input = styled.div`
-    display: flex;
-    padding: 15px;
+  display: flex;
+  padding: 15px;
 
-
-    input{
-      border: none;
-      border-bottom: 1px solid rgba(240, 94, 35, 0.5);
-      outline: none;
-
-    }
-
+  input {
+    border: none;
+    border-bottom: 1px solid rgba(240, 94, 35, 0.5);
+    outline: none;
+  }
 `;

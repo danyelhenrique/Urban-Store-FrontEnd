@@ -13,7 +13,7 @@ export const Form = styled.form`
 	position: relative;
 
 
-	background: url('${(props) => props.background}');
+	background: url('${props => props.background}');
 
 	background-repeat: no-repeat;
 	background-position: center center;
@@ -21,7 +21,7 @@ export const Form = styled.form`
 	background-size: 100% 100%;
 
 	input {
-		color: ${props => props.isSignUp ? "#fff": "#000"};
+		color: ${props => (props.isSignUp ? '#fff' : '#000')};
 	}
 
 
@@ -42,69 +42,70 @@ export const Form = styled.form`
 `;
 
 export const InputContainer = styled.div`
-	position: relative;
-	width: 100%;
+  position: relative;
+  width: 100%;
 
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 
-	p {
-		align-self: flex-start;
-		justify-self: flex-start;
-		position: absolute;
-		top: 0;
+  p {
+    align-self: flex-start;
+    justify-self: flex-start;
+    position: absolute;
+    top: 0;
 
-		display: none;
-	}
+    display: none;
+  }
 
-	input:-webkit-autofill,
-	input:focus:-webkit-autofill {
-		-webkit-box-shadow: 0 0 0 100px rgba(0,0,0,0.01) inset;
-		box-shadow: 0 0 0 100px rgba(0,0,0,0.01) inset;
-	}
+  input:-webkit-autofill,
+  input:focus:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.01) inset;
+    box-shadow: 0 0 0 100px rgba(0, 0, 0, 0.01) inset;
+  }
 
-	input {
-		padding: 12px 15px;
+  input {
+    padding: 12px 15px;
 
-		margin: 8px 0;
+    margin: 8px 0;
 
-		width: 100%;
+    width: 100%;
 
-		outline: none;
+    outline: none;
 
-		border: none;
-		border-bottom: 2px solid rgba(240, 94, 35, 1);
+    border: none;
+    border-bottom: 2px solid rgba(240, 94, 35, 1);
 
-		background: transparent;
+    background: transparent;
 
-		font-family:"Roboto";
-		
+    font-family: 'Roboto';
 
-		::placeholder {
-			color: #fff;
-		}
+    ::placeholder {
+      color: #fff;
+    }
 
-		:focus {
-			background: transparent;
-		}
-	}
+    :focus {
+      background: transparent;
+    }
+  }
 `;
 
-export const SocialContainer = styled.div`margin: 20px 0;`;
+export const SocialContainer = styled.div`
+  margin: 20px 0;
+`;
 
 export const Social = styled.a`
-	border: 1px solid #dddddd;
-	border-radius: 50%;
-	display: inline-flex;
-	justify-content: center;
-	align-items: center;
-	margin: 0 5px;
-	height: 40px;
-	width: 40px;
+  border: 1px solid #dddddd;
+  border-radius: 50%;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 5px;
+  height: 40px;
+  width: 40px;
 `;
 
 export const Icon = styled.i`
-	background: url('${(props) => props.icon}');
+	background: url('${props => props.icon}');
 	background-position: center;
 	background-size: contain;
 	background-size: 100% 100%;
@@ -114,32 +115,35 @@ export const Icon = styled.i`
 `;
 
 export const Button = styled.button`
-	border-radius: 20px;
-	border: 1px solid #ff4b2b;
-	background-color: #ff4b2b;
-	color: #ffffff;
-	font-size: 12px;
-	font-weight: bold;
-	padding: 12px 45px;
-	letter-spacing: 1px;
-	text-transform: uppercase;
-	transition: transform 80ms ease-in;
-	cursor: pointer;
-	z-index: 90;
+  border-radius: 20px;
+  border: 1px solid #ff4b2b;
+  background-color: #ff4b2b;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: transform 80ms ease-in;
+  cursor: pointer;
+  z-index: 90;
 
-	${(props) => props.ghost && css`background: transparent;`};
+  ${props => props.ghost
+    && css`
+      background: transparent;
+    `};
 
-	:active {
-		transform: scale(0.95);
-	}
+  :active {
+    transform: scale(0.95);
+  }
 
-	:focus {
-		outline: none;
-	}
+  :focus {
+    outline: none;
+  }
 
-	${(props) => props.ghost
-        && css`
-			background-color: transparent;
-			border-color: #ffffff;
-		`};
+  ${props => props.ghost
+    && css`
+      background-color: transparent;
+      border-color: #ffffff;
+    `};
 `;

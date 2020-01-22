@@ -1,27 +1,28 @@
 import styled from 'styled-components';
 
-
-export const Li= styled.li.attrs({
-    className: "nav-items"
+export const Li = styled.li.attrs({
+  className: 'nav-items'
 })`
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 
-    min-width: 220px;
+  min-width: 220px;
 
-    margin: 0 20px;
+  margin: 0 20px;
 
-    display: flex;
-    flex-direction: column;
-    
-    list-style: none;
-    font-size: 0.9rem;
-    line-height: calc(0.9rem * 1.5);
+  display: flex;
+  flex-direction: column;
 
+  list-style: none;
+  font-size: 0.9rem;
+  line-height: calc(0.9rem * 1.5);
 
-    a {
-        text-decoration: none;
-        padding: 9px 0;
+  a {
+    text-decoration: none;
+    padding: 9px 0;
+    :hover {
+      text-decoration: underline;
+      text-decoration-color: rgb(240, 94, 35);
     }
-
+  }
 `;

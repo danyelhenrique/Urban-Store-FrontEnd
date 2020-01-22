@@ -5,6 +5,7 @@ const STATE = {
   isLogin: false,
   isSignUpSlider: true,
   isSignInSlider: false,
+
   formBackground: '/login/oito.jpg',
   loginPageBackground: '/login/cinco.jpg',
   lastUrl: '/store',
@@ -15,9 +16,8 @@ const STATE = {
     total: 0,
     discont: 0,
     qnt: 1,
-    shipping: 'Free',
+    shipping: 'Free'
   },
 };
-
 
 export default STATE;

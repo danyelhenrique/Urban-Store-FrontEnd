@@ -1,78 +1,85 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Context } from '../../context';
 
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/router';
 
-import { useLazyQuery  } from '@apollo/react-hooks';
+import { useLazyQuery } from '@apollo/react-hooks';
 
 import { gql } from 'apollo-boost';
-
-
-const Data = gql`
-  query getData($name: String!){
-   showProduct(where:{data_product_display_name:$name}) {
-    id
-    data_price
-    data_product_display_name
-    data_brand_name
-    data_base_colour
-    data_colour1
-    data_colour2
-    data_colour3
-    data_colour4
-    data_front_imageURL
-    data_back_image_url
-  }
-}
-`;
+import { Context } from '../../context';
 
 import {
-  Container, Image, ItemDetail, Header, Body, Select, Button, Favorite, Details, ButtonDetails,
+  Container,
+  Image,
+  ItemDetail,
+  Header,
+  Body,
+  Select,
+  Button,
+  Favorite,
+  Details,
+  ButtonDetails,
 } from './styles';
 
-export default function ItemMore() {
-  const router = useRouter()
+const Data = gql`
+  query getData($name: String!) {
+    showProduct(where: { data_product_display_name: $name }) {
+      id
+      data_price
+      data_product_display_name
+      data_brand_name
+      data_base_colour
+      data_colour1
+      data_colour2
+      data_colour3
+      data_colour4
+      data_front_imageURL
+      data_back_image_url
+    }
+  }
+`;
 
-  const urlAs = router.query.slug.split("_").join(" ")
+export default function ItemMore() {
+  const router = useRouter();
+
+  const urlAs = router.query.slug.split('_').join(' ');
 
   const [state, dispatch] = useContext(Context);
-  const [isLoading , setIsLoading] =useState(true)
-  const [item , setItem] =useState({})
+  const [isLoading, setIsLoading] = useState(true);
+  const [item, setItem] = useState({});
 
-
-  const [getData] = useLazyQuery(Data,{
-    fetchPolicy:"network-only",
-    onCompleted: (item) =>{
-      setItem(item.showProduct)
-      setIsLoading(false)
+  const [getData] = useLazyQuery(Data, {
+    fetchPolicy: 'network-only',
+    onCompleted: item => {
+      setItem(item.showProduct);
+      setIsLoading(false);
     },
-    onError:( _ )=> error('fail to create accout.'),
-  })
+    onError: _ => error('fail to create accout.'),
+  });
 
-  useEffect(()=>{
-    const product = state.products.find(produc => produc.data_product_display_name === urlAs)
-    if(!product) return getData({ variables:{ name:urlAs}})
+  useEffect(() => {
+    const product = state.products.find(
+      produc => produc.data_product_display_name === urlAs,
+    );
+    if (!product) return getData({ variables: { name: urlAs } });
 
-      setItem(product)
-      setIsLoading(false)
- },[])
+    setItem(product);
+    setIsLoading(false);
+  }, []);
 
-
-  if(isLoading) return <h1>Loading</h1>
+  if (isLoading) return <h1>Loading</h1>;
 
   const {
-    id, 
+    id,
     data_front_imageURL,
     data_product_display_name,
     data_back_image_url,
-    data_price
+    data_price,
   } = item;
-
 
   function addToCart(item) {
     dispatch({ type: '@ADD_CART_ITEM', payload: item });
   }
-  
+
   return (
     <Container key={id}>
       <Image>
@@ -84,9 +91,7 @@ export default function ItemMore() {
           <div>
             <span>{data_product_display_name}</span>
             <span>
-                $
-              {data_price}
-            </span>
+${data_price}</span>
           </div>
           <Favorite>
             <img src="/favorite-red.png" alt="favorite" />
@@ -103,7 +108,7 @@ export default function ItemMore() {
         <Select>
           <select name="select" defaultValue="DEFAULT">
             <option value="DEFAULT" disabled>
-								Choose Size
+              Choose Size
             </option>
             <option value="valor1">Select Size</option>
             <option value="valor2">Select Size </option>
@@ -118,7 +123,7 @@ export default function ItemMore() {
           </div>
         </Button>
       </ItemDetail>
-    
+
       <Details>
         <ButtonDetails>
           <span>DETAILS</span>
@@ -139,5 +144,5 @@ export default function ItemMore() {
         </div>
       </Details>
     </Container>
-  )
+  );
 }

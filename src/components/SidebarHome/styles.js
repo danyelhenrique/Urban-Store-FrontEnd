@@ -8,16 +8,14 @@ export const Container = styled.aside`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  background:rgba(0,0,0,.9);
-
+  background: rgba(0, 0, 0, 0.9);
 
   z-index: 20;
 
+  .full-height {
+    opacity: ${props => (props.active ? 1 : 0)};
 
-  .full-height{
-    opacity: ${(props) => (props.active ? 1 : 0)};
-   
-    transform: translateY(${(props) => (props.active ? "0%" : "-100%")});
+    transform: translateY(${props => (props.active ? '0%' : '-100%')});
     transition: transform 5s ease-in;
   }
 `;
@@ -25,14 +23,14 @@ export const Container = styled.aside`
 export const Logo = styled.div`
   display: flex;
 
-  background:rgba(0,0,0,.9);
+  background: rgba(0, 0, 0, 0.9);
 
   height: 100px;
   border-radius: 0 5px 0 0;
   z-index: 30;
   padding: 10px;
 
-  span{
+  span {
     display: flex;
     align-items: center;
     height: 70px;
@@ -51,7 +49,7 @@ export const Logo = styled.div`
 `;
 
 export const FullHeightContainer = styled.div.attrs({
-  className: "full-height"
+  className: 'full-height'
 })`
   display: flex;
   flex-direction: row;
@@ -63,8 +61,7 @@ export const FullHeightContainer = styled.div.attrs({
 
   padding: 10px;
 
-  background:rgba(0,0,0,.9);
-  
+  background: rgba(0, 0, 0, 0.9);
 `;
 export const Nav = styled.div`
   display: flex;
@@ -72,68 +69,62 @@ export const Nav = styled.div`
   width: 100%;
 
   span {
-        width: 50%;
-        align-self: center;
-        font-size: 1.2rem;
-        font-style: italic;
-        font-weight: 300;
+    width: 50%;
+    align-self: center;
+    font-size: 1.2rem;
+    font-style: italic;
+    font-weight: 300;
 
-        color: rgb(253, 129, 78);
-        padding: 0 5px;
-        text-align: center;
-        opacity: 0.7;
-    }
-
+    color: rgb(253, 129, 78);
+    padding: 0 5px;
+    text-align: center;
+    opacity: 0.7;
+  }
 
   nav {
-      width: 50%;
-      background:rgba(0,0,0,.9);
+    width: 50%;
+    background: rgba(0, 0, 0, 0.9);
 
-      
-      li {
-        display: flex;
-        width: 100%;
+    li {
+      display: flex;
+      width: 100%;
 
-        :nth-child(1) {
-            background: rgb(220, 87, 33);
-            a{
-              color: #ffff;
-            }
-       }
-
-
+      :nth-child(1) {
+        background: rgb(220, 87, 33);
         a {
-          padding: 10px;
-          text-decoration: none;
-          flex: 1;
-          color: #fff;
-          font-weight: 300;
+          color: #ffff;
+        }
+      }
 
-          display: flex;
-          align-items: center;
+      a {
+        padding: 10px;
+        text-decoration: none;
+        flex: 1;
+        color: #fff;
+        font-weight: 300;
 
-          :hover {
-            background: rgb(220, 87, 33);
-            color: #ffff;
-          }
+        display: flex;
+        align-items: center;
+
+        :hover {
+          background: rgb(220, 87, 33);
+          color: #ffff;
         }
       }
     }
+  }
 `;
-
 
 export const Image = styled.div`
-    width: 100%;
-    height: 50%;
+  width: 100%;
+  height: 50%;
 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-     img {
-      width: 49%;
-      height: 100%;
-    }
-
+  img {
+    width: 49%;
+    height: 100%;
+  }
 `;
-

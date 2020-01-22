@@ -1,39 +1,25 @@
-import React,{useState} from 'react';
-import NavContainer from '../index'
+import React from 'react';
+import UlContainer from '../index';
 
-import styled from 'styled-components';
-
-const Image = styled.div`
-  height: 70%;
-  width: 100%;
-  background: url("${props => props.background && `${props.background}`}");
-  background-size: cover;
-  background-repeat: no-repeat;
-`
-
-import { Ul } from './styles';
+import { Li, Image } from './styles';
 import NavItems from '../../NavItems';
 
-
-export default function Women({active , setActive}) {
-
-
+export default function Women() {
   return (
-    <NavContainer active={active} setActive={setActive}> 
-        <Ul default>
-            <NavItems />
-        </Ul>
+    <UlContainer>
+      <Li default>
+        <NavItems />
+      </Li>
 
-        <Ul double>
-            <NavItems title="Clothing"/>
-            <NavItems title="Shoes & Accessories"/>
-        </Ul>
+      <Li double>
+        <NavItems title="Women Clothing" />
+        <NavItems title="Women Shoes & Accessories" />
+      </Li>
 
-        <Ul double>
-            <NavItems title="Clothing"/>
-            <Image background="/nav/navgation/girl.jpeg"/>
-        </Ul>
-
-    </NavContainer>
+      <Li double>
+        <NavItems title="Women Clothing" />
+        <Image background="/nav/navgation/woman.jpg" />
+      </Li>
+    </UlContainer>
   );
 }

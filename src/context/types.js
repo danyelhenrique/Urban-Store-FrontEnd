@@ -15,15 +15,17 @@ const Types = {
   ADD_CART: '@ADD_CART_ITEM',
   ROOVE_ITEM_FROM_CART: '@REMOVE_ITEM_CART',
 
-  IncreaseItemQuantityMoreOne:"@IncreaseItemQuantityMoreOne",
-  DecreaseItemQuantityMoreOne:"@DecreaseItemQuantityMoreOne",
-  InputQuantityItem:"@InputQuantityItem", 
+  IncreaseItemQuantityMoreOne: '@IncreaseItemQuantityMoreOne',
+  DecreaseItemQuantityMoreOne: '@DecreaseItemQuantityMoreOne',
+  InputQuantityItem: '@InputQuantityItem',
 
-  LAST_URL:"@LAST_URL",
+  LAST_URL: '@LAST_URL',
 
   CHECKOUT: '@CHECKOUT',
 
+  ISNAV_OPEN: '@IS_NAV_OPEN',
+
+  CLOSE_ALL_NAV: '@CLOSE_ALL_NAV'
 };
 
 export default Types;
-

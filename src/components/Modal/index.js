@@ -1,22 +1,18 @@
 import React from 'react';
 
-import { Container, Fixed ,Modal} from './styles';
+import { Container, Fixed, Modal } from './styles';
 
-import Icon from '../Icon'
+import Icon from '../Icon';
 
-export default function ModalContainer({children , onclick}) {
-
-    function handleClick(){
-        if(onclick) return onclick()
-        return
-    }
+export default function ModalContainer({ children, onclick }) {
+  function handleClick() {
+    if (onclick) return onclick();
+  }
 
   return (
-    <Container >
-      <Fixed onClick={handleClick}/>
-      <Modal>
-        {children}
-      </Modal>
+    <Container>
+      <Fixed onClick={handleClick} />
+      <Modal>{children}</Modal>
     </Container>
   );
 }

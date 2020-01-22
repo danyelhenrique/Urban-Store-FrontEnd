@@ -1,19 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { Context } from '../../context';
 
 import { Container } from './styles';
 
-export default function NavItems({children , active,setActive}) {
-
-  const handleModalLinks = _ =>{
-    setActive(!active)
-  }
-  return (
-    <Container 
-    active={active}
-    onMouseOver={_ => setActive(true)}
-    onMouseOut={ _ => setActive(false)}
-    >
-        {children}
-    </Container>
-  );
+export default function NavItems({ children }) {
+  return <Container>{children}</Container>;
 }

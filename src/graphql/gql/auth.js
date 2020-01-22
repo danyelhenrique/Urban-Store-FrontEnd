@@ -8,7 +8,6 @@ export const SIGN_IN = gql`
   }
 `;
 
-
 export const SIGN_UP = gql`
   mutation signUp($name: String!, $email: String!, $password: String!) {
     storeUser(data: { name: $name, email: $email, password: $password }) {

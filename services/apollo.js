@@ -9,16 +9,17 @@ import { setContext } from 'apollo-link-context';
 
 import fetch from 'node-fetch';
 import { localForageToken } from '../config/localForage';
+
 let apolloClient = null;
 
 function create(initialState) {
   const cache = new InMemoryCache({
-    dataIdFromObject: (o) => (o.id ? `${o.__typename}-${o.id}` : `${o.__typename}-${o.cursor}`),
+    dataIdFromObject: o => o.id ? `${o.__typename}-${o.id}` : `${o.__typename}-${o.cursor}`,
   }).restore(initialState || {});
 
   const middleWareLink = new ApolloLink((operation, forward) => {
     if (operation.variables) {
-      const omitTypename = (key, value) => (key === '__typename' ? undefined : value);
+      const omitTypename = (key, value) => key === '__typename' ? undefined : value;
       // eslint-disable-next-line no-param-reassign
       operation.variables = JSON.parse(
         JSON.stringify(operation.variables),
@@ -30,7 +31,9 @@ function create(initialState) {
   const isBrowser = typeof window !== 'undefined';
 
   const authLink = setContext(async (_, { headers }) => {
-    const accessToken = isBrowser ? await localForageToken.getItem('@STORE-TOKEN') : ""
+    const accessToken = isBrowser
+      ? await localForageToken.getItem('@STORE-TOKEN')
+      : '';
 
     return {
       headers: {

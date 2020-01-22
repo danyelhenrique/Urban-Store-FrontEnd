@@ -16,7 +16,7 @@ class MyApp extends App {
         <Layout>
           <Context>
             <ApolloProvider client={apolloClient}>
-            <ToastContainer
+              <ToastContainer
                 position="top-right"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -26,7 +26,7 @@ class MyApp extends App {
                 pauseOnVisibilityChange
                 draggable
                 pauseOnHover
-                />
+              />
               <Component {...pageProps} />
             </ApolloProvider>
           </Context>

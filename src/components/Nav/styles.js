@@ -1,23 +1,21 @@
 import styled from 'styled-components';
 
 export const NavContainer = styled.header`
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 
-	height: 150px;
-	min-height: 100px;
+  height: 150px;
+  min-height: 100px;
 
-	width: 100%;
+  width: 100%;
 
-	background: transparent;
+  background: transparent;
 
+  z-index: 10;
 
-	z-index: 10;
+  position: fixed;
+  top: 0;
 
-	position: fixed;
-	top: 0;
-
-	/* box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); */
-
+  /* box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); */
 `;

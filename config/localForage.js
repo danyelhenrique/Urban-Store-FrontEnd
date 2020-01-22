@@ -1,17 +1,13 @@
 import * as localforage from 'localforage';
 
 /*
-  *import localforage on SSR throw Erro  because *storage* method
-  *try to acess browser on server. 
-*/
+ *import localforage on SSR throw Erro  because *storage* method
+ *try to acess browser on server.
+ */
 
 localforage.config({
-  driver:[
-    localforage.INDEXEDDB,
-    localforage.WEBSQL,
-    localforage.LOCALSTORAGE,
-  ],
-  name: '@URBAN-STORE',
+  driver: [localforage.INDEXEDDB, localforage.WEBSQL, localforage.LOCALSTORAGE],
+  name: '@URBAN-STORE'
 });
 
 const store = localforage.createInstance({

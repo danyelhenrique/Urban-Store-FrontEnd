@@ -25,18 +25,18 @@ export const Image = styled.div`
 
   @media (max-width: 610px) {
     width: 100%;
-    justify-content:  center;
+    justify-content: center;
   }
-  
-  margin-top: ${(props) => props.secondImage && '40px'};
+
+  margin-top: ${props => props.secondImage && '40px'};
 
   img {
     width: 50%;
-    height:${(props) => (props.secondImage ? '70vh' : '80vh')} ;
+    height: ${props => (props.secondImage ? '70vh' : '80vh')};
     margin: 0 1px;
 
     @media (max-width: 610px) {
-      width: ${(props) => (props.secondImage ? '80%' : '40%')};
+      width: ${props => (props.secondImage ? '80%' : '40%')};
     }
   }
 `;
@@ -87,17 +87,15 @@ export const Header = styled.div`
   }
 `;
 
-
 export const Favorite = styled.button`
-    border: none;
-    background: transparent;
-    height: 100%;
-    cursor: pointer;
+  border: none;
+  background: transparent;
+  height: 100%;
+  cursor: pointer;
 
-    img {
+  img {
     height: 100%;
   }
-
 `;
 
 export const Body = styled.div`
@@ -167,31 +165,29 @@ export const Select = styled.div`
 `;
 
 export const Button = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: #000;
+  padding: 5px;
+  cursor: pointer;
+
+  div {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: none;
-    background: #000;
-    padding: 5px;
-    cursor: pointer;
 
-    div {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        img {
-            margin: 0 10px;
-        }
-
-
-        strong{
-            color: #fff;
-            font-size: 1.2rem;
-            margin: 0 10px;
-        }
+    img {
+      margin: 0 10px;
     }
 
+    strong {
+      color: #fff;
+      font-size: 1.2rem;
+      margin: 0 10px;
+    }
+  }
 `;
 export const Details = styled.div`
   width: 100%;
@@ -201,19 +197,18 @@ export const Details = styled.div`
   margin: 20px 0;
 
   @media (max-width: 610px) {
-    }
+  }
 
   div {
-      display: flex;
-      align-items: center;
-      
+    display: flex;
+    align-items: center;
+
     img {
       height: 25px;
       width: 25px;
       margin: 0 1px;
     }
   }
-
 `;
 
 export const ButtonDetails = styled.button`
@@ -225,7 +220,7 @@ export const ButtonDetails = styled.button`
 
   display: flex;
   align-items: center;
-  
+
   img {
     height: 10%;
     width: 10%;

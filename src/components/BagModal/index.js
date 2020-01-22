@@ -1,6 +1,6 @@
-import React, { useContext } from "react";
-import { useRouter } from "next/router";
-import { Context } from "../../context";
+import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
+import { Context } from '../../context';
 
 import {
   ContainerModal,
@@ -11,85 +11,94 @@ import {
   ItemName,
   Select,
   MoreLess,
-  Image
-} from "./styles";
+  Image,
+} from './styles';
 
-import Icon from '../Icon'
-import Modal from '../Modal'
+import Icon from '../Icon';
+import Modal from '../Modal';
 
 export default function BagModal() {
   const router = useRouter();
   const [state, dispatch] = useContext(Context);
-  const isActive = state.isBagModalOpen
+  const isActive = state.isBagModalOpen;
 
-  if(state.cart.length <= 0){
+  if (state.cart.length <= 0) {
     return (
       <ContainerModal isActive={isActive}>
-        <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
+        <Modal onclick={() => dispatch({ type: '@IS_BAG_OPEN' })}>
           <h1>OI</h1>
         </Modal>
       </ContainerModal>
-    )
+    );
   }
 
   const handleClick = e => {
     e.preventDefault();
-    router.push("/store/cart", "/store/cart");
+    router.push('/store/cart', '/store/cart');
   };
 
   const handleChange = item => {
-    dispatch({ type: "@InputQuantityItem", payload: item });
-
-  }
+    dispatch({ type: '@InputQuantityItem', payload: item });
+  };
 
   function removeItem(item) {
-    dispatch({ type: "@REMOVE_ITEM_CART", payload: item });
+    dispatch({ type: '@REMOVE_ITEM_CART', payload: item });
   }
-
-
 
   return (
     <ContainerModal isActive={isActive}>
-    <Modal onclick={()=> dispatch({type: "@IS_BAG_OPEN"})}>
-      <Close>
-        <h6>BAG</h6>
-        <Icon background="/nav/close.png" >
-          <button onClick={()=> dispatch({type: "@IS_BAG_OPEN"})}></button>
-        </Icon>
-      </Close>
-       <StoreData>
-         {state.cart.map(item => (
-            <Item >
-              <Image background={item.data_front_imageURL}/>
+      <Modal onclick={() => dispatch({ type: '@IS_BAG_OPEN' })}>
+        <Close>
+          <h6>BAG</h6>
+          <Icon background="/nav/close.png">
+            <button onClick={() => dispatch({ type: '@IS_BAG_OPEN' })} />
+          </Icon>
+        </Close>
+        <StoreData>
+          {state.cart.map(item => (
+            <Item>
+              <Image background={item.data_front_imageURL} />
               <Details>
                 <ItemName>
                   <span>{item.data_product_display_name}</span>
-                  <Icon background="/user_modal_bag/trash.png" >
-                    <button onClick={() => removeItem(item)}></button>
+                  <Icon background="/user_modal_bag/trash.png">
+                    <button onClick={() => removeItem(item)} />
                   </Icon>
                 </ItemName>
 
-                <small>${item.data_price}</small>
+                <small>
+${item.data_price}</small>
 
                 <Select>
-                <small> qnt: </small>
+                  <small> qnt: </small>
                   <MoreLess>
-                      <button onClick={() => dispatch({type:"@IncreaseItemQuantityMoreOne" , payload: item})}>
-                        <span>+</span>
-                      </button>
+                    <button
+                      onClick={() => dispatch({
+                          type: '@IncreaseItemQuantityMoreOne',
+                          payload: item,
+                        })}
+                    >
+                      <span>+</span>
+                    </button>
                   </MoreLess>
-                  <input  type="text" value={item.qntRequest} onChange={() => handleChange(item)}/>
+                  <input
+                    type="text"
+                    value={item.qntRequest}
+                    onChange={() => handleChange(item)}
+                  />
                   <MoreLess>
-                      <button onClick={() => dispatch({type:"@DecreaseItemQuantityMoreOne"})}>
+                    <button
+                      onClick={() => dispatch({ type: '@DecreaseItemQuantityMoreOne' })}
+                    >
                       <span>-</span>
-                      </button>
+                    </button>
                   </MoreLess>
                 </Select>
               </Details>
-          </Item>
-         ))}
+            </Item>
+          ))}
         </StoreData>
-    </Modal>
+      </Modal>
     </ContainerModal>
   );
 }

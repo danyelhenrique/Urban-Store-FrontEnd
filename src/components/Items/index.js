@@ -39,35 +39,37 @@ const Data = gql`
 
 export default function Items() {
   const router = useRouter();
-  const[page,setPage] = useState(1)
-  const[limit,setLimit] = useState(10)
+  const [page, setPage] = useState(1);
+  const [limit, setLimit] = useState(10);
 
   const [state, dispatch] = useContext(Context);
 
-  const { loading, error, data, refetch  } = useQuery(Data, {
-    onCompleted: (items) =>{
+  const {
+ loading, error, data, refetch 
+} = useQuery(Data, {
+    onCompleted: items => {
       const ITEM_WITH_MOCK_QNT = items.indexProduct.map(item => {
-        item.qnt = Math.floor(Math.random() * 10)
-        return item
-      })
-      dispatch({type: "@PRODUCT_STATE" ,payload:ITEM_WITH_MOCK_QNT})
-    }
-  })
-  console.log(state)
+        item.qnt = Math.floor(Math.random() * 10);
+        return item;
+      });
+      dispatch({ type: '@PRODUCT_STATE', payload: ITEM_WITH_MOCK_QNT });
+    },
+  });
+  console.log(state);
 
   if (loading) return <h1>Loading</h1>;
 
   if (error) return <h1>Erro</h1>;
 
-  const renderColor = (colors) => colors.map((ItemColor, index) => {
-    if (ItemColor) {
-      let color = ItemColor.includes(' ')
-        ? ItemColor.split(' ')[0].toLowerCase()
-        : ItemColor;
-      color.includes('White') ? (color = '#d0d0d0') : (color = color);
-      return <Button color={color} key={index} />;
-    }
-  });
+  const renderColor = colors => colors.map((ItemColor, index) => {
+      if (ItemColor) {
+        let color = ItemColor.includes(' ')
+          ? ItemColor.split(' ')[0].toLowerCase()
+          : ItemColor;
+        color.includes('White') ? (color = '#d0d0d0') : (color = color);
+        return <Button color={color} key={index} />;
+      }
+    });
 
   function AddToFavorite() {}
 
@@ -75,43 +77,38 @@ export default function Items() {
     dispatch({ type: '@ADD_CART_ITEM', payload: item });
   }
 
-
   return data.indexProduct.map((item, index) => {
-    const urlAs = item.data_product_display_name.split(" ").join("_")
-    return(
-    <Container key={item.id}>
-      <Item
-        image={item.data_back_image_url}
-      >
-        <Image src={item.data_front_imageURL} alt="item" />
-        <Favorite type="button" onClick={AddToFavorite}>
-          <Icon src="/favorites-with-border.png" alt="favorite" />
-        </Favorite>
-        <Hover>
-          <button onClick={() => addToCart(item)}>ADD TO CART</button>
-        </Hover>
-      </Item>
-      <NameAndPrice>
-        <div>
-          <Link href="/store/[slug]" as={`/store/${urlAs}`}>
-            <a>
-              {item.data_product_display_name}
-            </a>
-          </Link>
-        </div>
-        <span>
-            $ {item.data_price}
-        </span>
-      </NameAndPrice>
-      <ColorSelect>
-        {renderColor([
-          item.data_base_colour,
-          item.data_colour1,
-          item.data_colour2,
-          item.data_colour3,
-          item.data_colour4,
-        ])}
-      </ColorSelect>
-    </Container>
-  )});
+    const urlAs = item.data_product_display_name.split(' ').join('_');
+    return (
+      <Container key={item.id}>
+        <Item image={item.data_back_image_url}>
+          <Image src={item.data_front_imageURL} alt="item" />
+          <Favorite type="button" onClick={AddToFavorite}>
+            <Icon src="/favorites-with-border.png" alt="favorite" />
+          </Favorite>
+          <Hover>
+            <button onClick={() => addToCart(item)}>ADD TO CART</button>
+          </Hover>
+        </Item>
+        <NameAndPrice>
+          <div>
+            <Link href="/store/[slug]" as={`/store/${urlAs}`}>
+              <a>{item.data_product_display_name}</a>
+            </Link>
+          </div>
+          <span>
+${item.data_price}</span>
+        </NameAndPrice>
+        <ColorSelect>
+          {renderColor([
+            item.data_base_colour,
+            item.data_colour1,
+            item.data_colour2,
+            item.data_colour3,
+            item.data_colour4,
+          ])}
+        </ColorSelect>
+      </Container>
+    );
+  });
 }
