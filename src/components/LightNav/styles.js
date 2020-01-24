@@ -85,7 +85,7 @@ export const LinkGroup = styled.div`
   position: relative;
 `;
 
-export const Nav = styled.div`
+export const Links = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -118,7 +118,7 @@ export const Link = styled.div`
       border-bottom: 2px solid rgba(240, 94, 35, 1);
       z-index: 999;
 
-      ul {
+      nav {
         opacity: 1;
         pointer-events: all;
       }

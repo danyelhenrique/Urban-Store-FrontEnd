@@ -23,7 +23,7 @@ import {
   UserArea,
   IconsContainer,
   QntCart,
-  Nav,
+  Links,
   LinkGroup,
   Link,
   Input,
@@ -69,7 +69,7 @@ export default function LightNav() {
         <BagModal />
       </Header>
       <LinkGroup>
-        <Nav>
+        <Links>
           <Link>
             <button type="button">
               WOMEN + ACC
@@ -106,7 +106,7 @@ export default function LightNav() {
               <Sale />
             </button>
           </Link>
-        </Nav>
+        </Links>
 
         <Input>
           <input type="text" placeholder="Search Products" />

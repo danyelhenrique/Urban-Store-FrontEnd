@@ -10,7 +10,7 @@ export const Ul = styled.ul.attrs({
 
   border-right: 1px solid rgba(240, 94, 35, 0.28);
 
-  .nav-items {
+  li {
     a {
       font-weight: ${props => (props.default ? 'bold' : '300')};
       letter-spacing: 1px;
