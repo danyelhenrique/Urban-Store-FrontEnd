@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-export const Li = styled.li.attrs({
-  className: 'women-ul-container'
-})`
+export const Ul = styled.ul`
   height: 100%;
   width: ${props => (props.double ? 'calc(200% / 5)' : 'calc(100% / 5)')};
 

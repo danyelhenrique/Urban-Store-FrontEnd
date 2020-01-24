@@ -1,25 +1,25 @@
 import React from 'react';
 import UlContainer from '../index';
 
-import { Li, Image } from './styles';
+import { Ul, Image } from './styles';
 import NavItems from '../../NavItems';
 
 export default function Sale() {
   return (
     <UlContainer>
-      <Li default>
+      <Ul default>
         <NavItems />
-      </Li>
+      </Ul>
 
-      <Li double>
+      <Ul double>
         <NavItems title="Clothing girls" />
         <NavItems title="Shoes & Accessories" />
-      </Li>
+      </Ul>
 
-      <Li double>
+      <Ul double>
         <NavItems title="Clothing" />
         <Image background="/nav/navgation/girl.jpeg" />
-      </Li>
+      </Ul>
     </UlContainer>
   );
 }

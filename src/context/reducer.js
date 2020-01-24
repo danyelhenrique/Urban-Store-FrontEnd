@@ -9,7 +9,7 @@ import {
   SliderLoginPage,
   checkout,
   signUp,
-  signIn,
+  signIn
 } from '../../utils/reducers';
 
 import Types from './types';
@@ -36,16 +36,16 @@ function reducer(state, action) {
     case Types.DecreaseItemQuantityMoreOne:
       return {
         ...state,
-        cartValues: { ...state.cartValues, qnt: state.cartValues.qnt - 1 },
+        cartValues: { ...state.cartValues, qnt: state.cartValues.qnt - 1 }
       };
     case Types.InputQuantityItem:
       return {
         ...state,
-        cartValues: { ...state.cartValues, qnt: action.payload },
+        cartValues: { ...state.cartValues, qnt: action.payload }
       };
     //
     case Types.PRODUCT_STATE:
-      return { ...state, products: [...action.payload] };
+      return { ...state, products: [...state.products, ...action.payload] };
     case Types.SliderLoginPage:
       return SliderLoginPage(state);
     //

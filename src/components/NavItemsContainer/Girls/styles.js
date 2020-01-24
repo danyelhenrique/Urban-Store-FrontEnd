@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Li = styled.li.attrs({
+export const Ul = styled.ul.attrs({
   className: 'women-ul-container'
 })`
   height: 100%;

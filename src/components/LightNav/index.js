@@ -27,7 +27,7 @@ import {
   LinkGroup,
   Link,
   Input,
-  Logo,
+  Logo
 } from './styles';
 
 export default function LightNav() {
@@ -68,56 +68,51 @@ export default function LightNav() {
         <UserModal />
         <BagModal />
       </Header>
-      <Nav>
-        <LinkGroup>
+      <LinkGroup>
+        <Nav>
           <Link>
-            <a>
+            <button type="button">
               WOMEN + ACC
               <NavWomen />
-            </a>
+            </button>
           </Link>
           <Link>
-            <a>
+            <button type="button">
               PLUS + CURVER
               <NavPlus />
-            </a>
-{' '}
+            </button>
           </Link>
           <Link>
-            <a>
+            <button type="button">
               MEN
               <Mens />
-            </a>
-{' '}
+            </button>
           </Link>
           <Link>
-            <a>
+            <button type="button">
               GIRLS
               <Girls />
-            </a>
-{' '}
+            </button>
           </Link>
           <Link>
-            <a>
+            <button type="button">
               BEAUTY BY ...
               <BeautyBy />
-            </a>
-{' '}
+            </button>
           </Link>
           <Link>
-            <a>
+            <button type="button">
               SALE
               <Sale />
-            </a>
-{' '}
+            </button>
           </Link>
-        </LinkGroup>
+        </Nav>
 
         <Input>
           <input type="text" placeholder="Search Products" />
           <Icon background="/nav/search.png" />
         </Input>
-      </Nav>
+      </LinkGroup>
     </>
   );
 }

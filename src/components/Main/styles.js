@@ -12,5 +12,5 @@ export const MainContainer = styled.main`
 
   height: 100%;
 
-  overflow: hidden;
+  /* overflow: hidden; */
 `;

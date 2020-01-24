@@ -73,7 +73,7 @@ export const QntCart = styled.div`
   margin: 2px;
 `;
 
-export const Nav = styled.nav`
+export const LinkGroup = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -85,7 +85,7 @@ export const Nav = styled.nav`
   position: relative;
 `;
 
-export const LinkGroup = styled.ul`
+export const Nav = styled.div`
   display: flex;
   align-items: center;
   margin: 0 auto;
@@ -94,21 +94,23 @@ export const LinkGroup = styled.ul`
   justify-content: center;
 `;
 
-export const Link = styled.li`
+export const Link = styled.div`
   display: flex;
   align-items: center;
 
-  > a {
+  > button {
     margin: 0 5px;
     display: block;
     padding-right: 10px;
-    text-decoration: none;
     cursor: pointer;
 
     font-weight: 400;
     font-size: 0.8rem;
     letter-spacing: 2px;
     color: #000;
+
+    background: none;
+    border: none;
 
     border-bottom: 2px solid #fff;
 

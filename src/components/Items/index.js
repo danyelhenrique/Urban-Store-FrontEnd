@@ -1,8 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React, { useContext } from 'react';
+// import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { useQuery } from '@apollo/react-hooks';
-import { gql } from 'apollo-boost';
 
 import Button from '../ColorSelect';
 
@@ -16,58 +14,23 @@ import {
   Hover,
   Icon,
   NameAndPrice,
-  ColorSelect,
+  ColorSelect
 } from './styles';
 
-const Data = gql`
-  {
-    indexProduct(page: 1, limit: 10) {
-      id
-      data_price
-      data_product_display_name
-      data_brand_name
-      data_base_colour
-      data_colour1
-      data_colour2
-      data_colour3
-      data_colour4
-      data_front_imageURL
-      data_back_image_url
-    }
-  }
-`;
-
 export default function Items() {
-  const router = useRouter();
-  const [page, setPage] = useState(1);
-  const [limit, setLimit] = useState(10);
-
   const [state, dispatch] = useContext(Context);
-
-  const {
- loading, error, data, refetch 
-} = useQuery(Data, {
-    onCompleted: items => {
-      const ITEM_WITH_MOCK_QNT = items.indexProduct.map(item => {
-        item.qnt = Math.floor(Math.random() * 10);
-        return item;
-      });
-      dispatch({ type: '@PRODUCT_STATE', payload: ITEM_WITH_MOCK_QNT });
-    },
-  });
-  console.log(state);
-
-  if (loading) return <h1>Loading</h1>;
-
-  if (error) return <h1>Erro</h1>;
 
   const renderColor = colors => colors.map((ItemColor, index) => {
       if (ItemColor) {
         let color = ItemColor.includes(' ')
           ? ItemColor.split(' ')[0].toLowerCase()
           : ItemColor;
-        color.includes('White') ? (color = '#d0d0d0') : (color = color);
-        return <Button color={color} key={index} />;
+
+        // eslint-disable-next-line no-self-assign
+        // eslint-disable-next-line no-unused-expressions
+        color.includes('White') ? (color = '#d0d0d0') : color;
+
+        return <Button color={color} key={String(index)} />;
       }
     });
 
@@ -77,7 +40,7 @@ export default function Items() {
     dispatch({ type: '@ADD_CART_ITEM', payload: item });
   }
 
-  return data.indexProduct.map((item, index) => {
+  return state.products.map(item => {
     const urlAs = item.data_product_display_name.split(' ').join('_');
     return (
       <Container key={item.id}>
@@ -87,7 +50,9 @@ export default function Items() {
             <Icon src="/favorites-with-border.png" alt="favorite" />
           </Favorite>
           <Hover>
-            <button onClick={() => addToCart(item)}>ADD TO CART</button>
+            <button type="button" onClick={() => addToCart(item)}>
+              ADD TO CART
+            </button>
           </Hover>
         </Item>
         <NameAndPrice>
@@ -96,8 +61,7 @@ export default function Items() {
               <a>{item.data_product_display_name}</a>
             </Link>
           </div>
-          <span>
-${item.data_price}</span>
+          <span>${item.data_price}</span>
         </NameAndPrice>
         <ColorSelect>
           {renderColor([
@@ -105,7 +69,7 @@ ${item.data_price}</span>
             item.data_colour1,
             item.data_colour2,
             item.data_colour3,
-            item.data_colour4,
+            item.data_colour4
           ])}
         </ColorSelect>
       </Container>

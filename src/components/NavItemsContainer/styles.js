@@ -1,8 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
-export const Container = styled.ul.attrs({
-  className: 'nav-links',
+export const Container = styled.nav.attrs({
+  className: 'nav-links'
 })`
   background: #fff;
 

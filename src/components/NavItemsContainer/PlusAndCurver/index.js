@@ -1,25 +1,25 @@
 import React from 'react';
 import UlContainer from '../index';
 
-import { Li, Image } from './styles';
+import { Ul, Image } from './styles';
 import NavItems from '../../NavItems';
 
 export default function PlusAndCurver() {
   return (
     <UlContainer>
-      <Li default>
+      <Ul default>
         <NavItems />
-      </Li>
+      </Ul>
 
-      <Li double>
+      <Ul double>
         <NavItems title="Clothing" />
         <NavItems title="Shoes & Accessories teste" />
-      </Li>
+      </Ul>
 
-      <Li double>
+      <Ul double>
         <NavItems title="Clothing" />
         <Image background="/nav/navgation/plus.jpg" />
-      </Li>
+      </Ul>
     </UlContainer>
   );
 }
