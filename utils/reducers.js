@@ -3,7 +3,7 @@ import {
   localForageCart,
   removeItem,
   removeToken,
-  storeToken,
+  storeToken
 } from './localForage';
 
 export function clearBagDuplicateItems(state, payload) {
@@ -30,7 +30,7 @@ function SumCartItems(state, payload) {
     qnt: state.cartValues.qnt,
     total,
     discont: state.cartValues.discont,
-    shipping: state.cartValues.shipping,
+    shipping: state.cartValues.shipping
   };
 
   return cartValues;
@@ -50,7 +50,7 @@ function SubCartItems(state) {
     qnt: state.cartValues.qnt,
     total,
     discont: state.cartValues.discont,
-    shipping: state.cartValues.shipping,
+    shipping: state.cartValues.shipping
   };
 
   return cartValues;
@@ -70,7 +70,7 @@ export function clearCartDuplicateItems(state, payload) {
   return {
     ...state,
     cart: [...state.cart, payload],
-    cartValues,
+    cartValues
   };
 }
 
@@ -84,20 +84,20 @@ const reverteImage = (value1, value2) => {
 export function SliderLoginPage(state) {
   const { formBackground, loginPageBackground } = reverteImage(
     state.formBackground,
-    state.loginPageBackground,
+    state.loginPageBackground
   );
   return {
     ...state,
     isSignInSlider: !state.isSignInSlider,
     isSignUpSlider: !state.isSignUpSlider,
     formBackground,
-    loginPageBackground,
+    loginPageBackground
   };
 }
 
 export function checkout(state) {
   if (!state.isLogin) {
-    console.log('fail to checkout');
+    // console.log('fail to checkout');
     return { ...state };
   }
   return { ...state };
@@ -110,14 +110,14 @@ export function removeItemFromCart(state, payload) {
 
   const newState = {
     ...state,
-    cart: [...items],
+    cart: [...items]
   };
 
   const cartValues = SubCartItems(newState);
 
   return {
     ...newState,
-    cartValues: { ...cartValues },
+    cartValues: { ...cartValues }
   };
 }
 
@@ -133,13 +133,13 @@ export function intialCartItems(state, data) {
     qnt: state.cartValues.qnt,
     total,
     discont: state.cartValues.discont,
-    shipping: state.cartValues.shipping,
+    shipping: state.cartValues.shipping
   };
 
   return {
     ...state,
     cart: data,
-    cartValues,
+    cartValues
   };
 }
 
@@ -181,6 +181,6 @@ export function MoreQntItem(state, payload) {
   newState.cart[index].qntRequest += 1;
 
   return {
-    ...newState,
+    ...newState
   };
 }

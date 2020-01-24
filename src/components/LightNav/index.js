@@ -1,5 +1,6 @@
 import React, { useContext, useMemo } from 'react';
 // import Link from 'next/link';
+import { useSelector } from 'react-redux';
 
 import { warn } from '../../toasty';
 
@@ -32,6 +33,8 @@ import {
 
 export default function LightNav() {
   const [state, dispatch] = useContext(Context);
+  const todo = useSelector(stado => stado.modal);
+  console.log('AUI todo', todo);
 
   function Favorites() {
     warn('Service Unavailable.');
