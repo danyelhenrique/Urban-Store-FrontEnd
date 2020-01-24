@@ -1,6 +1,11 @@
-import React, { useContext, useMemo } from 'react';
+/* eslint-disable jsx-a11y/control-has-associated-label */
+import React, { useMemo } from 'react';
 // import Link from 'next/link';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+  userModal as uModal,
+  bagModal as bModal
+} from '../../store/modules/modal/actions';
 
 import { warn } from '../../toasty';
 
@@ -10,8 +15,6 @@ import Mens from '../NavItemsContainer/Mens';
 import Girls from '../NavItemsContainer/Girls';
 import BeautyBy from '../NavItemsContainer/BeautyBy';
 import Sale from '../NavItemsContainer/Sale';
-
-import { Context } from '../../context';
 
 import BagModal from '../BagModal';
 import UserModal from '../UserModal';
@@ -32,19 +35,18 @@ import {
 } from './styles';
 
 export default function LightNav() {
-  const [state, dispatch] = useContext(Context);
-  const todo = useSelector(stado => stado.modal);
-  console.log('AUI todo', todo);
+  const cart = useSelector(state => state.cart);
+  const dispatch = useDispatch();
 
   function Favorites() {
     warn('Service Unavailable.');
   }
 
-  const Qnt = useMemo(() => state.cart.length, [state.cart]);
+  const Qnt = useMemo(() => cart.length, [cart]);
 
   return (
     <>
-      <Header onMouseEnter={_ => dispatch({ type: '@CLOSE_ALL_NAV' })}>
+      <Header>
         <Internalization />
 
         <UserArea>
@@ -54,15 +56,13 @@ export default function LightNav() {
 
           <IconsContainer>
             <Icon background="/nav/user.png" btn-no-cursor>
-              <button
-                onClick={() => dispatch({ type: '@IS_USER_MODAL_OPEN' })}
-              />
+              <button type="button" onClick={() => dispatch(uModal())} />
             </Icon>
             <Icon background="/nav/favorite.png">
-              <button onClick={Favorites} />
+              <button type="button" onClick={Favorites} />
             </Icon>
             <Icon background="/nav/bag.png">
-              <button onClick={() => dispatch({ type: '@IS_BAG_OPEN' })} />
+              <button type="button" onClick={() => dispatch(bModal())} />
             </Icon>
             <QntCart>{Qnt}</QntCart>
           </IconsContainer>

@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
+import Links from 'next/link';
 
-import { Li, Links, Link } from './styles';
+import { Li, Link } from './styles';
 
 export default function NavItems({ title }) {
   return (

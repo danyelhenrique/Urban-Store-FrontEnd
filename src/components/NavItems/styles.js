@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import Router from 'next/link';
 
 export const Li = styled.li.attrs({
   className: 'nav-items'
@@ -22,8 +21,6 @@ export const Li = styled.li.attrs({
     text-align: left;
   }
 `;
-
-export const Links = styled(Router)``;
 
 export const Link = styled.a`
   text-decoration: none;

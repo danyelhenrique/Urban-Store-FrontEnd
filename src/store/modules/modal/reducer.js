@@ -5,10 +5,11 @@ const INITIAL_STATE = {
   isBagModalOpen: false
 };
 function modal(state = INITIAL_STATE, action) {
+  console.log("ola" , action)
   switch (action.type) {
     case Types.IS_USER_MODAL_OPEN:
       return { ...state, isUserModalOpen: !state.isUserModalOpen };
-    case Types.IS_BAG_OPEN:
+    case Types.IS_BAG_MODAL_OPEN:
       return { ...state, isBagModalOpen: !state.isBagModalOpen };
     default:
       return state;

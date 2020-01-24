@@ -116,7 +116,6 @@ export const Link = styled.div`
 
     :hover {
       border-bottom: 2px solid rgba(240, 94, 35, 1);
-      z-index: 999;
 
       nav {
         opacity: 1;

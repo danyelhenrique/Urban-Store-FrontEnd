@@ -1,6 +1,8 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { Context } from '../../context';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { bagModal } from '../../store/modules/modal/actions';
 
 import {
   ContainerModal,
@@ -11,7 +13,7 @@ import {
   ItemName,
   Select,
   MoreLess,
-  Image,
+  Image
 } from './styles';
 
 import Icon from '../Icon';
@@ -19,13 +21,20 @@ import Modal from '../Modal';
 
 export default function BagModal() {
   const router = useRouter();
-  const [state, dispatch] = useContext(Context);
-  const isActive = state.isBagModalOpen;
 
-  if (state.cart.length <= 0) {
+  const isActive = useSelector(state => state.modal.isBagModalOpen);
+  const { cart } = useSelector(state => state.cart);
+
+  const dispatch = useDispatch();
+
+  function handleModal() {
+    dispatch(bagModal());
+  }
+
+  if (cart.length <= 0) {
     return (
       <ContainerModal isActive={isActive}>
-        <Modal onclick={() => dispatch({ type: '@IS_BAG_OPEN' })}>
+        <Modal onclick={handleModal}>
           <h1>OI</h1>
         </Modal>
       </ContainerModal>
@@ -47,11 +56,11 @@ export default function BagModal() {
 
   return (
     <ContainerModal isActive={isActive}>
-      <Modal onclick={() => dispatch({ type: '@IS_BAG_OPEN' })}>
+      <Modal onclick={handleModal}>
         <Close>
           <h6>BAG</h6>
           <Icon background="/nav/close.png">
-            <button onClick={() => dispatch({ type: '@IS_BAG_OPEN' })} />
+            <button onClick={handleModal} />
           </Icon>
         </Close>
         <StoreData>
@@ -62,34 +71,26 @@ export default function BagModal() {
                 <ItemName>
                   <span>{item.data_product_display_name}</span>
                   <Icon background="/user_modal_bag/trash.png">
-                    <button onClick={() => removeItem(item)} />
+                    <button onClick={() => {}} />
                   </Icon>
                 </ItemName>
 
-                <small>
-${item.data_price}</small>
+                <small>${item.data_price}</small>
 
                 <Select>
                   <small> qnt: </small>
                   <MoreLess>
-                    <button
-                      onClick={() => dispatch({
-                          type: '@IncreaseItemQuantityMoreOne',
-                          payload: item,
-                        })}
-                    >
+                    <button onClick={() => {}}>
                       <span>+</span>
                     </button>
                   </MoreLess>
                   <input
                     type="text"
                     value={item.qntRequest}
-                    onChange={() => handleChange(item)}
+                    onChange={() => {}}
                   />
                   <MoreLess>
-                    <button
-                      onClick={() => dispatch({ type: '@DecreaseItemQuantityMoreOne' })}
-                    >
+                    <button onClick={() => {}}>
                       <span>-</span>
                     </button>
                   </MoreLess>

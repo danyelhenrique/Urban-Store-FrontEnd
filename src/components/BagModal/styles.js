@@ -5,6 +5,7 @@ export const ContainerModal = styled.div`
   opacity: ${props => (!props.isActive ? 0 : 1)};
   position: absolute;
   top: 0;
+  z-index: 99;
 
   pointer-events: ${props => (!props.isActive ? 'none' : 'all')};
 

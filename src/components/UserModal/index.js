@@ -1,30 +1,31 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
 
-import { Context } from '../../context';
+import { useSelector, useDispatch } from 'react-redux';
 
-import {
- ContainerModal, MyAccount, UserData, Button, Avatar 
-} from './styles';
+import { ContainerModal, MyAccount, UserData, Button, Avatar } from './styles';
 
 import Icon from '../Icon';
 import Modal from '../Modal';
+import { userModal } from '../../store/modules/modal/actions';
 
 export default function UserModal() {
-  const [state, dispatch] = useContext(Context);
   const router = useRouter();
-  const isActive = state.isUserModalOpen;
+
+  const isActive = useSelector(state => state.modal.isUserModalOpen);
+
+  const dispatch = useDispatch();
 
   const href = router.pathname;
-  const pushTo = _ => router.push('/store/signin', '/store/signin');
+  
+  const pushTo = () => router.push('/store/signin', '/store/signin');
 
   const handleModal = () => {
-    dispatch({ type: '@IS_USER_MODAL_OPEN' });
+    dispatch(userModal());
   };
 
   const handleSignUp = e => {
     e.preventDefault();
-    dispatch({ type: '@USER_SIGN_UP' });
     router.push(href, href);
   };
 
@@ -34,7 +35,7 @@ export default function UserModal() {
         <MyAccount>
           <h6>MY ACCOUNT</h6>
           <Icon background="/nav/close.png">
-            <button onClick={handleModal} />
+            <button type="button" onClick={handleModal} />
           </Icon>
         </MyAccount>
 
@@ -44,7 +45,6 @@ export default function UserModal() {
           <Button onClick={handleSignUp}>Sign Out</Button>
           <Button onClick={() => router.push('/store/signin', '/store/signin')}>
             Sign With Another Account
-{' '}
           </Button>
         </UserData>
       </Modal>
