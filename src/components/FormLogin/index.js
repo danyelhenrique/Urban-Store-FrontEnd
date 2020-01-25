@@ -16,13 +16,14 @@ import {
   Icon,
   Button,
   InputContainer,
+  InputContainerItem
 } from './styles';
 
 const INITIAL_STATE = {
   email: '',
   name: '',
   password: null,
-  confirmPassword: null,
+  confirmPassword: null
 };
 
 function reducer(state, action) {
@@ -47,10 +48,10 @@ export default function Login({ isSignUp }) {
   const [stateForm, dispatchForm] = useReducer(reducer, INITIAL_STATE);
 
   const [signUp] = useMutation(SIGN_UP, {
-    onCompleted: _ => {
+    onCompleted:() => {
       SignIn();
     },
-    onError: _ => error('fail to create accout.'),
+    onError:() => error('fail to create accout.')
   });
 
   const [signIn] = useMutation(SIGN_IN, {
@@ -58,12 +59,12 @@ export default function Login({ isSignUp }) {
       const singinSignUpUrl = router.pathname;
       const lastUrl =
         state.lastUrl !== singinSignUpUrl ? state.lastUrl : '/store';
-      dispatch({ type: '@USER_SIGN_IN', payload: loginUser });
+      // dispatch({ type: '@USER_SIGN_IN', payload: loginUser });
       sucess('sucess to sing-in wait to redirect.');
 
-      router.push(lastUrl, lastUrl);
+      // router.push(lastUrl, lastUrl);
     },
-    onError: _ => error('fail to authenticate user.'),
+    onError:() => error('fail to authenticate user.')
   });
 
   const SignIn = useCallback(() => {
@@ -86,12 +87,12 @@ export default function Login({ isSignUp }) {
         return SignIn();
       }
     },
-    [SignIn, SignUp],
+    [SignIn, SignUp]
   );
 
   const debounceDispatch = debounce(
     ({ type, payload }) => dispatchForm({ type, payload }),
-    500,
+    500
   );
 
   return (
@@ -104,67 +105,79 @@ export default function Login({ isSignUp }) {
 
       <SocialContainer>
         <Social href="#" className="social">
-          <Icon icon="/social/google.svg" />
+          <Icon icon="/social/google.png" />
         </Social>
         <Social href="#" className="social">
-          <Icon icon="/social/facebook.svg" />
+          <Icon icon="/social/facebook.png" />
         </Social>
         <Social href="#" className="social">
-          <Icon icon="/social/twiter.svg" />
+          <Icon icon="/social/twiter.png" />
         </Social>
       </SocialContainer>
       {state && state.isSignUpSlider && (
         <span>or use your email for registration</span>
       )}
-
       <InputContainer>
-        {state && state.isSignUpSlider && (
+        <InputContainerItem>
+          {state && state.isSignUpSlider && (
+            <input
+              autoComplete="off"
+              type="email"
+              name="name"
+              placeholder="Name"
+              onChange={e =>
+                debounceDispatch({
+                  type: '@NAME_CHANGE',
+                  payload: e.target.value
+                })
+              }
+            />
+          )}
           <input
             autoComplete="off"
             type="email"
-            name="name"
-            placeholder="Name"
-            onChange={e => debounceDispatch({
-                type: '@NAME_CHANGE',
-                payload: e.target.value,
-              })}
+            name="email"
+            placeholder="Email"
+            onChange={e =>
+              debounceDispatch({
+                type: '@EMAIL_CHANGE',
+                payload: e.target.value
+              })
+            }
           />
-        )}
-        <input
-          autoComplete="off"
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={e => debounceDispatch({ type: '@EMAIL_CHANGE', payload: e.target.value })}
-        />
-      </InputContainer>
-      <InputContainer>
-        <input
-          autoComplete="off"
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={e => debounceDispatch({
-              type: '@PASSWORD_CHANGE',
-              payload: e.target.value,
-            })}
-        />
-      </InputContainer>
-      {state && state.isSignUpSlider && (
-        <InputContainer>
+        </InputContainerItem>
+        <InputContainerItem>
           <input
             autoComplete="off"
             type="password"
-            name="confirm-passwod"
-            placeholder="Confirm you Password"
-            onChange={e => debounceDispatch({
-                type: '@CONFIRM_PASSWORD_CHANGE',
-                payload: e.target.value,
-              })}
+            name="password"
+            placeholder="Password"
+            onChange={e =>
+              debounceDispatch({
+                type: '@PASSWORD_CHANGE',
+                payload: e.target.value
+              })
+            }
           />
-        </InputContainer>
-      )}
-      <Button>{state && state.isSignUpSlider ? 'Sign Up' : 'Sign In'}</Button>
+        </InputContainerItem>
+        {state && state.isSignUpSlider && (
+          <InputContainerItem>
+            <input
+              autoComplete="off"
+              type="password"
+              name="confirm-passwod"
+              placeholder="Confirm you Password"
+              onChange={e =>
+                debounceDispatch({
+                  type: '@CONFIRM_PASSWORD_CHANGE',
+                  payload: e.target.value
+                })
+              }
+            />
+          </InputContainerItem>
+        )}
+        <Button>{state && state.isSignUpSlider ? 'Sign Up' : 'Sign In'}</Button>
+      </InputContainer>
     </Form>
   );
 }

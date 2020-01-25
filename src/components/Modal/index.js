@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Container, Fixed, Modal } from './styles';
 
-import Icon from '../Icon';
-
 export default function ModalContainer({ children, onclick }) {
   function handleClick() {
     if (onclick) return onclick();

@@ -1,61 +1,50 @@
 import styled, { css } from 'styled-components';
 
 export const Form = styled.form`
-	background-color: #ffffff;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-	padding: 0 50px;
-	height: 100%;
-	text-align: center;
-	color: #fff;
-	position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 0 50px;
+  height: 100%;
+  text-align: center;
+  color: #fff;
 
+  input {
+    color: ${props => (props.isSignUp ? '#fff' : '#000')};
+  }
 
-	background: url('${props => props.background}');
+  h1 {
+    font-weight: bold;
+    font-size: 3rem;
+  }
 
-	background-repeat: no-repeat;
-	background-position: center center;
+  span,
+  p {
+    font-weight: 300;
+    font-size: 0.8rem;
+  }
 
-	background-size: 100% 100%;
-
-	input {
-		color: ${props => (props.isSignUp ? '#fff' : '#000')};
-	}
-
-
-	h1 {
-		font-weight: bold;
-		font-size: 3rem;
-	}
-
-	span,
-	p {
-		font-weight: 300;
-		font-size: 0.8rem;
-	}
-
-	p {
-		margin: 10px 0;
-	}
+  p {
+    margin: 10px 0;
+  }
 `;
 
 export const InputContainer = styled.div`
-  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+`;
+
+export const InputContainerItem = styled.div`
   width: 100%;
 
   display: flex;
   flex-direction: column;
-
-  p {
-    align-self: flex-start;
-    justify-self: flex-start;
-    position: absolute;
-    top: 0;
-
-    display: none;
-  }
 
   input:-webkit-autofill,
   input:focus:-webkit-autofill {
@@ -73,7 +62,7 @@ export const InputContainer = styled.div`
     outline: none;
 
     border: none;
-    border-bottom: 2px solid rgba(240, 94, 35, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 
     background: transparent;
 
@@ -94,7 +83,6 @@ export const SocialContainer = styled.div`
 `;
 
 export const Social = styled.a`
-  border: 1px solid #dddddd;
   border-radius: 50%;
   display: inline-flex;
   justify-content: center;
@@ -115,9 +103,9 @@ export const Icon = styled.i`
 `;
 
 export const Button = styled.button`
-  border-radius: 20px;
-  border: 1px solid #ff4b2b;
-  background-color: #ff4b2b;
+  border: none;
+  border-radius: 2px;
+  background: rgb(33, 31, 30);
   color: #ffffff;
   font-size: 12px;
   font-weight: bold;
@@ -128,9 +116,10 @@ export const Button = styled.button`
   cursor: pointer;
   z-index: 90;
 
-  ${props => props.ghost
-    && css`
-      background: transparent;
+  ${({ ghost }) =>
+    ghost &&
+    css`
+      background: rgba(240, 94, 35, 1);
     `};
 
   :active {
@@ -141,8 +130,9 @@ export const Button = styled.button`
     outline: none;
   }
 
-  ${props => props.ghost
-    && css`
+  ${({ ghost }) =>
+    ghost &&
+    css`
       background-color: transparent;
       border-color: #ffffff;
     `};

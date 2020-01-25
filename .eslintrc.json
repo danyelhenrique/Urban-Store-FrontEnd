@@ -22,6 +22,9 @@
     "linebreak-style": "off",
     "camelcase": "off",
     "no-param-reassign": "off",
+    "jsx-a11y/label-has-for": "off",
+    "implicit-arrow-linebreak": "off",
+    "operator-linebreak": "off",
     "no-use-before-define": "off",
     "no-tabs": 0,
     "prettier/prettier": [

@@ -1,17 +1,30 @@
 import styled, { css } from 'styled-components';
 
-export const Container = styled.section`
+export const Section = styled.section`
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(
+    to left top,
+    #000000,
+    #411720,
+    #802230,
+    #c13134,
+    #ff4b2b
+  );
+  place-items: center center;
+  place-content: center center;
+  display: flex;
+`;
+
+export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 80%;
-  width: 80%;
 
-  height: 100%;
-  width: 100%;
+  height: 70%;
+  width: 70%;
+  min-height: 500px;
 
-  /* configurara o max height and max-width */
-  background: #fff;
   position: relative;
   place-items: center center;
 
@@ -19,67 +32,56 @@ export const Container = styled.section`
 `;
 
 export const Image = styled.div`
-	height: 100%;
-	width: 50%;
-	transform: translateX(-50%);
-	position: absolute;
-	z-index: 10;
-	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-	
-	background: url('${props => props.background}');
-	
-	background-repeat: no-repeat;
-	background-position: center center;
+  height: 100%;
+  width: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  z-index: 10;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
 
-	background-size: 100% 100%;
+  background: linear-gradient(to right, rgb(23, 24, 25), rgb(33, 31, 30));
 
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  background-repeat: no-repeat;
+  background-position: center center;
 
-	position: relative;
+  background-size: 100% 100%;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-	::before{
-		content: "";
-		position: absolute;
-		top: 0;
-		height: 100%;
-		width: 100%;
-		background: rgba(0,0,0,0.5);
-	}
+  position: relative;
 
-	:hover{
-		::before{
-		content: "";
-		position: absolute;
-		top: 0;
-		height: 100%;
-		width: 100%;
-		background:transparent;
-	}
+  transition: all 1.7s ease;
 
+  :hover {
+    ::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      background: transparent;
+    }
+  }
 
-
-	}
-
-	${props => props.signIn
-    && css`
+  ${props =>
+    props.signIn &&
+    css`
       transform: translateX(50%);
       div:last-child {
         display: none;
       }
     `};
 
-	${props => props.signUp
-    && css`
+  ${props =>
+    props.signUp &&
+    css`
       transform: translateX(-50%);
       div:first-child {
         display: none;
       }
     `};
-
-	transition: all 1.7s ease;
 `;
 export const Ghost = styled.div`
   height: 150px;
@@ -120,9 +122,11 @@ export const SignUpContainer = styled.div`
 
   opacity: 0;
   transition: all 2s ease;
+  background: rgb(255, 75, 43);
 
-  ${props => props.signUp
-    && css`
+  ${props =>
+    props.signUp &&
+    css`
       opacity: 1;
     `};
 `;
@@ -138,16 +142,18 @@ export const SignInContainer = styled.div`
 
   transform: translateX(-50%);
   opacity: 0;
-  transition: all 2s ease;
+  transition: transform 2s ease;
+  background: rgb(255, 75, 43);
 
-  ${props => props.signIn
-    && css`
+  ${props =>
+    props.signIn &&
+    css`
       opacity: 1;
     `};
 `;
 
 export const Button = styled.button`
-  border-radius: 20px;
+  border-radius: 2px;
   border: 1px solid rgba(240, 94, 35, 1);
   background-color: rgba(240, 94, 35, 1);
   color: #ffffff;
@@ -160,10 +166,10 @@ export const Button = styled.button`
   cursor: pointer;
   z-index: 90;
 
-  ${props => props.ghost
-    && css`
-      background: transparent;
-      border: 1px solid rgba(240, 94, 35, 1);
+  ${props =>
+    props.ghost &&
+    css`
+      background: rgba(240, 94, 35, 1);
     `};
 
   :active {
@@ -174,8 +180,9 @@ export const Button = styled.button`
     outline: none;
   }
 
-  ${props => props.ghost
-    && css`
+  ${props =>
+    props.ghost &&
+    css`
       background-color: transparent;
     `};
 `;

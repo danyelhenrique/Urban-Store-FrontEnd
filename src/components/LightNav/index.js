@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useMemo } from 'react';
 // import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';

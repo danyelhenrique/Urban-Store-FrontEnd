@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useRouter } from 'next/router';
+import { useMutation, useQuery } from '@apollo/react-hooks';
+
+import { gql } from 'apollo-boost';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -7,6 +10,7 @@ import { ContainerModal, MyAccount, UserData, Button, Avatar } from './styles';
 
 import Icon from '../Icon';
 import Modal from '../Modal';
+
 import { userModal } from '../../store/modules/modal/actions';
 
 export default function UserModal() {
@@ -17,7 +21,7 @@ export default function UserModal() {
   const dispatch = useDispatch();
 
   const href = router.pathname;
-  
+
   const pushTo = () => router.push('/store/signin', '/store/signin');
 
   const handleModal = () => {

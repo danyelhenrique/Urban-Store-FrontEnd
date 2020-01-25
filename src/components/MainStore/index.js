@@ -37,6 +37,7 @@ const Data = gql`
   }
 `;
 
+
 export default function MainStore() {
   const [, dispatch] = useContext(Context);
   const [page, setPage] = useState(1);
@@ -49,8 +50,7 @@ export default function MainStore() {
     onCompleted: items => {
       populateSateWithProducts(items);
     },
-    variables: { page },
-    fetchPolicy: 'no-cache'
+    variables: { page }
   });
 
   useEffect(() => {

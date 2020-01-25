@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 const Types = {
   PRODUCT_STATE: '@PRODUCT_STATE',
 

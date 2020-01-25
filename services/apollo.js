@@ -1,6 +1,7 @@
 /* eslint-disable implicit-arrow-linebreak */
 /* eslint-disable no-underscore-dangle */
 /* eslint-disable no-confusing-arrow */
+
 import {
   ApolloClient,
   InMemoryCache,
@@ -18,9 +19,7 @@ let apolloClient = null;
 function create(initialState) {
   const cache = new InMemoryCache({
     dataIdFromObject: object =>
-      object.id
-        ? `${object.__typename}-${object.id}`
-        : `${object.__typename}-${object.cursor}`
+      object.id ? `${object.__typename}-${object.id}` : `${object.__typename}`
   }).restore(initialState || {});
 
   const middleWareLink = new ApolloLink((operation, forward) => {
@@ -38,9 +37,7 @@ function create(initialState) {
   const isBrowser = typeof window !== 'undefined';
 
   const authLink = setContext(async (_, { headers }) => {
-    const accessToken = isBrowser;
-    // ? await localForageToken.getItem('@STORE-TOKEN')
-    // : '';
+    const accessToken = isBrowser ? localStorage.getItem('@STORE-TOKEN') : '';
 
     return {
       headers: {
@@ -52,20 +49,17 @@ function create(initialState) {
 
   const http = new HttpLink({
     uri: 'http://localhost:4594/graphql',
-    fetch: !isBrowser && fetch,
-    resolvers: {}
+    fetch: !isBrowser && fetch
   });
 
   const link = ApolloLink.from([middleWareLink, authLink, http]);
 
   const client = new ApolloClient({
     connectToDevTools: isBrowser,
+    // ssrMode: true,
     ssrMode: !isBrowser,
     link,
     cache,
-    defaultOptions: {
-      query: { fetchPolicy: 'no-cache' }
-    },
     resolvers: {}
   });
 
