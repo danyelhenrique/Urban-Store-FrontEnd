@@ -6,7 +6,7 @@ import { gql } from 'apollo-boost';
 
 import styled from 'styled-components';
 import Items from '../Items';
-import { Container } from './styles';
+import { Section ,Container } from './styles';
 import { Context } from '../../context';
 
 export const Div = styled.div`
@@ -85,9 +85,11 @@ export default function MainStore() {
   }
 
   return (
-    <Container>
-      <Items />
-      <Div ref={ref} />
-    </Container>
+    <Section>
+      <Container>
+        <Items />
+        <Div ref={ref} />
+      </Container>
+    </Section>
   );
 }

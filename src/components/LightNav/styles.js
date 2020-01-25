@@ -2,9 +2,6 @@ import styled from 'styled-components';
 
 export const Header = styled.div`
   width: 100%;
-
-  background: rgb(255, 255, 255);
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,11 +10,12 @@ export const Header = styled.div`
   overflow: hidden;
 
   position: relative;
+
 `;
 export const Internalization = styled.div`
   height: 15%;
   width: 100%;
-  background: #dedede;
+  background: rgba(0, 0, 0, 0.9);
 `;
 export const UserArea = styled.div`
   width: 100%;
@@ -80,8 +78,6 @@ export const LinkGroup = styled.div`
 
   width: 100%;
 
-  background: #fff;
-
   position: relative;
 `;
 
@@ -112,7 +108,7 @@ export const Link = styled.div`
     background: none;
     border: none;
 
-    border-bottom: 2px solid #fff;
+    border-bottom: 2px solid #fffefe;
 
     :hover {
       border-bottom: 2px solid rgba(240, 94, 35, 1);

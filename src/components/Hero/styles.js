@@ -11,7 +11,6 @@ export const Container = styled.div`
 
   background: #000;
 
-  background: #fff;
 
   #top,
   #bottom {

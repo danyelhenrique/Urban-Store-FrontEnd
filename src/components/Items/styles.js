@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   display: flex;
@@ -15,7 +15,6 @@ export const Item = styled.a`
   width: 220px;
   height: 350px;
   position: relative;
-  transform: scale(0.8, 0.8);
 
   display: flex;
   flex-direction: column;
@@ -24,12 +23,12 @@ export const Item = styled.a`
   background-image: url(${({ image }) => image});
   background-repeat: no-repeat;
   background-size: cover;
-  border-radius: 2%;
+
+  color: rgb(193, 183, 181);
+  font-weight: 300;
+  text-align: left;
 
   :hover {
-    transform: scale(1, 1);
-    box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.75);
-
     > div {
       display: block;
       font-weight: 300;
@@ -46,7 +45,6 @@ export const Item = styled.a`
         padding: 10px;
         margin: 5px 0;
         color: #fefefe;
-        border-radius: 2%;
         background: #000;
         cursor: pointer;
       }
@@ -90,33 +88,38 @@ export const Icon = styled.img`
 `;
 
 export const NameAndPrice = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+         width: 100%;
+         height: 100px;
+         display: flex;
+         flex-direction: column;
 
-  a,
-  span {
-    font-weight: 300;
-    display: block;
-    letter-spacing: 0.1rem;
-    text-decoration: none;
-    color: #000;
-  }
+         a,
+         span {
+           font-weight: 300;
+           display: block;
+           letter-spacing: 0.1rem;
+           text-decoration: none;
 
-  a {
-    :hover {
-      text-decoration: underline;
-      text-decoration-color: rgba(76, 70, 55, 0.69);
-    }
-  }
+           color: rgb(193, 183, 181);
+           font-weight: 300;
+           text-align: left;
+         }
 
-  div {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 200px;
-    line-height: 1.6rem;
-  }
-`;
+         a {
+           font-weight: 400;
+           :hover {
+             text-decoration: underline;
+             text-decoration-color: rgba(255, 75, 43, 0.56);
+           }
+         }
+
+         div {
+           display: flex;
+           flex-wrap: wrap;
+           max-width: 200px;
+           line-height: 1.6rem;
+         }
+       `;
 
 export const ColorSelect = styled.div`
   display: flex;
