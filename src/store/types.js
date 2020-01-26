@@ -4,6 +4,8 @@ const Types = {
   IS_USER_MODAL_OPEN: '@IS_USER_MODAL_OPEN',
   IS_BAG_MODAL_OPEN: '@IS_BAG_MODAL_OPEN',
 
+  IS_DARK_NAV_VISIVLE: '@IS_DARK_NAV_VISIVLE',
+
   IS_SCROLL: '@IS_ISCROLL',
   SliderLoginPage: '@SliderLoginPage',
 

@@ -5,7 +5,7 @@ export const NavContainer = styled.header`
   flex-direction: row;
   flex-wrap: wrap;
 
-  height: 150px;
+  /* height: 150px; */
   min-height: 100px;
 
   width: 100%;

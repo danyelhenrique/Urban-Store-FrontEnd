@@ -88,38 +88,38 @@ export const Icon = styled.img`
 `;
 
 export const NameAndPrice = styled.div`
-         width: 100%;
-         height: 100px;
-         display: flex;
-         flex-direction: column;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
 
-         a,
-         span {
-           font-weight: 300;
-           display: block;
-           letter-spacing: 0.1rem;
-           text-decoration: none;
+  a,
+  span {
+    font-weight: 300;
+    display: block;
+    letter-spacing: 0.1rem;
+    text-decoration: none;
 
-           color: rgb(193, 183, 181);
-           font-weight: 300;
-           text-align: left;
-         }
+    color: rgb(193, 183, 181);
+    font-weight: 300;
+    text-align: left;
+  }
 
-         a {
-           font-weight: 400;
-           :hover {
-             text-decoration: underline;
-             text-decoration-color: rgba(255, 75, 43, 0.56);
-           }
-         }
+  a {
+    font-weight: 400;
+    :hover {
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 75, 43, 0.56);
+    }
+  }
 
-         div {
-           display: flex;
-           flex-wrap: wrap;
-           max-width: 200px;
-           line-height: 1.6rem;
-         }
-       `;
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 200px;
+    line-height: 1.6rem;
+  }
+`;
 
 export const ColorSelect = styled.div`
   display: flex;

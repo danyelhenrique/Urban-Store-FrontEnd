@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
@@ -21,7 +21,10 @@ export const Container = styled.div`
   }
 
   #bottom {
-    transform: translateY(${props => (props.mount ? '0%' : '-100%')});
+    width: 50%;
+    background-position: center;
+    background-size: 100% 100%;
+    /* transform: translateY(${props => (props.mount ? '0%' : '-100%')}); */
   }
 
   @media (min-width: 500px) {

@@ -10,11 +10,12 @@ export default function Hero() {
 
     return () => setMount(false);
   }, []);
-
+  const url =
+    'https://images.pexels.com/photos/2584269/pexels-photo-2584269.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940';
   return (
     <Container mount={mount}>
-      <Image background="/hero/girl-left.png" id="bottom" />
-      <Image background="/hero/girl-right.png" id="top" />
+      <Image background={url} id="bottom" />
+      {/* <Image background="/hero/girl-right.png" id="top" /> */}
       <Description />
     </Container>
   );

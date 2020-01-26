@@ -46,6 +46,11 @@ export default function MainStore() {
     threshold: 0
   });
 
+   const [Navref, isScroll] = useInView({
+     threshold: 0
+   });
+  console.log(isScroll);
+
   const { fetchMore, client } = useQuery(Data, {
     onCompleted: items => {
       populateSateWithProducts(items);
@@ -87,7 +92,7 @@ export default function MainStore() {
   return (
     <Section>
       <Container>
-        <Items />
+        <Items ref={Navref}/>
         <Div ref={ref} />
       </Container>
     </Section>
