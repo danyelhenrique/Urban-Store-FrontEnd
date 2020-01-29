@@ -48,14 +48,20 @@ export default function Login({ isSignUp }) {
   const [stateForm, dispatchForm] = useReducer(reducer, INITIAL_STATE);
 
   const [signUp] = useMutation(SIGN_UP, {
-    onCompleted:() => {
+    onCompleted: data => {
+      console.log('tok', data);
+      const token = JSON.stringify(data.signIn);
+      localStorage.setItem('@urban-store-tk', token);
       SignIn();
     },
-    onError:() => error('fail to create accout.')
+    onError: () => error('fail to create accout.')
   });
 
   const [signIn] = useMutation(SIGN_IN, {
-    onCompleted: async ({ loginUser }) => {
+    onCompleted: data => {
+      console.log('tok', data);
+      const token = JSON.stringify(data.loginUser);
+      localStorage.setItem('@urban-store-tk', token);
       const singinSignUpUrl = router.pathname;
       const lastUrl =
         state.lastUrl !== singinSignUpUrl ? state.lastUrl : '/store';
@@ -64,7 +70,7 @@ export default function Login({ isSignUp }) {
 
       // router.push(lastUrl, lastUrl);
     },
-    onError:() => error('fail to authenticate user.')
+    onError: () => error('fail to authenticate user.')
   });
 
   const SignIn = useCallback(() => {

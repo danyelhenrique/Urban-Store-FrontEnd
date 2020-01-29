@@ -5,8 +5,7 @@ export const NavContainer = styled.header`
   flex-direction: row;
   flex-wrap: wrap;
 
-  /* height: 150px; */
-  min-height: 100px;
+  height: 150px;
 
   width: 100%;
 
@@ -18,7 +17,6 @@ export const NavContainer = styled.header`
   top: 0;
   background: #fffefe;
 
-  /* box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.1); */
   box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.1),
     0px 0px 7px 0px rgba(0, 0, 0, 0.2);
 `;

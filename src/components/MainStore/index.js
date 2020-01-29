@@ -6,7 +6,7 @@ import { gql } from 'apollo-boost';
 
 import styled from 'styled-components';
 import Items from '../Items';
-import { Section ,Container } from './styles';
+import { Section, Container } from './styles';
 import { Context } from '../../context';
 
 export const Div = styled.div`
@@ -37,7 +37,6 @@ const Data = gql`
   }
 `;
 
-
 export default function MainStore() {
   const [, dispatch] = useContext(Context);
   const [page, setPage] = useState(1);
@@ -45,11 +44,6 @@ export default function MainStore() {
   const [ref, inView] = useInView({
     threshold: 0
   });
-
-   const [Navref, isScroll] = useInView({
-     threshold: 0
-   });
-  console.log(isScroll);
 
   const { fetchMore, client } = useQuery(Data, {
     onCompleted: items => {
@@ -92,7 +86,7 @@ export default function MainStore() {
   return (
     <Section>
       <Container>
-        <Items ref={Navref}/>
+        <Items />
         <Div ref={ref} />
       </Container>
     </Section>
