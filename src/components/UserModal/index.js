@@ -15,6 +15,7 @@ export default function UserModal() {
   const router = useRouter();
 
   const isActive = useSelector(state => state.modal.isUserModalOpen);
+  const isUserLogin = useSelector(state => state.user.isValid);
 
   const dispatch = useDispatch();
 
@@ -35,6 +36,31 @@ export default function UserModal() {
     e.preventDefault();
     router.push(href, href);
   };
+  console.log('isUserLogin', isUserLogin);
+
+  if (!isUserLogin) {
+    return (
+      <ContainerModal isActive={isActive}>
+        <Modal onclick={handleCloseModal} isActive={isActive}>
+          <MyAccount>
+            <h6>HELLO FRIEND</h6>
+            <Icon background="/nav/close.png">
+              <button type="button" onClick={handleModal} />
+            </Icon>
+          </MyAccount>
+
+          <UserData>
+            <Avatar background="/nav/default_avatar.png" />
+            <Button
+              onClick={() => router.push('/store/signin', '/store/signin')}
+            >
+              Sign In
+            </Button>
+          </UserData>
+        </Modal>
+      </ContainerModal>
+    );
+  }
 
   return (
     <ContainerModal isActive={isActive}>

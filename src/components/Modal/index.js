@@ -1,14 +1,10 @@
 import React from 'react';
-import { hidden } from '../../../utils/hiddenOnModalOpen';
 
 import { Container, Fixed, Modal } from './styles';
 
-export default function ModalContainer({ children, onclick, isActive }) {
+export default function ModalContainer({ children, onclick }) {
   function handleClick() {
-    if (onclick) {
-      onclick();
-      // hidden(isActive);
-    }
+    if (onclick) onclick();
   }
 
   return (
