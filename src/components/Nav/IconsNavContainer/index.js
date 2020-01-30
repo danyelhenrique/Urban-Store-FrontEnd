@@ -2,6 +2,7 @@
 import React, { useMemo } from 'react';
 // import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
+import { hidden } from '../../../../utils/hiddenOnModalOpen';
 import {
   userModal as uModal,
   bagModal as bModal
@@ -17,16 +18,21 @@ export default function IconsNavContainer() {
   const { cart } = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
+  const Qnt = useMemo(() => cart.length, [cart]);
+
   function Favorites() {
     warn('Service Unavailable.');
   }
 
-  const Qnt = useMemo(() => cart.length, [cart]);
+  function dispatchModal() {
+    dispatch(uModal());
+    hidden(true);
+  }
 
   return (
     <IconsContainer>
       <Icon background="/nav/user.png" btn-no-cursor>
-        <button type="button" onClick={() => dispatch(uModal())} />
+        <button type="button" onClick={dispatchModal} />
       </Icon>
       <Icon background="/nav/favorite.png">
         <button type="button" onClick={Favorites} />

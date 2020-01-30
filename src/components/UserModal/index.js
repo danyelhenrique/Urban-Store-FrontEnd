@@ -1,8 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouter } from 'next/router';
-import { useMutation, useQuery } from '@apollo/react-hooks';
-
-import { gql } from 'apollo-boost';
+import { hidden } from '../../../utils/hiddenOnModalOpen';
 
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -16,7 +14,6 @@ import { userModal } from '../../store/modules/modal/actions';
 export default function UserModal() {
   const router = useRouter();
 
-  
   const isActive = useSelector(state => state.modal.isUserModalOpen);
 
   const dispatch = useDispatch();
@@ -29,6 +26,11 @@ export default function UserModal() {
     dispatch(userModal());
   };
 
+  const handleCloseModal = () => {
+    dispatch(userModal());
+    hidden(false);
+  };
+
   const handleSignUp = e => {
     e.preventDefault();
     router.push(href, href);
@@ -36,7 +38,7 @@ export default function UserModal() {
 
   return (
     <ContainerModal isActive={isActive}>
-      <Modal onclick={handleModal}>
+      <Modal onclick={handleCloseModal} isActive={isActive}>
         <MyAccount>
           <h6>MY ACCOUNT</h6>
           <Icon background="/nav/close.png">

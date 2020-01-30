@@ -22,14 +22,9 @@ export const ContainerModal = styled.div`
     }
   }
 
-  ${props =>
-    props.isActive &&
-    css`
-      body {
-        overflow: hidden;
-      }
-    `};
-    
+  body {
+    overflow: hidden;
+  }
 `;
 
 export const Modal = styled.div`
