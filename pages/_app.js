@@ -1,13 +1,14 @@
+/* eslint-disable import/no-named-as-default-member */
+/* eslint-disable import/no-named-as-default */
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { ToastContainer } from 'react-toastify';
 import { ApolloProvider } from '@apollo/react-hooks';
 import App from 'next/app';
 import { Provider } from 'react-redux';
-import Layout from '../src/components/Layout';
+import Container from '../src/components/Container';
+import Global from '../global/styles';
 import withApolloClient from '../lib/with-apollo-client';
-
-import Hoc from '../lib/withLocalStorage';
 
 import store from '../src/store';
 
@@ -20,10 +21,10 @@ class MyApp extends App {
     return (
       <>
         <ApolloProvider client={apolloClient}>
-          <Layout>
-            <Provider store={store}>
+          <Provider store={store}>
+            <Container>
+              <Global />
               <Context>
-                <Hoc />
                 <ToastContainer
                   position="top-right"
                   autoClose={5000}
@@ -37,8 +38,8 @@ class MyApp extends App {
                 />
                 <Component {...pageProps} />
               </Context>
-            </Provider>
-          </Layout>
+            </Container>
+          </Provider>
         </ApolloProvider>
       </>
     );

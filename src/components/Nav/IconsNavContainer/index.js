@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useMemo } from 'react';
 // import Link from 'next/link';
 import { useSelector, useDispatch } from 'react-redux';
@@ -13,7 +14,7 @@ import Icon from '../../Icon';
 import { IconsContainer, QntCart } from './styles';
 
 export default function IconsNavContainer() {
-  const cart = useSelector(state => state.cart);
+  const { cart } = useSelector(state => state.cart);
   const dispatch = useDispatch();
 
   function Favorites() {

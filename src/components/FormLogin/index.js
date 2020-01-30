@@ -57,6 +57,7 @@ export default function Login({ isSignUp }) {
     onError: () => error('fail to create accout.')
   });
 
+
   const [signIn] = useMutation(SIGN_IN, {
     onCompleted: data => {
       console.log('tok', data);
@@ -128,7 +129,7 @@ export default function Login({ isSignUp }) {
           {state && state.isSignUpSlider && (
             <input
               autoComplete="off"
-              type="email"
+              type="name"
               name="name"
               placeholder="Name"
               onChange={e =>
