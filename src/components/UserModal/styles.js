@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const ContainerModal = styled.div`
   height: 100%;
@@ -21,6 +21,15 @@ export const ContainerModal = styled.div`
       color: #fefefe;
     }
   }
+
+  ${props =>
+    props.isActive &&
+    css`
+      body {
+        overflow: hidden;
+      }
+    `};
+    
 `;
 
 export const Modal = styled.div`

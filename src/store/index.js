@@ -1,10 +1,8 @@
 import { createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import reducers from './modules/root';
 
-const composeEnhancers =
-  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
-
-const store = createStore(reducers, composeEnhancers());
+const store = createStore(reducers, composeWithDevTools());
 
 export default store;

@@ -16,6 +16,7 @@ import { userModal } from '../../store/modules/modal/actions';
 export default function UserModal() {
   const router = useRouter();
 
+  
   const isActive = useSelector(state => state.modal.isUserModalOpen);
 
   const dispatch = useDispatch();
