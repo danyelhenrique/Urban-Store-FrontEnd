@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useMemo } from 'react';
-// import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 import { hidden } from '../../../../utils/hiddenOnModalOpen';
 import {
@@ -15,7 +15,10 @@ import Icon from '../../Icon';
 import { IconsContainer, QntCart } from './styles';
 
 export default function IconsNavContainer() {
+  const router = useRouter();
   const { cart } = useSelector(state => state.cart);
+  const isUserLogin = useSelector(state => state.user.isValid);
+
   const dispatch = useDispatch();
 
   const Qnt = useMemo(() => cart.length, [cart]);
@@ -25,6 +28,10 @@ export default function IconsNavContainer() {
   }
 
   function dispatchModal() {
+    if (!isUserLogin) {
+      router.push('/store/signin', '/store/signin');
+      return;
+    }
     dispatch(uModal());
     hidden(true);
   }

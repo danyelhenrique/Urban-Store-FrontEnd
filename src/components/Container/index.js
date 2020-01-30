@@ -21,9 +21,11 @@ function Container({ children }) {
 
   useEffect(() => {
     const tokenLocalStorage = localStorage.getItem('@urban-store-tk');
-    const { token } = JSON.parse(tokenLocalStorage);
+    if (tokenLocalStorage) {
+      const { token } = JSON.parse(tokenLocalStorage);
 
-    getToken({ variables: { token } });
+      getToken({ variables: { token } });
+    }
   }, [called]);
 
   return <Fragment>{children}</Fragment>;

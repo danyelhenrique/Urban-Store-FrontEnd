@@ -7,12 +7,11 @@ import rootReducer from './modules/root';
 
 const persistConfig = {
   key: 'root',
-  storage
-//   whitelist: ['']
+  storage,
+  whitelist: ['user']
 };
 
-const persistedReducer = persistReducer(persistConfig, rootReducer)
-
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 const store = createStore(persistedReducer, composeWithDevTools());
 const persistor = persistStore(store);

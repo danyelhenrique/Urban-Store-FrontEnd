@@ -7,4 +7,11 @@ function userToken(payload) {
   };
 }
 
-export { userToken };
+function userSigin(payload) {
+  return {
+    type: Types.VALIDATE_USER,
+    payload
+  };
+}
+
+export { userToken, userSigin };
