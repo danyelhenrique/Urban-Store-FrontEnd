@@ -8,7 +8,7 @@ function userModal() {
 
 function bagModal() {
   return {
-    type: Types.IS_USER_MODAL_OPEN
+    type: Types.IS_BAG_MODAL_OPEN
   };
 }
 

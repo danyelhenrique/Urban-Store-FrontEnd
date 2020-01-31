@@ -26,7 +26,7 @@ export default function Login() {
 
   const [form, setForm] = useState(INITIAL_STATE);
 
-  const {isSignUpSlider, lastUrl } = useSelector(state => state.signInSlider);
+  const { isSignUpSlider, lastUrl } = useSelector(state => state.signInSlider);
 
   const [signUp] = useMutation(SIGN_UP, {
     onCompleted: () => SignIn(),

@@ -46,9 +46,8 @@ export default function UserModal() {
         <UserData>
           <Avatar background="/nav/default_avatar.png" />
           <span>
-            {' '}
             Welcome back
-            {name}{' '}
+            {name}
           </span>
 
           <Button>Account Settings</Button>
