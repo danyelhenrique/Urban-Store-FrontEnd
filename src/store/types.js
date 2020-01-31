@@ -9,6 +9,11 @@ const Types = {
 
   VALIDATE_USER: '@VALIDATE_USER',
 
+  SIGN_IN_SLIDER: '@SIGN_IN_SLIDER',
+  SIGN_UP_SLIDER: '@SIGN_UP_SLIDER',
+
+  LAST_URL: '@LAST_URL',
+
   INITIAL_CART: '@@INITIAL_CART',
 
   ADD_CART: '@ADD_CART_ITEM',
@@ -17,8 +22,6 @@ const Types = {
   IncreaseItemQuantityMoreOne: '@IncreaseItemQuantityMoreOne',
   DecreaseItemQuantityMoreOne: '@DecreaseItemQuantityMoreOne',
   InputQuantityItem: '@InputQuantityItem',
-
-  LAST_URL: '@LAST_URL',
 
   CHECKOUT: '@CHECKOUT'
 };

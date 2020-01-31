@@ -1,12 +1,10 @@
-import React, { useContext, useCallback, useState } from 'react';
+import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { useMutation } from '@apollo/react-hooks';
-import { debounce } from 'lodash';
+// import { debounce } from 'lodash';
 import { SIGN_IN, SIGN_UP } from '../../graphql/gql/auth';
-
-import { Context } from '../../context';
 
 import { sucess, error } from '../../toasty';
 import { userSigin } from '../../store/modules/user/actions';
@@ -15,28 +13,38 @@ import Social from './SocialLogin';
 
 import { Form, Button, InputContainer } from './styles';
 
+const INITIAL_STATE = {
+  name: '',
+  email: '',
+  password: '',
+  confirmPassword: ''
+};
 export default function Login() {
   const router = useRouter();
-  const dispatch = useDispatch();
-  const [form, setForm] = useState({});
 
-  const [state] = useContext(Context);
+  const dispatch = useDispatch();
+
+  const [form, setForm] = useState(INITIAL_STATE);
+
+  const {isSignUpSlider, lastUrl } = useSelector(state => state.signInSlider);
 
   const [signUp] = useMutation(SIGN_UP, {
-    onCompleted: () => {
-      SignIn();
-    },
+    onCompleted: () => SignIn(),
     onError: () => error('fail to create accout.')
   });
 
   const [signIn] = useMutation(SIGN_IN, {
     onCompleted: ({ loginUser: data }) => {
       const singinSignUpUrl = router.pathname;
-      const lastUrl =
-        state.lastUrl !== singinSignUpUrl ? state.lastUrl : '/store';
+
+      const redirectUrl =
+        lastUrl && lastUrl !== singinSignUpUrl ? lastUrl : '/store';
+
       dispatch(userSigin(data));
+
       sucess('sucess to sing-in wait to redirect.');
-      // router.push(lastUrl, lastUrl);
+
+      router.push(redirectUrl, redirectUrl);
     },
     onError: () => error('fail to authenticate user.')
   });
@@ -44,6 +52,7 @@ export default function Login() {
   function SignIn() {
     const { email, password } = form;
     signIn({ variables: { email, password } });
+    setForm(INITIAL_STATE);
   }
 
   function SignUp() {
@@ -53,18 +62,8 @@ export default function Login() {
 
   function handleForm(e) {
     e.preventDefault();
-    if (state && state.isSignUpSlider) {
-      return SignUp();
-    }
-    if (state && state.isSignInSlider) {
-      return SignIn();
-    }
+    return isSignUpSlider ? SignUp() : SignUp();
   }
-
-  const debounceDispatch = debounce(
-    ({ type, payload }) => dispatchForm({ type, payload }),
-    500
-  );
 
   function handleInput({ target }) {
     const { value } = target;
@@ -73,23 +72,18 @@ export default function Login() {
   }
 
   return (
-    <Form
-      background={state.formBackground}
-      onSubmit={e => handleForm(e)}
-      isSignUp={state.isSignUpSlider}
-    >
-      <h1>{state && state.isSignUpSlider ? 'Create Account' : 'Sign in'}</h1>
+    <Form onSubmit={e => handleForm(e)} isSignUp={isSignUpSlider}>
+      <h1>{isSignUpSlider ? 'Create Account' : 'Sign in'}</h1>
 
       <Social />
-      {state && state.isSignUpSlider && (
-        <span>or use your email for registration</span>
-      )}
+      {isSignUpSlider && <span>or use your email for registration</span>}
       <InputContainer>
         <InputContainerItem
-          isVisible={state.isSignUpSlider}
+          isVisible={isSignUpSlider}
           autoComplete="off"
           type="name"
           name="name"
+          value={form.name}
           placeholder="Name"
           onChange={e => handleInput(e)}
         />
@@ -98,6 +92,7 @@ export default function Login() {
           autoComplete="off"
           type="email"
           name="email"
+          value={form.email}
           placeholder="Email"
           onChange={e => handleInput(e)}
         />
@@ -106,18 +101,20 @@ export default function Login() {
           autoComplete="off"
           type="password"
           name="password"
+          value={form.password}
           placeholder="Password"
           onChange={e => handleInput(e)}
         />
         <InputContainerItem
-          isVisible={state.isSignUpSlider}
+          isVisible={isSignUpSlider}
           autoComplete="off"
           type="password"
-          name="confirm-passwod"
+          name="confirmPassword"
+          value={form.confirmPassword}
           placeholder="Confirm you Password"
           onChange={e => handleInput(e)}
         />
-        <Button>{state && state.isSignUpSlider ? 'Sign Up' : 'Sign In'}</Button>
+        <Button>{isSignUpSlider ? 'Sign Up' : 'Sign In'}</Button>
       </InputContainer>
     </Form>
   );

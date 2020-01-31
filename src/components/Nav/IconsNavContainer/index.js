@@ -8,6 +8,8 @@ import {
   bagModal as bModal
 } from '../../../store/modules/modal/actions';
 
+import { latUrlSingIn } from '../../../store/modules/signInSlider/actions';
+
 import { warn } from '../../../toasty';
 
 import Icon from '../../Icon';
@@ -29,7 +31,12 @@ export default function IconsNavContainer() {
 
   function dispatchModal() {
     if (!isUserLogin) {
+      const singinSignUpUrl = router.pathname;
+
+      dispatch(latUrlSingIn(singinSignUpUrl));
+
       router.push('/store/signin', '/store/signin');
+
       return;
     }
     dispatch(uModal());
