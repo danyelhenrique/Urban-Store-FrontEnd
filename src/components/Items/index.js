@@ -1,10 +1,12 @@
-import React, { useContext } from 'react';
-// import { useRouter } from 'next/router';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import Link from 'next/link';
 
 import Button from '../ColorSelect';
 
-import { Context } from '../../context';
+import { addItemtoCart } from '../../store/modules/cart/actions';
+import { generateKey } from '../../../utils/product';
 
 import {
   Container,
@@ -18,29 +20,30 @@ import {
 } from './styles';
 
 export default function Items() {
-  const [state, dispatch] = useContext(Context);
+  const dispatch = useDispatch();
+  const { products } = useSelector(state => state.products);
 
-  const renderColor = colors => colors.map((ItemColor, index) => {
+  function renderColor(colors) {
+    const { key } = generateKey();
+
+    return colors.map(ItemColor => {
       if (ItemColor) {
-        let color = ItemColor.includes(' ')
+        const color = ItemColor.includes(' ')
           ? ItemColor.split(' ')[0].toLowerCase()
           : ItemColor;
 
-        // eslint-disable-next-line no-self-assign
-        // eslint-disable-next-line no-unused-expressions
-        color.includes('White') ? (color = '#d0d0d0') : color;
-
-        return <Button color={color} key={String(index)} />;
+        return <Button color={color} key={key} />;
       }
     });
+  }
 
   function AddToFavorite() {}
 
   function addToCart(item) {
-    dispatch({ type: '@ADD_CART_ITEM', payload: item });
+    dispatch(addItemtoCart(item));
   }
 
-  return state.products.map(item => {
+  return products.map(item => {
     const urlAs = item.data_product_display_name.split(' ').join('_');
     return (
       <Container key={item.id}>

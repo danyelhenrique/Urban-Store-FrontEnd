@@ -9,9 +9,23 @@ function userToken(payload) {
 
 function userSigin(payload) {
   return {
-    type: Types.VALIDATE_USER,
+    type: Types.USER_SIGN_IN,
     payload
   };
 }
 
-export { userToken, userSigin };
+function userSigUp(payload) {
+  return {
+    type: Types.USER_SIGN_UP,
+    payload
+  };
+}
+
+function userSigOut(payload) {
+  return {
+    type: Types.USER_SIGN_OUT,
+    payload
+  };
+}
+
+export { userToken, userSigin, userSigUp, userSigOut };

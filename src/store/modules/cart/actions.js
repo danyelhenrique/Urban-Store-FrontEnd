@@ -1,8 +1,8 @@
 import Types from '../../types';
 
-function intialCart(payload) {
+function productState(payload) {
   return {
-    type: Types.INITIAL_CART,
+    type: Types.PRODUCT_STATE,
     payload
   };
 }
@@ -21,4 +21,4 @@ function removeItemtoCart(payload) {
   };
 }
 
-export { intialCart, addItemtoCart, removeItemtoCart };
+export { productState, addItemtoCart, removeItemtoCart };

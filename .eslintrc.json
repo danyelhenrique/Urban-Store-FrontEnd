@@ -24,6 +24,7 @@
     "no-param-reassign": "off",
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/control-has-associated-label": "off",
+    "no-unused-expressions": "off",
     "implicit-arrow-linebreak": "off",
     "operator-linebreak": "off",
     "no-use-before-define": "off",

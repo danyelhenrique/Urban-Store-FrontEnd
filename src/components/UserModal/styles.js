@@ -87,6 +87,13 @@ export const Button = styled.button`
 export const UserData = styled.div`
   display: flex;
   flex-direction: column;
+
+  > span {
+    color:#fff;
+    font-size: 0.8rem;
+    margin: 0 auto;
+    text-transform: capitalize;
+  }
 `;
 
 export const Avatar = styled.div`
