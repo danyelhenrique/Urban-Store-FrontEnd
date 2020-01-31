@@ -12,7 +12,6 @@ import {
 import { setContext } from 'apollo-link-context';
 
 import fetch from 'node-fetch';
-// import { localForageToken } from '../config/localForage';
 
 let apolloClient = null;
 
@@ -36,8 +35,9 @@ function create(initialState) {
 
   const isBrowser = typeof window !== 'undefined';
 
-  const authLink = setContext(async (_, { headers }) => {
-    const accessToken = isBrowser ? localStorage.getItem('@STORE-TOKEN') : '';
+  const authLink = setContext((_, { headers }) => {
+    const store = JSON.parse(localStorage.getItem('persist:root'));
+    const { token: accessToken } = JSON.parse(store.user);
 
     return {
       headers: {
@@ -56,7 +56,6 @@ function create(initialState) {
 
   const client = new ApolloClient({
     connectToDevTools: isBrowser,
-    // ssrMode: true,
     ssrMode: !isBrowser,
     link,
     cache,
