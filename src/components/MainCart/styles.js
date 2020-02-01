@@ -4,13 +4,12 @@ export const Container = styled.section`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 100%;
   background-color: rgba(0, 0, 0, 0.05);
 `;
 
 export const Items = styled.div`
   width: 100%;
-  height: 100%;
+  max-height: 230px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -95,7 +94,7 @@ export const Bag = styled.div`
   width: 30%;
   height: 400px;
   color: #000;
-  background: rgba(226, 88, 34, 0.5);
+  background: #ff4b2b;
 
   position: fixed;
   top: 160px;
@@ -122,15 +121,15 @@ export const Form = styled.div`
   display: flex;
   align-items: center;
   font-size: 0.9rem;
+  height: 60px;
 
   button {
     border: 1px solid rgba(0, 0, 0, 0.9);
 
     background: transparent;
 
-    padding: 20px;
-
-    margin: 15px 0 0 3px;
+    height: 100%;
+    width: 20%;
 
     cursor: pointer;
 
@@ -145,13 +144,24 @@ export const Form = styled.div`
     width: 100%;
     font-size: 0.8rem;
     font-weight: 300;
-    height: 60px;
+    height: 100%;
 
     input {
-      padding: 20px;
       height: 100%;
       border: 1px solid #cecece;
       color: rgba(0, 0, 0, 0.9);
+
+      border: none;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.9);
+      color: rgba(0, 0, 0, 0.9);
+      background: transparent;
+      outline: none;
+
+      ::placeholder {
+        color: rgba(0, 0, 0, 0.5);
+        font-family: Arial, Helvetica, sans-serif;
+        text-transform: uppercase;
+      }
     }
   }
 `;

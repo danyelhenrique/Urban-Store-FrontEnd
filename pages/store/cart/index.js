@@ -7,7 +7,7 @@ import MainCart from '../../../src/components/MainCart';
 
 export default function Cart() {
   return (
-    <div>
+    <>
       <Head>
         <title>Cart</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,6 +16,6 @@ export default function Cart() {
         <Nav />
         <MainCart />
       </Main>
-    </div>
+    </>
   );
 }

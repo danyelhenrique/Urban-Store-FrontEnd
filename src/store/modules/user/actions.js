@@ -7,6 +7,13 @@ function userToken(payload) {
   };
 }
 
+function invalidUser(payload) {
+  return {
+    type: Types.INVALID_USER,
+    payload
+  };
+}
+
 function userSigin(payload) {
   return {
     type: Types.USER_SIGN_IN,
@@ -28,4 +35,4 @@ function userSigOut(payload) {
   };
 }
 
-export { userToken, userSigin, userSigUp, userSigOut };
+export { userToken, invalidUser, userSigin, userSigUp, userSigOut };

@@ -3,10 +3,12 @@ import React, { useEffect, Fragment } from 'react';
 import { useDispatch } from 'react-redux';
 import { useLazyQuery } from '@apollo/react-hooks';
 import { Token } from '../../graphql/gql/auth';
-import { userToken } from '../../store/modules/user/actions';
+import { userToken, invalidUser } from '../../store/modules/user/actions';
+import reduxPersit from '../../../utils/reduxPersist';
 
 function Container({ children }) {
   const dispatch = useDispatch();
+
   const [getToken, { called }] = useLazyQuery(Token, {
     fetchPolicy: 'network-only',
     onCompleted: Tdata => {
@@ -14,17 +16,16 @@ function Container({ children }) {
       if (validateToken.isValid) {
         dispatch(userToken(validateToken));
       } else {
-        localStorage.removeItem('@urban-store-tk');
+        dispatch(invalidUser({ isValid: false }));
       }
     }
   });
 
   useEffect(() => {
-    const tokenLocalStorage = localStorage.getItem('@urban-store-tk');
-    if (tokenLocalStorage) {
-      const { token } = JSON.parse(tokenLocalStorage);
+    const { accessToken } = reduxPersit.token();
 
-      getToken({ variables: { token } });
+    if (accessToken) {
+      getToken({ variables: { token: accessToken } });
     }
   }, [called]);
 

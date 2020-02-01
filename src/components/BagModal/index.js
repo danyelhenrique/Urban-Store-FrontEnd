@@ -64,7 +64,7 @@ export default function BagModal() {
           </Icon>
         </Close>
         <StoreData>
-          {state.cart.map(item => (
+          {cart.map(item => (
             <Item>
               <Image background={item.data_front_imageURL} />
               <Details>

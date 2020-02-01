@@ -13,6 +13,8 @@ import { setContext } from 'apollo-link-context';
 
 import fetch from 'node-fetch';
 
+import reduxPersist from '../utils/reduxPersist';
+
 let apolloClient = null;
 
 function create(initialState) {
@@ -36,9 +38,7 @@ function create(initialState) {
   const isBrowser = typeof window !== 'undefined';
 
   const authLink = setContext((_, { headers }) => {
-    const store = JSON.parse(localStorage.getItem('persist:root'));
-    const { token: accessToken } = JSON.parse(store.user);
-
+    const { accessToken } = reduxPersist.token();
     return {
       headers: {
         ...headers,

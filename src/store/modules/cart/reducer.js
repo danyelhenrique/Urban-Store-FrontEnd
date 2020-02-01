@@ -1,4 +1,5 @@
 import Types from '../../types';
+import { SubCartItems, SumCartItems } from '../utils/cart';
 
 const INITIAL_STATE = {
   cart: [],
@@ -13,21 +14,8 @@ const INITIAL_STATE = {
 
 function cart(state = INITIAL_STATE, action) {
   switch (action.type) {
-    case Types.INITIAL_CART: {
-      const { data } = action.payload;
-
-      const total = data.reduce((accumulator, currentValue) => {
-        const sum = accumulator + Number(currentValue.data_price);
-
-        return sum;
-      }, 0);
-
-      const cartValues = { ...state.cartValues, total };
-
-      return { ...state, cart: data, cartValues };
-    }
     case Types.ADD_CART: {
-      const { id, data_price } = action.payload;
+      const { id } = action.payload;
 
       const isItemtemExists = state.cart.find(item => item.id === id);
 
@@ -35,14 +23,7 @@ function cart(state = INITIAL_STATE, action) {
 
       action.payload.qntRequest = 1;
 
-      const cartSum = state.cart.reduce((accumulator, currentValue) => {
-        const sum = accumulator + Number(currentValue.data_price);
-
-        return sum;
-      }, 0);
-
-      const total = Number(data_price) + cartSum;
-      const cartValues = { ...state.cartValues, total };
+      const cartValues = SumCartItems(state, action.payload);
 
       return { ...state, cart: [...state.cart, action.payload], cartValues };
     }
@@ -51,16 +32,7 @@ function cart(state = INITIAL_STATE, action) {
       const items = state.cart.filter(cartItem => cartItem.id !== id);
 
       const newState = { ...state, cart: [...items] };
-
-      const cartSum = state.cart.reduce((accumulator, currentValue) => {
-        const sum = accumulator - Number(currentValue.data_price);
-
-        return sum;
-      }, 0);
-
-      const total = Math.abs(cartSum);
-
-      const cartValues = { ...state.cartValues, total };
+      const cartValues = SubCartItems(newState);
 
       return { ...newState, cartValues: { ...cartValues } };
     }
@@ -68,7 +40,5 @@ function cart(state = INITIAL_STATE, action) {
       return state;
   }
 }
-
-
 
 export default cart;
