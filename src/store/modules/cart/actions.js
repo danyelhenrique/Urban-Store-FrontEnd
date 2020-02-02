@@ -27,10 +27,16 @@ function increaseQntItemMoreOne(payload) {
     payload
   };
 }
-
 function decreaseQntItemLessOne(payload) {
   return {
     type: Types.DECREASE_QNT_ITEM_LESS_ONE,
+    payload
+  };
+}
+
+function changeQntItemImput(payload) {
+  return {
+    type: Types.CHANGE_QNT_ITEM_INPUT,
     payload
   };
 }
@@ -40,5 +46,6 @@ export {
   addItemtoCart,
   removeItemtoCart,
   increaseQntItemMoreOne,
-  decreaseQntItemLessOne
+  decreaseQntItemLessOne,
+  changeQntItemImput
 };

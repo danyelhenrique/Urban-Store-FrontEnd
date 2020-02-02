@@ -3,7 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import ButtonPaypal from '../ButtonPaypal';
 
-import { removeItemtoCart } from '../../store/modules/cart/actions';
+import {
+  removeItemtoCart,
+  changeQntItemImput
+} from '../../store/modules/cart/actions';
+
 import {
   Container,
   Item,
@@ -42,6 +46,14 @@ export default function MainCart() {
     dispatch(removeItemtoCart(item));
   }
 
+  function handleSelect(item, e) {
+    const value = Number(e);
+
+    const payload = { value, item };
+
+    dispatch(changeQntItemImput(payload));
+  }
+
   return (
     <Container>
       {cart.map(item => {
@@ -62,10 +74,18 @@ export default function MainCart() {
                 <p>Size: 2</p>
                 <p>Total: ${item.data_price}</p>
                 <div>
-                  <select name="quantity">
-                    <option value="choice">quantity</option>
+                  <select
+                    name="quantity"
+                    onChange={({ target }) => handleSelect(item, target.value)}
+                  >
+                    <option value="choice" disabled>
+                      quantity
+                    </option>
+                    <option defaultValue={item.qntRequest}>
+                      {item.qntRequest}
+                    </option>
                     {qnt.map((_, index) => (
-                      <option value="one">{index + 1}</option>
+                      <option value={index + 1}>{index + 1}</option>
                     ))}
                   </select>
                 </div>

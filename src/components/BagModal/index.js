@@ -5,7 +5,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { bagModal } from '../../store/modules/modal/actions';
 import {
   increaseQntItemMoreOne,
-  decreaseQntItemLessOne
+  decreaseQntItemLessOne,
+  changeQntItemImput,
+  removeItemtoCart
 } from '../../store/modules/cart/actions';
 
 import {
@@ -25,9 +27,9 @@ import Modal from '../Modal';
 
 export default function BagModal() {
   const router = useRouter();
+  const { cart } = useSelector(state => state.cart);
 
   const isActive = useSelector(state => state.modal.isBagModalOpen);
-  const { cart } = useSelector(state => state.cart);
 
   const dispatch = useDispatch();
 
@@ -42,12 +44,16 @@ export default function BagModal() {
     router.push('/store/cart', '/store/cart');
   };
 
-  const handleChange = item => {
-    dispatch({ type: '@InputQuantityItem', payload: item });
-  };
+  function handleChange(e, item) {
+    const value = Number(e);
+
+    const payload = { value, item };
+
+    dispatch(changeQntItemImput(payload));
+  }
 
   function removeItem(item) {
-    dispatch({ type: '@REMOVE_ITEM_CART', payload: item });
+    dispatch(removeItemtoCart(item));
   }
 
   return (
@@ -56,18 +62,18 @@ export default function BagModal() {
         <Close>
           <h6>BAG</h6>
           <Icon background="/nav/close.png">
-            <button onClick={handleModal} />
+            <button type="button" onClick={handleModal} />
           </Icon>
         </Close>
         <StoreData>
           {cart.map(item => (
-            <Item>
+            <Item key={item.id} >
               <Image background={item.data_front_imageURL} />
               <Details>
                 <ItemName>
                   <span>{item.data_product_display_name}</span>
-                  <Icon background="/user_modal_bag/trash.png">
-                    <button onClick={() => {}} />
+                  <Icon background="/nav/close.png">
+                    <button type="button" onClick={() => removeItem(item)} />
                   </Icon>
                 </ItemName>
 
@@ -85,8 +91,9 @@ export default function BagModal() {
                   </MoreLess>
                   <input
                     type="text"
+                    name={item.id}
                     value={item.qntRequest}
-                    onChange={() => {}}
+                    onChange={({ target }) => handleChange(target.value, item)}
                   />
                   <MoreLess>
                     <button

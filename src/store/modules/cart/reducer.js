@@ -66,6 +66,27 @@ function cart(state = INITIAL_STATE, action) {
 
       return { ...newState };
     }
+    case Types.CHANGE_QNT_ITEM_INPUT: {
+      const { id } = action.payload.item;
+      const { value: valueStr } = action.payload;
+
+      const value = Number(valueStr);
+
+      const isValid = Number.isInteger(value);
+
+      const newState = { ...state };
+
+      const index = newState.cart.findIndex(item => item.id === id);
+
+      if (value > newState.cart[index].qnt) {
+        return state;
+      }
+
+      if (!isValid) return state;
+
+      newState.cart[index].qntRequest = value;
+      return { ...newState };
+    }
     default:
       return state;
   }
