@@ -11,7 +11,7 @@ export const NavContainer = styled.header`
 
   background: transparent;
 
-  z-index: 10;
+  z-index: 100;
 
   position: fixed;
   top: 0;

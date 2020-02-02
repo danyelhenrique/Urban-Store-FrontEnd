@@ -11,22 +11,6 @@ export const Container = styled.div`
 
   background: #000;
 
-
-  #top,
-  #bottom {
-    transform: translateY(${props => (props.mount ? '0%' : '100%')});
-    opacity: ${props => (!props.mount ? 0 : 1)};
-
-    transition: all 5s ease;
-  }
-
-  #bottom {
-    width: 50%;
-    background-position: center;
-    background-size: 100% 100%;
-    /* transform: translateY(${props => (props.mount ? '0%' : '-100%')}); */
-  }
-
   @media (min-width: 500px) {
     /* width: 100%; */
   }
@@ -39,18 +23,9 @@ export const Container = styled.div`
   }
 `;
 
-export const Image = styled.div`
+export const Image = styled.img`
   height: 100%;
-  width: 25%;
-
-  /* width:50%; */
-
-
-
-  background: url("${props => props.background}");
-  background-position: center;
-  background-size: 100% 100%;
-
+  width: 50%;
 `;
 
 export const Description = styled.div``;

@@ -14,7 +14,7 @@ export default function store() {
         <title>Urban Store</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Main>
+      <Main store>
         <Nav />
         <Hero />
         <MainStore />

@@ -5,6 +5,7 @@ export const Container = styled.section`
   flex-wrap: wrap;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.05);
+  z-index: 20;
 `;
 
 export const Items = styled.div`

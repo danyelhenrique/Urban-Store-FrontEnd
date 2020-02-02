@@ -1,6 +1,8 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 
+import Link from 'next/link';
+
 import { useSelector, useDispatch } from 'react-redux';
 import { bagModal } from '../../store/modules/modal/actions';
 import {
@@ -67,11 +69,13 @@ export default function BagModal() {
         </Close>
         <StoreData>
           {cart.map(item => (
-            <Item key={item.id} >
+            <Item key={item.id}>
               <Image background={item.data_front_imageURL} />
               <Details>
                 <ItemName>
-                  <span>{item.data_product_display_name}</span>
+                  <Link href="/store/cart" as="/store/cart">
+                    <a>{item.data_product_display_name}</a>
+                  </Link>
                   <Icon background="/nav/close.png">
                     <button type="button" onClick={() => removeItem(item)} />
                   </Icon>

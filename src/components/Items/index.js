@@ -1,7 +1,8 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-
+import LazyLoad from 'react-lazyload';
 import Link from 'next/link';
+
+import { useSelector, useDispatch } from 'react-redux';
 
 import Button from '../ColorSelect';
 
@@ -26,13 +27,14 @@ export default function Items() {
   function renderColor(colors) {
     const { key } = generateKey();
 
-    return colors.map(ItemColor => {
+    return colors.map((ItemColor, index) => {
       if (ItemColor) {
         const color = ItemColor.includes(' ')
           ? ItemColor.split(' ')[0].toLowerCase()
           : ItemColor;
 
-        return <Button color={color} key={key} />;
+        // eslint-disable-next-line react/no-array-index-key
+        return <Button color={color} key={`${key}${index}`} />;
       }
     });
   }
@@ -48,7 +50,14 @@ export default function Items() {
     return (
       <Container key={item.id}>
         <Item image={item.data_back_image_url}>
-          <Image src={item.data_front_imageURL} alt="item" />
+          <LazyLoad height="100%">
+            <Image src={item.data_front_imageURL} alt="item" />
+          </LazyLoad>
+
+          <LazyLoad height="100%">
+            <Image src={item.data_back_image_url} alt="item" id="back_img" />
+          </LazyLoad>
+
           <Favorite type="button" onClick={AddToFavorite}>
             <Icon src="/favorites-with-border.png" alt="favorite" />
           </Favorite>

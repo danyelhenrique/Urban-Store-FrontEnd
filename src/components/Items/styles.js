@@ -20,16 +20,18 @@ export const Item = styled.a`
   flex-direction: column;
   align-items: flex-end;
 
-  background-image: url(${({ image }) => image});
-  background-repeat: no-repeat;
-  background-size: cover;
-
   color: rgb(193, 183, 181);
   font-weight: 300;
   text-align: left;
 
+  #back_img {
+    display: none;
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+
   :hover {
-    > div {
+    #back_img {
       display: block;
       font-weight: 300;
       display: flex;
@@ -37,29 +39,34 @@ export const Item = styled.a`
       justify-content: center;
       width: 100%;
       height: 100%;
-
-      button {
-        border: 1px solid #000;
-        background: transparent;
-        width: 80%;
-        padding: 10px;
-        margin: 5px 0;
-        color: #fefefe;
-        background: #000;
-        cursor: pointer;
-      }
+      opacity: 1;
+    }
+    div {
+      display: flex;
     }
     > img {
       display: none;
-      height: 75%;
     }
   }
 `;
 
 export const Hover = styled.div`
   display: none;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
 
   button {
+    border: 1px solid #000;
+    background: transparent;
+    width: 80%;
+    padding: 10px;
+    margin: 5px auto;
+    color: #fefefe;
+    background: #000;
     cursor: pointer;
   }
 `;
@@ -67,6 +74,7 @@ export const Hover = styled.div`
 export const Image = styled.img`
   height: 100%;
   width: 100%;
+  border-radius: 5px;
 `;
 
 export const Favorite = styled.button`

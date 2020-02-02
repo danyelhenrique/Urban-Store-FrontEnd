@@ -129,6 +129,7 @@ export const ItemName = styled.div`
     height: 100%;
     border: none;
     background: transparent;
+    cursor: pointer;
   }
   > div {
     width: 30px;
@@ -136,8 +137,15 @@ export const ItemName = styled.div`
     align-self: flex-start;
   }
 
-  span {
+  a {
     text-overflow: ellipsis;
+    text-decoration: none;
+    color: #a2a2a2;
+
+    :hover {
+      text-decoration: underline;
+      text-decoration-color: rgba(255, 75, 43, 0.56);
+    }
   }
 `;
 
@@ -155,6 +163,7 @@ export const Select = styled.div`
     height: 100%;
     background: transparent;
     border: none;
+    cursor: pointer;
   }
 
   input {

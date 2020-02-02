@@ -23,8 +23,11 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 }
+body {
+  background: rgba(0, 0, 0, 0.8);
 
-html,body, #__next {
+}
+html,body, #__next, Main {
     height: 100vh;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -41,6 +44,7 @@ html,body, #__next {
     input , button {
       font-family: 'Roboto', sans-serif;
     }
+    
 
 /* toastify */
 .Toastify__toast-container {

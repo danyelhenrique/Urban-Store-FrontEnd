@@ -8,20 +8,11 @@ import { products } from '../../store/modules/products/actions';
 import { products as prodData } from '../../graphql/gql/products';
 
 import { fetchMoreItems, mockItemsWithQnt } from '../../../utils/product';
+import Spinner from '../Spinner';
 
-import styled from 'styled-components';
 import Items from '../Items';
 import { Section, Container } from './styles';
 
-export const Div = styled.div`
-  width: 100%;
-  height: 40px;
-  background: transparent;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
 
 export default function MainStore() {
   const dispatch = useDispatch();
@@ -33,7 +24,9 @@ export default function MainStore() {
 
   const { fetchMore, client } = useQuery(prodData, {
     onCompleted: items => {
-      populateSateWithProducts(items);
+      if (items && items.indexProduct) {
+        populateSateWithProducts(items);
+      }
     },
     variables: { page }
   });
@@ -60,7 +53,7 @@ export default function MainStore() {
     <Section>
       <Container>
         <Items />
-        <Div ref={ref} />
+        <Spinner handleMore={ref} />
       </Container>
     </Section>
   );
