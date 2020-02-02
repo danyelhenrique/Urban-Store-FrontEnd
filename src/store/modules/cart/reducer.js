@@ -36,6 +36,36 @@ function cart(state = INITIAL_STATE, action) {
 
       return { ...newState, cartValues: { ...cartValues } };
     }
+    case Types.INCREASE_QNT_ITEM_MORE_ONE: {
+      const { id } = action.payload;
+
+      const newState = { ...state };
+
+      const index = newState.cart.findIndex(item => item.id === id);
+
+      if (newState.cart[index].qntRequest >= newState.cart[index].qnt) {
+        return state;
+      }
+
+      newState.cart[index].qntRequest += 1;
+
+      return { ...newState };
+    }
+    case Types.DECREASE_QNT_ITEM_LESS_ONE: {
+      const { id } = action.payload;
+
+      const newState = { ...state };
+
+      const index = newState.cart.findIndex(item => item.id === id);
+
+      if (newState.cart[index].qntRequest <= 1) {
+        return state;
+      }
+
+      newState.cart[index].qntRequest -= 1;
+
+      return { ...newState };
+    }
     default:
       return state;
   }

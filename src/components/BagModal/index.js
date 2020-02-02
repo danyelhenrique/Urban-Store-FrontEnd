@@ -3,6 +3,10 @@ import { useRouter } from 'next/router';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { bagModal } from '../../store/modules/modal/actions';
+import {
+  increaseQntItemMoreOne,
+  decreaseQntItemLessOne
+} from '../../store/modules/cart/actions';
 
 import {
   ContainerModal,
@@ -31,15 +35,7 @@ export default function BagModal() {
     dispatch(bagModal());
   }
 
-  if (cart.length <= 0) {
-    return (
-      <ContainerModal isActive={isActive}>
-        <Modal onclick={handleModal}>
-          <h1>OI</h1>
-        </Modal>
-      </ContainerModal>
-    );
-  }
+  if (cart.length < 0) return null;
 
   const handleClick = e => {
     e.preventDefault();
@@ -80,7 +76,10 @@ export default function BagModal() {
                 <Select>
                   <small> qnt: </small>
                   <MoreLess>
-                    <button onClick={() => {}}>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(increaseQntItemMoreOne(item))}
+                    >
                       <span>+</span>
                     </button>
                   </MoreLess>
@@ -90,7 +89,10 @@ export default function BagModal() {
                     onChange={() => {}}
                   />
                   <MoreLess>
-                    <button onClick={() => {}}>
+                    <button
+                      type="button"
+                      onClick={() => dispatch(decreaseQntItemLessOne(item))}
+                    >
                       <span>-</span>
                     </button>
                   </MoreLess>

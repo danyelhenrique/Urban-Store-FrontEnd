@@ -21,4 +21,24 @@ function removeItemtoCart(payload) {
   };
 }
 
-export { productState, addItemtoCart, removeItemtoCart };
+function increaseQntItemMoreOne(payload) {
+  return {
+    type: Types.INCREASE_QNT_ITEM_MORE_ONE,
+    payload
+  };
+}
+
+function decreaseQntItemLessOne(payload) {
+  return {
+    type: Types.DECREASE_QNT_ITEM_LESS_ONE,
+    payload
+  };
+}
+
+export {
+  productState,
+  addItemtoCart,
+  removeItemtoCart,
+  increaseQntItemMoreOne,
+  decreaseQntItemLessOne
+};

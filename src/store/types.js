@@ -19,9 +19,9 @@ const Types = {
   ADD_CART: '@ADD_CART_ITEM',
   REMOVE_ITEM_FROM_CART: '@REMOVE_ITEM_CART',
 
-  IncreaseItemQuantityMoreOne: '@IncreaseItemQuantityMoreOne',
-  DecreaseItemQuantityMoreOne: '@DecreaseItemQuantityMoreOne',
-  InputQuantityItem: '@InputQuantityItem',
+  INCREASE_QNT_ITEM_MORE_ONE: '@INCREASE_QNT_ITEM_MORE_ONE',
+  DECREASE_QNT_ITEM_LESS_ONE: '@DECREASE_QNT_ITEM_LESS_ONE',
+  CHANGE_QNT_ITEM_INPUT: '@CHANGE_QNT_ITEM_INPUT',
 
   CHECKOUT: '@CHECKOUT'
 };
