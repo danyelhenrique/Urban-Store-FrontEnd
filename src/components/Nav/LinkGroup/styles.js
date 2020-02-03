@@ -1,4 +1,3 @@
-/* eslint-disable no-confusing-arrow */
 import styled from 'styled-components';
 
 export const LinkGroup = styled.div`
@@ -17,13 +16,12 @@ export const Links = styled.div`
   margin: 0 auto;
   list-style: none;
   width: 100%;
-  width: ${({ isDarkNav }) => (isDarkNav ? '70%' : '100%')};
+  width: 100%;
 
-  justify-content: ${({ isDarkNav }) =>
-    isDarkNav ? 'space-between' : 'center'};
+  justify-content: center;
 
   > div > button {
-    font-size: ${({ isDarkNav }) => (isDarkNav ? '0.7rem' : '0.8rem')};
+    font-size: 0.8rem;
   }
 `;
 

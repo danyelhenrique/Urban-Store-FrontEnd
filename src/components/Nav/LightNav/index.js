@@ -18,7 +18,7 @@ export default function LightNav() {
 
         <UserArea>
           <Logo>
-            <span>NEW LOGO HERE</span>
+            <span>URBAN STORE</span>
           </Logo>
           <IconsNavContainer />
         </UserArea>

@@ -25,6 +25,8 @@
     "jsx-a11y/label-has-for": "off",
     "jsx-a11y/control-has-associated-label": "off",
     "jsx-a11y/anchor-is-valid": "off",
+    "react/no-unescaped-entities": "off",
+    "react/jsx-one-expression-per-line": "off",
     "no-unused-expressions": "off",
     "implicit-arrow-linebreak": "off",
     "operator-linebreak": "off",

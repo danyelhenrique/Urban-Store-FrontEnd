@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 
 import NavWomen from '../../NavItemsContainer/Women';
 import NavPlus from '../../NavItemsContainer/PlusAndCurver';
@@ -11,10 +11,10 @@ import Icon from '../../Icon';
 
 import { Links, LinkGroup, Link, Input } from './styles';
 
-export default function LinkGroupA({isDarkNav}) {
+export default function LinkGroupA() {
   return (
     <LinkGroup>
-      <Links isDarkNav={isDarkNav}>
+      <Links>
         <Link>
           <button type="button">
             WOMEN + ACC
@@ -53,10 +53,10 @@ export default function LinkGroupA({isDarkNav}) {
         </Link>
       </Links>
 
-      {/* <Input>
+      <Input>
         <input type="text" placeholder="Search Products" />
         <Icon background="/nav/search.png" />
-      </Input> */}
+      </Input>
     </LinkGroup>
   );
 }

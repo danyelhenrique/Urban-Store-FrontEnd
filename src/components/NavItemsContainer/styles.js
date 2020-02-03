@@ -1,4 +1,3 @@
-/* eslint-disable import/prefer-default-export */
 import styled from 'styled-components';
 
 export const Container = styled.nav.attrs({
@@ -18,7 +17,7 @@ export const Container = styled.nav.attrs({
 
   pointer-events: none;
 
-  padding-top: 20px;
+  padding: 30px;
   margin-top: 2px;
 
   transition: all 0.3s ease;

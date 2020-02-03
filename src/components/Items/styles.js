@@ -60,14 +60,15 @@ export const Hover = styled.div`
   transform: translateY(-50%);
 
   button {
-    border: 1px solid #000;
     background: transparent;
+    border: none;
     width: 80%;
     padding: 10px;
     margin: 5px auto;
     color: #fefefe;
     background: #000;
     cursor: pointer;
+    border-radius: 2px;
   }
 `;
 
