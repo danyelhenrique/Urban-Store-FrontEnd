@@ -9,7 +9,7 @@ import Sale from '../../NavItemsContainer/Sale';
 
 import Icon from '../../Icon';
 
-import { Links, LinkGroup, Link, Input } from './styles';
+import { Links, LinkGroup, Link, Border, Input } from './styles';
 
 export default function LinkGroupA() {
   return (
@@ -18,36 +18,42 @@ export default function LinkGroupA() {
         <Link>
           <button type="button">
             WOMEN + ACC
+            <Border />
             <NavWomen />
           </button>
         </Link>
         <Link>
           <button type="button">
             PLUS + CURVER
+            <Border />
             <NavPlus />
           </button>
         </Link>
         <Link>
           <button type="button">
             MEN
+            <Border />
             <Mens />
           </button>
         </Link>
         <Link>
           <button type="button">
             GIRLS
+            <Border />
             <Girls />
           </button>
         </Link>
         <Link>
           <button type="button">
             BEAUTY BY ...
+            <Border />
             <BeautyBy />
           </button>
         </Link>
         <Link>
           <button type="button">
             SALE
+            <Border />
             <Sale />
           </button>
         </Link>
@@ -55,7 +61,7 @@ export default function LinkGroupA() {
 
       <Input>
         <input type="text" placeholder="Search Products" />
-        <Icon background="/nav/search.png" />
+        <Icon background="/nav/search-light.png" />
       </Input>
     </LinkGroup>
   );

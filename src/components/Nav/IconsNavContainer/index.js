@@ -45,13 +45,13 @@ export default function IconsNavContainer() {
 
   return (
     <IconsContainer>
-      <Icon background="/nav/user.png" btn-no-cursor>
+      <Icon background="/nav/user-light.png" btn-no-cursor>
         <button type="button" onClick={dispatchModal} />
       </Icon>
-      <Icon background="/nav/favorite.png">
+      <Icon background="/nav/favorite-light.png">
         <button type="button" onClick={Favorites} />
       </Icon>
-      <Icon background="/nav/bag.png">
+      <Icon background="/nav/bag-light.png">
         <button type="button" onClick={() => dispatch(bModal())} />
       </Icon>
       <QntCart>{Qnt}</QntCart>

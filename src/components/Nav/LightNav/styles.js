@@ -25,29 +25,28 @@ export const UserArea = styled.div`
 `;
 
 export const Logo = styled.div`
-         font-size: 1.5rem;
-         font-weight: bold;
-         color: rgba(0, 0, 0, 0.8);
-         margin: 0 auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 0 auto;
 
-         span {
-           color: #010101;
-           font-family: 'Playfair Display', serif;
-           font-style: italic;
-           -webkit-background-clip: text;
-           background: linear-gradient(
-             to left top,
-             #000000,
-             #411720,
-             #802230,
-             rgba(0, 0, 0, 0.7),
-             #e74c3c
-           );
-           -webkit-text-fill-color: transparent;
-           -webkit-background-clip: text;
-           -webkit-text-fill-color: transparent;
-         }
-       `;
+  span {
+    color: #010101;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    background: linear-gradient(
+      to left top,
+      #000000,
+      #411720,
+      #802230,
+      rgba(0, 0, 0, 0.7),
+      #e74c3c
+    );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+`;
 
 export const LinkGroup = styled.div`
   display: flex;

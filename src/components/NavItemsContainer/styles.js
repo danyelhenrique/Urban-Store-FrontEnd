@@ -4,6 +4,7 @@ export const Container = styled.nav.attrs({
   className: 'nav-links'
 })`
   background: #fff;
+  background: #000;
 
   display: flex;
 
