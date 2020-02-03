@@ -18,7 +18,7 @@ export default function Sale() {
 
       <Ul double lastChild>
         <NavItems title="Clothing" />
-        <Image background="/nav/navgation/girl.jpeg" />
+        <Image background="/nav/navgation/sale.jpg" />
       </Ul>
     </UlContainer>
   );
