@@ -3,16 +3,10 @@ import Loader from 'react-loader-spinner';
 
 import { SpinnerItem } from './styles';
 
-export default function Spinner({ handleMore }) {
+export default function Spinner({ handleMore, active }) {
   return (
-    <SpinnerItem background="/spinner.png" ref={ele => handleMore(ele)}>
-      <Loader
-        type="Puff"
-        color="#00BFFF"
-        height={100}
-        width={100}
-        timeout={3000} //3 secs
-      />
+    <SpinnerItem active={active} ref={item => handleMore(item)}>
+      <Loader type="Oval" color="#e74c3c" height={50} width={100} />
     </SpinnerItem>
   );
 }

@@ -7,4 +7,11 @@ function products(payload) {
   };
 }
 
-export { products };
+function productLoading(payload) {
+  return {
+    type: Types.PRODUCT_LOADING,
+    payload
+  };
+}
+
+export { products, productLoading };

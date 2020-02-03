@@ -78,21 +78,40 @@ export const Image = styled.img`
 `;
 
 export const Favorite = styled.button`
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
+         position: absolute;
+         bottom: 66px;
+         right: 3px;
+         border: none;
+         outline: none;
+         background: transparent;
+         cursor: pointer;
 
-  :hover {
-  }
-`;
+         > div {
+           width: 100%;
+           height: 100%;
+           position: relative;
+
+           #fav-hover {
+             opacity: 0;
+           }
+
+           :hover {
+             #fav-hover {
+               opacity: 1;
+             }
+             #fav-normal {
+               opacity: 0;
+             }
+           }
+         }
+       `;
 
 export const Icon = styled.img`
   height: 30px;
   width: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
 `;
 
 export const NameAndPrice = styled.div`

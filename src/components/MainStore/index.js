@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useQuery } from '@apollo/react-hooks';
 
 import { useInView } from 'react-intersection-observer';
 
-import { products } from '../../store/modules/products/actions';
+import { products, productLoading } from '../../store/modules/products/actions';
 import { products as prodData } from '../../graphql/gql/products';
 
 import { fetchMoreItems, mockItemsWithQnt } from '../../../utils/product';
@@ -13,9 +13,10 @@ import Spinner from '../Spinner';
 import Items from '../Items';
 import { Section, Container } from './styles';
 
-
 export default function MainStore() {
   const dispatch = useDispatch();
+  const { loading } = useSelector(state => state.products);
+
   const [page, setPage] = useState(1);
 
   const [ref, inView] = useInView({
@@ -27,6 +28,7 @@ export default function MainStore() {
       if (items && items.indexProduct) {
         populateSateWithProducts(items);
       }
+      dispatch(productLoading(false));
     },
     variables: { page }
   });
@@ -41,6 +43,8 @@ export default function MainStore() {
   }
 
   async function handleMore() {
+    dispatch(productLoading(true));
+
     await client.resetStore();
     setPage(page + 1);
 
@@ -53,7 +57,7 @@ export default function MainStore() {
     <Section>
       <Container>
         <Items />
-        <Spinner handleMore={ref} />
+        <Spinner handleMore={ref} active={loading} />
       </Container>
     </Section>
   );

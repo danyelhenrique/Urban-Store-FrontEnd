@@ -53,13 +53,18 @@ export default function Items() {
           <LazyLoad height="100%">
             <Image src={item.data_front_imageURL} alt="item" />
           </LazyLoad>
-
           <LazyLoad height="100%">
             <Image src={item.data_back_image_url} alt="item" id="back_img" />
           </LazyLoad>
-
           <Favorite type="button" onClick={AddToFavorite}>
-            <Icon src="/favorites-with-border.png" alt="favorite" />
+            <div>
+              <Icon src="/icons/favorite.png" alt="favorite" id="fav-normal" />
+              <Icon
+                src="/icons/favorite-red.png"
+                alt="favorite"
+                id="fav-hover"
+              />
+            </div>
           </Favorite>
           <Hover>
             <button type="button" onClick={() => addToCart(item)}>
