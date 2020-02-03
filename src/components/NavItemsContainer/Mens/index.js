@@ -17,7 +17,7 @@ export default function Mens() {
         <NavItems title="Mens Shoes & Accessories" />
       </Ul>
 
-      <Ul double>
+      <Ul double lastChild>
         <NavItems title="Clothing" />
         <Image background="/nav/navgation/men.jpg" />
       </Ul>

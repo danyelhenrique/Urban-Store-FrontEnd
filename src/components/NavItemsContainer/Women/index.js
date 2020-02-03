@@ -16,7 +16,7 @@ export default function Women() {
         <NavItems title="Women Shoes & Accessories" />
       </Ul>
 
-      <Ul double>
+      <Ul double lastChild>
         <NavItems title="Women Clothing" />
         <Image background="/nav/navgation/woman.jpg" />
       </Ul>

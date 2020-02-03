@@ -7,9 +7,9 @@ import Girls from '../../NavItemsContainer/Girls';
 import BeautyBy from '../../NavItemsContainer/BeautyBy';
 import Sale from '../../NavItemsContainer/Sale';
 
-import Icon from '../../Icon';
-
 import { Links, LinkGroup, Link, Border, Input } from './styles';
+
+import Icon from '../../Icon';
 
 export default function LinkGroupA() {
   return (

@@ -16,7 +16,7 @@ export default function PlusAndCurver() {
         <NavItems title="Shoes & Accessories teste" />
       </Ul>
 
-      <Ul double>
+      <Ul double lastChild>
         <NavItems title="Clothing" />
         <Image background="/nav/navgation/plus.jpg" />
       </Ul>

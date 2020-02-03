@@ -6,7 +6,8 @@ export const Ul = styled.ul`
 
   display: flex;
 
-  border-right: 1px solid rgba(240, 94, 35, 0.28);
+  border-right: ${({ lastChild }) =>
+    lastChild ? 'none' : '1px solid rgba(240, 94, 35, 0.28)'};
 
   .nav-items {
     a {
