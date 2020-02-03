@@ -20,9 +20,11 @@ export const Ul = styled.ul.attrs({
 `;
 
 export const Image = styled.div`
-  height: 70%;
-  width: 100%;
   background: url("${props => props.background && `${props.background}`}");
   background-size: cover;
   background-repeat: no-repeat;
+
+  width: 100%;
+  height: 100%;
+  border-radius: 5px;
 `;
