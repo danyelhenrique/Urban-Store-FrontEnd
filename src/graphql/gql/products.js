@@ -18,4 +18,22 @@ const products = gql`
   }
 `;
 
-export { products };
+const productByName = gql`
+  query getData($name: String!) {
+    showProduct(where: { data_product_display_name: $name }) {
+      id
+      data_price
+      data_product_display_name
+      data_brand_name
+      data_base_colour
+      data_colour1
+      data_colour2
+      data_colour3
+      data_colour4
+      data_front_imageURL
+      data_back_image_url
+    }
+  }
+`;
+
+export { products, productByName };

@@ -30,21 +30,8 @@ export const Header = styled.div`
   z-index: 30;
   padding: 10px;
 
-  span {
-    display: flex;
-    align-items: center;
-    height: 70px;
-    margin: 0 auto;
-
-    font-size: 1.2rem;
-    font-style: italic;
-    font-weight: 400;
-    color: rgb(253, 129, 78);
-  }
-
-  img {
-    height: 70px;
-    width: 80px;
+  > div {
+    margin: 0;
   }
 `;
 

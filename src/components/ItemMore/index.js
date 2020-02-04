@@ -1,11 +1,13 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useRouter } from 'next/router';
 
 import { useLazyQuery } from '@apollo/react-hooks';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { gql } from 'apollo-boost';
-import { Context } from '../../context';
+import Spinner from '../Spinner';
+import { addItemtoCart } from '../../store/modules/cart/actions';
+import { productByName } from '../../graphql/gql/products';
 
 import {
   Container,
@@ -17,67 +19,51 @@ import {
   Button,
   Favorite,
   Details,
-  ButtonDetails,
+  ButtonDetails
 } from './styles';
-
-const Data = gql`
-  query getData($name: String!) {
-    showProduct(where: { data_product_display_name: $name }) {
-      id
-      data_price
-      data_product_display_name
-      data_brand_name
-      data_base_colour
-      data_colour1
-      data_colour2
-      data_colour3
-      data_colour4
-      data_front_imageURL
-      data_back_image_url
-    }
-  }
-`;
 
 export default function ItemMore() {
   const router = useRouter();
 
   const urlAs = router.query.slug.split('_').join(' ');
 
-  const [state, dispatch] = useContext(Context);
-  const [isLoading, setIsLoading] = useState(true);
-  const [item, setItem] = useState({});
+  const dispatch = useDispatch();
+  const { cart } = useSelector(state => state.cart);
 
-  const [getData] = useLazyQuery(Data, {
+  const [isLoading, setIsLoading] = useState(true);
+  const [product, setProduct] = useState({});
+
+  const [getData] = useLazyQuery(productByName, {
     fetchPolicy: 'network-only',
     onCompleted: item => {
-      setItem(item.showProduct);
+      setProduct(item.showProduct);
       setIsLoading(false);
     },
-    onError: _ => error('fail to create accout.'),
+    onError: () => console.error('fail to create accout.')
   });
 
   useEffect(() => {
-    const product = state.products.find(
-      produc => produc.data_product_display_name === urlAs,
+    const prod = cart.find(
+      produc => produc.data_product_display_name === urlAs
     );
-    if (!product) return getData({ variables: { name: urlAs } });
+    if (!prod) return getData({ variables: { name: urlAs } });
 
-    setItem(product);
+    setProduct(prod);
     setIsLoading(false);
   }, []);
 
-  if (isLoading) return <h1>Loading</h1>;
+  if (isLoading) return <Spinner active={isLoading} />;
 
   const {
     id,
     data_front_imageURL,
     data_product_display_name,
     data_back_image_url,
-    data_price,
-  } = item;
+    data_price
+  } = product;
 
   function addToCart(item) {
-    dispatch({ type: '@ADD_CART_ITEM', payload: item });
+    dispatch(addItemtoCart(item));
   }
 
   return (
@@ -90,11 +76,11 @@ export default function ItemMore() {
         <Header>
           <div>
             <span>{data_product_display_name}</span>
-            <span>
-${data_price}</span>
+            <strong>${data_price}</strong>
           </div>
           <Favorite>
-            <img src="/favorite-red.png" alt="favorite" />
+            <img src="/icons/favorite.png" alt="favorite" id="favorite" />
+            <img src="/icons/favorite-red.png" alt="favorite" id="favorite-red" />
           </Favorite>
         </Header>
         <Body>
@@ -110,13 +96,13 @@ ${data_price}</span>
             <option value="DEFAULT" disabled>
               Choose Size
             </option>
-            <option value="valor1">Select Size</option>
-            <option value="valor2">Select Size </option>
-            <option value="valor3">Select Size </option>
+            <option value="XS">XS</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
           </select>
           <img src="/icons/select.png" alt="select" />
         </Select>
-        <Button onClick={() => addToCart(item)}>
+        <Button onClick={() => addToCart(product)}>
           <div>
             <img src="/icons/bag-btn.png" alt="btnIcon" />
             <strong>ADD</strong>

@@ -77,8 +77,16 @@ export const Header = styled.div`
     display: flex;
     flex-direction: column;
 
-    span {
+    span,
+    strong {
       font-weight: 400;
+      font-size: 1rem;
+      line-height: calc(1rem * 1.5);
+    }
+
+    strong {
+      color: #bb3a23;
+      font-weight: 500;
     }
   }
 
@@ -89,12 +97,41 @@ export const Header = styled.div`
 
 export const Favorite = styled.button`
   border: none;
+
   background: transparent;
+
   height: 100%;
+  width: 50px;
+
   cursor: pointer;
+
+  display: block;
+
+  position: relative;
+
+  #favorite {
+    opacity: 1;
+  }
+
+  #favorite-red {
+    opacity: 0;
+  }
+
+  :hover {
+    #favorite {
+      opacity: 0;
+    }
+
+    #favorite-red {
+      opacity: 1;
+    }
+  }
 
   img {
     height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
   }
 `;
 
@@ -131,10 +168,11 @@ export const Select = styled.div`
     width: 100%;
     height: 100%;
 
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Roboto';
 
-    color: rgba(0, 0, 0, 0.9);
+    color: #000;
+
     font-size: 0.9rem;
     display: inline-block;
     cursor: pointer;
@@ -142,7 +180,7 @@ export const Select = styled.div`
     outline: 0;
     border: 0;
     border-radius: 0;
-    background: rgba(178, 172, 158, 0.5);
+    background: #17171726;
     appearance: none;
 
     &::-ms-expand {
@@ -150,16 +188,9 @@ export const Select = styled.div`
       background: url('/icons/select.png');
     }
 
-    &:hover,
-    &:focus {
-      color: #000;
-      font-weight: 400;
-    }
-
     option {
       font-size: 0.9rem;
       color: #000;
-      background-color: rgba(0, 0, 0, 0.1);
     }
   }
 `;
