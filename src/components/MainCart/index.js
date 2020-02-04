@@ -64,7 +64,7 @@ export default function MainCart() {
             <Item key={item.id}>
               <img src={item.data_front_imageURL} alt="model" />
               <Detail>
-                <span>{item.data_product_display_name}</span>
+                <h4>{item.data_product_display_name}</h4>
                 <small>${item.data_price}</small>
                 <p>Art.no.0755362003</p>
                 <p>
@@ -72,7 +72,9 @@ export default function MainCart() {
                   {item.data_base_colour}
                 </p>
                 <p>Size: 2</p>
-                <p>Total: ${item.data_price}</p>
+                <p>
+                  Total: <strong>${item.data_price}</strong>
+                </p>
                 <div>
                   <select
                     name="quantity"

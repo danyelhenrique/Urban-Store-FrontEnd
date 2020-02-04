@@ -4,7 +4,7 @@ export const Container = styled.section`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.05);
+  /* background-color: rgba(0, 0, 0, 0.05); */
   z-index: 20;
 `;
 
@@ -21,7 +21,9 @@ export const Item = styled.div`
   height: 100%;
   background: transparent;
   margin: 4px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgb(0, 0, 0);
+
+  padding: 10px;
 
   display: flex;
   @media (max-width: 610px) {
@@ -31,6 +33,7 @@ export const Item = styled.div`
   > img {
     width: 30%;
     max-width: 20%;
+    border-radius: 6px;
   }
 `;
 
@@ -41,12 +44,36 @@ export const Detail = styled.div`
   line-height: 20px;
   font-weight: 300;
 
-  padding: 0 10px;
+  padding: 0 13px;
 
-  color: #000;
+  color: #fff;
 
   display: flex;
   flex-direction: column;
+
+  font-size: 1rem;
+  line-height: calc(1rem * 1.5);
+
+  h4 {
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 0.9rem;
+    color: #bdbbbb;
+
+    strong {
+      color: #fff;
+      font-weight: 400;
+    }
+  }
+
+  small {
+    font-size: 0.8rem;
+    color: #d2cdcd;
+  }
 
   div {
     display: flex;
@@ -60,15 +87,21 @@ export const Detail = styled.div`
       height: 30px;
       width: 90px;
 
-      border: 1px solid rgb(234, 165, 138);
+      border: 1px solid #e74c3c;
       border-radius: 2px;
 
       font-size: 1rem;
       font-weight: 300;
 
-      color: rgb(76, 59, 52);
+      color: #989696;
       font-weight: 300;
       font-family: 'Roboto';
+
+      margin-top: 5px;
+
+      :focus {
+        outline-color: #ff4b2b;
+      }
     }
   }
 `;
@@ -100,7 +133,7 @@ export const Bag = styled.div`
   position: fixed;
   top: 160px;
 
-  right: 0;
+  right: 20px;
   border-radius: 1%;
   padding: 10px 20px;
 

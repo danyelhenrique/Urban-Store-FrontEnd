@@ -11,7 +11,6 @@ export const Container = styled.div`
 
 export const Item = styled.a`
   height: 300px;
-  width: 200px;
   width: 220px;
   height: 350px;
   position: relative;
@@ -117,9 +116,9 @@ export const Icon = styled.img`
 
 export const NameAndPrice = styled.div`
   width: 100%;
-  height: 100px;
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 
   a,
   span {
@@ -131,10 +130,13 @@ export const NameAndPrice = styled.div`
     color: rgb(193, 183, 181);
     font-weight: 300;
     text-align: left;
+    font-size: 0.9rem;
+    line-height: calc(1rem * 1.5);
   }
 
   a {
     font-weight: 400;
+    color:#fff;
     :hover {
       text-decoration: underline;
       text-decoration-color: rgba(255, 75, 43, 0.56);

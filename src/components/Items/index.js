@@ -75,7 +75,16 @@ export default function Items() {
         <NameAndPrice>
           <div>
             <Link href="/store/[slug]" as={`/store/${urlAs}`}>
-              <a>{item.data_product_display_name}</a>
+              {item.data_product_display_name.length > 30 ? (
+                <a>
+                  {item.data_product_display_name
+                    .substring(0, 30)
+                    .concat(' ...')}
+                </a>
+              ) : (
+                <a>{item.data_product_display_name}</a>
+              )}
+              {/* <a>{item.data_product_display_name}</a> */}
             </Link>
           </div>
           <span>${item.data_price}</span>

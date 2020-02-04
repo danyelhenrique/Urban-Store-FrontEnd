@@ -20,7 +20,7 @@ export const Container = styled.aside`
   }
 `;
 
-export const Logo = styled.div`
+export const Header = styled.div`
   display: flex;
 
   background: rgba(0, 0, 0, 0.9);

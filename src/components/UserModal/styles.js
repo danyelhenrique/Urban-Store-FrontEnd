@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const ContainerModal = styled.div`
   height: 100%;
@@ -15,7 +15,9 @@ export const ContainerModal = styled.div`
 
     transition: all 2s ease;
 
-    background: #000;
+    /* background: #000; */
+    background: #171717;
+
 
     h6 {
       color: #fefefe;
@@ -87,11 +89,24 @@ export const Button = styled.button`
 export const UserData = styled.div`
   display: flex;
   flex-direction: column;
+`;
+
+export const UserName = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  p {
+    text-transform: capitalize;
+    color: #fff;
+    font-size: 0.8rem;
+  }
 
   > span {
-    color:#fff;
+    color: #fff;
     font-size: 0.8rem;
-    margin: 0 auto;
+    margin: 0 5px;
     text-transform: capitalize;
   }
 `;

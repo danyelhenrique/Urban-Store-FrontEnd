@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import { hidden } from '../../../utils/hiddenOnModalOpen';
 import { sucess } from '../../toasty';
 
-import { ContainerModal, MyAccount, UserData, Button, Avatar } from './styles';
+import { ContainerModal, MyAccount, UserData, UserName, Button, Avatar } from './styles';
 
 import Icon from '../Icon';
 import Modal from '../Modal';
@@ -45,10 +45,10 @@ export default function UserModal() {
 
         <UserData>
           <Avatar background="/nav/default_avatar.png" />
-          <span>
-            Welcome back
-            {name}
-          </span>
+          <UserName>
+            <span>Welcome back</span>
+            <p>{name}</p>
+          </UserName>
 
           <Button>Account Settings</Button>
           <Button onClick={handleSignUp}>Sign Out</Button>

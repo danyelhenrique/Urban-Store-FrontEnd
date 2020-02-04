@@ -8,7 +8,7 @@ export const Ul = styled.ul.attrs({
 
   display: flex;
 
-   border-right: ${({ lastChild }) =>
+  border-right: ${({ lastChild }) =>
     lastChild ? 'none' : '1px solid rgba(240, 94, 35, 0.28)'};
 
   .nav-items {

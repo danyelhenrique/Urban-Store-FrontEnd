@@ -1,17 +1,17 @@
 import React from 'react';
 import Link from 'next/link';
 
-import {
- Container, Logo, FullHeightContainer, Nav, Image 
-} from './styles';
+import Logo from '../Logo';
+
+import { Container, Header, FullHeightContainer, Nav, Image } from './styles';
 
 export default function SidebarHome({ load }) {
   return (
     <Container active={load}>
-      <Logo>
-        <img src="/logo.png" alt="logo" />
+      <Header>
+        <Logo />
         {!load && <span>Clothes for all types of styles.</span>}
-      </Logo>
+      </Header>
       <FullHeightContainer>
         <Nav>
           <span>Clothes for all types of styles.</span>

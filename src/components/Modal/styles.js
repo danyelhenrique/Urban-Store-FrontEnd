@@ -16,7 +16,7 @@ export const Fixed = styled.div`
   height: 100vh;
   width: 100%;
 
-  background: rgba(23, 20, 20, 0.52);
+  background: rgba(0, 0, 0, 0.32);
 
   display: flex;
   flex-direction: column;
@@ -31,7 +31,7 @@ export const Modal = styled.div.attrs({
   width: 30%;
   height: 100vh;
   background: rgb(255, 255, 255);
-  box-shadow: -9px 0px 14px 0px rgba(0, 0, 0, 0.16);
+  box-shadow: -9px 0px 20px 0px #101010;
 
   display: flex;
   flex-direction: column;

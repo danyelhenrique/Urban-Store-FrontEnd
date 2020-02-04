@@ -32,7 +32,7 @@ export const QntCart = styled.div`
   font-size: 0.9rem;
   font-family: 'Roboto';
 
-  color: rgba(0, 0, 0, 0.8);
+  color: #fff;
 
   padding: 0 8px;
 

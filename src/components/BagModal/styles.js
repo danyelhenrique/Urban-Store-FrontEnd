@@ -15,7 +15,7 @@ export const ContainerModal = styled.div`
 
     transition: all 2s ease;
 
-    background: #000;
+    background: #171717;
 
     h6 {
       color: #fefefe;

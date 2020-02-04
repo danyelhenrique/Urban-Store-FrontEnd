@@ -35,16 +35,9 @@ export default function BagModal() {
 
   const dispatch = useDispatch();
 
-  function handleModal() {
-    dispatch(bagModal());
-  }
-
   if (cart.length < 0) return null;
 
-  const handleClick = e => {
-    e.preventDefault();
-    router.push('/store/cart', '/store/cart');
-  };
+  if (router.pathname === '/store/cart') return null;
 
   function handleChange(e, item) {
     const value = Number(e);
@@ -52,6 +45,10 @@ export default function BagModal() {
     const payload = { value, item };
 
     dispatch(changeQntItemImput(payload));
+  }
+
+  function handleModal() {
+    dispatch(bagModal());
   }
 
   function removeItem(item) {
