@@ -25,6 +25,7 @@ export default function Login() {
   const dispatch = useDispatch();
 
   const [form, setForm] = useState(INITIAL_STATE);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const { isSignUpSlider, lastUrl } = useSelector(state => state.signInSlider);
 
@@ -53,9 +54,11 @@ export default function Login() {
     const { email, password } = form;
     signIn({ variables: { email, password } });
     setForm(INITIAL_STATE);
+    setIsSubmit(false);
   }
 
   function SignUp() {
+    setIsSubmit(true);
     const { name, email, password } = form;
     signUp({ variables: { name, email, password } });
   }
@@ -114,7 +117,9 @@ export default function Login() {
           placeholder="Confirm you Password"
           onChange={e => handleInput(e)}
         />
-        <Button>{isSignUpSlider ? 'Sign Up' : 'Sign In'}</Button>
+        <Button disabled={isSubmit}>
+          {isSignUpSlider ? 'Sign Up' : 'Sign In'}
+        </Button>
       </InputContainer>
     </Form>
   );

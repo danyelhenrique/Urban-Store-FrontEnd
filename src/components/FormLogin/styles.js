@@ -54,6 +54,11 @@ export const Button = styled.button`
   cursor: pointer;
   z-index: 90;
 
+  &:disabled {
+    cursor: progress;
+    background: rgba(0, 0, 0, 0.24);
+    color: #f1f1f1;
+  }
   ${({ ghost }) =>
     ghost &&
     css`

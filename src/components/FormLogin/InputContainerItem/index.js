@@ -13,6 +13,7 @@ export default function InputContainerItem({ isVisible, ...props }) {
         value={value}
         placeholder={placeholder}
         onChange={onChange}
+        required
       />
     </InputItem>
   );

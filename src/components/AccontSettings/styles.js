@@ -7,11 +7,15 @@ export const Section = styled.section`
   display: flex;
   justify-content: space-between;
 `;
-export const Container = styled.div`
+export const Form = styled.form`
   width: 50%;
   background-color: #e74c3c;
   padding: 20px;
   border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   label {
     display: flex;
@@ -37,11 +41,6 @@ export const Container = styled.div`
       }
     }
   }
-
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  align-items: center;
 
   h4 {
     font-size: 1.2rem;
@@ -86,6 +85,19 @@ export const Avatar = styled.div`
   border-bottom: 1px solid #000;
   margin: 10px 0;
 `;
+
+export const Name = styled.div`
+  height: 100%;
+  max-height: 100px;
+
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid #000;
+  margin: 10px 0;
+`;
+
 export const Email = styled.div`
   height: 100%;
   max-height: 100px;
@@ -107,4 +119,19 @@ export const Password = styled.div`
   flex-direction: column;
   border-bottom: 1px solid #000;
   margin: 10px 0;
+`;
+
+export const Btn = styled.button`
+  width: 50%;
+  background: #010101;
+  padding: 0px;
+  border: none;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #fefefe;
+  font-size: 1rem;
+  height: 186px;
+  text-align: center;
+  cursor: pointer;
 `;
