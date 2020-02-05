@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
 export const SpinnerItem = styled.div`
-  height: 100px;
+  height: ${({ center }) => (center ? '100%' : '100px')};
+
   width: 100%;
   background: transparent;
 
