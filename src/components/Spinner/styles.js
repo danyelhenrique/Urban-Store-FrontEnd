@@ -10,4 +10,5 @@ export const SpinnerItem = styled.div`
   align-items: center;
   justify-content: center;
   opacity: ${({ active }) => (active ? 1 : 0)};
+  margin: ${({ center }) => center && 'auto'};
 `;
