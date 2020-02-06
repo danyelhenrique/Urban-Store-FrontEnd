@@ -14,8 +14,6 @@ import withApolloClient from '../lib/with-apollo-client';
 
 import { store, persistor } from '../src/store';
 
-import Context from '../src/context';
-
 class MyApp extends App {
   render() {
     const { Component, pageProps, apolloClient } = this.props;
@@ -27,20 +25,18 @@ class MyApp extends App {
             <PersistGate loading={null} persistor={persistor}>
               <Container>
                 <Global />
-                <Context>
-                  <ToastContainer
-                    position="top-right"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    newestOnTop={false}
-                    closeOnClick
-                    rtl={false}
-                    pauseOnVisibilityChange
-                    draggable
-                    pauseOnHover
-                  />
-                  <Component {...pageProps} />
-                </Context>
+                <ToastContainer
+                  position="top-right"
+                  autoClose={5000}
+                  hideProgressBar={false}
+                  newestOnTop={false}
+                  closeOnClick
+                  rtl={false}
+                  pauseOnVisibilityChange
+                  draggable
+                  pauseOnHover
+                />
+                <Component {...pageProps} />
               </Container>
             </PersistGate>
           </Provider>

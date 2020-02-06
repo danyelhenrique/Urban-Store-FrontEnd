@@ -46,6 +46,7 @@ export const Btn = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
+  outline: none;
 
   cursor: pointer;
   text-transform: uppercase;
