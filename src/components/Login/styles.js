@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 export const Section = styled.section`
   height: 100%;
@@ -14,6 +14,50 @@ export const Section = styled.section`
   place-items: center center;
   place-content: center center;
   display: flex;
+  flex-direction: column;
+`;
+
+const leftAndRight = keyframes`
+  0% {
+    transform: translateX(80px);
+    opacity: 0;
+  }
+  
+  100% {
+    transform: translateX(0px);
+    opacity: 1;
+  }
+
+`;
+
+export const Back = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const Btn = styled.button`
+  display: flex;
+  width: 100%;
+  height: 40px;
+  animation: ${leftAndRight} 2s infinite forwards;
+
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+
+  cursor: pointer;
+  text-transform: uppercase;
+
+  img {
+    height: 100%;
+    width: 37px;
+  }
+
+  span {
+    color: #fff;
+  }
 `;
 
 export const Container = styled.div`

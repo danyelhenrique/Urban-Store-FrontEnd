@@ -4,7 +4,14 @@ import { useRouter } from 'next/router';
 import { hidden } from '../../../utils/hiddenOnModalOpen';
 import { sucess } from '../../toasty';
 
-import { ContainerModal, MyAccount, UserData, UserName, Button, Avatar } from './styles';
+import {
+  ContainerModal,
+  MyAccount,
+  UserData,
+  UserName,
+  Button,
+  Avatar
+} from './styles';
 
 import Icon from '../Icon';
 import Modal from '../Modal';
@@ -16,22 +23,36 @@ export default function UserModal() {
   const router = useRouter();
 
   const isActive = useSelector(state => state.modal.isUserModalOpen);
-  const { name } = useSelector(state => state.user);
+  const { name, avatar_url } = useSelector(state => state.user);
 
   const dispatch = useDispatch();
 
-  const handleCloseModal = () => {
+  function handleCloseModal() {
     dispatch(userModal());
-    hidden(false);
-  };
 
-  const handleSignUp = e => {
+    hidden(false);
+  }
+
+  function accontSetting() {
+    router.push('/me', '/me');
+
+    handleCloseModal();
+  }
+
+  function handleSigOut(e) {
     e.preventDefault();
 
     dispatch(userSigOut({ isValid: false }));
 
     sucess('Sing Out Sucess.');
-  };
+
+    handleCloseModal();
+  }
+
+  function anotherAccount() {
+    router.push('/store/signin', '/store/signin');
+    handleCloseModal();
+  }
 
   return (
     <ContainerModal isActive={isActive}>
@@ -44,17 +65,15 @@ export default function UserModal() {
         </MyAccount>
 
         <UserData>
-          <Avatar background="/nav/default_avatar.png" />
+          <Avatar background={avatar_url} />
           <UserName>
             <span>Welcome back</span>
             <p>{name}</p>
           </UserName>
 
-          <Button>Account Settings</Button>
-          <Button onClick={handleSignUp}>Sign Out</Button>
-          <Button onClick={() => router.push('/store/signin', '/store/signin')}>
-            Sign With Another Account
-          </Button>
+          <Button onClick={accontSetting}>Account Settings</Button>
+          <Button onClick={handleSigOut}>Sign Out</Button>
+          <Button onClick={anotherAccount}>Sign With Another Account</Button>
         </UserData>
       </Modal>
     </ContainerModal>

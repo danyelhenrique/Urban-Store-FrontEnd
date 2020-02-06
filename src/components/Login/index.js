@@ -1,8 +1,14 @@
 import React from 'react';
 
+import { useRouter } from 'next/router';
+
 import { useSelector, useDispatch } from 'react-redux';
 
+import { Tooltip } from 'react-tippy';
+
 import FormLogin from '../FormLogin';
+
+// import Icon from '../Icon';
 
 import {
   signInSlider,
@@ -11,6 +17,8 @@ import {
 
 import {
   Section,
+  Back,
+  Btn,
   Container,
   Image,
   SignUpContainer,
@@ -21,12 +29,30 @@ import {
 
 export default function Login() {
   const dispatch = useDispatch();
+
+  const router = useRouter();
+
   const { isSignInSlider, isSignUpSlider } = useSelector(
     state => state.signInSlider
   );
 
   return (
     <Section>
+      <Back>
+        <Tooltip
+          title="Back to store"
+          position="bottom"
+          trigger="mouseenter"
+          arrow="true"
+          theme="dark"
+        >
+          <Btn type="button" onClick={() => router.push('/store', '/store')}>
+            <img src="/arrow_back.png" alt="icon-back" />
+            <span> Back to store </span>
+          </Btn>
+        </Tooltip>
+      </Back>
+
       <Container>
         <Image signIn={isSignInSlider} signUp={isSignUpSlider}>
           <Ghost>

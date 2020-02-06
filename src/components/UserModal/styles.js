@@ -15,9 +15,7 @@ export const ContainerModal = styled.div`
 
     transition: all 2s ease;
 
-    /* background: #000; */
     background: #171717;
-
 
     h6 {
       color: #fefefe;
@@ -83,6 +81,8 @@ export const Button = styled.button`
   letter-spacing: 2px;
   color: #fff;
 
+  outline: none;
+
   cursor: pointer;
 `;
 
@@ -119,7 +119,7 @@ export const Avatar = styled.div`
 
   padding-top: 10px;
 
-  margin: 0 auto;
+  margin: 10px auto;
 
   height: 60px;
   width: 60px;
