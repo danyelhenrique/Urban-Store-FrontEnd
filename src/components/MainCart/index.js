@@ -27,18 +27,19 @@ export default function MainCart() {
   const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
   const { cart, cartValues } = useSelector(state => state.cart);
+  const { isValid } = useSelector(state => state.user);
 
   if (cart.length <= 0) {
     return <div />;
   }
 
   function checkout() {
-    // setModalOpen(true);
-    // const isLoggin = state.isLogin;
-    // if (isLoggin) {
-    //   console.log('user not loggin');
-    //   return;
-    // }
+    if (!isValid) {
+      console.warn('user not loggin');
+      return;
+    }
+    setModalOpen(true);
+
     // dispatch({ type: '@CHECKOUT' });
   }
 
@@ -73,17 +74,14 @@ export default function MainCart() {
                 </p>
                 <p>Size: 2</p>
                 <p>
-                  Total: <strong>${item.data_price}</strong>
+                  Total: <strong>${item.total}</strong>
                 </p>
                 <div>
                   <select
                     name="quantity"
                     onChange={({ target }) => handleSelect(item, target.value)}
                   >
-                    <option value="choice" disabled>
-                      quantity
-                    </option>
-                    <option defaultValue={item.qntRequest}>
+                    <option defaultValue={item.qntRequest} disabled>
                       {item.qntRequest}
                     </option>
                     {qnt.map((_, index) => (

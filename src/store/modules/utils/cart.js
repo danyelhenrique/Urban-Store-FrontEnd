@@ -1,12 +1,11 @@
-export function SumCartItems(state, payload) {
+export function SumCartItems(state) {
   const cartSum = state.cart.reduce((accumulator, currentValue) => {
-    const sum = accumulator + Number(currentValue.data_price);
+    const sum = accumulator + Number(currentValue.total);
 
     return sum;
   }, 0);
 
-  const total = Number(payload.data_price) + cartSum;
-  const cartValues = { ...state.cartValues, total };
+  const cartValues = { ...state.cartValues, total: cartSum };
 
   return cartValues;
 }

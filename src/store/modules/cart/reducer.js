@@ -15,17 +15,20 @@ const INITIAL_STATE = {
 function cart(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.ADD_CART: {
-      const { id } = action.payload;
+      const { id, data_price } = action.payload;
 
       const isItemtemExists = state.cart.find(item => item.id === id);
 
       if (isItemtemExists) return state;
 
       action.payload.qntRequest = 1;
+      action.payload.total = 1 * data_price;
 
-      const cartValues = SumCartItems(state, action.payload);
+      const newState = { ...state, cart: [...state.cart, action.payload] };
 
-      return { ...state, cart: [...state.cart, action.payload], cartValues };
+      const cartValues = SumCartItems(newState);
+
+      return { ...newState, cartValues };
     }
     case Types.REMOVE_ITEM_FROM_CART: {
       const { id } = action.payload;
@@ -49,7 +52,9 @@ function cart(state = INITIAL_STATE, action) {
 
       newState.cart[index].qntRequest += 1;
 
-      return { ...newState };
+      const cartValues = SubCartItems(newState);
+
+      return { ...newState, cartValues };
     }
     case Types.DECREASE_QNT_ITEM_LESS_ONE: {
       const { id } = action.payload;
@@ -67,7 +72,7 @@ function cart(state = INITIAL_STATE, action) {
       return { ...newState };
     }
     case Types.CHANGE_QNT_ITEM_INPUT: {
-      const { id } = action.payload.item;
+      const { id, data_price } = action.payload.item;
       const { value: valueStr } = action.payload;
 
       const value = Number(valueStr);
@@ -85,7 +90,11 @@ function cart(state = INITIAL_STATE, action) {
       if (!isValid) return state;
 
       newState.cart[index].qntRequest = value;
-      return { ...newState };
+      newState.cart[index].total = value * data_price;
+
+      const cartValues = SumCartItems(newState);
+
+      return { ...newState, cartValues };
     }
     default:
       return state;

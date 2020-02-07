@@ -99,6 +99,14 @@ export const Detail = styled.div`
 
       margin-top: 5px;
 
+      option {
+        &:disabled {
+          color: #010101;
+          background: #ff4b2b;
+          font-weight: 400;
+        }
+      }
+
       :focus {
         outline-color: #ff4b2b;
       }

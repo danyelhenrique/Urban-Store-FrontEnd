@@ -16,6 +16,7 @@ function fetchMoreItems({ fetchQuery, query, page }) {
 function mockItemsWithQnt(items) {
   const itemWithMock = items.map(item => {
     item.qnt = Math.floor(Math.random() * 10);
+    item.total = item.data_price;
     return item;
   });
 
