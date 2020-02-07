@@ -4,16 +4,21 @@ export const Container = styled.section`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  /* background-color: rgba(0, 0, 0, 0.05); */
   z-index: 20;
 `;
 
 export const Items = styled.div`
   width: 100%;
-  max-height: 230px;
+  max-height: 400px;
+  height: 100%;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  /* align-items: center; */
+
+  @media (max-width: 610px) {
+    position: static;
+    width: 100%;
+  }
 `;
 
 export const Item = styled.div`
@@ -22,18 +27,35 @@ export const Item = styled.div`
   background: transparent;
   margin: 4px 0;
   border-bottom: 1px solid rgb(0, 0, 0);
+  /* min-width: 610px; */
 
   padding: 10px;
 
   display: flex;
-  @media (max-width: 610px) {
-    width: 100%;
-  }
 
   > img {
     width: 30%;
-    max-width: 20%;
+    min-width: 220px;
+    /* max-width: 220px; */
     border-radius: 6px;
+  }
+
+  @media (max-width: 1024px) {
+    width: 56%;
+  }
+
+  @media (max-width: 900px) {
+    width: 100%;
+  }
+
+  @media (max-width: 630px) {
+    position: static;
+    width: 100%;
+    margin: 16px 10px;
+
+    img {
+      width: 40%;
+    }
   }
 `;
 
@@ -55,14 +77,17 @@ export const Detail = styled.div`
   line-height: calc(1rem * 1.5);
 
   h4 {
-    font-size: 1rem;
+    font-size: 1.2rem;
     color: #ffffff;
     font-weight: 400;
+    line-height: calc(1.2rem * 1.5);
   }
 
   p {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    line-height: calc(1rem * 1.5);
     color: #bdbbbb;
+    padding: 2px 0px !important;
 
     strong {
       color: #fff;
@@ -71,8 +96,9 @@ export const Detail = styled.div`
   }
 
   small {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
     color: #d2cdcd;
+    line-height: calc(0.9rem * 1.5);
   }
 
   div {
@@ -133,7 +159,8 @@ export const Remove = styled.div`
 `;
 
 export const Bag = styled.div`
-  width: 30%;
+  width: 31%;
+  min-width: 370px;
   height: 400px;
   color: #000;
   background: #ff4b2b;
@@ -151,6 +178,13 @@ export const Bag = styled.div`
 
   h3 {
     font-weight: 400;
+  }
+
+  @media (max-width: 900px) {
+    position: static;
+    width: 70%;
+    margin: 16px 10px;
+    width: 70%;
   }
 
   @media (max-width: 610px) {
@@ -238,6 +272,10 @@ export const BtnCheckout = styled.button`
   font-size: 1.2rem;
   text-transform: uppercase;
   border-radius: 2%;
+
+  @media (max-width: 900px) {
+    margin-bottom: 10px;
+  }
 `;
 
 export const Modal = styled.div`
@@ -247,21 +285,26 @@ export const Modal = styled.div`
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.52);
+
+  backdrop-filter: blur(3px);
 
   position: fixed;
   top: 0;
   z-index: 99;
 
-  div {
+  > div {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #fff;
+
+    background: #ff4b2b;
     width: 50%;
     text-align: center;
     line-height: 2.5rem;
+
+    border-radius: 5px;
 
     span {
       font-weight: 300;
@@ -275,12 +318,12 @@ export const Modal = styled.div`
 
 export const OpenModal = styled.div`
   display: flex;
-  align-items: flex-end;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-end;
 
-  width: 100% !important;
+  width: 100%;
   height: 20%;
-  border-bottom: 1px solid #cecece;
+  border-bottom: 1px solid #000;
 
   button {
     background: transparent;

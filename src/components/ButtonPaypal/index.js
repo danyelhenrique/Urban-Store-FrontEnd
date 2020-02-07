@@ -24,13 +24,13 @@ function ButtonPaypayl() {
   }
 
   const env = 'sandbox'; // you can set this string to 'production'
-  const currency = 'BRL'; // you can set this string from your props or state
+  const currency = 'USD'; // you can set this string from your props or state
   const { total } = cartValues; // this is the total amount (based on currency) to charge
   // Document on Paypal's currency code: https://developer.paypal.com/docs/classic/api/currency_codes/
 
   const client = {
     sandbox:
-      'AdfmfmKpj-vpSNzoPoRGJa3wkgP8Fkp-tq6ViibZ2XOdSPcxhPKN4UEr8WmzWbXF3cAx4lIhW9Q67zqi',
+      'AVVJF3Wz3cs5aId-k_XE_t-fzzrc5KYeVZ04bSf3doLsXBae9SNiB1-QPGUGMzCMreHLT7X-kzWC26Iu',
     production: 'YOUR-PRODUCTION-APP-ID'
   };
 

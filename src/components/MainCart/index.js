@@ -8,6 +8,8 @@ import {
   changeQntItemImput
 } from '../../store/modules/cart/actions';
 
+import { warn, sucess } from '../../toasty';
+
 import {
   Container,
   Item,
@@ -35,7 +37,7 @@ export default function MainCart() {
 
   function checkout() {
     if (!isValid) {
-      console.warn('user not loggin');
+      warn('please signin ou singout to continue');
       return;
     }
     setModalOpen(true);
@@ -69,8 +71,8 @@ export default function MainCart() {
                 <small>${item.data_price}</small>
                 <p>Art.no.0755362003</p>
                 <p>
-                  Color:
-                  {item.data_base_colour}
+                  Color: red
+                  {/* {item.data_base_colour} */}
                 </p>
                 <p>Size: 2</p>
                 <p>
