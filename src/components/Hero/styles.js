@@ -2,17 +2,17 @@ import styled, { keyframes } from 'styled-components';
 
 export const Container = styled.div`
   width: 100%;
-  min-width: 250px;
+  max-height: 620px;
 
   display: flex;
   flex-wrap: wrap;
-
-  height: 100%;
 
   background: #000;
 
   @media (max-width: 1024px) {
     flex-direction: column;
+    height: 100%;
+    max-height: 100%;
   }
 `;
 

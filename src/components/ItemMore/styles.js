@@ -7,10 +7,14 @@ export const Container = styled.section`
 
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-wrap: wrap;
 
   padding: 30px 0px;
+
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
 
   @media (max-width: 610px) {
     padding: 10px;
@@ -21,22 +25,25 @@ export const Image = styled.div`
   display: flex;
   width: 55%;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: nowrap;
+
+  @media (max-width: 1024px) {
+    width: 90%;
+  }
 
   @media (max-width: 610px) {
     width: 100%;
-    justify-content: center;
+    flex-direction: column;
   }
 
-  margin-top: ${props => props.secondImage && '40px'};
-
   img {
-    width: 50%;
-    height: ${props => (props.secondImage ? '70vh' : '80vh')};
-    margin: 0 1px;
+    width: 49%;
+    height: 80vh;
+    margin: 5px 0;
 
     @media (max-width: 610px) {
-      width: ${props => (props.secondImage ? '80%' : '40%')};
+      width: 80%;
     }
   }
 `;
@@ -52,15 +59,21 @@ export const ItemDetail = styled.div`
   padding: 30px 15px;
 
   position: sticky;
-  top: 105px;
+  top: 0px;
 
   justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    position: static;
+    width: 89%;
+    margin: 35px 0 0 0;
+  }
 
   @media (max-width: 610px) {
     position: static;
     width: 80%;
     margin-left: 0px;
-    margin: 20px 0;
+    margin: 10px 0;
   }
 `;
 

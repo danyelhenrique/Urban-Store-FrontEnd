@@ -29,6 +29,8 @@ export const Modal = styled.div.attrs({
   className: 'modal'
 })`
   width: 30%;
+  min-width: 400px;
+
   height: 100vh;
   background: rgb(255, 255, 255);
   box-shadow: -9px 0px 20px 0px #101010;
