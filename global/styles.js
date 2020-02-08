@@ -24,12 +24,11 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 }
-body {
+html,body, #__next {
   background: #010101e3;
-
+  height: 100vh;
 }
 html,body, #__next, Main {
-    height: 100vh;
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
     font-weight: 500;

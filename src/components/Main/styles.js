@@ -9,7 +9,6 @@ export const MainContainer = styled.main`
   top: ${props => (props.isFull ? '0px' : '150px')};
   width: 100%;
 
-  height: 100vh;
   background: ${props => (props.store ? 'rgba(0, 0, 0, 0.8)' : 'transparent')};
 
   /* overflow: hidden; */

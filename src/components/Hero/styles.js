@@ -11,21 +11,19 @@ export const Container = styled.div`
 
   background: #000;
 
-  @media (min-width: 500px) {
-    /* width: 100%; */
-  }
-
-  @media (min-width: 600px) {
-    /* width: 100%; */
-  }
-  @media (min-width: 700px) {
-    /* width: 65%; */
+  @media (max-width: 1024px) {
+    flex-direction: column;
   }
 `;
 
 export const Image = styled.img`
   height: 100%;
   width: 50%;
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    padding: 20px 20px 0px 20px;
+  }
 `;
 
 const silderTop = keyframes`
@@ -73,8 +71,26 @@ export const Description = styled.div`
     border: 4px double #e74c3c;
     border-radius: 5px;
   }
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    flex-direction: row;
+    padding: 50px 20px;
+  }
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+
+    img {
+      margin-top: 10px;
+    }
+  }
 `;
 
 export const Quote = styled.div`
   width: 100%;
+
+  @media (max-width: 1024px) {
+    margin-rith: 15px;
+  }
 `;
