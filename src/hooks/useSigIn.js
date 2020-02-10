@@ -21,7 +21,7 @@ export default function UseSignIn() {
   const [signIn] = useMutation(SIGN_IN, {
     variables,
     onCompleted: ({ loginUser: data }) => {
-      loadSingInSumit(false);
+      dispatch(loadSingInSumit(false));
       const singinSignUpUrl = router.pathname;
 
       const redirectUrl =
@@ -34,7 +34,7 @@ export default function UseSignIn() {
       router.push(redirectUrl, redirectUrl);
     },
     onError: () => {
-      loadSingInSumit(false);
+      dispatch(loadSingInSumit(false));
       error('fail to authenticate user.');
     }
   });

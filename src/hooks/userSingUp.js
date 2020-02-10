@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 import { useMutation } from '@apollo/react-hooks';
 import useSignIn from './useSigIn';
@@ -12,6 +13,7 @@ import { error } from '../toasty';
 export default function UseSignUp() {
   const [variables, setVariables] = useState({});
   const [signIn] = useSignIn();
+  const dispatch = useDispatch();
 
   const [signUp] = useMutation(SIGN_UP, {
     variables,
@@ -20,7 +22,7 @@ export default function UseSignUp() {
     },
     onError: () => {
       error('fail to create accout.');
-      loadSingInSumit(false);
+      dispatch(loadSingInSumit());
     }
   });
 

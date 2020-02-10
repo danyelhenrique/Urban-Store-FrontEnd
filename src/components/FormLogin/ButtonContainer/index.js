@@ -27,7 +27,7 @@ export default function ButtonContainer() {
       {isSignUpSlider && (
         <Button
           type="submit"
-          // disabled={loadSignSubmit}
+          disabled={loadSignSubmit}
           onClick={() => dispatch(signUpSlider())}
         >
           Sign Up
@@ -36,7 +36,7 @@ export default function ButtonContainer() {
       {isSignInSlider && (
         <Button
           type="submit"
-          // disabled={loadSignSubmit}
+          disabled={loadSignSubmit}
           onClick={() => dispatch(signInSlider())}
         >
           Sign In
@@ -45,7 +45,7 @@ export default function ButtonContainer() {
 
       <Button
         type="submit"
-        // disabled={loadSignSubmit}
+        disabled={loadSignSubmit}
         BtnMaxWidth
         className="BtnMaxWidth"
         onClick={handleSilder}
