@@ -18,7 +18,8 @@ export const Container = styled.div`
 
     backdrop-filter: ${({ isBurguer }) => !isBurguer && 'blur(1px)'};
 
-    width: ${isBurguer => isBurguer && '50vw'};
+    /* width: ${isBurguer => isBurguer && '100vw'}; */
+    width: 100vw;
     background: ${({ isBurguer }) =>
       isBurguer ? '#fffefe52' : 'rgba(0, 0, 0, 0.32)'};
   }
@@ -26,6 +27,7 @@ export const Container = styled.div`
   .modal {
     padding: ${({ isBurguer }) => !isBurguer && '15px'};
     left: ${({ isBurguer }) => isBurguer && '0px'};
+    max-width: 300px;
 
     background: ${({ isBurguer }) =>
       isBurguer ? 'transparent' : 'rgb(255, 255, 255)'};

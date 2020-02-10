@@ -20,7 +20,7 @@ export default function SignUp() {
 
   async function handleSubmit(data) {
     const isValid = await validator.isValid(data);
-    
+
     if (!isValid) return warn('Not valid filds.');
 
     dispatch(loadSingInSumit());

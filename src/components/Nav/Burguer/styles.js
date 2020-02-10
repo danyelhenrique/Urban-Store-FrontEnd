@@ -40,14 +40,21 @@ export const Btn = styled.button`
   flex-direction: column;
 
   cursor: pointer;
+  outline: none;
 
   z-index: ${({ isActive }) => (!isActive ? 1 : -5)};
 `;
+
 export const Row = styled.div`
-  width: 50px;
-  height: 5px;
-  background: #fff;
+  height: ${({ close }) => (close ? '30px' : '40px')};
+  width: ${({ close }) => (close ? '39px' : '70px')};
   margin: 2px 0;
+
+  background: url("${props => props.background}");
+  
+  background-position: center;
+  background-size: 100% 100%;
+
 `;
 
 export const ContainerModal = styled.div`

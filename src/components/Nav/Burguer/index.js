@@ -12,20 +12,17 @@ export default function Burguer() {
   function handleModal() {
     setModal(!modal);
   }
+
   return (
     <Container>
       <Btn isActive={modal} onClick={handleModal}>
-        <Row />
-        <Row />
-        <Row />
+        <Row background="/burguer/burguer.png" />
       </Btn>
       <ContainerModal isActive={modal}>
         <Modal isBurguer onclick={() => handleModal()}>
           <NavItemsContainer>
             <Btn onClick={handleModal}>
-              <Row />
-              <Row />
-              <Row />
+              <Row background="/burguer/close.png" close />
             </Btn>
             <Ul>
               <Li select>

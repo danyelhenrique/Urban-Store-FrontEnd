@@ -18,6 +18,22 @@ export const Container = styled.aside`
     transform: translateY(${props => (props.active ? '0%' : '-100%')});
     transition: transform 5s ease-in;
   }
+
+  @media (max-width: 900px) {
+    width: 300px;
+
+    span {
+      display: none;
+    }
+  }
+
+  @media (max-width: 600px) {
+    width: 200px;
+
+    span {
+      display: none;
+    }
+  }
 `;
 
 export const Header = styled.div`
@@ -55,6 +71,12 @@ export const Nav = styled.div`
   height: 40%;
   width: 100%;
 
+  @media (max-width: 900px) {
+    span {
+      display: none;
+    }
+  }
+
   span {
     width: 50%;
     align-self: center;
@@ -71,6 +93,10 @@ export const Nav = styled.div`
   nav {
     width: 50%;
     background: rgba(0, 0, 0, 0.9);
+
+    @media (max-width: 900px) {
+      width: 100%;
+    }
 
     li {
       display: flex;

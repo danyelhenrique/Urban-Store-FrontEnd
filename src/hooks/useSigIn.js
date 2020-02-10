@@ -19,7 +19,6 @@ export default function UseSignIn() {
   const { lastUrl } = useSelector(state => state.signInSlider);
 
   const [signIn] = useMutation(SIGN_IN, {
-    variables,
     onCompleted: ({ loginUser: data }) => {
       dispatch(loadSingInSumit(false));
       const singinSignUpUrl = router.pathname;

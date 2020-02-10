@@ -46,7 +46,7 @@ export default function AccountSettings() {
   }
 
   function handleForm(e) {
-    e.preventDefault();
+    // e.preventDefault();
 
     let input = { ...formState };
 

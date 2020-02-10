@@ -41,6 +41,18 @@ const Backgorund = styled.div`
   top: 0;
   transform: translateX(${props => (props.load ? '400px' : '0%')});
   transition: transform 5s ease;
+
+  @media (max-width: 900px) {
+    width: calc(100% - 300px);
+
+    transform: translateX(${props => (props.load ? '300px' : '0%')});
+  }
+
+  @media (max-width: 600px) {
+    width: calc(100% - 200px);
+
+    transform: translateX(${props => (props.load ? '200px' : '0%')});
+  }
 `;
 
 export default Home;

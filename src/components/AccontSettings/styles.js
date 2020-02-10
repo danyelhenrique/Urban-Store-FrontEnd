@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Form as Fr } from '@rocketseat/unform';
 
 export const Section = styled.section`
   width: 100%;
@@ -11,7 +12,7 @@ export const Section = styled.section`
     flex-direction: column;
   }
 `;
-export const Form = styled.form`
+export const Form = styled(Fr)`
   width: 50%;
   background-color: #e74c3c;
   padding: 20px;
