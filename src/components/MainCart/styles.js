@@ -5,6 +5,74 @@ export const Container = styled.section`
   flex-wrap: wrap;
   width: 100%;
   z-index: 20;
+
+  position: relative;
+
+  height: 100%;
+
+  > h1 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7.5rem;
+    color: #fff;
+
+    text-shadow: 0px 0px 7px rgba(0, 0, 0, 0.5);
+    font-weight: 600;
+    font-family: 'Roboto';
+
+    @media (max-width: 1280px) {
+      font-size: 5.5rem;
+    }
+
+    @media (max-width: 700px) {
+      font-size: 3.5rem;
+    }
+  }
+`;
+export const EmptyCart = styled.div`
+  width: 100%;
+
+  background: url('/cart/large.jpg') no-repeat;
+  height: calc(100vh - 150px);
+
+  background-position: center;
+  background-size: 100% 100%;
+  background-color: transparent;
+
+  opacity: 0.5;
+
+  @media (max-width: 2500px) {
+    background: url('/cart/hight.jpg');
+
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: transparent;
+  }
+
+  @media (max-width: 1920px) {
+    background: url('/cart/large.jpg');
+
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: transparent;
+  }
+  @media (max-width: 1280px) {
+    background: url('/cart/medium.jpg');
+
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: transparent;
+  }
+
+  @media (max-width: 640px) {
+    background: url('/cart/small.jpg');
+
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: transparent;
+  }
 `;
 
 export const Items = styled.div`
@@ -13,7 +81,6 @@ export const Items = styled.div`
   height: 100%;
   display: flex;
   flex-wrap: wrap;
-  /* align-items: center; */
 
   @media (max-width: 610px) {
     position: static;
@@ -36,7 +103,6 @@ export const Item = styled.div`
   > img {
     width: 30%;
     min-width: 220px;
-    /* max-width: 220px; */
     border-radius: 6px;
   }
 

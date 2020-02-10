@@ -22,7 +22,8 @@ import {
   BtnCheckout,
   Modal,
   OpenModal,
-  PaypalContainer
+  PaypalContainer,
+  EmptyCart
 } from './styles';
 
 export default function MainCart() {
@@ -32,7 +33,12 @@ export default function MainCart() {
   const { isValid } = useSelector(state => state.user);
 
   if (cart.length <= 0) {
-    return <div />;
+    return (
+      <Container>
+        <EmptyCart />
+        <h1>YOU CART IS EMPTY</h1>
+      </Container>
+    );
   }
 
   function checkout() {
@@ -69,8 +75,8 @@ export default function MainCart() {
                 <small>${item.data_price}</small>
                 <p>Art.no.0755362003</p>
                 <p>
-                  Color: red
-                  {/* {item.data_base_colour} */}
+                  Color:
+                  {item.data_base_colour}
                 </p>
                 <p>Size: 2</p>
                 <p>
