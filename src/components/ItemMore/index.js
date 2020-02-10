@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { useRouter } from 'next/router';
-
-import { useLazyQuery } from '@apollo/react-hooks';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import useItemMore from '../../hooks/useItemMore';
 
 import Spinner from '../Spinner';
 
@@ -11,6 +9,8 @@ import { addItemtoCart } from '../../store/modules/cart/actions';
 import { productByName } from '../../graphql/gql/products';
 
 import { error } from '../../toasty';
+
+import NotFound from '../404';
 
 import {
   Container,
@@ -26,34 +26,14 @@ import {
 } from './styles';
 
 export default function ItemMore() {
-  const router = useRouter();
-
-  const urlAs = router.query.slug.split('_').join(' ');
-
   const dispatch = useDispatch();
-  const { cart } = useSelector(state => state.cart);
 
-  const [isLoading, setIsLoading] = useState(true);
-  const [product, setProduct] = useState({});
+  const [product, isLoading, err] = useItemMore(productByName);
 
-  const [getData] = useLazyQuery(productByName, {
-    fetchPolicy: 'network-only',
-    onCompleted: item => {
-      setProduct(item.showProduct);
-      setIsLoading(false);
-    },
-    onError: () => error('fail to fetch product.')
-  });
-
-  useEffect(() => {
-    const prod = cart.find(
-      produc => produc.data_product_display_name === urlAs
-    );
-    if (!prod) return getData({ variables: { name: urlAs } });
-
-    setProduct(prod);
-    setIsLoading(false);
-  }, []);
+  if (err) {
+    error('fail to fetch product.');
+    return <NotFound />;
+  }
 
   if (isLoading) return <Spinner active={isLoading} />;
 
