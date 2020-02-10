@@ -136,7 +136,7 @@ export const NameAndPrice = styled.div`
 
   a {
     font-weight: 400;
-    color:#fff;
+    color: #fff;
     :hover {
       text-decoration: underline;
       text-decoration-color: rgba(255, 75, 43, 0.56);

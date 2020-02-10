@@ -8,7 +8,7 @@ import {
   changeQntItemImput
 } from '../../store/modules/cart/actions';
 
-import { warn, sucess } from '../../toasty';
+import { warn } from '../../toasty';
 
 import {
   Container,
@@ -41,8 +41,6 @@ export default function MainCart() {
       return;
     }
     setModalOpen(true);
-
-    // dispatch({ type: '@CHECKOUT' });
   }
 
   function removeItem(item) {

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 export const Button = styled.button`
 	height: 12px;
@@ -6,7 +6,7 @@ export const Button = styled.button`
 	border: 0;
 	border-radius: 50%;
 	background: #392455;
-	background ${props => (props.color ? props.color : 'transparent')} ;
+	background ${({ color }) => (!color ? 'transparent' : color)} ;
   & + * {
 		margin-left: 0.4rem;
 	}

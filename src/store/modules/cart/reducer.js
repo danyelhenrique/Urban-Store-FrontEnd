@@ -96,6 +96,18 @@ function cart(state = INITIAL_STATE, action) {
 
       return { ...newState, cartValues };
     }
+    case Types.CHECKOUT: {
+      return {
+        cart: [],
+        cartValues: {
+          order: 0,
+          total: 0,
+          discont: 0,
+          qnt: 1,
+          shipping: 'Free'
+        }
+      };
+    }
     default:
       return state;
   }

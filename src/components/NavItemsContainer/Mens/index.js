@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import UlContainer from '../index';
 
 import { Ul, Image } from './styles';

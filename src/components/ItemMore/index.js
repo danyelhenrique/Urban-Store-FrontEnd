@@ -82,15 +82,9 @@ export default function ItemMore() {
             <strong>${data_price}</strong>
           </div>
           <Favorite>
-            <img
-              src="/icons/favorite.png"
-              alt="favorite"
-              id="favorite"
-              alt="favorite"
-            />
+            <img src="/icons/favorite.png" alt="favorite" id="favorite" />
             <img
               src="/icons/favorite-red.png"
-              alt="favorite"
               id="favorite-red"
               alt="favorite-hover"
             />

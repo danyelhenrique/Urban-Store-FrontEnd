@@ -41,11 +41,18 @@ function changeQntItemImput(payload) {
   };
 }
 
+function checkout() {
+  return {
+    type: Types.CHECKOUT
+  };
+}
+
 export {
   productState,
   addItemtoCart,
   removeItemtoCart,
   increaseQntItemMoreOne,
   decreaseQntItemLessOne,
-  changeQntItemImput
+  changeQntItemImput,
+  checkout
 };

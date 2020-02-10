@@ -19,7 +19,10 @@
   "rules": {
     "import/prefer-default-export": "off",
     "react/prop-types": "off",
+    "object-curly-newline": "off",
     "comma-dangle": "off",
+    "react/jsx-props-no-spreading": "off",
+    "consistent-return": "off",
     "linebreak-style": "off",
     "camelcase": "off",
     "no-param-reassign": "off",

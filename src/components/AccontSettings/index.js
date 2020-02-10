@@ -45,9 +45,7 @@ export default function AccountSettings() {
     setUserPassword({ ...userPassword, [e.target.name]: e.target.value });
   }
 
-  function handleForm(e) {
-    // e.preventDefault();
-
+  function handleForm() {
     let input = { ...formState };
 
     const { password, confirmPassword } = userPassword;

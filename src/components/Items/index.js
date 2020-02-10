@@ -27,7 +27,8 @@ export default function Items() {
   function renderColor(colors) {
     const { key } = generateKey();
 
-    return colors.map((ItemColor, index) => {
+    // eslint-disable-next-line consistent-return
+    function mapColors(ItemColor, index) {
       if (ItemColor) {
         const color = ItemColor.includes(' ')
           ? ItemColor.split(' ')[0].toLowerCase()
@@ -36,7 +37,8 @@ export default function Items() {
         // eslint-disable-next-line react/no-array-index-key
         return <Button color={color} key={`${key}${index}`} />;
       }
-    });
+    }
+    colors.map(mapColors);
   }
 
   function AddToFavorite() {}
@@ -84,7 +86,6 @@ export default function Items() {
               ) : (
                 <a>{item.data_product_display_name}</a>
               )}
-              {/* <a>{item.data_product_display_name}</a> */}
             </Link>
           </div>
           <span>${item.data_price}</span>

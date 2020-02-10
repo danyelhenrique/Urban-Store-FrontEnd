@@ -1,3 +1,4 @@
+/* eslint-disable indent */
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -18,7 +19,6 @@ export const Container = styled.div`
 
     backdrop-filter: ${({ isBurguer }) => !isBurguer && 'blur(1px)'};
 
-    /* width: ${isBurguer => isBurguer && '100vw'}; */
     width: 100vw;
     background: ${({ isBurguer }) =>
       isBurguer ? '#fffefe52' : 'rgba(0, 0, 0, 0.32)'};

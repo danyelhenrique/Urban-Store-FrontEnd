@@ -97,7 +97,6 @@ export function SliderLoginPage(state) {
 
 export function checkout(state) {
   if (!state.isLogin) {
-    // console.log('fail to checkout');
     return { ...state };
   }
   return { ...state };
