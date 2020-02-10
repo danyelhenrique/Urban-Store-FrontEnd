@@ -14,6 +14,14 @@ export default function ButtonContainer() {
   const { loadSignSubmit, isSignInSlider, isSignUpSlider } = useSelector(
     state => state.signInSlider
   );
+
+  function handleSilder() {
+    if (isSignInSlider) {
+      return dispatch(signUpSlider());
+    }
+    return dispatch(signInSlider());
+  }
+
   return (
     <Container>
       {isSignUpSlider && (
@@ -40,9 +48,9 @@ export default function ButtonContainer() {
         // disabled={loadSignSubmit}
         BtnMaxWidth
         className="BtnMaxWidth"
-        onClick={() => dispatch(signInSlider())}
+        onClick={handleSilder}
       >
-        Sign In
+        {isSignUpSlider ? 'Sign In' : 'Sign Up'}
       </Button>
     </Container>
   );

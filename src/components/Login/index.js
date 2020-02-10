@@ -6,11 +6,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { Tooltip } from 'react-tippy';
 
-import FormLogin from '../FormLogin';
 import SignIn from '../FormLogin/SignIn';
 import SignUp from '../FormLogin/SignUp';
-
-// import Icon from '../Icon';
 
 import {
   signInSlider,

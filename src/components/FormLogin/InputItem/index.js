@@ -23,7 +23,7 @@ export default function InputItem({ SingUp }) {
       {SingUp && (
         <Input
           autoComplete="off"
-          type="passsword"
+          type="password"
           name="confirmPassword"
           placeholder="confirm password"
         />
