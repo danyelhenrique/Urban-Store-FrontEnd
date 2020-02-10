@@ -1,6 +1,7 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
 
+import Burguer from '../Burguer';
 import LinkGroup from '../LinkGroup';
 
 import BagModal from '../../BagModal';
@@ -18,6 +19,7 @@ export default function LightNav() {
       <Header>
         <Internalization />
         <UserArea>
+          <Burguer />
           <Logo />
           <IconsNavContainer />
         </UserArea>

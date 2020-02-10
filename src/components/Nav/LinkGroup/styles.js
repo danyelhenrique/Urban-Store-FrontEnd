@@ -8,6 +8,10 @@ export const LinkGroup = styled.div`
   width: 100%;
 
   position: relative;
+  @media (max-width: 1024px) {
+    pointer-events: none;
+    display: none;
+  }
 `;
 
 export const Links = styled.div`
@@ -22,6 +26,11 @@ export const Links = styled.div`
 
   > div > button {
     font-size: 0.8rem;
+  }
+
+  @media (max-width: 1024px) {
+    display: none;
+    pointer-events: none;
   }
 `;
 
@@ -109,5 +118,9 @@ export const Input = styled.div`
       font-weight: 300;
       opacity: 0.8;
     }
+  }
+
+  @media (max-width: 1024px) {
+    opacity: 0;
   }
 `;

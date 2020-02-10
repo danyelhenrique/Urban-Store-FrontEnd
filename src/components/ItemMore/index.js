@@ -6,8 +6,11 @@ import { useLazyQuery } from '@apollo/react-hooks';
 import { useSelector, useDispatch } from 'react-redux';
 
 import Spinner from '../Spinner';
+
 import { addItemtoCart } from '../../store/modules/cart/actions';
 import { productByName } from '../../graphql/gql/products';
+
+import { error } from '../../toasty';
 
 import {
   Container,
@@ -39,7 +42,7 @@ export default function ItemMore() {
       setProduct(item.showProduct);
       setIsLoading(false);
     },
-    onError: () => console.error('fail to create accout.')
+    onError: () => error('fail to fetch product.')
   });
 
   useEffect(() => {
@@ -79,8 +82,18 @@ export default function ItemMore() {
             <strong>${data_price}</strong>
           </div>
           <Favorite>
-            <img src="/icons/favorite.png" alt="favorite" id="favorite" />
-            <img src="/icons/favorite-red.png" alt="favorite" id="favorite-red" />
+            <img
+              src="/icons/favorite.png"
+              alt="favorite"
+              id="favorite"
+              alt="favorite"
+            />
+            <img
+              src="/icons/favorite-red.png"
+              alt="favorite"
+              id="favorite-red"
+              alt="favorite-hover"
+            />
           </Favorite>
         </Header>
         <Body>

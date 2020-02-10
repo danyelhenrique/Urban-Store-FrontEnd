@@ -6,6 +6,10 @@ export const Section = styled.section`
 
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+  }
 `;
 export const Form = styled.form`
   width: 50%;
@@ -16,6 +20,11 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 900px) {
+    width: 80%;
+    margin: 10px auto;
+  }
 
   label {
     display: flex;
@@ -55,6 +64,10 @@ export const AvatarPreview = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  @media (max-width: 900px) {
+    margin: 0 auto;
+  }
 
   img {
     max-height: 300px;

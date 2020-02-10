@@ -7,6 +7,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Tooltip } from 'react-tippy';
 
 import FormLogin from '../FormLogin';
+import SignIn from '../FormLogin/SignIn';
+import SignUp from '../FormLogin/SignUp';
 
 // import Icon from '../Icon';
 
@@ -74,11 +76,11 @@ export default function Login() {
           </Ghost>
         </Image>
         <SignInContainer signIn={isSignInSlider}>
-          <FormLogin />
+          <SignIn />
         </SignInContainer>
 
         <SignUpContainer signUp={isSignUpSlider}>
-          <FormLogin />
+          <SignUp />
         </SignUpContainer>
       </Container>
     </Section>

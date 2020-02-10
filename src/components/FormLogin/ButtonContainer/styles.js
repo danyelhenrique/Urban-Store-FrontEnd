@@ -1,43 +1,21 @@
 import styled, { css } from 'styled-components';
 
-export const Form = styled.form`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  padding: 0 50px;
-  height: 100%;
-  text-align: center;
-  color: #fff;
-
-  input {
-    color: ${props => (props.isSignUp ? '#fff' : '#000')};
-  }
-
-  h1 {
-    font-weight: bold;
-    font-size: 3rem;
-  }
-
-  span,
-  p {
-    font-weight: 300;
-    font-size: 0.8rem;
-  }
-
-  p {
-    margin: 10px 0;
-  }
-`;
-
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  align-items: center;
-  justify-content: center;
-
+export const ButtonContainer = styled.div`
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .BtnMaxWidth {
+    display: none;
+  }
+
+  @media (max-width: 1024px) {
+    justify-content: space-between;
+
+    .BtnMaxWidth {
+      display: block;
+    }
+  }
 `;
 
 export const Button = styled.button`
@@ -79,4 +57,20 @@ export const Button = styled.button`
       background-color: transparent;
       border-color: #ffffff;
     `};
+
+  ${({ BtnMaxWidth }) =>
+    BtnMaxWidth &&
+    css`
+      margin-left: 5px;
+      background: transparent;
+      border: 1px solid #000;
+      color: #000;
+      font-weight: 400;
+    `}
+
+  @media (max-width: 1024px) {
+    flex: 1;
+    height: 40px;
+    padding: 0;
+  }
 `;

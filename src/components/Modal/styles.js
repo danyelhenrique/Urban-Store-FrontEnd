@@ -6,17 +6,40 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  .fixed,
+  .modal {
+    width: 50vw;
+    box-shadow: ${isBurguer => isBurguer && 'none'};
+  }
+  .fixed {
+    right: ${({ isBurguer }) => isBurguer && '0px'};
+    left: ${({ isBurguer }) => !isBurguer && '0px'};
+
+    backdrop-filter: ${({ isBurguer }) => !isBurguer && 'blur(1px)'};
+
+    width: ${isBurguer => isBurguer && '50vw'};
+    background: ${({ isBurguer }) =>
+      isBurguer ? '#fffefe52' : 'rgba(0, 0, 0, 0.32)'};
+  }
+
+  .modal {
+    padding: ${({ isBurguer }) => !isBurguer && '15px'};
+    left: ${({ isBurguer }) => isBurguer && '0px'};
+
+    background: ${({ isBurguer }) =>
+      isBurguer ? 'transparent' : 'rgb(255, 255, 255)'};
+  }
 `;
-export const Fixed = styled.div`
+export const Fixed = styled.div.attrs({
+  className: 'fixed'
+})`
   position: fixed;
 
   top: 0px;
-  left: 0px;
 
   height: 100vh;
   width: 100%;
-
-  background: rgba(0, 0, 0, 0.32);
 
   display: flex;
   flex-direction: column;
@@ -29,6 +52,7 @@ export const Modal = styled.div.attrs({
   className: 'modal'
 })`
   width: 30%;
+
   min-width: 400px;
 
   height: 100vh;
@@ -37,8 +61,6 @@ export const Modal = styled.div.attrs({
 
   display: flex;
   flex-direction: column;
-
-  padding: 15px;
 
   position: fixed;
   top: 0;

@@ -127,6 +127,10 @@ export const Image = styled.div`
         display: none;
       }
     `};
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 export const Ghost = styled.div`
   height: 150px;
@@ -163,9 +167,10 @@ export const SignUpContainer = styled.div`
 
   display: flex;
   flex-direction: column;
-  position: absolute;
 
   opacity: 0;
+  display: none;
+
   transition: all 2s ease;
   background: rgb(255, 75, 43);
 
@@ -173,7 +178,23 @@ export const SignUpContainer = styled.div`
     props.signUp &&
     css`
       opacity: 1;
+      display: flex;
     `};
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    opacity: 0;
+    display: none;
+
+    transition: all 2s ease;
+
+    ${({ signUp }) =>
+      signUp &&
+      css`
+        opacity: 1;
+        display: flex;
+      `};
+  }
 `;
 
 export const SignInContainer = styled.div`
@@ -181,7 +202,7 @@ export const SignInContainer = styled.div`
   width: 50%;
   background: red;
 
-  display: flex;
+  display: none;
   flex-direction: column;
   position: absolute;
 
@@ -190,11 +211,28 @@ export const SignInContainer = styled.div`
   transition: transform 2s ease;
   background: rgb(255, 75, 43);
 
-  ${props =>
-    props.signIn &&
+  ${({ signIn }) =>
+    signIn &&
     css`
       opacity: 1;
+      display: flex;
     `};
+
+  @media (max-width: 1024px) {
+    width: 100%;
+    transform: translateX(-900px);
+    opacity: 0;
+    transition: all 2s ease;
+
+    ${props =>
+      props.signIn &&
+      css`
+        opacity: 1;
+        display: flex;
+
+        transform: translateX(0px);
+      `};
+  }
 `;
 
 export const Button = styled.button`

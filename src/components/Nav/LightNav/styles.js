@@ -25,7 +25,6 @@ export const UserArea = styled.div`
   justify-content: space-between;
 `;
 
-
 export const LinkGroup = styled.div`
   display: flex;
   align-items: center;
@@ -34,15 +33,6 @@ export const LinkGroup = styled.div`
   width: 100%;
 
   position: relative;
-`;
-
-export const Links = styled.div`
-  display: flex;
-  align-items: center;
-  margin: 0 auto;
-  list-style: none;
-  width: 100%;
-  justify-content: center;
 `;
 
 export const Link = styled.div`

@@ -19,4 +19,11 @@ function latUrlSingIn(payload) {
   };
 }
 
-export { signInSlider, signUpSlider, latUrlSingIn };
+function loadSingInSumit(payload) {
+  return {
+    type: Types.LOAD_SIGN_IN_SUBMIT,
+    payload
+  };
+}
+
+export { signInSlider, signUpSlider, latUrlSingIn, loadSingInSumit };

@@ -6,7 +6,7 @@ export const Li = styled.li.attrs({
   height: 100%;
   width: 100%;
 
-  min-width: 220px;
+  /* min-width: 220px; */
 
   margin: 0 20px;
 

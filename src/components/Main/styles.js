@@ -7,9 +7,10 @@ export const MainContainer = styled.main`
   position: relative;
   top: 150px;
   top: ${props => (props.isFull ? '0px' : '150px')};
+  height: ${props => props.isFull && '100vh'};
   width: 100%;
 
-  background: ${props => (props.store ? 'rgba(0, 0, 0, 0.8)' : 'transparent')};
-
-  /* overflow: hidden; */
+  @media (max-width: 1024px) {
+    top: 90px;
+  }
 `;

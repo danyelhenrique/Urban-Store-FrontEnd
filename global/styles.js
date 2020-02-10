@@ -25,7 +25,6 @@ export default createGlobalStyle`
     box-sizing: border-box;
 }
 html,body, #__next {
-  background: #010101e3;
   height: 100vh;
 }
 html,body, #__next, Main {
@@ -35,6 +34,9 @@ html,body, #__next, Main {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    background: #010101e3;
+
 
     h1,h2,h3,h4,h5,h6,p{
         margin: 0;

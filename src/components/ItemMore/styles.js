@@ -41,6 +41,7 @@ export const Image = styled.div`
     width: 49%;
     height: 80vh;
     margin: 5px 0;
+    border-radius: 5px;
 
     @media (max-width: 610px) {
       width: 80%;
