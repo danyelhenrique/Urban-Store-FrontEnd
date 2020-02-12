@@ -17,16 +17,16 @@ export const Ul = styled.ul`
   }
 `;
 
-export const Image = styled.div`
-   background: url("${props => props.background && `${props.background}`}");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+export const Picture = styled.picture`
+  min-width: 238px;
+  width: 50%;
 
-  width: 100%;
   height: 100%;
-  border-radius: 5px;
+  cursor: auto;
 
- 
-
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+  }
 `;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { useMutation } from '@apollo/react-hooks';
+// import { useMutation } from '@apollo/react-hooks';
 
 import { updateUser } from '../../graphql/gql/user';
 
@@ -29,13 +29,15 @@ export default function AccountSettings() {
     confirmPassword: ''
   });
 
-  const [submit] = useMutation(updateUser, {
-    onCompleted: ({ updateUser: userData }) => {
-      dispatch(userSigin(userData));
-      sucess('Sucess to change profile.');
-    },
-    onError: () => error('Fail to change profile')
-  });
+  // const [submit] = useMutation(updateUser, {
+  //   onCompleted: ({ updateUser: userData }) => {
+  //     dispatch(userSigin(userData));
+  //     sucess('Sucess to change profile.');
+  //   },
+  //   onError: () => error('Fail to change profile')
+  // });
+
+  function submit() {}
 
   function handleChange(e) {
     setFormState({ ...formState, [e.target.name]: e.target.value });

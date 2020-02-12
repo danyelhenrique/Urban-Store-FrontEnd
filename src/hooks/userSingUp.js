@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { useMutation } from '@apollo/react-hooks';
+import client from '../../services/apollo';
+
 import useSignIn from './useSigIn';
 
 import { loadSingInSumit } from '../store/modules/signInSlider/actions';
@@ -11,20 +12,20 @@ import { SIGN_UP } from '../graphql/gql/auth';
 import { error } from '../toasty';
 
 export default function UseSignUp() {
-  const [variables, setVariables] = useState({});
   const [signIn] = useSignIn();
   const dispatch = useDispatch();
 
-  const [signUp] = useMutation(SIGN_UP, {
-    variables,
-    onCompleted: () => {
+  async function signUp({ variables }) {
+    try {
+      await client.request(SIGN_UP, { ...variables });
       signIn({ variables: { ...variables } });
-    },
-    onError: () => {
+    } catch (err) {
       error('fail to create accout.');
-      dispatch(loadSingInSumit());
+      dispatch(loadSingInSumit(false));
+    } finally {
+      dispatch(loadSingInSumit(false));
     }
-  });
+  }
 
-  return [signUp, variables, setVariables];
+  return [signUp];
 }

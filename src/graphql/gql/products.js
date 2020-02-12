@@ -1,9 +1,9 @@
-import { gql } from 'apollo-boost';
-
-const products = gql`
+const products = `
   query getProducts($page: Int) {
     indexProduct(page: $page, limit: 10) {
       id
+      qnt
+      total
       data_price
       data_product_display_name
       data_brand_name
@@ -18,10 +18,12 @@ const products = gql`
   }
 `;
 
-const productByName = gql`
+const productByName = `
   query getData($name: String!) {
     showProduct(where: { data_product_display_name: $name }) {
       id
+      qnt
+      total
       data_price
       data_product_display_name
       data_brand_name

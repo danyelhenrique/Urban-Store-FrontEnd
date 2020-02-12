@@ -7,8 +7,9 @@ export default class MyDocument extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet();
 
-    const page = renderPage(App => props =>
-      sheet.collectStyles(<App {...props} />)
+    const page = renderPage(
+      App => props => sheet.collectStyles(<App {...props} />)
+      // eslint-disable-next-line function-paren-newline
     );
 
     const styleTags = sheet.getStyleElement();
@@ -18,8 +19,18 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <html>
-        <Head>{this.props.styleTags}</Head>
+      <html lang="en">
+        <Head>
+          <link
+            href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+            rel="stylesheet"
+          />
+          <link
+            href="https://fonts.googleapis.com/css?family=Playfair+Display:400i,500i&display=swap"
+            rel="stylesheet"
+          />
+          {this.props.styleTags}
+        </Head>
         <body>
           <Main />
           <NextScript />

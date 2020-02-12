@@ -16,7 +16,7 @@ export default function SignUp() {
   const { isSignUpSlider } = useSelector(state => state.signInSlider);
   const dispatch = useDispatch();
 
-  const [signUp, , setVariables] = userSingUp();
+  const [signUp] = userSingUp();
 
   async function handleSubmit(data) {
     const isValid = await validator.isValid(data);
@@ -24,7 +24,6 @@ export default function SignUp() {
     if (!isValid) return warn('Not valid filds.');
 
     dispatch(loadSingInSumit());
-    setVariables(data);
 
     return signUp({ variables: { ...data } });
   }

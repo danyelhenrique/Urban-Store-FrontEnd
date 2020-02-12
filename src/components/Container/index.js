@@ -1,35 +1,23 @@
 /* eslint-disable react/jsx-fragments */
-import React, { useEffect, Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { useLazyQuery } from '@apollo/react-hooks';
-import { Token } from '../../graphql/gql/auth';
-import { userToken, invalidUser } from '../../store/modules/user/actions';
-import reduxPersit from '../../../utils/reduxPersist';
+import React, { Fragment } from 'react';
+import { useRouter } from 'next/router';
+
+import Nav from '../Nav';
+
+import { Main } from './styles';
 
 function Container({ children }) {
-  const dispatch = useDispatch();
+  const router = useRouter();
+  const rout = router.pathname;
 
-  const [getToken, { called }] = useLazyQuery(Token, {
-    fetchPolicy: 'network-only',
-    onCompleted: Tdata => {
-      const { validateToken } = Tdata;
-      if (validateToken.isValid) {
-        dispatch(userToken(validateToken));
-      } else {
-        dispatch(invalidUser({ isValid: false }));
-      }
-    }
-  });
+  const checkIfNavRender = rout === '/' || rout === '/store/signin';
 
-  useEffect(() => {
-    const { accessToken } = reduxPersit.token();
-
-    if (accessToken) {
-      getToken({ variables: { token: accessToken } });
-    }
-  }, [called]);
-
-  return <Fragment>{children}</Fragment>;
+  return (
+    <Fragment>
+      {!checkIfNavRender && <Nav />}
+      <Main isFull={checkIfNavRender}>{children}</Main>
+    </Fragment>
+  );
 }
 
 export default Container;

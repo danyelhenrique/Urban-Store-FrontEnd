@@ -1,5 +1,3 @@
-import crypto from 'crypto';
-
 function fetchMoreItems({ fetchQuery, query, page }) {
   fetchQuery({
     query,
@@ -13,27 +11,4 @@ function fetchMoreItems({ fetchQuery, query, page }) {
   });
 }
 
-function mockItemsWithQnt(items) {
-  const itemWithMock = items.map(item => {
-    item.qnt = Math.floor(Math.random() * 10);
-    item.total = item.data_price;
-    return item;
-  });
-
-  return itemWithMock;
-}
-
-function generateKey() {
-  const state = {};
-  const hash = 'braitsch';
-
-  const key = crypto
-    .createHash('md5')
-    .update(hash)
-    .digest('hex');
-
-  state.key = key;
-
-  return state;
-}
-export { fetchMoreItems, mockItemsWithQnt, generateKey };
+export { fetchMoreItems };

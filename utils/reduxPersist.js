@@ -1,8 +1,12 @@
 /* eslint-disable class-methods-use-this */
 class Persist {
   token() {
-    const store = JSON.parse(localStorage.getItem('persist:root'));
-    const { token: accessToken } = JSON.parse(store.user);
+    let accessToken;
+    try {
+      const store = JSON.parse(localStorage.getItem('persist:root'));
+      const { token } = JSON.parse(store.user);
+      accessToken = token;
+    } catch (err) {}
 
     return { accessToken };
   }

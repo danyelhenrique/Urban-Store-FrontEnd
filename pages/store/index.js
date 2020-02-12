@@ -1,24 +1,42 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 
-import Main from '../../src/components/Main';
-import Nav from '../../src/components/Nav';
+import { useDispatch } from 'react-redux';
+
+import client from '../../services/apollo';
+
+import { products } from '../../src/store/modules/products/actions';
+
+import { products as prodQeury } from '../../src/graphql/gql/products';
 
 import MainStore from '../../src/components/MainStore';
 import Hero from '../../src/components/Hero';
 
-export default function store() {
+function Store({ data }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (data) {
+      dispatch(products(data));
+    }
+  }, [data]);
+
   return (
     <>
       <Head>
         <title>Urban Store</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Main store>
-        <Nav />
-        <Hero />
-        <MainStore />
-      </Main>
+      <Hero />
+      <MainStore />
     </>
   );
 }
+
+Store.getInitialProps = async () => {
+  const data = await client.request(prodQeury, { page: 1 });
+  const { indexProduct } = data;
+
+  return { data: indexProduct };
+};
+
+export default Store;

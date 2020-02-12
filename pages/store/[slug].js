@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
 
-import Main from '../../src/components/Main';
-import ItemMore from '../../src/components/ItemMore';
-import Nav from '../../src/components/Nav';
+import { useDispatch } from 'react-redux';
 
-export default function store() {
+import ItemMore from '../../src/components/ItemMore';
+import { product } from '../../src/store/modules/products/actions';
+
+import client from '../../services/apollo';
+import { productByName } from '../../src/graphql/gql/products';
+
+function Slug({ prod }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(product(prod));
+  }, [prod]);
+
   return (
-    <div>
+    <>
       <Head>
         <title>Urban Bag</title>
-        <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Main>
-        <Nav />
-        <ItemMore />
-      </Main>
-    </div>
+      <ItemMore />
+    </>
   );
 }
+
+Slug.getInitialProps = async ({ query }) => {
+  const name = query.slug.split('_').join(' ');
+  const prod = await client.request(productByName, { name });
+
+  return { prod: prod.showProduct };
+};
+
+export default Slug;

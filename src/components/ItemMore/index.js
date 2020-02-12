@@ -1,16 +1,8 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
-import useItemMore from '../../hooks/useItemMore';
-
-import Spinner from '../Spinner';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { addItemtoCart } from '../../store/modules/cart/actions';
-import { productByName } from '../../graphql/gql/products';
-
-import { error } from '../../toasty';
-
-import NotFound from '../404';
 
 import {
   Container,
@@ -26,16 +18,8 @@ import {
 } from './styles';
 
 export default function ItemMore() {
+  const { product } = useSelector(state => state.products);
   const dispatch = useDispatch();
-
-  const [product, isLoading, err] = useItemMore(productByName);
-
-  if (err) {
-    error('fail to fetch product.');
-    return <NotFound />;
-  }
-
-  if (isLoading) return <Spinner active={isLoading} />;
 
   const {
     id,

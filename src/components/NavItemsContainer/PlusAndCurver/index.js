@@ -1,7 +1,10 @@
 import React from 'react';
+
+import LazyLoad from 'react-lazyload';
+
 import UlContainer from '../index';
 
-import { Ul, Image } from './styles';
+import { Ul, Picture } from './styles';
 import NavItems from '../../NavItems';
 
 export default function PlusAndCurver() {
@@ -18,7 +21,12 @@ export default function PlusAndCurver() {
 
       <Ul double lastChild>
         <NavItems title="Clothing" />
-        <Image background="/nav/navgation/plus.jpg" />
+        <LazyLoad height="100%">
+          <Picture>
+            <source srcSet="/nav/navgation/plus.webp" type="image/webp" />
+            <img src="/nav/navgation/plus.jpg" alt="plus and curver" />
+          </Picture>
+        </LazyLoad>
       </Ul>
     </UlContainer>
   );

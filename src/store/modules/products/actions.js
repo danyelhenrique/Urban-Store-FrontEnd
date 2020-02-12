@@ -7,6 +7,13 @@ function products(payload) {
   };
 }
 
+function product(payload) {
+  return {
+    type: Types.REQUEST_PRODUCT,
+    payload
+  };
+}
+
 function productLoading(payload) {
   return {
     type: Types.PRODUCT_LOADING,
@@ -14,4 +21,4 @@ function productLoading(payload) {
   };
 }
 
-export { products, productLoading };
+export { products, product, productLoading };

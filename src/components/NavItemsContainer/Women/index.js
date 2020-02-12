@@ -1,7 +1,9 @@
 import React from 'react';
+import LazyLoad from 'react-lazyload';
+
 import UlContainer from '../index';
 
-import { Ul, Image } from './styles';
+import { Ul, Picture } from './styles';
 import NavItems from '../../NavItems';
 
 export default function Women() {
@@ -18,7 +20,12 @@ export default function Women() {
 
       <Ul double lastChild>
         <NavItems title="Women Clothing" />
-        <Image background="/nav/navgation/woman.jpg" />
+        <LazyLoad height="100%">
+          <Picture>
+            <source srcSet="/nav/navgation/woman.webp" type="image/webp" />
+            <img src="/nav/navgation/woman.jpg" alt="women" />
+          </Picture>
+        </LazyLoad>
       </Ul>
     </UlContainer>
   );
