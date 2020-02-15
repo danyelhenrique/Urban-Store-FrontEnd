@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "heroku-postbuild": "npm run build",
-    "start": "NODE_ENV=production next start",
+    "start": "NODE_ENV=production next start -p $PORT",
     "lint": "eslint --fix .",
     "check": "ncu -u"
   },
