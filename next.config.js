@@ -3,7 +3,7 @@ const withCSS = require('@zeit/next-css');
 
 module.exports = withCSS({
   cssModules: true,
-  // target: 'serverless',
+  target: 'serverless',
   devIndicators: {
     autoPrerender: false
   }
