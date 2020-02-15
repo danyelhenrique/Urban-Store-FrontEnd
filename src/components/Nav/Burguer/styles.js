@@ -67,6 +67,7 @@ export const ContainerModal = styled.div`
     opacity: ${props => (!props.isActive ? 0 : 1)};
 
     transition: all 2s ease;
+    background: #000;
 
     nav {
       pointer-events: ${({ isActive }) => (isActive ? 'all' : 'none')};

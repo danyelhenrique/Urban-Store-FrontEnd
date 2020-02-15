@@ -26,6 +26,8 @@ export default createGlobalStyle`
 html,body, #__next {
   height: 100vh;
 }
+
+
 html,body, #__next, Main {
     font-size: 16px;
     font-family: 'Roboto', sans-serif;
@@ -35,7 +37,6 @@ html,body, #__next, Main {
     box-sizing: border-box;
 
     background: #010101e3;
-
 
     h1,h2,h3,h4,h5,h6,p{
         margin: 0;

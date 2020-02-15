@@ -77,10 +77,11 @@ export const EmptyCart = styled.div`
 
 export const Items = styled.div`
   width: 100%;
-  max-height: 400px;
-  height: 100%;
+  max-height: 700px;
+  /* height: 100%; */
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 10px;
 
   @media (max-width: 610px) {
     position: static;

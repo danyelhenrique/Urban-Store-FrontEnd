@@ -67,8 +67,8 @@ export default function MainCart() {
         const qnt = new Array(item.qnt).fill();
 
         return (
-          <Items>
-            <Item key={item.id}>
+          <Items key={item.id}>
+            <Item>
               <img src={item.data_front_imageURL} alt="model" />
               <Detail>
                 <h4>{item.data_product_display_name}</h4>
@@ -86,10 +86,8 @@ export default function MainCart() {
                   <select
                     name="quantity"
                     onChange={({ target }) => handleSelect(item, target.value)}
+                    defaultValue={item.qntRequest}
                   >
-                    <option defaultValue={item.qntRequest} disabled>
-                      {item.qntRequest}
-                    </option>
                     {qnt.map((_, index) => (
                       <option value={index + 1}>{index + 1}</option>
                     ))}

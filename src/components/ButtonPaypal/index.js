@@ -3,24 +3,42 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import PaypalExpressBtn from 'react-paypal-express-checkout';
 
+import { request } from 'graphql-request';
+import { mapCartTogetIdAndQnt } from '../../../utils/cart';
+
 import { checkout } from '../../store/modules/cart/actions';
 
 import Spinner from '../Spinner';
 
 import { sucess, error, warn } from '../../toasty';
 
+import { purchase } from '../../graphql/gql/purchase';
+
 function ButtonPaypayl() {
   const [isload, setLoad] = useState(true);
-  const { cartValues } = useSelector(state => state.cart);
+  const { cartValues, cart } = useSelector(state => state.cart);
+  const { user } = useSelector(state => state.user);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
     setLoad(false);
   }, []);
 
-  function onSuccess(payment) {
-    sucess('Payment successful!', payment);
-    dispatch(checkout());
+  async function onSuccess(payment) {
+    const products = mapCartTogetIdAndQnt(cart);
+
+    try {
+      await request('http://localhost:4594/graphql', purchase, {
+        userId: user,
+        productIds: products
+      });
+      dispatch(checkout());
+
+      sucess('Payment successful!', payment);
+    } catch (err) {
+      warn('Fail to Payment!');
+    }
   }
 
   function onCancel() {
@@ -44,7 +62,8 @@ function ButtonPaypayl() {
   const styleBtn = {
     color: 'gold',
     shape: 'rect',
-    label: 'checkout'
+    label: 'checkout',
+    size: 'responsive'
   };
 
   if (isload) {

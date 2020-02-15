@@ -9,6 +9,7 @@ export const Container = styled.nav.attrs({
 
   width: 100%;
   height: 80vh;
+  max-height: 600px;
 
   position: absolute;
   left: 0;
