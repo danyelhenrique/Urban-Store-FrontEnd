@@ -27,10 +27,14 @@ function Slug({ prod }) {
 }
 
 Slug.getInitialProps = async ({ query }) => {
-  const name = query.slug.split('_').join(' ');
-  const prod = await client.request(productByName, { name });
+  try {
+    const name = query.slug.split('_').join(' ');
+    const prod = await client.request(productByName, { name });
 
-  return { prod: prod.showProduct };
+    return { prod: prod.showProduct };
+  } catch (err) {
+    return { prod: {} };
+  }
 };
 
 export default Slug;

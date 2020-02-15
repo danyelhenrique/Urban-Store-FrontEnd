@@ -26,7 +26,8 @@ export default function ItemMore() {
     data_front_imageURL,
     data_product_display_name,
     data_back_image_url,
-    data_price
+    data_price,
+    qnt
   } = product;
 
   function addToCart(item) {
@@ -73,7 +74,7 @@ export default function ItemMore() {
           </select>
           <img src="/icons/select.png" alt="select" />
         </Select>
-        <Button onClick={() => addToCart(product)}>
+        <Button onClick={() => addToCart(product)} disabled={!qnt}>
           <div>
             <img src="/icons/bag-btn.png" alt="btnIcon" />
             <strong>ADD</strong>

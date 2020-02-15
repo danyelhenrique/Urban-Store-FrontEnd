@@ -33,10 +33,13 @@ function Store({ data }) {
 }
 
 Store.getInitialProps = async () => {
-  const data = await client.request(prodQeury, { page: 1 });
-  const { indexProduct } = data;
-
-  return { data: indexProduct };
+  try {
+    const data = await client.request(prodQeury, { page: 1 });
+    const { indexProduct } = data;
+    return { data: indexProduct };
+  } catch (error) {
+    return { data: [] };
+  }
 };
 
 export default Store;

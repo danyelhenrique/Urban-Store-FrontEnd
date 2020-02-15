@@ -53,9 +53,11 @@ export default function Items() {
             </div>
           </Favorite>
           <Hover>
-            <button type="button" onClick={() => addToCart(item)}>
-              ADD TO CART
-            </button>
+            {item.qnt > 0 && (
+              <button type="button" onClick={() => addToCart(item)}>
+                ADD TO CART
+              </button>
+            )}
           </Hover>
         </Item>
         <NameAndPrice>

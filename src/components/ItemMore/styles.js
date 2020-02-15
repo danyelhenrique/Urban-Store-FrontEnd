@@ -218,6 +218,11 @@ export const Button = styled.button`
   padding: 5px;
   cursor: pointer;
 
+  &:disabled {
+    background: rgba(0, 0, 0, 0.7);
+    color: #f1f1f1;
+  }
+
   div {
     display: flex;
     align-items: center;

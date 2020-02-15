@@ -4,7 +4,9 @@ import reduxPersist from '../utils/reduxPersist';
 
 const { accessToken } = reduxPersist.token();
 
-const client = new GraphQLClient('http://localhost:4594/graphql', {
+export const url = 'https://next-store-app.herokuapp.com/graphql';
+
+const client = new GraphQLClient(url, {
   headers: {
     Authorization: accessToken
   }

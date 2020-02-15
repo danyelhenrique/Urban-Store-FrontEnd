@@ -14,6 +14,8 @@ import { sucess, error, warn } from '../../toasty';
 
 import { purchase } from '../../graphql/gql/purchase';
 
+import { url } from '../../../services/apollo';
+
 function ButtonPaypayl() {
   const [isload, setLoad] = useState(true);
   const { cartValues, cart } = useSelector(state => state.cart);
@@ -29,7 +31,7 @@ function ButtonPaypayl() {
     const products = mapCartTogetIdAndQnt(cart);
 
     try {
-      await request('http://localhost:4594/graphql', purchase, {
+      await request(url, purchase, {
         userId: user,
         productIds: products
       });
